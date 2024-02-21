@@ -1,0 +1,1 @@
+<?php header("location:EC_LOGIN_01.php"); //->Note Direct to index Main Portal ?>

@@ -1,0 +1,1 @@
+<?php header("location:SU_KRY"); ?>

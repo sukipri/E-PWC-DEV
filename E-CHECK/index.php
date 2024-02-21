@@ -1,0 +1,1 @@
+<?php header("location:E-CHECK/"); //->Note Direct to index Main Portal ?>

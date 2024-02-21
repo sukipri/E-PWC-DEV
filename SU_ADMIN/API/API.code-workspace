@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "..\\config"
+		},
+		{
+			"path": "\\\\192.168.9.181\\xampp\\htdocs\\API_SRV"
+		}
+	],
+	"settings": {}
+}

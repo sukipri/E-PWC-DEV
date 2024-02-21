@@ -1,0 +1,50 @@
+	<?php  
+			switch(@$sql_slash($_GET['HLM'])){
+					
+				default:
+						include"FIRST_PAGE.php";
+					break;
+					//UPAH
+				case'RIWAYAT_M_RIWAYAT':
+					include"RIWAYAT_M_RIWAYAT.php";
+				break;
+				case'RIWAYAT_M_RIWAYAT_THR':
+					include"RIWAYAT_M_RIWAYAT_THR.php";
+				break;
+				case'RIWAYAT_M_RIWAYAT_THR_02':
+					include"RIWAYAT_M_RIWAYAT_THR_02.php";
+				break;
+				case'RIWAYAT_M_RIWAYAT_THR_03':
+					include"RIWAYAT_M_RIWAYAT_THR_03.php";
+				break;
+				case'RIWAYAT_M_RIWAYAT_RAPEL':
+					include"RIWAYAT_M_RIWAYAT_RAPEL.php";
+				break;
+				case'RIWAYAT_M_YAKKUM':
+					include"RIWAYAT_M_YAKKUM.php";
+				break;
+				//PROFIL
+				case'PROFIL_M_AKUN':
+					include"PROFIL_M_AKUN.php";
+				break;
+				case'PROFIL_M_AKUN_PS':
+					include"PROFIL_M_AKUN_PS.php";
+				break;
+			
+				case'PROFIL_M_PROFIL':
+					include"PROFIL_M_PROFIL.php";
+				break;
+				case'PROFIL_M_PROFIL_BERKAS':
+					include"PROFIL_M_PROFIL_BERKAS.php";
+				break;
+				//Pesan
+					case'PESAN_M_INBOX':
+							include"PESAN_M_INBOX.php";
+					break;
+					case'PESAN_M_INBOX_READ':
+						include"PESAN_M_INBOX_READ.php";
+					break;
+			
+						}
+
+ 	?> 

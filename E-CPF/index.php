@@ -1,0 +1,1 @@
+<?php header("location:E-CPF/index.php"); //->Note Direct to index Main Portal ?>

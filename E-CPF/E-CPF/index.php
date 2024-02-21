@@ -1,0 +1,1 @@
+<?php header("LOCATION:ACC_LOGIN_ACCOUNT.php"); ?>

@@ -1,0 +1,1 @@
+<?php header("LOCATION:AN_HOME_01.php"); ?>
