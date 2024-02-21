@@ -18,6 +18,12 @@
                             
     ?>
 <span class="mx-2"><b>Daftar Approvement Lembur Malam <?PHP echo "<span class='badge bg-info'>".$epwc_vw_vkry01_sww['KaryNama']."</span>"; ?> </b></span>
+<br>
+
+<div class="alert alert-dismissible alert-info">
+  
+  <p class="mx-2"><i class="fas fa-file-alt"></i> Peng-entrian <b>Dinas Malam</b> dilakukan dengan memasukan tanggal yang sudah di otomatiskan sesuai jadwal yang sudah tetapkan di aplikasi presensi. masukan tanggal lembur H+1 , misal lembur dilakukan tanggal <i>10</i> maka tanggal yang dimasukan tanggal setelahnya yaitu tanggal <i>11</i> </p>
+</div>
 <hr>
 <form method="post">
 <table class="table table-sm table-striped table-bordered">
@@ -60,7 +66,7 @@
                                     <td><?PHP echo $tj_ls_vjdw01_sww['Bulan'] ?></td>
                                      <td><?PHP
                                       if($tj_ls_vjdw01_sww['T01']=="M" OR $tj_ls_vjdw01_sww['T01']=="X" OR $tj_ls_vjdw01_sww['T01']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T01'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T01'>";
                                             $sts_T01 = "ADA";
                                         }else{
                                             $sts_T01 = "NADA";
@@ -72,7 +78,7 @@
                                         
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T02']=="M" OR $tj_ls_vjdw01_sww['T02']=="X" OR $tj_ls_vjdw01_sww['T02']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T02'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T02'>";
                                             $sts_T02 = "ADA";
                                         }else{
                                             $sts_T02 = "NADA";
@@ -83,7 +89,7 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T03']=="M" OR $tj_ls_vjdw01_sww['T03']=="X" OR $tj_ls_vjdw01_sww['T03']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T03'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T03'>";
                                             $sts_T03 = "ADA";
                                         }else{
                                             $sts_T03 = "NADA";
@@ -94,7 +100,7 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T04']=="M" OR $tj_ls_vjdw01_sww['T04']=="X" OR $tj_ls_vjdw01_sww['T04']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T04'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T04'>";
                                             $sts_T04 = "ADA";
                                         }else{
                                             $sts_T04 = "NADA";
@@ -105,7 +111,7 @@
                                      <td>
                                         <?PHP 
                                         if($tj_ls_vjdw01_sww['T05']=="M" OR $tj_ls_vjdw01_sww['T05']=="X" OR $tj_ls_vjdw01_sww['T05']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T05'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T05'>";
                                             $sts_T05 = "ADA";
                                         }else{
                                             $sts_T05 = "NADA";
@@ -116,7 +122,7 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T06']=="M" OR $tj_ls_vjdw01_sww['T05']=="X" OR $tj_ls_vjdw01_sww['T06']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T06'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T06'>";
                                             $sts_T06 = "ADA";
                                         }else{
                                             $sts_T06 = "NADA";
@@ -127,7 +133,7 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T07']=="M" OR $tj_ls_vjdw01_sww['T07']=="X" OR $tj_ls_vjdw01_sww['T07']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T07'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T07'>";
                                             $sts_T07 = "ADA";
                                         }else{
                                             $sts_T07 = "NADA";
@@ -138,7 +144,7 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T08']=="M" OR $tj_ls_vjdw01_sww['T08']=="X" OR $tj_ls_vjdw01_sww['T08']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T08'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T08'>";
                                             $sts_T08 = "ADA";
                                         }else{
                                             $sts_T08 = "NADA";
@@ -149,7 +155,7 @@
                                      <td>
                                      <?PHP 
                                        if($tj_ls_vjdw01_sww['T09']=="M" OR $tj_ls_vjdw01_sww['T09']=="X" OR $tj_ls_vjdw01_sww['T09']=="Y" ){                                     
-                                        echo"<input type='date' name='txt_tgl_T09'>";
+                                        echo"<input type='date' required class='form-control form-control' name='txt_tgl_T09'>";
                                         $sts_T09 = "ADA";
                                     }else{
                                         $sts_T09 = "NADA";
@@ -160,7 +166,7 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T10']=="M" OR $tj_ls_vjdw01_sww['T10']=="X" OR $tj_ls_vjdw01_sww['T10']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T10'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T10'>";
                                             $sts_T10 = "ADA";
                                         }else{
                                             $sts_T10 = "NADA";
@@ -171,7 +177,7 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T11']=="M" OR $tj_ls_vjdw01_sww['T11']=="X" OR $tj_ls_vjdw01_sww['T11']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T11'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T11'>";
                                             $sts_T11 = "ADA";
                                         }else{
                                             $sts_T11 = "NADA";
@@ -182,7 +188,7 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T12']=="M" OR $tj_ls_vjdw01_sww['T12']=="X" OR $tj_ls_vjdw01_sww['T12']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T12'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T12'>";
                                             $sts_T12 = "ADA";
                                         }else{
                                             $sts_T12 = "NADA";
@@ -193,7 +199,7 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T13']=="M" OR $tj_ls_vjdw01_sww['T13']=="X" OR $tj_ls_vjdw01_sww['T13']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T13'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T13'>";
                                             $sts_T13 = "ADA";
                                         }else{
                                             $sts_T13 = "NADA";
@@ -204,7 +210,7 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T14']=="M" OR $tj_ls_vjdw01_sww['T14']=="X" OR $tj_ls_vjdw01_sww['T14']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T14'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T14'>";
                                             $sts_T14 = "ADA";
                                         }else{
                                             $sts_T14 = "NADA";
@@ -215,7 +221,7 @@
                                      <td>
                                      <?PHP 
                                        if($tj_ls_vjdw01_sww['T15']=="M" OR $tj_ls_vjdw01_sww['T15']=="X" OR $tj_ls_vjdw01_sww['T15']=="Y" ){                                     
-                                        echo"<input type='date' name='txt_tgl_T15'>";
+                                        echo"<input type='date' required class='form-control form-control' name='txt_tgl_T15'>";
                                         $sts_T15 = "ADA";
                                     }else{
                                         $sts_T15 = "NADA";
@@ -226,7 +232,7 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T16']=="M" OR $tj_ls_vjdw01_sww['T16']=="X" OR $tj_ls_vjdw01_sww['T16']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T16'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T16'>";
                                             $sts_T16 = "ADA";
                                         }else{
                                             $sts_T16 = "NADA";
@@ -237,7 +243,7 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T17']=="M" OR $tj_ls_vjdw01_sww['T17']=="X" OR $tj_ls_vjdw01_sww['T17']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T17'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T17'>";
                                             $sts_T17 = "ADA";
                                         }else{
                                             $sts_T17 = "NADA";
@@ -248,7 +254,7 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T18']=="M" OR $tj_ls_vjdw01_sww['T18']=="X" OR $tj_ls_vjdw01_sww['T18']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T18'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T18'>";
                                             $sts_T18 = "ADA";
                                         }else{
                                             $sts_T18 = "NADA";
@@ -259,7 +265,7 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T19']=="M" OR $tj_ls_vjdw01_sww['T19']=="X" OR $tj_ls_vjdw01_sww['T19']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T19'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T19'>";
                                             $sts_T19 = "ADA";
                                         }else{
                                             $sts_T19 = "NADA";
@@ -271,7 +277,7 @@
                                         
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T20']=="M" OR $tj_ls_vjdw01_sww['T20']=="X" OR $tj_ls_vjdw01_sww['T20']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T20'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T20'>";
                                             $sts_T20 = "ADA";
                                         }else{
                                             $sts_T20 = "NADA";
@@ -282,7 +288,7 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T21']=="M" OR $tj_ls_vjdw01_sww['T21']=="X" OR $tj_ls_vjdw01_sww['T21']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T21'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T21'>";
                                             $sts_T21 = "ADA";
                                         }else{
                                             $sts_T21 = "NADA";
@@ -293,7 +299,7 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T22']=="M" OR $tj_ls_vjdw01_sww['T22']=="X" OR $tj_ls_vjdw01_sww['T22']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T22'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T22'>";
                                             $sts_T22 = "ADA";
                                         }else{
                                             $sts_T22 = "NADA";
@@ -304,7 +310,7 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T23']=="M" OR $tj_ls_vjdw01_sww['T23']=="X" OR $tj_ls_vjdw01_sww['T23']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T23'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T23'>";
                                             $sts_T23 = "ADA";
                                         }else{
                                             $sts_T23 = "NADA";
@@ -315,7 +321,7 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T24']=="M" OR $tj_ls_vjdw01_sww['T24']=="X" OR $tj_ls_vjdw01_sww['T24']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T24'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T24'>";
                                             $sts_T24 = "ADA";
                                         }else{
                                             $sts_T24 = "NADA";
@@ -326,7 +332,7 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T25']=="M" OR $tj_ls_vjdw01_sww['T25']=="X" OR $tj_ls_vjdw01_sww['T25']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T25'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T25'>";
                                             $sts_T25 = "ADA";
                                         }else{
                                             $sts_T25 = "NADA";
@@ -337,7 +343,7 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T26']=="M" OR $tj_ls_vjdw01_sww['T26']=="X" OR $tj_ls_vjdw01_sww['T26']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T26'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T26'>";
                                             $sts_T26 = "ADA";
                                         }else{
                                             $sts_T26 = "NADA";
@@ -348,7 +354,7 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T27']=="M" OR $tj_ls_vjdw01_sww['T27']=="X" OR $tj_ls_vjdw01_sww['T27']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T27'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T27'>";
                                             $sts_T27 = "ADA";
                                         }else{
                                             $sts_T27 = "NADA";
@@ -359,7 +365,7 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T28']=="M" OR $tj_ls_vjdw01_sww['T28']=="X" OR $tj_ls_vjdw01_sww['T28']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T28'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T28'>";
                                             $sts_T28 = "ADA";
                                         }else{
                                             $sts_T28 = "NADA";
@@ -370,16 +376,18 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T29']=="M" OR $tj_ls_vjdw01_sww['T29']=="X" OR $tj_ls_vjdw01_sww['T29']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T29'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T29'>";
+                                            $sts_T29 = "ADA";
                                         }else{
-                                            echo $tj_ls_vjdw01_sww['T29'] ;
+                                            $sts_T29 = "NADA";
+                                            echo $tj_ls_vjdw01_sww['T29'];
                                         }
                                      ?>
                                      </td>
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T30']=="M" OR $tj_ls_vjdw01_sww['T30']=="X" OR $tj_ls_vjdw01_sww['T30']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T30'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T30'>";
                                             $sts_T30 = "ADA";
                                         }else{
                                             $sts_T30 = "NADA";
@@ -390,7 +398,7 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T31']=="M" OR $tj_ls_vjdw01_sww['T31']=="X" OR $tj_ls_vjdw01_sww['T31']=="Y" ){                                     
-                                            echo"<input type='date' name='txt_tgl_T31'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T31'>";
                                             $sts_T31 = "ADA";
                                         }else{
                                             $sts_T31 = "NADA";
