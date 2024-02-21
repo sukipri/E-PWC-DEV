@@ -13,6 +13,10 @@
         $txt_nama = @$SQL_SL($_POST['txt_nama']);
         
 ?>
+<span class="badge bg-info mx-2">ENTRI LEMBUR</span> = Peng-entrian lembur yang bersifat diluar shift dinas malam
+<br>
+<span class="badge bg-dark mx-2">ENTRI LEMBUR</span> = Peng-entrian lembur yang dikhususkan u/ dinas malam
+<br><br>
 <table class="table table-bordered table-sm table-striped mx-2">
 <tr class="table-dark">
     <td width="10%">NIP</td>
