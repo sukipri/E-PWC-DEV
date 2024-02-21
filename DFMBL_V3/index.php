@@ -1,0 +1,1 @@
+<?php header("location:DFMBL/index.php"); //->Note Direct to index Main Portal ?>
