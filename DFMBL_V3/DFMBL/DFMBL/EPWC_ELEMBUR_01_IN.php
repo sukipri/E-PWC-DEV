@@ -36,6 +36,8 @@
     <td><?PHP echo $epwc_tot_sl_vlmbr01_sww['jml01_lmbr'] ?></td>
     <td>
         <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$epwc_sl_vkry01_sww[KaryNomor]"; ?>" class="badge bg-info"><i class="fas fa-info-circle"></i> ENTRI LEMBUR</a>
+        &nbsp
+        <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02MLM&IDKRY=$epwc_sl_vkry01_sww[KaryNomor]"; ?>" class="badge bg-dark"><i class="fas fa-info-circle"></i> ENTRI LEMBUR MALAM</a>
     </td>
 </tr>
 <?PHP } ?>

@@ -20,7 +20,7 @@
         <li><a href="?HLM=PROFIL_M_PROFIL">Profil Karyawan</a></li>
           <li><a href="?HLM=PROFIL_M_AKUN">Akun Karyawan</a></li>
           <li><a href="?HLM=PESAN_M_INBOX"><?php echo"Pesan $vps01_sww"; ?></a></li>
-          <li><a href="http://103.164.114.138//E-PWC/DFMBL_V3/DFMBL/EPWC_HOME_01.php?">E-PWC</a></li>
+          <li><a href="http://103.164.114.138/E-PWC/DFMBL_V3/DFMBL/EPWC_HOME_01.php?">E-PWC</a></li>
         <li><a href="?OUT=OUT">Keluar</a></li>
   
       </ul>
@@ -41,7 +41,7 @@
         <li><a href="?HLM=PROFIL_M_PROFIL"><i class="material-icons">assignment_ind</i>&nbsp;Profil Karyawan</a></li>
            <li><a href="?HLM=PROFIL_M_AKUN"><i class="material-icons">assignment_ind</i>&nbsp;Akun Karyawan</a></li>
             <li><a href="?HLM=PESAN_M_INBOX"><i class="material-icons">contact_mail</i>&nbsp;<?php echo"Pesan <b>$vps01_sww</b>"; ?></a></li>
-            <li><a href="http://182.253.60.178/E-PWC/DFMBL_V3/DFMBL/EPWC_HOME_01.php?"><i class="material-icons">home</i>&nbsp;E-PWC</a></li>
+            <li><a href="http://103.164.114.138/E-PWC/DFMBL_V3/DFMBL/EPWC_HOME_01.php?"><i class="material-icons">home</i>&nbsp;E-PWC</a></li>
         <li><a href="?OUT=OUT"><i class="fas fa-power-off"></i>Keluar</a></li>
   </ul>
 

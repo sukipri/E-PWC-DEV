@@ -62,11 +62,36 @@
         <span class="input-group-text" id="basic-addon1">Jenis Lembur</span>
         <!-- <input type="number" class="form-control" name="elembur_lemtgl_01" required> -->
         <select name="elembur_jenis_01" class="form-control" required>
-        <option value=""></option>
-        <option value="INFAL">CUTI/INFAL</option>
-        <option value="BIASA">LEMBUR BIASA</option>
-        <option value="PP">PENYELESAIAN PEKERJAAN</option>
-        <option value="DM">DINAS MALAM</option>
+       
+        <?PHP  
+            if($epwc_vw_vlmbr01_sww['LemburJenis']=="INFAL"){
+                echo"<option value=INFAL>CUTI/INFAL</option>";
+                echo"<option value=BIASA>LEMBUR BIASA</option>";
+                echo"<option value=PP>PENYELESAIAN PEKERJAAN</option>";
+                echo"<option value=DM>DINAS MALAM</option>";
+            }elseif($epwc_vw_vlmbr01_sww['LemburJenis']=="BIASA"){
+                echo"<option value=BIASA>LEMBUR BIASA</option>";
+                echo"<option value=INFAL>CUTI/INFAL</option>";
+                echo"<option value=PP>PENYELESAIAN PEKERJAAN</option>";
+                echo"<option value=DM>DINAS MALAM</option>";
+            }elseif($epwc_vw_vlmbr01_sww['LemburJenis']=="PP"){
+                echo"<option value=PP>PENYELESAIAN PEKERJAAN</option>";
+                echo"<option value=BIASA>LEMBUR BIASA</option>";
+                echo"<option value=INFAL>CUTI/INFAL</option>";
+                echo"<option value=DM>DINAS MALAM</option>";
+            }elseif($epwc_vw_vlmbr01_sww['LemburJenis']=="DM"){
+                echo"<option value=DM>DINAS MALAM</option>";
+                echo"<option value=PP>PENYELESAIAN PEKERJAAN</option>";
+                echo"<option value=BIASA>LEMBUR BIASA</option>";
+                echo"<option value=INFAL>CUTI/INFAL</option>";
+            }else{
+                echo"<option value=></option>";
+                echo"<option value=INFAL>CUTI/INFAL</option>";
+                echo"<option value=BIASA>LEMBUR BIASA</option>";
+                echo"<option value=PP>PENYELESAIAN PEKERJAAN</option>";
+                echo"<option value=DM>DINAS MALAM</option>";
+            }
+        ?>
        
     </select>
     </div>
@@ -76,22 +101,16 @@
     <br><br>
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Jumlah Jam</span>
-        <input type="number" class="form-control" name="elembur_jmljam_01">
+        <input type="number" class="form-control" name="elembur_jmljam_01" value="<?PHP echo $epwc_vw_vlmbr01_sww['LemburBiasa'] ?>">
     </div>
-
-    <!-- <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Jumlah Nominal</span>
-        <input type="number"   readonly="" class="form-control" name="elembur_##_01">
-    </div> -->
-
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Uraian</span>
-       <textarea class="form-control" name="elembur_ur_01">0</textarea>
+       <textarea class="form-control" name="elembur_ur_01"><?PHP echo $epwc_vw_vlmbr01_sww['LemburUraian'] ?></textarea>
     </div>
 
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Alasan</span>
-        <textarea class="form-control" name="elembur_al_01">0</textarea>
+        <textarea class="form-control" name="elembur_al_01"><?PHP echo $epwc_vw_vlmbr01_sww['LemburAlasan'] ?></textarea>
     </div>
 
     <div class="input-group mb-3">
@@ -115,7 +134,7 @@
    <!--  -->
    <?PHP 
         if($_GET['UPLMBR01']){
-            echo"<button class='btn btn-danger btn-sm' name='simpan_elembur_in02'>UPDATE DATA</button>"; 
+            echo"<button class='btn btn-danger btn-sm' name='update_elembur_in02'>UPDATE DATA</button>"; 
         }else{
             echo"<button class='btn btn-success btn-sm' name='simpan_elembur_in02'>SIMPAN DATA</button>";
         }

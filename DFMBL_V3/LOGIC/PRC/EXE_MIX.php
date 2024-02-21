@@ -294,23 +294,35 @@
 			}
 		}
 
-		#PROCCESSING UPDATE
+		#PROCCESSING INSERT
 		if(isset($_POST['update_elembur_in02'])){
 			
 			#JOIN DATA
 				$elembur_thnbln_01 = "$DATE_Y$DATE_m";
-				$elembur_thnbln_02 = "$DATE_Y$elembur_bulan_01";
+				$elembur_thnbln_02 = "$elembur_lemtgl_0102$elembur_bulan_01";
 		 /*UpahPerJam = ((JmlUP1 + JmlUP2 + JMLKlg + JmlKinerjaMin + _
 		JmlInsentifRad + JmlInsentifProg + JmlTunjPeralihan) / 173) */
 			#GajiUP1Yakkum,GajiUP2Yakkum,GajiKlgYakkum,GajiTunjKinerjaMinYakkum,GajiInsentifRadYakkum,GajiInsentifProgYakkum,GajiTunjPeralihanYakkum,KaryStatus,KaryLemburKhusus  
+		   #Round2Hundred(((1.5 * UpahPerJam) + _((IsNull(e.Row("LemburBiasa"), 0) - 1) * 2) * UpahPerJam))
+		
 		$upahlembur = $epwc_vw_vkry01_sww['GajiUP1Yakkum'] + $epwc_vw_vkry01_sww['GajiUP2Yakkum'] + $epwc_vw_vkry01_sww['GajiKlgYakkum'] + $epwc_vw_vkry01_sww['GajiTunjKinerjaMinYakkum'] + $epwc_vw_vkry01_sww['GajiInsentifRadYakkum'] + $epwc_vw_vkry01_sww['GajiInsentifProgYakkum'] + $epwc_vw_vkry01_sww['GajiTunjPeralihanYakkum'] ; #Upah Lembur 02
+		// $hit_new_lem_01 = ($elembur_jmljam_01 * 2) / 0.5;
 		$upahlembur_02 = $upahlembur / 173 ; #Upah lembur 02
-		$upahlembur_fix = $upahlembur_02 * $elembur_jmljam_01;
+		$upahlembur_var_rev01 = 1.5;
+		$upahlembur_rev01 =  $upahlembur_var_rev01 * $upahlembur_02 ;
+		$upahlembur_rev02 =  $upahlembur_rev01 + ($elembur_jmljam_01 - 1) * 2 * $upahlembur_02;
+		
+		$upahlembur_fix =  $upahlembur_rev02;
+		#$upahlembur_fix =  $hit_new_lem_01;
+		#$save_elembur_01 ="oke";
 		#PROCCESSING QUERY
-		$save_elembur_01 = $CL_Q("$UP Citarum.dbo.TKaryLemburHari SET LemburBulan='$elembur_thnbln_01',LemburBulanRng='$elembur_thnbln_02',LemburTanggal='$elembur_lemtgl_01 00:00:00',LemburJam1='$elembur_lemtgl_01 00:00:00',LemburJam2='$elembur_lemtgl_01 00:00:00',LemburBiasa='$elembur_jmljam_01',LemburBiasaJumlah='$upahlembur_fix',LemburUraian='$elembur_ur_01',LemburAlasan='$elembur_al_01',LemburTarget='$elembur_tar_01',LemburHasil='$elembur_has_01' WHERE LemburID='$IDLBR01'");
+		$save_elembur_01 = $CL_Q("$UP  Citarum.dbo.TKaryLemburHari SET LemburBulan='$elembur_thnbln_01',LemburBulanRng='$elembur_thnbln_02',KaryNomor='$IDKRY',LemburTanggal='$elembur_lemtgl_01 00:00:00',LemburPersen='100',LemburJam1='$elembur_lemtgl_01 00:00:00',LemburJam2='$elembur_lemtgl_01 00:00:00',LemburBiasa='$elembur_jmljam_01',LemburBiasaJumlah='$upahlembur_fix',LemburUraian='$elembur_ur_01',LemburAlasan='$elembur_al_01',LemburTarget='$elembur_tar_01',LemburHasil='$elembur_has_01',LemburApp='2' WHERE LemburID='$IDLBR01'");
 		if($save_elembur_01){
+			#echo $NF($upahlembur_fix);
 			#echo"SUKSESS $IDMAIN";
-			header("LOCATION:?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$IDKRY");
+			#echo"<br>";
+			#include"../LAYOUT/NOTIF/NF_SAVE_SUCCESS.php";
+			header("LOCATION:?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02");
 		}else{
 			echo"GAGAL";
 		}
