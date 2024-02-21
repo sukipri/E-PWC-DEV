@@ -68,7 +68,7 @@
                     echo"<br>";
                     echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLTGL=$epwc_ls02_vlem01_sww[lstgl]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPRJL01=UPRJL01&IDKARYDIR=$epwc_vkry01_sww[KaryDir]' class='badge bg-primary'>Reject</a>";
                     echo"&nbsp";
-                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=04181102' class='badge bg-danger'>Update</a>";
+                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPLMBR01=UPLMBR01' class='badge bg-danger'>Update</a>";
                 }elseif($epwc_ls_vlem01_sww['LemburApp']=="4"){
                     echo"<span class='badge bg-success'>Approved.CEO</span>";
                     echo"&nbsp";

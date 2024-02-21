@@ -1,3 +1,12 @@
+<?PHP 
+    $epwc_dt_vlmbr01_sw = $CL_Q("$SL DAY(LemburTanggal) as day_dt FROM  Citarum.dbo.TKaryLemburHari WHERE LemburID='$IDLBR01'");
+      $epwc_dt_vlmbr01_sww  = $CL_FAS($epwc_dt_vlmbr01_sw);
+
+      #SUBTRING substr("Hello world",6);
+      $epwc_dtbulan = substr($epwc_vw_vlmbr01_sww['LemburBulanRng'],4);
+      #echo  $epwc_dtbulan ;
+
+?>
 <b class="mx-2 badge bg-info"><?PHP echo"DATA <i>$epwc_vw_vkry01_sww[KaryNama]</i>"; ?></b>
 <br>
 <form method="post">
@@ -18,8 +27,13 @@
             $no_lembur = 1;
                 while($no_lembur <= 31){
                    $no_spritf =  sprintf("%'.02d\n", $no_lembur);
+                   if($no_spritf==$epwc_dt_vlmbr01_sww['day_dt']){
+                    echo"<option value=$no_spritf selected>$no_spritf</option>";
+                   }else{
                     echo"<option value=$no_spritf>$no_spritf</option>";
+                }
                 $no_lembur++; 
+                  
                 }
         ?>
         
@@ -27,16 +41,20 @@
       <select name="elembur_bulan_01" class="form-control" required>
         <option value="">Bulan Lembur</option>
         <?PHP 
-            $no_lembur = 1;
-                while($no_lembur <= 12){
-                   $no_spritf =  sprintf("%'.02d\n", $no_lembur);
+            $no_lemburbulan = 1;
+                while($no_lemburbulan <= 12){ #$epwc_dtbulan
+                   $no_spritf =  sprintf("%'.02d\n", $no_lemburbulan);
+                   if($no_spritf==$epwc_dtbulan){
+                    echo"<option value=$no_spritf selected>$no_spritf</option>";
+                   }else{
                     echo"<option value=$no_spritf>$no_spritf</option>";
-                $no_lembur++; 
+                   }
+                   $no_lemburbulan++; 
                 }
         ?>
         
     </select>
-    <input type="number" class="form-control" name="elembur_lemtgl_0102" required placeholder="Tahun...">
+    <input type="number" class="form-control" name="elembur_lemtgl_0102" required placeholder="Tahun..." value="<?PHP echo $DATE_Y; ?>">
     </div>
 
      <!--  -->
@@ -95,7 +113,14 @@
     </ul>
     <br>
    <!--  -->
-    <button class="btn btn-success btn-sm" name="simpan_elembur_in02">SIMPAN DATA</button>
+   <?PHP 
+        if($_GET['UPLMBR01']){
+            echo"<button class='btn btn-danger btn-sm' name='simpan_elembur_in02'>UPDATE DATA</button>"; 
+        }else{
+            echo"<button class='btn btn-success btn-sm' name='simpan_elembur_in02'>SIMPAN DATA</button>";
+        }
+   ?>
+    
 </div>
 
     </form>
