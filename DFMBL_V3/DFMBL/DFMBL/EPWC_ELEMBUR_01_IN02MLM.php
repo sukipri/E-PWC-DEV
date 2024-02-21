@@ -13,6 +13,9 @@
                                   $upahlembur_rev01 =  $upahlembur_var_rev01 * $upahlembur_02 ;
                                   $upahlembur_rev02 =  $upahlembur_rev01 + ( 3 - 1) * 2 * $upahlembur_02;
                                   $upahlembur_fix =  $upahlembur_rev02;
+
+                                  #VARIABLE KAL
+                                  $ket_lembur = "Dinas Malam";
                             
     ?>
 <span class="mx-2"><b>Daftar Approvement Lembur Malam <?PHP echo "<span class='badge bg-info'>".$epwc_vw_vkry01_sww['KaryNama']."</span>"; ?> </b></span>
@@ -60,7 +63,7 @@
                                         
                                         if($tj_ls_vjdw01_sww['T01']=="M" OR $tj_ls_vjdw01_sww['T01']=="X" OR $tj_ls_vjdw01_sww['T01']=="Y" ){
                                             
-                                            #echo "<span class='badge bg-dark'>".$tj_ls_vjdw01_sww['T01']."</span>" ;
+                                            echo "<span class='badge bg-dark'>".$tj_ls_vjdw01_sww['T01']."</span>" ;
                                             echo"<input type='hidden' name='txt_jam_T01' value='3'>";
                                             echo"<input type='hidden' name='txt_ur_T01' value='Dinas Malam'>";
                                             echo"<input type='hidden' name='txt_al_T01' value='Dinas Malam'>";
@@ -132,35 +135,18 @@
                                      <td>
                                         <?PHP 
                                         
-                                        if($tj_ls_vjdw01_sww['T05']=="M" OR $tj_ls_vjdw01_sww['T05']=="X" OR $tj_ls_vjdw01_sww['T05']=="Y" ){
-                                           
-                                            echo "<span class='badge bg-dark'>".$tj_ls_vjdw01_sww['T05']."</span>" ;
-                                            echo"<input type='hidden' name='txt_jam_T05' value='3'>";
-                                            echo"<input type='hidden' name='txt_ur_T05' value='Dinas Malam'>";
-                                            echo"<input type='hidden' name='txt_al_T05' value='Dinas Malam'>";
-                                            echo"<input type='hidden' name='txt_tar_T05' value='Harus Terselesaikan'>";
-                                            echo"<input type='hidden' name='txt_has_T05' value='Terselesaikan'>";
-                                            echo"<input type='hidden' name='txt_nom_T05' value=' $upahlembur_fix'>";
-
+                                        if($tj_ls_vjdw01_sww['T05']=="M" OR $tj_ls_vjdw01_sww['T05']=="X" OR $tj_ls_vjdw01_sww['T05']=="Y" ){                                     
+                                            echo"<input type='date' name='txt_tgl_T05'>";
                                         }else{
                                             echo $tj_ls_vjdw01_sww['T05'] ;
                                         }
                                      ?>
                                      </td>
                                      <td>
-                                        
                                      <?PHP 
                                         
-                                        if($tj_ls_vjdw01_sww['T06']=="M" OR $tj_ls_vjdw01_sww['T06']=="X" OR $tj_ls_vjdw01_sww['T06']=="Y" ){
-                                            
-                                            echo "<span class='badge bg-dark'>".$tj_ls_vjdw01_sww['T06']."</span>" ;
-                                            echo"<input type='hidden' name='txt_jam_T06' value='3'>";
-                                            echo"<input type='hidden' name='txt_ur_T06' value='Dinas Malam'>";
-                                            echo"<input type='hidden' name='txt_al_T06' value='Dinas Malam'>";
-                                            echo"<input type='hidden' name='txt_tar_T06' value='Harus Terselesaikan'>";
-                                            echo"<input type='hidden' name='txt_has_T06' value='Terselesaikan'>";
-                                            echo"<input type='hidden' name='txt_nom_T06' value='$upahlembur_fix'>";
-
+                                        if($tj_ls_vjdw01_sww['T06']=="M" OR $tj_ls_vjdw01_sww['T05']=="X" OR $tj_ls_vjdw01_sww['T06']=="Y" ){                                     
+                                            echo"<input type='date' name='txt_tgl_T06'>";
                                         }else{
                                             echo $tj_ls_vjdw01_sww['T06'] ;
                                         }
@@ -624,18 +610,27 @@
                                     </form>
                                     <!--  -->
                         <?PHP 
-                                #VARIABLE T01
-                                $txt_jam_T01 = @$_POST['txt_jam_T01'];
-                                $txt_ur_T01 = @$_POST['txt_ur_T01'];
-                                $txt_al_T01 = @$_POST['txt_al_T01'];
-                                $txt_tar_T01 = @$_POST['txt_tar_T01'];
-                                $txt_has_T01 = @$_POST['txt_has_T01'];
+                               #VARIABLE T05
+                               $txt_tgl_T05 = @$_POST['txt_tgl_T05']; 
 
-                                if(isset($_POST['btn_simpan_IN02MLM_01'])){ #PROCCESSING
+                               #VARIABLE T06
+                               $txt_tgl_T06 = @$_POST['txt_tgl_T06']; 
 
-                                    $save_t01_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader)VALUES('$DATE_Y$DATE_m','$tj_ls_vjdw01_sww[Bulan]',$IDKRY,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader)");
+                               if(isset($_POST['btn_simpan_IN02MLM_01'])){ #PROCCESSING
+                                $save_lmalam_01  = "IKEEEH";
+                                
+                                   $save_T05_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader)VALUES('$DATE_Y$DATE_m','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T05 00:00:00','100','$txt_tgl_T05 00:00:00','$txt_tgl_T05 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T05$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]')"); #T05
 
-                                    
+                                   $save_T06_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader)VALUES('$DATE_Y$DATE_m','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T06 00:00:00','100','$txt_tgl_T06 00:00:00','$txt_tgl_T06 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T06$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]')"); #T06
+                                   if($save_lmalam_01){
+                                       #echo $txt_tgl_T05;
+                                       include"../LAYOUT/NOTIF/NF_SAVE_SUCCESS.php";
+                                       #header("LOCATION:?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02");
+                                   }else{
+                                       echo"GAGAL";
+                                   }
 
-                                }
+                                   
+
+                               }
                         ?>
