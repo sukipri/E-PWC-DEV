@@ -1,0 +1,1 @@
+<?php header("location:../DFMBL_V2/HOME.php"); ?>

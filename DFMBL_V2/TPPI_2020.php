@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>RSPWC TPPI-2020</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+
+<?php 
+		error_reporting(0);
+			include"config02.php";
+			include"css.php";
+	?>
+<body>
+<?php include"MENU.php"; ?>
+<nav>
+      <?PHP include"TPPI_MENU.php"; ?>
+</nav>
+<center><b>Rekap data surveilans bulan Januari-Juni 2020 <br>"RS Panti Wilasa Citarum" Semarang</b></center>
+<table width="100%" border="0" class="responsive-table">
+          <tr class="blue lighten-4">
+            <td width="17%">INDIKATOR</td>
+            <td width="11%">TARGET</td>
+            <td width="12%">Januari</td>
+            <td width="10%">Februari</td>
+            <td width="17%">Maret</td>
+            <td width="12%">April</td>
+            <td width="9%">Mei</td>
+            <td width="12%">Juni</td>
+            <td width="12%">RATA RATA</td>
+      </tr>
+          <tr>
+            <td>ILI</td>
+            <td>&lt; 1,5 %</td>
+            <td>0, 026%</td>
+            <td>0,00%</td>
+            <td>0,00%</td>
+            <td>0,048%</td>
+            <td>0,0%</td>
+            <td>0,0%</td>
+            <td>0,01%</td>
+      </tr>
+      <!--
+          <tr>
+            <td>ISK</td>
+            <td>< 1,5%</td>
+            <td>0%</td>
+            <td>0%</td>
+            <td>0%</td>
+            <td>0%</td>
+            <td>0%</td>
+            <td>0%</td>
+            <td>0%</td>
+          </tr>
+          -->
+          <tr>
+            <td>HAP</td>
+            <td>&lt; 1,5 %</td>
+            <td>0%</td>
+            <td>0%</td>
+            <td>0%</td>
+            <td>0%</td>
+            <td>0%</td>
+            <td>0%</td>
+            <td>0%</td>
+          </tr>
+          <tr>
+            <td>VAP</td>
+            <td>&lt; 1,5 %</td>
+            <td>0%</td>
+            <td>0%</td>
+            <td>0%</td>
+            <td>0%</td>
+            <td>0%</td>
+            <td>0%</td>
+            <td>0%</td>
+          </tr>
+          <!-- 
+          <tr>
+            <td>DEKUBITUS</td>
+            <td>< 1.5%</td>
+            <td>0%</td>
+            <td>0%</td>
+            <td>0.21%</td>
+            <td>0%</td>
+            <td>0%</td>
+            <td>0%</td>
+            <td>0,4%</td>
+          </tr>
+          -->
+          <tr>
+            <td>ILO</td>
+            <td>&lt; 1,5 %</td>
+            <td>0%</td>
+            <td>0.65%</td>
+            <td>0,35%</td>
+            <td>0%</td>
+            <td>0,5%</td>
+            <td>0,18%</td>
+            <td>0,28</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+          </tr>
+    </table>
+</body>
+</html>
