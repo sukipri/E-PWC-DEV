@@ -133,6 +133,7 @@
             $IDSIPK01 = @$sql_slash($_GET['IDSIPK01']);      
             $IDKLP01= @$sql_slash($_GET['IDKLP01']); #PARAMER KELOMPOK
             $IDLBULAN01= @$sql_slash($_GET['IDLBULAN01']); #PARAMER KELOMPOK
+            $IDLBR01= @$sql_slash($_GET['IDLBR01']); #PARAMER ID LEMBUR
 
         //GET DEL UP ACTION
             $UPKRY01 = @$sql_slash($_GET['UPKRY01']);

@@ -5,9 +5,9 @@
         <input type="number" class="form-control form-control-sm" required name="txt_nik_01" placeholder="Masukan Nomor Induk Kepegawaian....">
         <select name="slc_bln" class="form-control form-control" required style="max-width:10rem;">
 <?PHP 
-    $epwc_sl_vlb01_sw = $ms_q("$sl  DISTINCT TOP 12 LemburBulan  FROM Citarum.dbo.VLemburRekap order by LemburBulan desc");
+    $epwc_sl_vlb01_sw = $ms_q("$sl  DISTINCT TOP 12 LemburBulanRng  FROM Citarum.dbo.TKaryLemburHari order by LemburBulanRng desc");
      while($epwc_sl_vlb01_sww = $ms_fas($epwc_sl_vlb01_sw)){
-        echo"<option value=$epwc_sl_vlb01_sww[LemburBulan]>$epwc_sl_vlb01_sww[LemburBulan]</option>";
+        echo"<option value=$epwc_sl_vlb01_sww[LemburBulanRng]>$epwc_sl_vlb01_sww[LemburBulanRng]</option>";
      }
 ?>
 </select>
@@ -34,11 +34,11 @@
     <?PHP 
         $no_lembur_01 = 1;
     #DATA LEMBUR
-        $epwc_ls_vlem01_sw = $ms_q("SELECT TOP 40  * FROM Citarum.dbo.TKaryLemburHari WHERE   KaryNomor='$txt_nik_01' AND LemburBulan='$slc_bulan'   order by LemburTanggal desc  ");
+        $epwc_ls_vlem01_sw = $ms_q("SELECT TOP 40  * FROM Citarum.dbo.TKaryLemburHari WHERE   KaryNomor='$txt_nik_01' AND LemburBulanRng='$slc_bulan'   order by LemburTanggal desc  ");
         $epwc_nr_ls_vlem01_sw  = $ms_nr($epwc_ls_vlem01_sw);
             while($epwc_ls_vlem01_sww = $ms_fas($epwc_ls_vlem01_sw)){
         #DATA TANGGAL LEMBUR
-        $epwc_ls02_vlem01_sw = $ms_q("$sl CONVERT(date,LemburTanggal) as lstgl FROM Citarum.dbo.TKaryLemburHari WHERE KaryNomor='$txt_nik_01' AND LemburBulan='$slc_bulan' order by LemburTanggal desc"); 
+        $epwc_ls02_vlem01_sw = $ms_q("$sl CONVERT(date,LemburTanggal) as lstgl FROM Citarum.dbo.TKaryLemburHari WHERE KaryNomor='$txt_nik_01' AND LemburBulanRng='$slc_bulan' order by LemburTanggal desc"); 
                 $epwc_ls02_vlem01_sww = $ms_fas($epwc_ls02_vlem01_sw);
         #DATA KARY
         $epwc_ls_vkary01_sw = $ms_q("$sl KaryNomor,UnitKode,KaryNama FROM Citarum.dbo.TKaryawan WHERE KaryNomorYakkum='$txt_nik_01' ");
@@ -49,7 +49,7 @@
                
     ?>
     <tr>
-        <td><?PHP echo"<a href=''>".$epwc_ls_vkary01_sww['KaryNama']."</a>"; ?></td>
+        <td><?PHP echo"<a href='?HLM=FIN_M&SUB=FIN_M_FIN_LEMBUR&SUB_CHILD=FIN_M_FIN_LEMBUR01_DTL02&IDLBULAN01=$epwc_ls_vlem01_sww[LemburBulan]&IDEMP01=$epwc_ls_vlem01_sww[KaryNomor]'>".$epwc_ls_vkary01_sww['KaryNama']."</a>"; ?></td>
         <td><?PHP echo $epwc_ls_vunit01_sww['UnitNama']; ?></td>
         <td><?PHP echo"$epwc_ls02_vlem01_sww[lstgl]"; ?></td>
         <td><?PHP echo"$epwc_ls_vlem01_sww[LemburBiasa]"; ?></td>

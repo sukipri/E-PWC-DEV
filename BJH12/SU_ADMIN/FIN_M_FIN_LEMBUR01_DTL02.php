@@ -1,10 +1,16 @@
 <?PHP 
+        $IDLBR01 = @$_GET['IDLBR01'];
         #DATA KARY
         $epwc_ls_vkary01_sw = $ms_q("$sl KaryNomor,UnitKode,KaryNama FROM Citarum.dbo.TKaryawan WHERE KaryNomorYakkum='$IDEMP01' ");
         $epwc_ls_vkary01_sww = $ms_fas($epwc_ls_vkary01_sw);
         #DATA UNIT
         $epwc_ls_vunit01_sw = $ms_q("$sl UnitKode,UnitNama FROM TUnitPrs WHERE UnitKode='$epwc_ls_vkary01_sww[UnitKode]'");
         $epwc_ls_vunit01_sww = $ms_fas($epwc_ls_vunit01_sw);
+
+        if(isset($_GET['DELLBR01'])){ #REJECT
+            $del_lbr_01 = $ms_q("$dl FROM  Citarum.dbo.TKaryLemburHari WHERE LemburID='$IDLBR01' ");
+            header("LOCATION:?HLM=FIN_M&SUB=FIN_M_FIN_LEMBUR&SUB_CHILD=FIN_M_FIN_LEMBUR01_DTL02&IDLBULAN01=$IDLBULAN01&IDEMP01=$IDEMP01");
+        }
 ?>
 
 <div class="card border-primary mb-3" style="max-width: 20rem;">
@@ -84,6 +90,8 @@
                         echo"<span class='badge bg-success'>Approved.CEO</span>";
                         echo"&nbsp";
                     }else{echo"<span class='badge bg-dark'>Rejected</span>"; }
+                    echo"<br>";
+                    echo"<a href='?HLM=FIN_M&SUB=FIN_M_FIN_LEMBUR&SUB_CHILD=FIN_M_FIN_LEMBUR01_DTL02&IDLBULAN01=202402&IDEMP01=04151015&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&DELLBR01=DELLBR01' class='badge bg-danger'>Delete</a>";
                    ?>
 
 

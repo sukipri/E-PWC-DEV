@@ -133,7 +133,7 @@
     <br>
    <!--  -->
    <?PHP 
-        if($_GET['UPLMBR01']){
+        if(@$_GET['UPLMBR01']){
             echo"<button class='btn btn-danger btn-sm' name='update_elembur_in02'>UPDATE DATA</button>"; 
         }else{
             echo"<button class='btn btn-success btn-sm' name='simpan_elembur_in02'>SIMPAN DATA</button>";
