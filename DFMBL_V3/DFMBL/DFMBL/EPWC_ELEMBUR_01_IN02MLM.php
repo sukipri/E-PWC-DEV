@@ -60,13 +60,13 @@
                                         
                                         if($tj_ls_vjdw01_sww['T01']=="M" OR $tj_ls_vjdw01_sww['T01']=="X" OR $tj_ls_vjdw01_sww['T01']=="Y" ){
                                             
-                                            echo "<span class='badge bg-dark'>".$tj_ls_vjdw01_sww['T01']."</span>" ;
+                                            #echo "<span class='badge bg-dark'>".$tj_ls_vjdw01_sww['T01']."</span>" ;
                                             echo"<input type='hidden' name='txt_jam_T01' value='3'>";
                                             echo"<input type='hidden' name='txt_ur_T01' value='Dinas Malam'>";
                                             echo"<input type='hidden' name='txt_al_T01' value='Dinas Malam'>";
                                             echo"<input type='hidden' name='txt_tar_T01' value='Harus Terselesaikan'>";
                                             echo"<input type='hidden' name='txt_has_T01' value='Terselesaikan'>";
-                                            echo"<input type='text' name='txt_tgl_T01' value='$DATE_Y-$epwc_bulan_jdw-$DATE_d'>";
+                                            echo"<input type='date' name='txt_tgl_T01'>";
                                             echo"<input type='hidden' name='txt_nom_T01' value='$upahlembur_fix'>";
 
                                         }else{
