@@ -1,0 +1,51 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "\\\\192.168.9.2\\xampp\\htdocs\\WEB-PWC\\E-PWC\\E-PAY"
+		},
+		{
+			"path": "\\\\192.168.9.2\\xampp\\htdocs\\WEB-PWC\\E-PWC\\DAFTAR"
+		},
+		{
+			"path": "\\\\192.168.9.2\\xampp\\htdocs\\WEB-PWC\\E-PWC\\SU_ADMIN"
+		},
+		{
+			"path": "..\\E-PAY-DEV"
+		},
+		{
+			"path": "..\\E-CHECK"
+		},
+		{
+			"path": "..\\EP"
+		},
+		{
+			"path": "..\\E-CPF"
+		},
+		{
+			"path": "..\\DFMBL_V3"
+		}
+	],
+	"settings": {
+		"sqltools.connections": [
+			{
+				"mssqlOptions": {
+					"appName": "SQLTools",
+					"useUTC": true,
+					"encrypt": true
+				},
+				"previewLimit": 50,
+				"server": "192.168.9.202",
+				"port": 1433,
+				"driver": "MSSQL",
+				"name": "E-PWC",
+				"group": "E-PWC",
+				"database": "Citarum",
+				"username": "edppwc",
+				"password": "7@kkum"
+			}
+		]
+	}
+}

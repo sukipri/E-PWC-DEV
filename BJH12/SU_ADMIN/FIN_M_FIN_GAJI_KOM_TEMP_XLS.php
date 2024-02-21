@@ -1,0 +1,194 @@
+<?php 
+       include"../secure/GR_01.php"; //security enggine
+       include"../sc/ID_IDF.php";  //Identifer ID PAGE
+       //include"../css.php";   //style and control title meta
+           include"../sc/stack_Q.php"; //Query SQL
+       include"../sc/code_rand.php";
+        include"../config/connec_01_srv.php";
+        include"../config/connec_01_srv_pdo_open.php";
+        include"../sc/CODE_GET.php";
+
+?>
+
+<table border="1">
+<tr bgcolor="#F0F8FF">
+    <td>#</td>
+    <td>GajiBulan</td>
+    <td>KaryNomor</td>
+    <td>KaryNama</td>
+    <td>UnitKode</td>
+    <td>GajiStKeluarga</td>
+    <td>GajiStPPh</td>
+    <td>GajiASTEK</td>
+    <td>GajiYDP</td>
+    <td>GajiManulife</td>
+    <td>GajiPersen</td>
+    <td>GajiPokokAK</td>
+    <td>GajiPokokJml</td>
+    <td>GajiPokokVar</td>
+    <td>GajiKeluargaAK</td>
+    <td>GajiKeluargaJml</td>
+    <td>GajiKeluargaVar</td>
+    <td>GajiJabatanAK</td>
+    <td>GajiJabatanJml</td>
+    <td>GajiJabatanVar</td>
+    <td>GajiFungsiAK</td>
+    <td>GajiFungsiJml</td>
+    <td>GajiFungsiVar</td>
+    <td>GajiKhususAK</td>
+    <td>GajiKhususJml</td>
+    <td>GajiKhususVar</td>
+    <td>GajiPeralihan</td>
+    <td>GajiTKT</td>
+    <td>GajiKompensasi</td>
+    <td>GajiKompensasiVar</td>
+    <td>GajiInsentif</td>
+    <td>GajiBonus</td>
+    <td>GajiLembur</td>
+    <td>GajiAsuransiKerja</td>
+    <td>GajiAsuransiSubsVar</td>
+    <td>GajiAsuransiSubs</td>
+    <td>GajiBonusBagianVar</td>
+    <td>GajiBonusBagian</td>
+    <td>GajiSubsYDP</td>
+    <td>GajiSubsYDPVar</td>
+    <td>GajiSubsAstek</td>
+    <td>GajiSubsAstekVar</td>
+    <td>GajiSubsManulife</td>
+    <td>GajiSubsManulifeVar</td>
+    <td>GajiSubsJamPensiun</td>
+    <td>GajiSubsJamPensiunVar</td>
+    <td>GajiPotAstek</td>
+    <td>GajiPotAstekVar</td>
+    <td>GajiPotYDP</td>
+    <td>GajiPotYDPVar</td>
+    <td>GajiPotManulife</td>
+    <td>GajiPotManulifeVar</td>
+    <td>GajiPotJamPensiun</td>
+    <td>GajiPotJamPensiunVar</td>
+    <td>GajiBiayaJbt</td>
+    <td>GajiBMKKIuran</td>
+    <td>GajiBMKKAngsuran</td>
+    <td>GajiBMKKPotNomor</td>
+    <td>GajiBMKKPotBarang</td>
+    <td>GajiBMKKTabungan</td>
+    <td>GajiBMKKKematian</td>
+    <td>GajiBMKKPotElektronik</td>
+    <td>GajiBMKKPotElektronikNomor</td>
+    <td>GajiBMKKPotLain</td>
+    <td>GajiPotObat</td>
+    <td>GajiPotPerawatan</td>
+    <td>GajiPotStudi</td>
+    <td>GajiPotBank</td>
+    <td>GajiPotSeragam</td>
+    <td>GajiPotPPNI</td>
+    <td>GajiPotLain</td>
+    <td>GajiPotAJB</td>
+    <td>GajiKotor</td>
+    <td>GajiPTKP</td>
+    <td>GajiNPWPVar</td>
+    <td>GajiPph21</td>
+    <td>GajiPotPremi</td>
+    <td>GajiBersih</td>
+    <td>GajiPotRS</td>
+    <td>GajiPotBMKK</td>
+    <td>GajiPphRetur</td>
+    <td>GajiDibayar</td>
+    <td>GajiStatus</td>
+    <td>GajiOtorisasi</td>
+    <td>GajiPPhReturEdit</td>
+</tr>
+<?PHP 
+    	$fin_vkry01_sw= $ms_q("$sl KaryNomor,KaryNama,KaryNoUrut,UnitKode,KaryBMKKPotElektronikNomor,KaryBMKKPotElektronikAngsuran,KaryBMKKPotAngsuran,KaryBMKKPotNomor FROM TKaryawan WHERE  NOT KaryStatus='91' AND NOT KaryStatus='99'  AND NOT KaryStatus='92'  AND NOT KaryStatus='94'  AND NOT KaryStatus='93' order by KaryNoUrut,KaryNoSub,KaryNama asc");
+        $fin_no = 1;
+        while($fin_vkryy01_sww = $ms_fas($fin_vkry01_sw)){
+?>
+<tr>
+    <td><?PHP echo $fin_no; ?></td>
+    <td>202112</td>
+    <td><?PHP echo $fin_vkryy01_sww['KaryNomor']; ?></td>
+    <td><?PHP echo $fin_vkryy01_sww['KaryNama']; ?></td>
+    <td><?PHP echo $fin_vkryy01_sww['UnitKode']; ?></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+</tr>
+            <?PHP $fin_no++; } ?>
+</table>
