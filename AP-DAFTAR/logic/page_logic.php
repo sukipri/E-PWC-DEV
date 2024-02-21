@@ -1,0 +1,1 @@
+<?php  if(!file_exists("layout/$GL.php")) {  include"layout/first_page.php"; } else {  include"layout/$GL.php";} ?> 
