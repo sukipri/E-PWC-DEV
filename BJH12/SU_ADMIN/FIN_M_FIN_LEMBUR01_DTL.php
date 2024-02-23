@@ -34,7 +34,7 @@ $epwc_vw_vulb01_sw = $ms_q("$sl DISTINCT Klp FROM Citarum.dbo.VLemburRekap WHERE
   $epwc_fs_vulb01_sw = $ms_q("$call_sel  Citarum.dbo.VLemburRekap WHERE LemburBulan = '$IDLBULAN01' AND Klp='$IDKLP01'"); #UNIT
         while($epwc_fs_vulb01_sww = $ms_fas($epwc_fs_vulb01_sw)){
             #KALKULASI
-            $hit_vlrekap_01 = $epwc_fs_vulb01_sww['LemburJumlah'] - $epwc_fs_vulb01_sww['RupiahLembur'];
+            $hit_vlrekap_01 = $epwc_fs_vulb01_sww['LemburJumlah'] - $epwc_fs_vulb01_sww['RupiahLembur']; #DATA IKEH
    ?>
     
     <tr>

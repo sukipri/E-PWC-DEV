@@ -8,7 +8,9 @@
         header("LOCATION:?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW03");
     }
 ?>
-<span class="mx-2"><b>Daftar permintaan verif lembur </b></span>
+<span class="mx-2"><b>DAFTAR PERMINTAAN LEMBUR</b></span>
+<br>
+<p class="mx-2">Pilih Periode bulan untuk memulai verifikasi & pengecekan data lembur <a class="btn btn-secondary btn-sm">YYYY/MM</a></p>
 <hr>
 
 <?PHP 
