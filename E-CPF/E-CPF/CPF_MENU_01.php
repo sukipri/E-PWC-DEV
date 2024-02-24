@@ -15,6 +15,8 @@
           <a class="btn btn-secondary btn-sm" href="?PG_SA=CPF01_CP_01_FORMVIEW"><i class="fas fa-folder"></i>&nbsp;DATA CP FORM *Non Bedah</a>
           &nbsp
           <a class="btn btn-secondary btn-sm" href="?PG_SA=CPF01_CP_01_FORMVIEW02"><i class="fas fa-folder"></i>&nbsp;DATA CP FORM *Bedah</a>
+          &nbsp
+          <a class="btn btn-secondary btn-sm" href="?PG_SA=CPF01_CP_01_FORMVIEW02"><i class="fas fa-folder"></i>&nbsp;DATA CP FORM *OBSGIN</a>
         </li>
         
          <!-- <li class="nav-item">
@@ -34,6 +36,8 @@
     <a href="?PG_SA=CPF01_MD_KEG_01" class="btn btn-success btn-sm"><i class="fas fa-database"></i> MASTER DATA *Non Bedah</a>
     &nbsp
     <a href="?PG_SA=CPF01_MD_KEG02_01" class="btn btn-success btn-sm"><i class="fas fa-database"></i> MASTER DATA *Bedah</a>
+    &nbsp
+    <a href="?PG_SA=CPF01_MD_KEG03_01" class="btn btn-success btn-sm"><i class="fas fa-database"></i> MASTER DATA *OBSGIN</a>
     &nbsp
     <a href="?PG_SA=CPF01_RPT_VW_01_VFORM" class="btn btn-dark btn-sm"><i class="fas fa-file-alt"></i> REPORTING *non bedah</a>
     &nbsp

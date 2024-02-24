@@ -23,7 +23,7 @@
                 include"E-CPF/CPF_VIEW_03_ALL.php";
             break;
 			
-			 #NEW CPF CONCEPT
+#-------------------------NEW CPF CONCEPT-----------------------------------#
 				#CPF
 				#MASTER SETUP FORM
 				 case'CPF01_MD_KEG_01_IN':

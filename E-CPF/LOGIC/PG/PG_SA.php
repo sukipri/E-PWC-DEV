@@ -43,7 +43,7 @@
                     include"E-CPF/CPF_ENTRI_03_DM.php";
                 break; 
 				
-               #NEW CPF CONCEPT
+#-------------------------NEW CPF CONCEPT-----------------------------------#
 				#CPF
 				 case'CPF01_ENTRI_03_DM':
 					include"E-CPF/CPF01_ENTRI_03_DM.php"; 
@@ -54,6 +54,9 @@
 				 break;
                  case'CPF01_MD_KEG02_01':
 					include"E-CPF/CPF01_MD_KEG02_01.php";
+				 break;
+                 case'CPF01_MD_KEG03_01':
+					include"E-CPF/CPF01_MD_KEG03_01.php";
 				 break;
 				 case'CPF01_MD_KEG_01_IN':
 					include"E-CPF/CPF01_MD_KEG_01_IN.php";
