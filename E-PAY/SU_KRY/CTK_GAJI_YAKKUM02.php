@@ -9,9 +9,9 @@
 		//User assigment
 		$u = $ms_q("$call_sel TBUser where namauser='$_SESSION[namauser]'");
 		$uu = $ms_fas($u);
-			$vkry = $ms_q("$call_sel TKaryawan WHERE KaryNomor='$idkry'");
+			$vkry = $ms_q("$call_sel TKaryawan WHERE KaryNomorYakkum='$idkry'");
 				$vkryy = $ms_fas($vkry);
-				$vkry_tgl= $ms_q("select CONVERT(varchar(10),[KaryTglLahir],101) as tg_lhr from Tkaryawan where KaryNomor='$idkry'");
+				$vkry_tgl= $ms_q("select CONVERT(varchar(10),[KaryTglLahir],101) as tg_lhr from Tkaryawan where KaryNomorYakkum='$idkry'");
 					$vkryy_tgl = $ms_fas($vkry_tgl);
 		
 ?>

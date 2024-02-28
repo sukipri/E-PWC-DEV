@@ -21,9 +21,9 @@
              if(isset($_POST['btn_cari_01'])){
                 $txt_nik_01 = @$sql_slash($_POST['txt_nik_01']);
                 $slc_bulan = @$sql_slash($_POST['slc_bln']);
-                    echo"<a href='http://103.164.114.138/E-PWC-DEV/E-PAY/SU_KRY/CTK_GAJI_YAKKUM.php?idkry=$txt_nik_01&thn=$slc_bulan' class='btn btn-info btn-sm' target='_blank'>CETAK SLIP BESAR</a>";
+                    echo"<a href='http://103.164.114.138/E-PWC/E-PAY/SU_KRY/CTK_GAJI_YAKKUM.php?idkry=$txt_nik_01&thn=$slc_bulan' class='btn btn-info btn-sm' target='_blank'>CETAK SLIP BESAR</a>";
                     echo"&nbsp";
-                    echo"<a href='http://103.164.114.138/E-PWC-DEV/E-PAY/SU_KRY/CTK_GAJI_YAKKUM02.php?idkry=$txt_nik_01&thn=$slc_bulan' class='btn btn-primary btn-sm' target='_blank'>CETAK SLIP KECIL</a>";
+                    echo"<a href='http://103.164.114.138/E-PWC/E-PAY/SU_KRY/CTK_GAJI_YAKKUM02.php?idkry=$txt_nik_01&thn=$slc_bulan' class='btn btn-primary btn-sm' target='_blank'>CETAK SLIP KECIL</a>";
              }
 
         ?>
