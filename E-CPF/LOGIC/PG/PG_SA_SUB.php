@@ -32,6 +32,9 @@
 				 case'CPF01_MD_KEG02_01_IN':
 					include"E-CPF/CPF01_MD_KEG02_01_IN.php";
 				 break;
+				 case'CPF01_MD_KEG03_01_IN':
+					include"E-CPF/CPF01_MD_KEG03_01_IN.php";
+				 break;
 				 case'CPF01_MD_KEG_01_IN02':
 					include"E-CPF/CPF01_MD_KEG_01_IN02.php";
 				 break;

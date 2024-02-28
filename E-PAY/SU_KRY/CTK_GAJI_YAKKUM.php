@@ -156,6 +156,7 @@
 						<li>Bonus Bagian</li>
 						<li>Rapelan</li>
 						<li>MOD</li>
+						<li>Tunjangan Kerj.Minimal</li>
 						<?PHP if($vkryy['KaryNoUrut']=="0001"){ ?>
 						<li>Home Care</li>
 						<li>MCU</li>
@@ -176,6 +177,7 @@
 								echo"<li>Rp.".$nf($epwc_vgajiy01_sww['GajiBonusBagian'])."</li>";
 								echo"<li>Rp.".$nf($epwc_vgajiy01_sww['GajiRapelan'])."</li>";
 								echo"<li>Rp.".$nf($epwc_vgajiy01_sww['GajiMODPWC'])."</li>";
+								echo"<li>Rp.".$nf($epwc_vgajiy01_sww['GajiTunjKinerjaMin'])."</li>";
 							if($vkryy['KaryNoUrut']=="0001"){
 								echo"<li>Rp.".$nf($epwc_vgajiy01_sww['GajiHomeCare'])."</li>";
 								echo"<li>Rp.".$nf($epwc_vgajiy01_sww['GajiMCUDokter'])."</li>";

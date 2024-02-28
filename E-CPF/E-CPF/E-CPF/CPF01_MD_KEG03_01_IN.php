@@ -1,60 +1,57 @@
 <form method="post">
 <div class="card border-primary mb-3" style="max-width: 25rem;">
-  <div class="card-header">ENTRI KEGIATAN CPF</div>
+  <div class="card-header">ENTRI PENUNJANG CPF</div>
   <div class="card-body">
  <!--  -->
-    #PENUNJANG
-    <select name="idmain_keg_01" class="form-control form-control-sm" required>
+    #NAMA PENUNJANG
+    <input type="text" class="form-control form-control-sm" required name="keg_nama_01" value="<?PHP echo $cpf_vw03_vkeg01_sww['keg_nama_01'] ?>">
+    #URUTAN
+    <select name="keg_urut_01" class="form-control form-control-sm" required style="max-width:10rem;">
     <?PHP 
-        $cpf_vkeg01_sw = $CL_Q("$SL idmain_keg_01,keg_nama_01 FROM tb_cpf01_keg02_01 order by keg_nama_01");
-        echo"<option value></option>";
-            while($cpf_vkeg01_sww = $CL_FAS($cpf_vkeg01_sw)){
-                if($cpf_vkeg01_sww['idmain_keg_01']==$cpf_vw02_vkeg02_sww['idmain_keg_01']){
-                    echo"<option value=$cpf_vkeg01_sww[idmain_keg_01] selected>$cpf_vkeg01_sww[keg_nama_01]</option>";
-                }else{
-                echo"<option value=$cpf_vkeg01_sww[idmain_keg_01]>$cpf_vkeg01_sww[keg_nama_01]</option>";
-            }}
+        $keg01_no = 1;
+        while($keg01_no <= 20){
+            if($cpf_vw03_vkeg01_sww['keg_urut_01']==$keg01_no){
+                echo"<option value=$keg01_no selected>$keg01_no</option>";
+            }else{
+            echo"<option value=$keg01_no>$keg01_no</option>";
+              }
+              $keg01_no++; }
     ?>
     </select>
-    #NAMA KEGIATAN
-    <input type="text" class="form-control form-control-sm" required name="keg_nama_02" value="<?PHP echo $cpf_vw02_vkeg02_sww['keg_nama_02'] ?>">
-    #HARI RAWAT
-    <input type="text" class="form-control form-control-sm" required name="keg_rawat_02" value="<?PHP echo $cpf_vw02_vkeg02_sww['keg_rawat_02'] ?>" style="max-width:10rem;">
-    #URAIAN KEGIATAN
-    <textarea class="form-control" required name="keg_ket_02"><?PHP echo $cpf_vw02_vkeg02_sww['keg_ket_02'] ?></textarea>
+    #URAIAN PENUNJANG
+    <textarea class="form-control" required name="keg_ket_01"><?PHP echo $cpf_vw03_vkeg01_sww['keg_ket_01'] ?></textarea>
     <br>
-    <?PHP if(isset($_GET['UPKEG02'])){ ?>
-        <button class="btn btn-warning btn-sm" name="keg02_up_02">UPDATE DATA</button>
+    <?PHP if(isset($_GET['UPKEG01'])){ ?>
+        <button class="btn btn-warning btn-sm" name="keg03_up_01">UPDATE DATA</button>
     <?PHP }else{ ?>
-        <button class="btn btn-success btn-sm" name="keg02_simpan_02">SIMPAN DATA</button>
+        <button class="btn btn-success btn-sm" name="keg03_simpan_01">SIMPAN DATA</button>
     <?PHP } ?>
  <!--  -->
   </div>
 </div>
 
 </form>
-<?PHP include"../LOGIC/PRC/EXE_MIX.php"; ?>
+        <?PHP include"../LOGIC/PRC/EXE_MIX.php"; ?>
 <br>
+<table class="table table-sm table-bordered table-striped" style="max-width:43rem;">
+<tr class="table-secondary">
+    <td width="7%">#</td>
+    <td width="30%">Penunjang</td>
+    <td>Ket</td>
+    <td width="20%">-</td>
+</tr>
 <?PHP 
-    $cpf_vkeg01_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg02_01 order by keg_urut_01 asc");
+     $keg01_no_urut = 1;
+    $cpf_vkeg01_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg03_01 order by  keg_urut_01 asc");
         while($cpf_vkeg01_sww = $CL_FAS($cpf_vkeg01_sw)){
 ?>
-<span class="badge badge-primary"><?PHP echo $cpf_vkeg01_sww['keg_nama_01'] ?></span>
-<table class="table table-bordered table-sm table-striped">
-<tr class="table-dark">
-    <td width="23%">KEGIATAN</td>
-    <td>URAIAN</td>
-    <td>-</td>
-</tr>
-<?PHP 
-    $cpf_vkeg02_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg02_02 WHERE idmain_keg_01='$cpf_vkeg01_sww[idmain_keg_01]' ");
-            while($cpf_vkeg02_sww = $CL_FAS($cpf_vkeg02_sw)){
-?>
 <tr>
-    <td><?PHP echo "<a href=?PG_SA=CPF01_MD_KEG02_01&PG_SA_SUB=CPF01_MD_KEG02_01_IN02&IDKEG02=$cpf_vkeg02_sww[idmain_keg_02]&UPKEG02=UPKEG02>". $cpf_vkeg02_sww['keg_nama_02']."</a>" ?></td>
-    <td><?PHP echo $cpf_vkeg02_sww['keg_ket_02'] ?></td>
-    <td><?PHP echo $cpf_vkeg02_sww['keg_rawat_02'] ?></td>
+    <td><?PHP echo  $cpf_vkeg01_sww['keg_urut_01'] ?></td>
+    <td><?PHP echo "<a href=?PG_SA=CPF01_MD_KEG03_01&PG_SA_SUB=CPF01_MD_KEG03_01_IN&IDKEG01=$cpf_vkeg01_sww[idmain_keg_01]&UPKEG01=UPKEG01>".$cpf_vkeg01_sww['keg_nama_01']."</a>" ?></td>
+    <td><?PHP echo $cpf_vkeg01_sww['keg_ket_01'] ?></td>
+    <td>
+        <a href="<?PHP echo"?PG_SA=CPF01_MD_KEG03_01&PG_SA_SUB=CPF01_MD_KEG03_01_IN&IDDELKEG01=$cpf_vkeg01_sww[idmain_keg_01]&DELKEG0301=DELKEG0301"; ?>" class="btn btn-danger btn-sm">DELETE</a>
+    </td>
 </tr>
-<?PHP } ?>
+<?PHP  $keg01_no_urut++; } ?>
 </table>
-<?PHP } ?>

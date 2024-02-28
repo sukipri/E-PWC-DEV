@@ -19,6 +19,15 @@
 		}else{
 			include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
 		} }
+		#PROCCESSING UPDATE -NON BEDAH-
+		if(isset($_POST['keg_up_01'])){
+			$keg_up_01 = $CL_Q("$UP Citarum.dbo.tb_cpf01_keg_01 SET keg_nama_01='$keg_nama_01',keg_ket_01='$keg_ket_01',keg_urut_01='$keg_urut_01' WHERE idmain_keg_01='$IDKEG01'");	
+			if($keg_up_01){
+				header("LOCATION:?PG_SA=CPF01_MD_KEG_01&PG_SA_SUB=CPF01_MD_KEG_01_IN");
+			}else{
+				include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
+			} }
+		/*-----------------------------------------------------*/
 		#PROCCESSING INSERT DATA -BEDAH-
 		if(isset($_POST['keg02_simpan_01'])){ 
 			$keg_save_01 = $CL_Q("$IN Citarum.dbo.tb_cpf01_keg02_01(idmain_keg_01,keg_kode_01,keg_nama_01,keg_ket_01,keg_status_01)VALUES('$IDMAIN','KG02- $DATE_ymd$TIME_his','$keg_nama_01','$keg_ket_01','2')");
@@ -27,14 +36,6 @@
 			}else{
 				include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
 			} }
-		#PROCCESSING UPDATE -NON BEDAH-
-		if(isset($_POST['keg_up_01'])){
-		$keg_up_01 = $CL_Q("$UP Citarum.dbo.tb_cpf01_keg_01 SET keg_nama_01='$keg_nama_01',keg_ket_01='$keg_ket_01',keg_urut_01='$keg_urut_01' WHERE idmain_keg_01='$IDKEG01'");	
-		if($keg_up_01){
-			header("LOCATION:?PG_SA=CPF01_MD_KEG_01&PG_SA_SUB=CPF01_MD_KEG_01_IN");
-		}else{
-			include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
-		} }
 		#PROCCESSING UPDATE -BEDAH-
 		if(isset($_POST['keg02_up_01'])){
 			$keg_up_01 = $CL_Q("$UP Citarum.dbo.tb_cpf01_keg02_01 SET keg_nama_01='$keg_nama_01',keg_ket_01='$keg_ket_01',keg_urut_01='$keg_urut_01' WHERE idmain_keg_01='$IDKEG01'");	
@@ -43,8 +44,24 @@
 			}else{
 				include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
 			} }
-		
-			
+/*-----------------------------------------------------*/
+			#PROCCESSING INSERT DATA -OBSGIN-
+		if(isset($_POST['keg03_simpan_01'])){ 
+			$keg_save_01 = $CL_Q("$IN Citarum.dbo.tb_cpf01_keg03_01(idmain_keg_01,keg_kode_01,keg_nama_01,keg_ket_01,keg_status_01)VALUES('$IDMAIN','KG02- $DATE_ymd$TIME_his','$keg_nama_01','$keg_ket_01','2')");
+			if($keg_save_01){
+				header("LOCATION:?PG_SA=CPF01_MD_KEG03_01&PG_SA_SUB=CPF01_MD_KEG03_01_IN");
+			}else{
+				include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
+			} }
+		#PROCCESSING UPDATE -OBSGIN-
+		if(isset($_POST['keg03_up_01'])){
+			$keg_up_01 = $CL_Q("$UP Citarum.dbo.tb_cpf01_keg03_01 SET keg_nama_01='$keg_nama_01',keg_ket_01='$keg_ket_01',keg_urut_01='$keg_urut_01' WHERE idmain_keg_01='$IDKEG01'");	
+			if($keg_up_01){
+				header("LOCATION:?PG_SA=CPF01_MD_KEG03_01&PG_SA_SUB=CPF01_MD_KEG03_01_IN");
+			}else{
+				include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
+			} }
+/*-----------------------------------------------------*/
 		#CPF01_MD_KEG_01_IN02
 			#VARIABLE
 			$idmain_keg_01 = @$SQL_SL($_POST['idmain_keg_01']);
@@ -67,7 +84,7 @@
 			}else{
 				include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
 			} }
-
+/*-----------------------------------------------------*/
 		#CPF01_MD_KEG02_01_IN02
 			#PROCCESSING INSERT
 			if(isset($_POST['keg02_simpan_02'])){
@@ -85,7 +102,7 @@
 			}else{
 				include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
 			} }
-		
+		/*-----------------------------------------------------*/
 		#CPF01_MD_KEG_01_IN03
 		#VARIABLE
 			$keg_rawat_03 = @$SQL_SL($_POST['keg_rawat_03']);
@@ -107,7 +124,7 @@
 			}else{
 				include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
 			} }
-
+/*-----------------------------------------------------*/
 			#CPF01_MD_KEG02_01_IN03
 				#PROCCESSING INSERT
 				if(isset($_POST['keg02_simpan_03'])){
@@ -126,7 +143,7 @@
 						include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
 					} }
 			
-		
+		/*-----------------------------------------------------*/
 		
 		
 		#CPF01_MD_KEG_01_IN03REC
@@ -148,7 +165,7 @@
 			   }else{
 				   include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
 			   } }
-		
+		/*-----------------------------------------------------*/
 		
 		#CPF01_MD_KEG_01_IN03REC
 		#VARIABLE
@@ -172,7 +189,7 @@
 				}else{
 					include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
 				} }
-			
+/*-----------------------------------------------------*/
 			
 		#CPF01_CP_01_FORM
 		#PROCCESSING INSERT
@@ -229,7 +246,7 @@
 			$cpf_keg01_no02++; }
 			header("LOCATION:?PG_SA=CPF01_CP_01_FORM&IDADM01=$IDADM01&IDRM01=$IDRM01&IDKEG03=$IDKEG03");
 		}
-
+/*-----------------------------------------------------*/
 
 		#CPF01_CP02_01_FORM
 		#PROCCESSING INSERT
@@ -286,7 +303,7 @@
 			$cpf_keg01_no02++; }
 			header("LOCATION:?PG_SA=CPF01_CP02_01_FORM&IDADM01=$IDADM01&IDRM01=$IDRM01&IDKEG03=$IDKEG03");
 		}
-		
+	/*-----------------------------------------------------*/	
 		
 		#######DELETE QUERY############
 		
@@ -299,7 +316,7 @@
 		}else{
 			include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
 		} }
-
+/*-----------------------------------------------------*/	
 		#CPF01_MD_KEG02_01_IN
 		if(isset($_GET['DELKEG0201'])){ 
 			#PROCCESSING
@@ -309,7 +326,16 @@
 		}else{
 			include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
 		} }
-		
+/*-----------------------------------------------------*/	
+		if(isset($_GET['DELKEG0301'])){
+			#PROCCESSING
+			$keg_del_01 = $CL_Q("$DL FROM Citarum.dbo.tb_cpf01_keg03_01 WHERE idmain_keg_01='$IDDELKEG01'");
+		if($keg_del_01){
+			header("LOCATION:?PG_SA=CPF01_MD_KEG03_01&PG_SA_SUB=CPF01_MD_KEG03_01_IN");
+		}else{
+			include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
+		} }
+/*-----------------------------------------------------*/	
 		#CPF01_MD_KEG_01_IN03REC02
 		if(isset($_GET['DELKEG03REC'])){
 			#PROCCESSING
@@ -320,7 +346,7 @@
 		}else{
 			include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
 		} }
-
+/*-----------------------------------------------------*/	
 		#CPF01_MD_KEG02_01_IN03REC02
 		if(isset($_GET['DELKEG0203REC'])){
 			#PROCCESSING
@@ -332,7 +358,7 @@
 		}else{
 			include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
 		} }
-
+/*-----------------------------------------------------*/	
 		
 		
 	
