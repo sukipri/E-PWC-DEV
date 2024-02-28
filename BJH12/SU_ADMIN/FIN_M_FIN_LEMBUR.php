@@ -9,6 +9,9 @@
                     <a class="nav-link active btn btn-secondary btn-sm" aria-current="page" href="#"><b>#MNG.LEMBUR</b></a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="?HLM=FIN_M&SUB=FIN_M_FIN_LEMBUR&SUB_CHILD=FIN_M_FIN_CTKGAJI"><i class="fas fa-hashtag"></i> Cetak Gaji</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="?HLM=FIN_M&SUB=FIN_M_FIN_LEMBUR&SUB_CHILD=FIN_M_FIN_LEMBUR01"><i class="fas fa-hashtag"></i> Lembur Akumulasi *Bag</a>
                 </li>
                 <li class="nav-item">

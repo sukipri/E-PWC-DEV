@@ -15,6 +15,7 @@
         </div>
 
 </div>
+    </form>
 <?PHP 
     if(isset($_POST['btn_cari_01'])){
         $txt_nik_01 = @$sql_slash($_POST['txt_nik_01']);

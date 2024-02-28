@@ -42,6 +42,9 @@
 						case'FIN_M_FIN_GAJI_REKAP_THR_M_VAL':
 							include"FIN_M_FIN_GAJI_REKAP_THR_M_VAL.php";
 						break;
+						case'FIN_M_FIN_CTKGAJI':
+							include"FIN_M_FIN_CTKGAJI.php";
+						break;
 						case'FIN_M_FIN_LEMBUR01':
 							include"FIN_M_FIN_LEMBUR01.php";
 						break;

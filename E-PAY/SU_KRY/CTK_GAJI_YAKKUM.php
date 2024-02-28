@@ -2,27 +2,27 @@
    //error_reporting(0);
 		ob_start();
 		session_start();
-		if(empty($_SESSION['namauser']) AND empty($_SESSION['passuser'])){
+		
 		//echo"<center><font size=5 color=black>Anda Harus <a href=../index.php>Login</a> terlebih dahulu</font></center>";
-	 	   include'../logic/H_LOCATION.php';
-			} else {
+	 	   
 		include"css.php";
 		include"../CONFIG_INTERNAL.php";
+		$txt_tahun = @$_GET['thn'];
+		$idkry = @$_GET['idkry'];
 		//User assigment
 		$u = $ms_q("$call_sel TBUser where namauser='$_SESSION[namauser]'");
 		$uu = $ms_fas($u);
-			$vkry = $ms_q("$call_sel TKaryawan WHERE KaryNomor='$uu[kode]'");
+			$vkry = $ms_q("$call_sel TKaryawan WHERE KaryNomor='$idkry'");
 				$vkryy = $ms_fas($vkry);
-				$vkry_tgl= $ms_q("select CONVERT(varchar(10),[KaryTglLahir],101) as tg_lhr from Tkaryawan where KaryNomor='$vkryy[KaryNomor]'");
+				$vkry_tgl= $ms_q("select CONVERT(varchar(10),[KaryTglLahir],101) as tg_lhr from Tkaryawan where KaryNomor='$idkry'");
 					$vkryy_tgl = $ms_fas($vkry_tgl);
-		if($uu['akses']==4){ 
-            $txt_tahun = $_GET['thn'];
+	       
 ?>
 <div class="container">
 
         <?PHP 
             #DATA GAJI YAKKUM
-            $epwc_vgajiy01_sw = $ms_q("$call_sel Citarum.dbo.TGajiYakkum WHERE KaryNomorYakkum='$vkryy[KaryNomorYakkum]' AND GajiBulan='$txt_tahun'");
+            $epwc_vgajiy01_sw = $ms_q("$call_sel Citarum.dbo.TGajiYakkum WHERE KaryNomorYakkum='$idkry' AND GajiBulan='$txt_tahun'");
                 $epwc_vgajiy01_sww = $ms_fas($epwc_vgajiy01_sw);
                
                 #substr("Hello world",6);
@@ -280,8 +280,6 @@
         <!-- https://upah.yakkum.org/index.php/slipurl/webslip/ff328be2f8736ee3709a537622dc4f90/2023/01/04
         https://upah.yakkum.org/index.php/slipurl/webslip/cef5524641d35342a138832d05ffe4e9/2023/01/04 -->
         <?php
-		}else{
-		  include'../logic/H_LOCATION.php';
-		} }
+		
 		ob_flush();
 	?>

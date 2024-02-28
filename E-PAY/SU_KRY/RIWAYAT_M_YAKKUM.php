@@ -320,6 +320,7 @@
             <br>
         <!-- https://upah.yakkum.org/index.php/slipurl/webslip/ff328be2f8736ee3709a537622dc4f90/2023/01/04
         https://upah.yakkum.org/index.php/slipurl/webslip/cef5524641d35342a138832d05ffe4e9/2023/01/04 -->
+        
         <!-- <a href="<?PHP #echo"CTK_GAJI_YAKKUM.php?thn=$txt_tahun"; ?>" target="_blank" class="btn">PRINT SLIP BESAR</a>
 		&nbsp
 		<a href="<?PHP #echo"CTK_GAJI_YAKKUM02.php?thn=$txt_tahun"; ?>" target="_blank" class="btn">PRINT SLIP KECIL</a> -->

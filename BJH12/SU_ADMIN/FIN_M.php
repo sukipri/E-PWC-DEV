@@ -23,7 +23,7 @@
 		&nbsp -->
 		<a href="?HLM=FIN_M&SUB=FIN_M_FIN_GAJI_YAKKUM" class="btn btn-outline-success btn-sm"><i class="fa fa-file-text"></i>&nbsp; E-PAY Gaji Yakkum</a>
 		&nbsp
-		<a href="?HLM=FIN_M&SUB=FIN_M_FIN_LEMBUR" class="btn btn-outline-success btn-sm"><i class="fa fa-file-text"></i>&nbsp; MNG.LEMBUR</a>
+		<a href="?HLM=FIN_M&SUB=FIN_M_FIN_LEMBUR" class="btn btn-outline-success btn-sm"><i class="fa fa-file-text"></i>&nbsp; MNG.Kompensasi</a>
 		&nbsp
         <a href="?HLM=FIN_M&SUB=FIN_M_FIN_GAJI_KOM_M" class="btn btn-warning btn-sm"><i class="fas fa-road"></i>&nbsp Komparasi Data</a>
       
