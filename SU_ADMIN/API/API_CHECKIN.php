@@ -1,10 +1,12 @@
 <?PHP 
 include"API_HEADER.php";
+
                            $user_pwc = "PWC1001";
                            $pass_pwc = "1001PWC";
                            $token =  $pwc_vtoken01_sww['token_kode_01'];
                            $input_user_pwc = @$header['x-username'];
                            $input_token_pwc = @$header['x-token'];
+           
                            $REGRAND = rand('99999','88888');
                            $TXT_REGRAND = "PL-WS$REGRAND";
                            if($user_pwc==$input_user_pwc AND $token==$input_token_pwc){ #OPEN AUTH USERNAME

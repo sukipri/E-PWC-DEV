@@ -116,8 +116,7 @@
                         if($vdcc_cek_01 > 0){ #OPEN AUTH CEK DATA
                             $json_antrian_gagal = array(
                                 "message"=> "Nomor Antrean Hanya Dapat Diambil 1 Kali Pada Tanggal Yang Sama",
-                                "code"=> 201                .0
-								
+                                "code"=> 201                
                             );
                             $data_json_antrian_gagal= json_encode($json_antrian_gagal);
                             echo "$data_json_antrian_gagal";
@@ -165,10 +164,11 @@
 						$hit_esti_02 = $hit_esti_01 * $vdcc_jum_01;
             /**/
             #PROCCESSING PAKAI
-            $save_rj = $ms_q("$in Citarum.dbo.TRawatJalan(JalanNoReg,PasienNomorRM,PasienGender,PasienAlamat,PasienKota,PasienNama,TanggalPesan,JalanCaraDaftar,AppJenisDaftar,JalanTanggal,UnitKode,JalanAsalPasien,DokterKode,JalanNoUrut,JalanPasBaru,WaktuPesan,JalanStatus,JalanRMTanggal,JalanRMTanggal2,JalanJenisPeriksa,PrshKode,PasienUmurThn,PasienUmurBln,PasienUmurHr)VALUES('$TXT_REGRAND','$vpsn01_sww[PasienNomorRM]','$vpsn01_sww[PasienGender]','$vpsn01_sww[PasienAlamat]','$vpsn01_sww[PasienKota]','$vpsn01_sww[PasienNama]','$date_html5 $time_html5','4','2','$date_html5','$vunit01_sww[UnitKode]','A','$vdkt01_sww[PelakuKode]','$hit_zero_02','L1','$vjhfis01_sww[PSM]','0','$tanggalperiksa $jampraktek_d','$tanggalperiksa $jampraktek_d','M','1-0113','0','0','0')"); #ENTRI RWAWAT JALAN 
+            $save_rj = $ms_q("$in Citarum.dbo.TRawatJalan(JalanNoReg,PasienNomorRM,PasienGender,PasienAlamat,PasienKota,PasienNama,TanggalPesan,JalanCaraDaftar,AppJenisDaftar,JalanTanggal,UnitKode,JalanAsalPasien,DokterKode,JalanNoUrut,WaktuPesan,JalanStatus,JalanRMTanggal,JalanRMTanggal2,JalanJenisPeriksa,PrshKode,JalanPasBaru,PasienUmurThn,PasienUmurBln,PasienUmurHr)VALUES('$TXT_REGRAND','$vpsn01_sww[PasienNomorRM]','$vpsn01_sww[PasienGender]','$vpsn01_sww[PasienAlamat]','$vpsn01_sww[PasienKota]','$vpsn01_sww[PasienNama]','$date_html5 $time_html5','4','2','$date_html5','$vunit01_sww[UnitKode]','A','$vdkt01_sww[PelakuKode]','$hit_zero_02','$vjhfis01_sww[PSM]','0','$tanggalperiksa $jampraktek_d','$tanggalperiksa $jampraktek_d','M','1-0113','L1','0','0','0')"); #ENTRI RWAWAT JALAN 
            
 			#PROCCESSING 02
-            $save_rj_lokal = $ms_q("$in Citarum.dbo.TAntreTambahBPJS(NoReg,JenisPas,NomorKartu,NIK,NoHP,KodePoli,NamaPoli,PasienBaru,PasienNomorRM,TransTgl,KodeDok,NamaDok,JamPraktek,JenisKunjungan,NomorRef,NomorAntrean,AngkaAntrean,EstimasiLayan,SisaKuotaJKN,KuotaJKN,SisaKuotaNon,KuotaNon,Keterangan,StatusCode,UserDate)VALUES('$TXT_REGRAND','JKN','$nomorkartu','$nik','$nohp','$kodepoli', '$vunit01_sww[UnitNama]','0',$norm,'$tanggalperiksa $jampraktek_d','$kodedokter','$vdkt01_sww[PelakuNama]','$jampraktek','1','$nomorreferensi','$hit_zero_02','$vdcc_jum_01',' $vdcc_min_jum','$pwc_conv_vrj01_sw',$vjhfis01_sww[KapasitasPas],'0','0','oke','200','$date_html5')");			
+            #$save_rj_lokal = $ms_q("$in Citarum.dbo.TAntreTambahBPJS(NoReg,JenisPas,NomorKartu,NIK,NoHP,KodePoli,NamaPoli,PasienBaru,PasienNomorRM,TransTgl,KodeDok,NamaDok,JamPraktek,JenisKunjungan,NomorRef,NomorAntrean,AngkaAntrean,EstimasiLayan,SisaKuotaJKN,KuotaJKN,SisaKuotaNon,KuotaNon,Keterangan,StatusCode,UserDate)VALUES('$TXT_REGRAND','JKN','$nomorkartu','$nik','$nohp','$kodepoli', '$vunit01_sww[UnitNama]','0',$norm,'$tanggalperiksa $jampraktek_d','$kodedokter','$vdkt01_sww[PelakuNama]','$jampraktek','1','$nomorreferensi','$hit_zero_02','$vdcc_jum_01',' $vdcc_min_jum','$pwc_conv_vrj01_sw',$vjhfis01_sww[KapasitasPas],'0','0','','','$date_html5')");
+			
             #PROCCESSING 03
             #$save_rj_lokal02 = $ms_q("$in Citarum.dbo.TWaktuTungguBPJS(NoReg,TransTgl,TaskID,StatusCode,Keterangan,UserID,UserDate,KodeAntrian,TANGGAL,TIMECALL)VALUES('$TXT_REGRAND','$tanggalperiksa $jampraktek_d','1','000','','WS','$date_html5 $time_html5','','','')"); #PELAPORAN BPJS
             #$save_rj_lokal03 = $ms_q("$in Citarum.dbo.TWaktuTungguBPJS(NoReg,TransTgl,TaskID,StatusCode,Keterangan,UserID,UserDate,KodeAntrian,TANGGAL,TIMECALL)VALUES('$TXT_REGRAND','$tanggalperiksa $jampraktek_d','2','000','','WS','$date_html5 $time_html5','','','')"); #PELAPORAN BPJS
@@ -180,8 +180,9 @@
 			$del_rj_ws = $ms_q("delete from Citarum.dbo.TRawatJalan WHERE JalanNoReg LIKE '%WS%' AND   JalanNoUrut='00'");
             
             #$save_rj = "OKE";
-			if($save_rj){ 
-            $json_fetch = array(            
+        if($save_rj){ 
+            $json_fetch = array(
+               
                "nomorantrean"=> $hit_zero_02,
                "angkaantrean"=> $vdcc_jum_01,
                "kodebooking"=> $TXT_REGRAND,
