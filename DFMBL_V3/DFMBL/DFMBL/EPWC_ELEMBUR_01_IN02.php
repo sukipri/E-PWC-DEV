@@ -89,7 +89,7 @@
                 echo"<option value=INFAL>CUTI/INFAL</option>";
                 echo"<option value=BIASA>LEMBUR BIASA</option>";
                 echo"<option value=PP>PENYELESAIAN PEKERJAAN</option>";
-                echo"<option value=DM>DINAS MALAM</option>";
+                #echo"<option value=DM>DINAS MALAM</option>";
             }
         ?>
        

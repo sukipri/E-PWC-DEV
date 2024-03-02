@@ -135,7 +135,8 @@
     </tr>
     <tr>
       <td><b>NPWP</b> <input type="text" style="max-width:25rem;" class="form-control" name="npwp" value="<?php echo"$vemm[KaryNPWP]"; ?>"></td>
-      <td colspan="2"><b>City</b><input type="text" name="kota" required class="form-control" value="<?php echo"$vemm[KaryKota]" ?>"></td>
+      <td colspan="2">
+        <b>City</b><input type="text" name="kota" required class="form-control" value="<?php echo"$vemm[KaryKota]" ?>"> </td>
     </tr>
     <tr>
       <td><b>Golongan</b> <input type="text" style="max-width:25rem;" class="form-control" name="gol" value="<?php echo"$vemm[KaryPangkat]"; ?>"></td>
