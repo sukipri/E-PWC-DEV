@@ -34,7 +34,7 @@
     </tr>
     <?PHP 
     #DATA LEMBUR
-        $epwc_ls_vlem01_sw = $CL_Q("SELECT TOP 20  * FROM Citarum.dbo.TKaryLemburHari WHERE NOT LemburApp='0' AND NOT LemburBulanRng LIKE '%2023%' AND Uploader='$epwc_vkry01_sww[KaryNomor]' order by LemburTanggal desc  ");
+        $epwc_ls_vlem01_sw = $CL_Q("SELECT TOP 100  * FROM Citarum.dbo.TKaryLemburHari WHERE NOT LemburApp='0' AND NOT LemburBulanRng LIKE '%2023%' AND Uploader='$epwc_vkry01_sww[KaryNomor]' order by LemburTanggal desc  ");
             while($epwc_ls_vlem01_sww = $CL_FAS($epwc_ls_vlem01_sw)){
         #DATA TANGGAL LEMBUR
         $epwc_ls02_vlem01_sw = $CL_Q("$SL CONVERT(date,LemburTanggal) as lstgl FROM Citarum.dbo.TKaryLemburHari WHERE KaryNomor='$epwc_ls_vlem01_sww[KaryNomor]' AND LemburTanggal='$epwc_ls_vlem01_sww[LemburTanggal]' order by LemburTanggal desc"); 
@@ -45,7 +45,11 @@
                
     ?>
     <tr>
-        <td><?PHP echo"<a href='#'>$epwc_ls_vlem01_sww[LemburBulanRng]</a>"; ?></td>
+        <td><?PHP 
+        echo"<a href='#'>$epwc_ls_vlem01_sww[LemburBulanRng]</a>"; 
+        echo"<br>";
+        echo"<b>#".$epwc_ls_vlem01_sww['LemburJenis']."</b>";
+        ?></td>
         <td><?PHP echo $epwc_ls_vkry01_sww['KaryNama']; ?></td>
         <td><?PHP echo"$epwc_ls02_vlem01_sww[lstgl]"; ?></td>
         <td><?PHP echo"$epwc_ls_vlem01_sww[LemburBiasa]"; ?></td>

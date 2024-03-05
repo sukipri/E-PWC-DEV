@@ -65,6 +65,21 @@
             ?>
         </td>
     </tr>
-                <?PHP } ?>
+                <?PHP }
+                $epwc_tot_vlem01_sw = $CL_Q("$SL SUM(LemburBiasaJumlah) as tot_jum FROM  Citarum.dbo.TKaryLemburHari WHERE LemburTanggal BETWEEN '$tg01' AND '$tg02' AND NOT LemburBiasa='0' AND  KaryNomor='$epwc_vkry01_sww[KaryNomor]'");
+                $epwc_tot_vlem01_sww = $CL_FAS($epwc_tot_vlem01_sw);
+                ?>
+         <tr>
+        <!-- <td><?PHP #echo"$epwc_ls_vkary01_sww[KaryNama]"; ?></td> -->
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td class="table-primary"><?PHP echo $NF($epwc_tot_vlem01_sww['tot_jum']); ?></td>
+        <td>-</td>
+    </tr>
 </table>
 <?PHP } ?>

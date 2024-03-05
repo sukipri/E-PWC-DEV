@@ -22,7 +22,7 @@
 
 <div class="alert alert-dismissible alert-danger">
   
-  <p class="mx-2"><i class="fas fa-file-alt"></i> Peng-entrian <b>Dinas Malam</b> dilakukan dengan memasukan tanggal yang sudah di otomatiskan sesuai jadwal yang sudah tetapkan di aplikasi presensi. Masukan tanggal lembur H+1 , misalkan lembur dilakukan tanggal <i>10</i> maka tanggal yang dimasukan tanggal setelahnya yaitu tanggal <i>11</i> </p>
+  <p class="mx-2"><i class="fas fa-file-alt"></i> Peng-entrian <b>Dinas Malam</b> dilakukan dengan memasukan tanggal <input type="date"> yang sudah di otomatisasikan sesuai jadwal yang sudah tetapkan di aplikasi presensi. Jika tidak ada lembur malam / Dinas malam jangan lakukan simpan data </p>
 </div>
 <hr>
 <form method="post">

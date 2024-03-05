@@ -29,7 +29,7 @@
         </li> -->
         <?PHP } ?>
         <li class="nav-link">
-          <a href="<?PHP echo"#?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW04#"; ?>" class="mx-2 h5" style="color:#FFF;"><i class="fas fa-receipt"></i>&nbsp;Riwayat Lembur</a>
+          <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW04"; ?>" class="mx-2 h5" style="color:#FFF;"><i class="fas fa-receipt"></i>&nbsp;Riwayat Lembur</a>
         </li>
     
       </ul>    
