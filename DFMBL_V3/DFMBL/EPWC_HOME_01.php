@@ -16,6 +16,8 @@
 				#DATA KARYAWAN dbo.Ctarum
 					$epwc_vkry01_sw = $CL_Q("$SL KaryNomor,KaryNomorYakkum,KaryNama,KaryJbtStruktural,UnitKode,KaryDir,UnitKode01,UnitKode02 FROM Citarum.dbo.TKaryawan WHERE KaryNomor='$vus01_sww[kode]'");
 						$epwc_vkry01_sww = $CL_FAS($epwc_vkry01_sw);
+						
+					#echo $epwc_vkry01_sww['KaryDir'];
 						#--GET DATA--#
 						$epwc_cut_vkry01_sw = substr($epwc_vkry01_sww['KaryNomorYakkum'],1);
 						 $IDEMP01 = $epwc_cut_vkry01_sw;

@@ -1,6 +1,7 @@
 
     <?PHP 
-                                 $epwc_sub_vkry01_sw = substr($IDKRY,1);
+                                $IDKRY02 = @$_GET['IDKRY02'];
+                                 $epwc_sub_vkry01_sw = substr($IDKRY02,1);
                                 #DATA KALKULASI LEMBUR
                                 $tj_ls_vjdw01_sw = $CL_Q("$CL_SL TJ_Main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw'  order by Bulan Desc");
                                 $tj_ls_vjdw01_sww = $CL_FAS($tj_ls_vjdw01_sw); #M X Y

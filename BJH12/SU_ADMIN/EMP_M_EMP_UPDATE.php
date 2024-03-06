@@ -73,20 +73,20 @@
               <?PHP if($vemm['KaryDir']=="04000671"){ ?>
               <option value="04000671">drg. Kriswidiati, M.Kes</option>
               <option value="04100869">	dr. Santi Kristiani, Sp.PK</option>
-              <option value="04110877">dr.Yohanes Mada Suprayogi,Sp.PD.FINASIM	</option>
+              <option value="04130956">dr. Tiurlan Pardamean BR. Sibarani	</option>
               <?PHP }elseif($vemm['KaryDir']=="04100869"){ ?>
               <option value="04100869">	dr. Santi Kristiani, Sp.PK</option>
               <option value="04000671">drg. Kriswidiati, M.Kes</option>
-              <option value="04110877">dr.Yohanes Mada Suprayogi,Sp.PD.FINASIM	</option>
-              <?PHP }elseif($vemm['KaryDir']=="04110877"){ ?>
-              <option value="04110877">dr.Yohanes Mada Suprayogi,Sp.PD.FINASIM	</option>
+              <option value="04130956">dr. Tiurlan Pardamean BR. Sibarani	</option>
+              <?PHP }elseif($vemm['KaryDir']=="04130956"){ ?>
+              <option value="04130956">dr. Tiurlan Pardamean BR. Sibarani	</option>
               <option value="04100869">	dr. Santi Kristiani, Sp.PK</option>
               <option value="04000671">drg. Kriswidiati, M.Kes</option>
               <?PHP }else{ ?>
               <option value=""></option>
               <option value="04000671">drg. Kriswidiati, M.Kes</option>
               <option value="04100869">	dr. Santi Kristiani, Sp.PK</option>
-              <option value="04110877">dr.Yohanes Mada Suprayogi,Sp.PD.FINASIM	</option>
+              <option value="04130956">dr. Tiurlan Pardamean BR. Sibarani	</option>
               <?PHP } ?>
             </select>
     </td>

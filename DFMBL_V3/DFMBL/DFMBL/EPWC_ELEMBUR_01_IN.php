@@ -41,7 +41,7 @@
     <td>
         <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$epwc_sl_vkry01_sww[KaryNomor]"; ?>" class="badge bg-info"><i class="fas fa-info-circle"></i> ENTRI LEMBUR</a>
         &nbsp
-        <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02MLM&IDKRY=$epwc_sl_vkry01_sww[KaryNomor]"; ?>" class="badge bg-dark"><i class="fas fa-info-circle"></i> ENTRI LEMBUR MALAM</a>
+        <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02MLM&IDKRY=$epwc_sl_vkry01_sww[KaryNomor]&IDKRY02=$epwc_sl_vkry01_sww[KaryNomorYakkum]"; ?>" class="badge bg-dark"><i class="fas fa-info-circle"></i> ENTRI LEMBUR MALAM</a>
     </td>
 </tr>
 <?PHP } ?>
@@ -60,7 +60,7 @@
     <td>
         <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$epwc_sl02_vkry01_sww[KaryNomor]"; ?>" class="badge bg-info"><i class="fas fa-info-circle"></i> ENTRI LEMBUR</a>
         &nbsp
-        <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02MLM&IDKRY=$epwc_sl02_vkry01_sww[KaryNomor]"; ?>" class="badge bg-dark"><i class="fas fa-info-circle"></i> ENTRI LEMBUR MALAM</a>
+        <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02MLM&IDKRY=$epwc_sl02_vkry01_sww[KaryNomor]&IDKRY02=$epwc_sl02_vkry01_sww[KaryNomorYakkum]"; ?>" class="badge bg-dark"><i class="fas fa-info-circle"></i> ENTRI LEMBUR MALAM</a>
     </td>
 </tr>
 <?PHP } ?>
@@ -81,7 +81,7 @@
     <td>
         <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$epwc_sl03_vkry01_sww[KaryNomor]"; ?>" class="badge bg-info"><i class="fas fa-info-circle"></i> ENTRI LEMBUR</a>
         &nbsp
-        <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02MLM&IDKRY=$epwc_sl03_vkry01_sww[KaryNomor]"; ?>" class="badge bg-dark"><i class="fas fa-info-circle"></i> ENTRI LEMBUR MALAM</a>
+        <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02MLM&IDKRY=$epwc_sl03_vkry01_sww[KaryNomor]&IDKRY02=$epwc_sl03_vkry01_sww[KaryNomorYakkum]"; ?>" class="badge bg-dark"><i class="fas fa-info-circle"></i> ENTRI LEMBUR MALAM</a>
     </td>
 </tr>
 <?PHP } ?>
