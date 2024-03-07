@@ -39,8 +39,12 @@
  }
     if(isset($_GET['GETCARI01'])){
       #echo $IDKLP01;
+      #DATA SIMPLE GET
       $pl_sg_vunit01_sw = $ms_q("$sl UnitKode,UnitNama FROM Citarum.dbo.TUnitPrs WHERE UnitKode='$IDKLP01' ");
           $pl_sg_vunit01_sww = $ms_fas($pl_sg_vunit01_sw);
+      #DATA SIMPLE GET
+      $pl_sg_vkry01_sw = $ms_q("$sl KaryNomor,KaryNama FROM Citarum.dbo.TKaryawan WHERE UnitKode='$IDKLP01' AND (KaryJbtStruktural='08' OR KaryJbtStruktural='07' OR KaryJbtStruktural='06') AND KaryStatus='10' ");
+          $pl_sg_vkry01_sww = $ms_fas($pl_sg_vkry01_sw);
   ?>
   <div class="card border-primary mb-3" style="max-width: 20rem;">
   <div class="card-header"><?PHP echo $pl_sg_vunit01_sww['UnitNama'] ?></div>
@@ -48,6 +52,8 @@
     <!--  -->
     <?PHP 
         echo "BULAN <b>".$IDLBULAN01."</b>";
+        echo"<br>";
+        echo $pl_sg_vkry01_sww['KaryNama'];
     ?>
   </div>
 </div>
@@ -90,8 +96,8 @@
                     <tr>
                       <td><?PHP echo $pl_ls_vlem01_sww['lem_tgl'] ?></td>
                       <td><?PHP echo $pl_ls_vlem01_sww['LemburJenis'] ?></td>
-                      <td><?PHP echo $pl_ls_vlem01_sww['LemburJenis'] ?></td>
-                      <td><?PHP echo number_format($pl_ls_vlem01_sww['LemburBiasa']) ?></td>
+                      <td><?PHP echo $pl_ls_vlem01_sww['LemburBiasa'] ?></td>
+                      <td><?PHP echo number_format($pl_ls_vlem01_sww['LemburBiasaJumlah']) ?></td>
                       <td>
                         <?PHP 
                              if($pl_ls_vlem01_sww['LemburApp']=="1" OR $pl_ls_vlem01_sww['LemburApp']=="2"){
