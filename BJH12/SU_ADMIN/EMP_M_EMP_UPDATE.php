@@ -35,7 +35,8 @@
 				$npwp = @$sql_slash($_POST['npwp']);
 				$tlahir  = @$sql_slash($_POST['tlahir']);
 				$tgllahir  = @$sql_slash($_POST['tgllahir']);
-				$save = $ms_q("$up TKaryawan set KaryNomorYakkum='$nik',KaryNama='$nama',UnitKode='$bagian',KaryAlamat='$alamat',KaryTmpLahir='$tlahir',KaryNoKTP='$no_ktp',KaryTelepon='$no_tlp',KaryEmail='$email',KaryKota='$kota',KaryNPWP='$npwp',KaryPangkat='$gol',KaryYDPNo='$no_dapen',KaryManulifeNo='$no_manu',KaryNoBPJS='$no_bpjs',KaryNoJAMSOSTEK='$no_jamsostek',KaryTglLahir='$tgllahir',KaryDir='$txt_dep',UnitKode01='$bagian01',UnitKode02='' WHERE KaryNomor='$IDEMP'");
+        $kodevar  = @$sql_slash($_POST['kodevar']);
+				$save = $ms_q("$up TKaryawan set KaryNomorYakkum='$nik',KaryNama='$nama',UnitKode='$bagian',KaryAlamat='$alamat',KaryTmpLahir='$tlahir',KaryNoKTP='$no_ktp',KaryTelepon='$no_tlp',KaryEmail='$email',KaryKota='$kota',KaryNPWP='$npwp',KaryPangkat='$gol',KaryYDPNo='$no_dapen',KaryManulifeNo='$no_manu',KaryNoBPJS='$no_bpjs',KaryNoJAMSOSTEK='$no_jamsostek',KaryTglLahir='$tgllahir',KaryDir='$txt_dep',UnitKode01='$bagian01',UnitKode02='',KaryJbtStruktural='$kodevar' WHERE KaryNomor='$IDEMP'");
 	if ($save) { echo "<META HTTP-EQUIV=Refresh Content=2; URL=?HLM=EMP_M&SUB=EMP_M_EMP>";  ?>
 						<div class="alert alert-dismissible alert-success">
 							 <strong>Well done!</strong> You successfully save...
@@ -101,6 +102,20 @@
 								}else{
 								echo"<option value=$vuntt[UnitKode]>$vuntt[UnitNama]</option>";
 								}}
+				?>
+      </select>
+      <br>
+      <b>Jabatan</b>
+        <select name="kodevar" class="form-control" style="max-width:25rem;" required>
+          <option value="">Jabatan</option>
+          <?php
+                $pl_vjvar01_sw = $ms_q("$sl VarSeri,VarKode,VarNama FROM Citarum.dbo.TKaryVar WHERE VarSeri='JABATAN'");
+                  while($pl_vjvar01_sww = $ms_fas($pl_vjvar01_sw)){
+                      if($pl_vjvar01_sww['VarKode']==$vemm['KaryJbtStruktural']){
+                        echo"<option value=$pl_vjvar01_sww[VarKode] selected>$pl_vjvar01_sww[VarNama]</option>";
+                      }else{
+                       echo"<option value=$pl_vjvar01_sww[VarKode]>$pl_vjvar01_sww[VarNama]</option>";
+                  } }
 				?>
       </select>
     </td>

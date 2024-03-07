@@ -83,6 +83,7 @@
                 */
             ?>
             <input type="hidden" name="<?PHP echo"txt_id_01$no_lembur_01"; ?>" value="<?PHP echo $epwc_ls_vlem01_sww['LemburID'] ?>">
+            <input type="hidden" name="<?PHP echo"txt_unitkode_01$no_lembur_01"; ?>" value="<?PHP echo  $epwc_ls_vkary01_sww['UnitKode'] ?>">
     <select name="<?PHP echo"slc_app_01$no_lembur_01"; ?>" class="form-control form-control-sm" required>
                 <?PHP 
                     if($epwc_ls_vlem01_sww['LemburApp']=="3"){ ?>
@@ -111,8 +112,9 @@
                     while($no_lembur_02 <=  $epwc_nr_ls_vlem01_sw){
                          $slc_app_01 = @$_POST['slc_app_01'. $no_lembur_02];
                          $txt_id_01 = @$_POST['txt_id_01'. $no_lembur_02];
+                         $txt_unitkode_01 = @$_POST['txt_unitkode_01'. $no_lembur_02];
                          #echo $slc_app_01."-".$txt_id_01."<br>";
-                        $up_lbr_01 = $CL_Q("$UP Citarum.dbo.TKaryLemburHari SET LemburApp='$slc_app_01' WHERE LemburID='$txt_id_01' ");
+                        $up_lbr_01 = $CL_Q("$UP Citarum.dbo.TKaryLemburHari SET LemburApp='$slc_app_01',UnitKode='$txt_unitkode_01' WHERE LemburID='$txt_id_01' ");
 
                         $no_lembur_02++; }
                         header("LOCATION:?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW03&NAVIBLN01=NAVIBLN01&IDBLMBR01=$IDBLMBR01");
@@ -130,7 +132,7 @@
                 <?PHP echo"<b>TOTAL Pending : Rp.".$NF($epwc_tot_vlem01_sww['tot_lembur']); ?>
 </div>
 <div class="alert alert-dismissible alert-success">
-                <?PHP echo"<b>TOTAL Lembur : Rp.".$NF($epwc_tot02_vlem01_sww['tot02_lembur']); ?>
+                <?PHP echo"<b>TOTAL Sending : Rp.".$NF($epwc_tot02_vlem01_sww['tot02_lembur']); ?>
 </div>
 
 <?PHP } ?>

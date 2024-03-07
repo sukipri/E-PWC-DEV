@@ -7,7 +7,7 @@
 <select name="slc_bag" class="form-control form-control" required>
   <option value=""></option>
 <?PHP 
-    $pl_sl_vkry01_sw = $ms_q("$sl DISTINCT UnitKode FROM Citarum.dbo.TKaryawan WHERE KaryStatus='10'");
+    $pl_sl_vkry01_sw = $ms_q("$sl DISTINCT UnitKode FROM Citarum.dbo.TKaryawan WHERE KaryStatus='10' order by UnitKode asc");
       while($pl_sl_vkry01_sww = $ms_fas($pl_sl_vkry01_sw)){
       $pl_sl_vuprs01_sw = $ms_q("$sl UnitKode,UnitNama FROM Citarum.dbo.TUnitPrs WHERE UnitKode='$pl_sl_vkry01_sww[UnitKode]'");
           $pl_sl_vuprs01_sww = $ms_fas($pl_sl_vuprs01_sw);
@@ -45,15 +45,16 @@
   <div class="card border-primary mb-3" style="max-width: 20rem;">
   <div class="card-header"><?PHP echo $pl_sg_vunit01_sww['UnitNama'] ?></div>
   <div class="card-body">
-    <h4 class="card-title">Primary card title</h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <!--  -->
+    <?PHP 
+        echo "BULAN <b>".$IDLBULAN01."</b>";
+    ?>
   </div>
 </div>
   <table class="table table-sm table-bordered table-striped">
-    <tr>
+    <tr class="table-dark">
        <td>NIP | Nama</td>
        <td>Total Nominal</td>
-       <td></td>
     </tr>
     <?PHP 
       $pl_ls_vkry01_sw = $ms_q("$sl KaryNomor,KaryNama,UnitKode FROM Citarum.dbo.TKaryawan WHERE  UnitKode='$IDKLP01' AND (KaryStatus='10' OR KaryStatus='22')");
@@ -64,10 +65,74 @@
           
     ?>
     <tr>
-       <td><?PHP echo $pl_ls_vkry01_sww['KaryNomor']."<br>".$pl_ls_vkry01_sww['KaryNama']; ?></td>
-       <td>-</td>
-       <td></td>
+       <td><?PHP echo $pl_ls_vkry01_sww['KaryNomor']."<br>".$pl_ls_vkry01_sww['KaryNama']; ?>
+          <br>
+          <?PHP 
+              $pl_ls_vlem01_sw = $ms_q("$sl LemburBulan,LemburBulan,KaryNomor,CONVERT(date,LemburTanggal,101) as lem_tgl,LemburBiasa,LemburBiasaJumlah,LemburApp,LemburJenis FROM Citarum.dbo.TkaryLemburHari WHERE KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburBulan='$IDLBULAN01' order by LemburTanggal asc");
+              $pl_nr_ls_vlem01_sww = $ms_nr($pl_ls_vlem01_sw);
+
+                if($pl_nr_ls_vlem01_sww > 0){
+          ?>
+          <div id="" style="overflow:scroll; height:200px;">
+          <table class="table">
+                    <tr class="table-dark">
+                      <td>DATE</td>
+                      <td>Lembur</td>
+                      <td>Jam</td>
+                      <td>Nominal</td>
+                      <td>Status</td>
+                  </tr>
+              
+          <?php
+              
+              while($pl_ls_vlem01_sww = $ms_fas($pl_ls_vlem01_sw)){ ?>
+               
+                    <tr>
+                      <td><?PHP echo $pl_ls_vlem01_sww['lem_tgl'] ?></td>
+                      <td><?PHP echo $pl_ls_vlem01_sww['LemburJenis'] ?></td>
+                      <td><?PHP echo $pl_ls_vlem01_sww['LemburJenis'] ?></td>
+                      <td><?PHP echo number_format($pl_ls_vlem01_sww['LemburBiasa']) ?></td>
+                      <td>
+                        <?PHP 
+                             if($pl_ls_vlem01_sww['LemburApp']=="1" OR $pl_ls_vlem01_sww['LemburApp']=="2"){
+                                  echo"<a href='#' class='badge bg-info'>Proccessing</a>";
+                              }elseif($pl_ls_vlem01_sww['LemburApp']=="3"){
+                                  echo"<a href='#' class='badge bg-dark'>Rejected</a>";
+                              }elseif($pl_ls_vlem01_sww['LemburApp']=="4"){
+                                  echo"<a href='#' class='badge bg-success'>Approved</a>";
+                              }
+                        ?>
+                      </td>
+                  </tr>
+              
+          <?PHP } ?>
+              </table>
+           </div>
+           <?PHP }else{ } ?>
+           
+      </td>
+       <td align="right">
+       
+          <?PHP 
+              #DATA LEMBUR TOTAL
+              $pl_tot_vlem01_sw = $ms_q("$sl SUM(LemburBiasaJumlah) as tot_lem FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01' AND KaryNomor='$pl_ls_vkry01_sww[KaryNomor]'");
+              $pl_tot_vlem01_sww = $ms_fas($pl_tot_vlem01_sw);
+              echo number_format($pl_tot_vlem01_sww['tot_lem']);
+          ?>
+         
+       </td>
     </tr>
     <?PHP } ?>
+    <tr class="table-info">
+       <td><a href="#" class="btn btn-success btn-sm"><i class="far fa-file-excel"></i> Download Data</button></td>
+       <td align="right">
+          <?PHP 
+              #DATA LEMBUR TOTAL
+              $pl_tot02_vlem01_sw = $ms_q("$sl SUM(LemburBiasaJumlah) as tot02_lem FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01' AND UnitKode='$IDKLP01'");
+              $pl_tot02_vlem01_sww = $ms_fas($pl_tot02_vlem01_sw);
+              echo number_format($pl_tot02_vlem01_sww['tot02_lem']);
+          ?>
+       </td>
+    </tr>
   </table>
   <?PHP } ?>

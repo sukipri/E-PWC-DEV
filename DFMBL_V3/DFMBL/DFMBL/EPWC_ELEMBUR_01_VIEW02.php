@@ -55,7 +55,7 @@
         echo"<b>#".$epwc_ls_vlem01_sww['LemburJenis']."</b>";
         ?></td>
         <td><?PHP echo $epwc_ls_vkry01_sww['KaryNama']; ?></td>
-        <td><?PHP echo"$epwc_ls02_vlem01_sww[lstgl]"; ?></td>
+        <td><?PHP echo"$epwc_ls02_vlem01_sww[lstgl]<br><span class='badge bg-secondary'>$epwc_ls_vlem01_sww[UnitKode]</span>"; ?></td>
         <td><?PHP echo"$epwc_ls_vlem01_sww[LemburBiasa]"; ?></td>
         <td><?PHP echo"$epwc_ls_vlem01_sww[LemburUraian]"; ?></td>
         <td><?PHP echo"$epwc_ls_vlem01_sww[LemburAlasan]"; ?></td>
