@@ -30,7 +30,7 @@
     <?PHP 
   
     #DATA LEMBUR
-        $epwc_ls_vlem01_sw = $CL_Q("$CL_SL  Citarum.dbo.TKaryLemburHari WHERE LemburTanggal BETWEEN '$tg01' AND '$tg02' AND NOT LemburBiasa='0' AND  KaryNomor='$epwc_vkry01_sww[KaryNomor]'  order by LemburTanggal desc  ");
+        $epwc_ls_vlem01_sw = $CL_Q("$CL_SL  Citarum.dbo.TKaryLemburHari WHERE LemburTanggal BETWEEN '$tg01' AND '$tg02' AND NOT LemburBiasa='0' AND  KaryNomor='$epwc_vkry01_sww[KaryNomor]'  order by LemburTanggal asc  ");
             while($epwc_ls_vlem01_sww = $CL_FAS($epwc_ls_vlem01_sw)){
         #DATA TANGGAL LEMBUR
         $epwc_ls02_vlem01_sw = $CL_Q("$SL CONVERT(date,LemburTanggal) as lstgl FROM Citarum.dbo.TKaryLemburHari WHERE KaryNomor='$epwc_ls_vlem01_sww[KaryNomor]' AND LemburTanggal='$epwc_ls_vlem01_sww[LemburTanggal]' order by LemburTanggal desc"); 
@@ -66,7 +66,7 @@
         </td>
     </tr>
                 <?PHP }
-                $epwc_tot_vlem01_sw = $CL_Q("$SL SUM(LemburBiasaJumlah) as tot_jum FROM  Citarum.dbo.TKaryLemburHari WHERE LemburTanggal BETWEEN '$tg01' AND '$tg02' AND NOT LemburBiasa='0' AND  KaryNomor='$epwc_vkry01_sww[KaryNomor]'");
+                $epwc_tot_vlem01_sw = $CL_Q("$SL SUM(LemburBiasaJumlah) as tot_jum FROM  Citarum.dbo.TKaryLemburHari WHERE LemburTanggal BETWEEN '$tg01' AND '$tg02' AND NOT LemburBiasa='0' AND  KaryNomor='$epwc_vkry01_sww[KaryNomor]' AND LemburApp='4'");
                 $epwc_tot_vlem01_sww = $CL_FAS($epwc_tot_vlem01_sw);
                 ?>
          <tr>

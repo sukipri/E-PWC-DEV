@@ -20,7 +20,7 @@
           <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02HIS"; ?>" class="mx-2 h5" style="color:#FFF;"><i class="fas fa-receipt"></i>&nbsp;Riwayat Lem.Personel</a>
         </li>
         <?PHP } ?>
-        <?PHP  if($epwc_vkry01_sww['KaryNomor']=="04181143" OR $epwc_vkry01_sww['KaryNomor']=="671/SMG/YAKKUM" OR $epwc_vkry01_sww['KaryNomor']=="04110877" OR $epwc_vkry01_sww['KaryNomor']=="04100869"  ){ ?>
+        <?PHP  if($epwc_vkry01_sww['KaryNomor']=="04181143" OR $epwc_vkry01_sww['KaryNomor']=="671/SMG/YAKKUM" OR $epwc_vkry01_sww['KaryNomor']=="04130956" OR $epwc_vkry01_sww['KaryNomor']=="04100869"  ){ ?>
         <li class="nav-link">
           <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW03"; ?>" class="mx-2 h5" style="color:#FFF;"><i class="fas fa-receipt"></i>&nbsp;Verif Lembur</a>
         </li>

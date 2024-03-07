@@ -10,6 +10,10 @@
 ?>
 <span class="mx-2"><b>Daftar Approvement Lembur </b></span>
 *Tekan F3 pada keyboard untuk melakukan pencarian
+<br>
+<span class="badge bg-success mx-2">Approved.HO</span> = Status Sudah Terkirim ke Direksi</span>
+<br>
+<span class="badge bg-success mx-2">Approved.CEO</span> = Status Sudah Disetujui Direksi
 <hr>
 <?PHP 
   #UNIT KODE

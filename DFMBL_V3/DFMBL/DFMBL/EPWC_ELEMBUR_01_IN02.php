@@ -101,8 +101,9 @@
     <br><br>
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Jumlah Jam</span>
-        <input type="number" class="form-control" name="elembur_jmljam_01" value="<?PHP echo $epwc_vw_vlmbr01_sww['LemburBiasa'] ?>">
-    </div>
+        <input type="text" class="form-control" autocomplete="off" name="elembur_jmljam_01" autocomplete value="<?PHP echo $epwc_vw_vlmbr01_sww['LemburBiasa'] ?>" style="max-width:12rem;">
+        <span class="input-group-text" id="basic-addon1">for Halftime ex: 1.5</span>
+    </div> 
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Uraian</span>
        <textarea class="form-control" name="elembur_ur_01"><?PHP echo $epwc_vw_vlmbr01_sww['LemburUraian'] ?></textarea>
@@ -127,7 +128,7 @@
         <li>#<b>KETENTUAN PENGISIAN FORM</b>
             <ul>
                 <li>Isikan setiap memberikan lembur</li>
-                <li>lakukan Approve di menu <i>APPROVE LEMBUR</i> u/ diteruskan ke Direksi</li>
+                <li>Untuk perhitungan halftime ex: 1.5 jam . u/ perhitungan jumlah jam gunakan tanda (.) = titik untuk pengganti tanda (,) = Koma 
     </li>    
     </ul>
     <br>
