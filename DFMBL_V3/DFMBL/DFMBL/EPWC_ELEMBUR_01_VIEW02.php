@@ -17,11 +17,11 @@
 <hr>
 <?PHP 
   #UNIT KODE
-  /*
-  $epwc_ls_vkry01_sw = $CL_Q("$SL KaryNomor,KaryNama  FROM Citarum.dbo.TKaryawan WHERE KaryStatus='10' AND UnitKode='$epwc_vkry01_sww[UnitKode]' OR UnitKode01='$epwc_vkry01_sww[UnitKode01]' ");
+  /* */
+  $epwc_ls_vkry01_sw = $CL_Q("$SL KaryNomor,KaryNama  FROM Citarum.dbo.TKaryawan WHERE  (UnitKode='$epwc_vkry01_sww[UnitKode]' OR UnitKode='$epwc_vkry01_sww[UnitKode01]') AND (KaryStatus='10' OR KaryStatus='22')  ");
   while($epwc_ls_vkry01_sww = $CL_FAS($epwc_ls_vkry01_sw)){
     echo"<a class='btn btn-info btn-sm mx-2'>$epwc_ls_vkry01_sww[KaryNama]</a>";
-    */
+   
 ?>
 
 <table class="table table-sm table-bordered table-striped mx-2">
@@ -38,14 +38,14 @@
     </tr>
     <?PHP 
     #DATA LEMBUR
-        $epwc_ls_vlem01_sw = $CL_Q("SELECT TOP 100  * FROM Citarum.dbo.TKaryLemburHari WHERE NOT LemburApp='0' AND NOT LemburBulanRng LIKE '%2023%' AND Uploader='$epwc_vkry01_sww[KaryNomor]' order by LemburTanggal desc  ");
+        $epwc_ls_vlem01_sw = $CL_Q("SELECT   * FROM Citarum.dbo.TKaryLemburHari WHERE NOT LemburApp='0' AND NOT LemburBulanRng LIKE '%2023%' AND Uploader='$epwc_vkry01_sww[KaryNomor]' AND KaryNomor='$epwc_ls_vkry01_sww[KaryNomor]' order by LemburTanggal asc  ");
             while($epwc_ls_vlem01_sww = $CL_FAS($epwc_ls_vlem01_sw)){
         #DATA TANGGAL LEMBUR
         $epwc_ls02_vlem01_sw = $CL_Q("$SL CONVERT(date,LemburTanggal) as lstgl FROM Citarum.dbo.TKaryLemburHari WHERE KaryNomor='$epwc_ls_vlem01_sww[KaryNomor]' AND LemburTanggal='$epwc_ls_vlem01_sww[LemburTanggal]' order by LemburTanggal desc"); 
                 $epwc_ls02_vlem01_sww = $CL_FAS($epwc_ls02_vlem01_sw);
                 #DATA KARYAWAN
-        $epwc_ls_vkry01_sw = $CL_Q("$SL KaryNomor,KaryNama FROM Citarum.dbo.TKaryawan WHERE KaryNomor='$epwc_ls_vlem01_sww[KaryNomor]'");
-        $epwc_ls_vkry01_sww = $CL_FAS($epwc_ls_vkry01_sw);
+        $epwc_ls02_vkry01_sw = $CL_Q("$SL KaryNomor,KaryNama FROM Citarum.dbo.TKaryawan WHERE KaryNomor='$epwc_ls_vlem01_sww[KaryNomor]'");
+        $epwc_ls02_vkry01_sww = $CL_FAS($epwc_ls02_vkry01_sw);
                
     ?>
     <tr>
@@ -86,5 +86,5 @@
     </tr>
                 <?PHP } ?>
 </table>
-<?PHP #} ?>  
+<?PHP } ?>  
 <!--  -->

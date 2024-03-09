@@ -19,14 +19,47 @@
             echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW03&NAVIBLN01=NAVIBLN01&IDBLMBR01=$epwc_sl_vblmbr01_sww[LemburBulanRng]' class='btn btn-secondary btn-sm mx-2'><i class='fas fa-bookmark'></i> $epwc_sl_vblmbr01_sww[LemburBulanRng]</a>";
         }
 ?>
-<br><br>
-<?PHP 
-    if(isset($_GET['NAVIBLN01'])){
+<hr>
 
+<?PHP 
+    if(isset($_GET['NAVIBLN01'])){ ?>
+
+            <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Koordinator</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+       
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">List</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+           <?PHP 
+                $epwc_sg_vkunit01_sw = $CL_Q("$SL KaryNomor,KaryNama,KaryDir FROM Citarum.dbo.Tkaryawan WHERE  KaryDir='$epwc_vkry01_sww[KaryNomorYakkum]' AND (KaryJbtStruktural='08' OR KaryJbtStruktural='07') order by KaryNama asc  ");
+                while($epwc_sg_vkunit01_sww = $CL_FAS($epwc_sg_vkunit01_sw)){
+                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW03&NAVIBLN01=NAVIBLN01&IDBLMBR01&IDKRY=$epwc_sg_vkunit01_sww[KaryNomor]&IDBLMBR01=$IDBLMBR01' class='dropdown-item'><i class='fas fa-bookmark'></i> $epwc_sg_vkunit01_sww[KaryNama]</a>";
+                    }
+           ?>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br>      
+        <?PHP       
+                    #echo"<hr>";
+        $epwc_nr_ls_vlem01_sw = $CL_Q("SELECT  * FROM Citarum.dbo.TKaryLemburHari WHERE   KaryDir='$epwc_vkry01_sww[KaryNomorYakkum]' AND LemburBulanRng='$IDBLMBR01' AND Uploader='$IDKRY'   order by LemburTanggal desc  ");
+        $epwc_nr_ls_vlem01_sww = $CL_NR($epwc_nr_ls_vlem01_sw);
+            echo"<a href='#' class='badge bg-info btn-sm mx-2'><i class='fas fa-file-alt'></i> TOTAL FORM $epwc_nr_ls_vlem01_sww</a>";
 ?>
 <form method="post">
 <table class="table table-sm table-bordered table-striped mx-2">
     <tr class="table-dark">
+        <td width="4%">#</td>
         <td width="10%">Nama</td>
         <td>Bagian</td>
         <td>Tanggal Lembur</td>
@@ -41,7 +74,7 @@
     <?PHP 
         $no_lembur_01 = 1;
     #DATA LEMBUR
-        $epwc_ls_vlem01_sw = $CL_Q("SELECT TOP 40  * FROM Citarum.dbo.TKaryLemburHari WHERE   KaryDir='$epwc_vkry01_sww[KaryNomorYakkum]' AND LemburBulanRng='$IDBLMBR01'   order by LemburTanggal desc  ");
+        $epwc_ls_vlem01_sw = $CL_Q("SELECT  * FROM Citarum.dbo.TKaryLemburHari WHERE   KaryDir='$epwc_vkry01_sww[KaryNomorYakkum]' AND LemburBulanRng='$IDBLMBR01' AND Uploader='$IDKRY'  order by LemburTanggal asc  ");
         $epwc_nr_ls_vlem01_sw  = $CL_NR($epwc_ls_vlem01_sw);
             while($epwc_ls_vlem01_sww = $CL_FAS($epwc_ls_vlem01_sw)){
         #DATA TANGGAL LEMBUR
@@ -57,6 +90,7 @@
                
     ?>
     <tr>
+        <td><?PHP echo"$no_lembur_01"; ?></td>
         <td><?PHP echo"$epwc_ls_vkary01_sww[KaryNama]"; ?></td>
         <td><?PHP echo $epwc_ls_vunit01_sww['UnitNama']; ?></td>
         <td><?PHP echo"$epwc_ls02_vlem01_sww[lstgl]"; ?></td>
@@ -117,15 +151,15 @@
                         $up_lbr_01 = $CL_Q("$UP Citarum.dbo.TKaryLemburHari SET LemburApp='$slc_app_01',UnitKode='$txt_unitkode_01' WHERE LemburID='$txt_id_01' ");
 
                         $no_lembur_02++; }
-                        header("LOCATION:?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW03&NAVIBLN01=NAVIBLN01&IDBLMBR01=$IDBLMBR01");
+                        header("LOCATION:?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW03&NAVIBLN01=NAVIBLN01&IDBLMBR01=$IDBLMBR01&IDKRY=$IDKRY");
 
                 }
         ?>
 <?PHP 
-          $epwc_tot_vlem01_sw = $CL_Q("SELECT SUM(LemburBiasaJumlah) as tot_lembur FROM Citarum.dbo.TKaryLemburHari WHERE  LemburApp='2' AND KaryDir='$epwc_vkry01_sww[KaryNomorYakkum]' AND LemburBulanRng='$IDBLMBR01'  ");
+          $epwc_tot_vlem01_sw = $CL_Q("SELECT SUM(LemburBiasaJumlah) as tot_lembur FROM Citarum.dbo.TKaryLemburHari WHERE  LemburApp='2' AND KaryDir='$epwc_vkry01_sww[KaryNomorYakkum]' AND LemburBulanRng='$IDBLMBR01' AND Uploader='$IDKRY'  ");
             $epwc_tot_vlem01_sww = $CL_FAS($epwc_tot_vlem01_sw); #TOTAL PENDING
 
-            $epwc_tot02_vlem01_sw = $CL_Q("SELECT SUM(LemburBiasaJumlah) as tot02_lembur FROM Citarum.dbo.TKaryLemburHari WHERE  LemburApp='4' AND KaryDir='$epwc_vkry01_sww[KaryNomorYakkum]'  AND LemburBulanRng='$IDBLMBR01' ");
+            $epwc_tot02_vlem01_sw = $CL_Q("SELECT SUM(LemburBiasaJumlah) as tot02_lembur FROM Citarum.dbo.TKaryLemburHari WHERE  LemburApp='4' AND KaryDir='$epwc_vkry01_sww[KaryNomorYakkum]'  AND LemburBulanRng='$IDBLMBR01' AND Uploader='$IDKRY' ");
             $epwc_tot02_vlem01_sww = $CL_FAS($epwc_tot02_vlem01_sw); #TOTAL SUCCESSS
 ?>
 <div class="alert alert-dismissible alert-info">
