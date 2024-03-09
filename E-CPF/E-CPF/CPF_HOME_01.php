@@ -12,7 +12,7 @@
 	//..Access Method.//
  	  $vus01_sw = $CL_Q("$CL_SL Citarum.dbo.TBUser where namauser='$_SESSION[namauser]' AND akses='6'");
         $vus01_sww = $CL_FAS($vus01_sw);
-			if($vus01_sww['akses']==6){ 
+			if($vus01_sww['akses']==6){
 		
 ?>
 
