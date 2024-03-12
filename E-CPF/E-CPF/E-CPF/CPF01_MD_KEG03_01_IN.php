@@ -42,7 +42,7 @@
 </tr>
 <?PHP 
      $keg01_no_urut = 1;
-    $cpf_vkeg01_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg03_01 order by  keg_urut_01 asc");
+    $cpf_vkeg01_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg03_01 order by  CONVERT(INT,keg_urut_01) asc");
         while($cpf_vkeg01_sww = $CL_FAS($cpf_vkeg01_sw)){
 ?>
 <tr>
