@@ -24,7 +24,7 @@
 <?PHP 
     if(isset($_GET['NAVIBLN01'])){ ?>
 
-            <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Koordinator</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,13 +34,15 @@
       <ul class="navbar-nav me-auto">
        
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">List</a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Daftar Koordinator</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#">Action</a>
            <?PHP 
                 $epwc_sg_vkunit01_sw = $CL_Q("$SL KaryNomor,KaryNama,KaryDir FROM Citarum.dbo.Tkaryawan WHERE  KaryDir='$epwc_vkry01_sww[KaryNomorYakkum]' AND (KaryJbtStruktural='08' OR KaryJbtStruktural='07') order by KaryNama asc  ");
                 while($epwc_sg_vkunit01_sww = $CL_FAS($epwc_sg_vkunit01_sw)){
-                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW03&NAVIBLN01=NAVIBLN01&IDBLMBR01&IDKRY=$epwc_sg_vkunit01_sww[KaryNomor]&IDBLMBR01=$IDBLMBR01' class='dropdown-item'><i class='fas fa-bookmark'></i> $epwc_sg_vkunit01_sww[KaryNama]</a>";
+                    $epwc_nr02_vlem01_sw = $CL_Q("SELECT  * FROM Citarum.dbo.TKaryLemburHari WHERE   KaryDir='$epwc_vkry01_sww[KaryNomorYakkum]' AND LemburBulanRng='$IDBLMBR01' AND Uploader='$epwc_sg_vkunit01_sww[KaryNomor]' AND LemburApp='2'");
+                    $epwc_nr02_ls_vlem01_sw  = $CL_NR($epwc_nr02_vlem01_sw);
+                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW03&NAVIBLN01=NAVIBLN01&IDBLMBR01&IDKRY=$epwc_sg_vkunit01_sww[KaryNomor]&IDBLMBR01=$IDBLMBR01' class='dropdown-item'><i class='fas fa-bookmark'></i> $epwc_sg_vkunit01_sww[KaryNama] <span class='badge bg-danger'>$epwc_nr02_ls_vlem01_sw</span></a>";
                     }
            ?>
           </div>
@@ -123,11 +125,17 @@
                     if($epwc_ls_vlem01_sww['LemburApp']=="3"){ ?>
                         <option value="3">REJECT</option>
                         <option value="4">APPROVE</option>
+                        <option value="31">Pending</option>
+                        <?PHP }elseif($epwc_ls_vlem01_sww['LemburApp']=="31"){ ?>
+                            <option value="31">Pending</option>
+                            <option value="4">APPROVE</option>
+                            <option value="3">REJECT</option>
                         <?PHP }elseif($epwc_ls_vlem01_sww['LemburApp']=="4"){ ?>
                             <option value="4">APPROVE</option>
                             <option value="3">REJECT</option>
+                            <option value="31">Pending</option>
             <?PHP }else{ ?>
-            <option value=""></option>
+            <option value="31">Pending</option>
             <option value="4">APPROVE</option>
             <option value="3">REJECT</option>
             <?PHP } ?>

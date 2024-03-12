@@ -48,12 +48,18 @@
 			$cpf_vw02_vkeg02_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg02_02 WHERE idmain_keg_02='$IDKEG02'");
 				$cpf_vw02_vkeg02_sww = $CL_FAS($cpf_vw02_vkeg02_sw);
 #--------------------------------------------#
-			#DATA VIEW KEG02  01
+			#DATA VIEW KEG03  01
 			$cpf_vw03_vkeg01_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg03_01 WHERE idmain_keg_01='$IDKEG01'");
 			$cpf_vw03_vkeg01_sww = $CL_FAS($cpf_vw03_vkeg01_sw);
+			#DATA VIEW KEG03  02
+			$cpf_vw03_vkeg02_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg03_02 WHERE idmain_keg_02='$IDKEG02'");
+			$cpf_vw03_vkeg02_sww = $CL_FAS($cpf_vw03_vkeg02_sw);
+			#DATA VIEW KEG03  03
+			$cpf_vw03_vkeg03_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg03_03 WHERE idmain_keg_02='$IDKEG03'");
+			$cpf_vw03_vkeg03_sww = $CL_FAS($cpf_vw03_vkeg03_sw);
 #--------------------------------------------#
 
-			#DATA VIEW KEG 03 REC
+			#DATA VIEW KEG  REC
 			$cpf_vw_vkeg03rec_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg_03_rec WHERE idmain_keg_03_rec='$IDKEG03REC'");
 				$cpf_vw_vkeg03rec_sww = $CL_FAS($cpf_vw_vkeg03rec_sw);
 				#TOTAL KEGIATAN 
