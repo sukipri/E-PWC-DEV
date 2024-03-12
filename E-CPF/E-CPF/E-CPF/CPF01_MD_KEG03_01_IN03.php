@@ -11,9 +11,9 @@
     <textarea class="form-control" required name="keg_ket_03"></textarea>
     <br>
     <?PHP if(isset($_GET['UPKEG03'])){ ?>
-        <button class="btn btn-warning btn-sm" name="keg02_up_03">UPDATE DATA</button>
+        <button class="btn btn-warning btn-sm" name="keg03_up_03">UPDATE DATA</button>
     <?PHP }else{ ?>
-        <button class="btn btn-success btn-sm" name="keg02_simpan_03">SIMPAN DATA</button>
+        <button class="btn btn-success btn-sm" name="keg03_simpan_03">SIMPAN DATA</button>
     <?PHP } ?>
 <!--  -->
 

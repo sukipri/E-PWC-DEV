@@ -166,7 +166,7 @@
 				if(isset($_POST['keg03_simpan_03'])){
 					$keg_save_02 = $CL_Q("$IN Citarum.dbo.tb_cpf01_keg03_03(idmain_keg_03,keg_kode_03,keg_nama_03,keg_ket_03,keg_status_03)VALUES('$IDMAIN','KG03-$DATE_ymd$TIME_his','$keg_nama_03','$keg_ket_03','2')");
 					if($keg_save_02){
-						header("LOCATION:?PG_SA=CPF01_MD_KEG02_01&PG_SA_SUB=CPF01_MD_KEG02_01_IN03");
+						header("LOCATION:?PG_SA=CPF01_MD_KEG03_01&PG_SA_SUB=CPF01_MD_KEG03_01_IN03");
 					}else{
 						include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
 					} }
@@ -174,7 +174,7 @@
 					if(isset($_POST['keg03_up_03'])){
 						$keg_up_03 = $CL_Q("$UP Citarum.dbo.tb_cpf01_keg03_03 SET keg_nama_03='$keg_nama_03',keg_ket_03='$keg_ket_03',keg_rawat_03='$keg_rawat_03' WHERE idmain_keg_03='$IDKEG03' ");
 					if($keg_up_03){
-						header("LOCATION:?PG_SA=CPF01_MD_KEG02_01&PG_SA_SUB=CPF01_MD_KEG02_01_IN03REC");
+						header("LOCATION:?PG_SA=CPF01_MD_KEG03_01&PG_SA_SUB=CPF01_MD_KEG03_01_IN03REC");
 					}else{
 						include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
 					} }
@@ -200,6 +200,16 @@
 				   include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
 			   } }
 /*-----------------------------------------------------*/
+		#CPF01_MD_KEG02_01_IN03REC -OBSGIN-
+		if(isset($_GET['SAVEKEG0303REC'])){
+			#PROCCESSING
+			$keg_save_03rec = $CL_Q("$IN Citarum.dbo.tb_cpf01_keg03_03_rec(idmain_keg_03_rec,idmain_keg_02,idmain_keg_03,rec_kode_01,idmain_keg_01)VALUES('$IDMAIN','$IDKEG02','$IDKEG03','REC01-$DATE_ymd$TIME_his','$IDKEG01')");
+		   if($keg_save_03rec){
+				   header("LOCATION:?PG_SA=CPF01_MD_KEG03_01&PG_SA_SUB=CPF01_MD_KEG03_01_IN03REC02&IDKEG03=$IDKEG03");
+			   }else{
+				   include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
+			   } }
+/*-----------------------------------------------------*/
 		#CPF01_MD_KEG_01_IN03REC -Non Bedah-
 		#VARIABLE
 		$rec_rawat_01 = @$SQL_SL($_POST['rec_rawat_01']);
@@ -219,6 +229,16 @@
 			$rec02_up_01 = $CL_Q("$UP  Citarum.dbo.tb_cpf01_keg02_03_rec SET rec_rawat_01='$rec_rawat_01',rec_urut_01='$rec_urut_01' WHERE idmain_keg_03_rec='$IDKEG03REC'");
 			if($rec02_up_01){
 					header("LOCATION:?PG_SA=CPF01_MD_KEG02_01&PG_SA_SUB=CPF01_MD_KEG02_01_FORM&IDKEG03=$IDKEG03");
+				}else{
+					include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
+				} }
+/*-----------------------------------------------------*/
+		#CPF01_MD_KEG02_01_IN03REC -OBSGIN-
+		#PROCCESSING UPDATE VALUES
+		if(isset($_POST['rec03_up_01'])){
+			$rec02_up_01 = $CL_Q("$UP  Citarum.dbo.tb_cpf01_keg03_03_rec SET rec_rawat_01='$rec_rawat_01',rec_urut_01='$rec_urut_01' WHERE idmain_keg_03_rec='$IDKEG03REC'");
+			if($rec02_up_01){
+					header("LOCATION:?PG_SA=CPF01_MD_KEG03_01&PG_SA_SUB=CPF01_MD_KEG03_01_FORM&IDKEG03=$IDKEG03");
 				}else{
 					include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
 				} }

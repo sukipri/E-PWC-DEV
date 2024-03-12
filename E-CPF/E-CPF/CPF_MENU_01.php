@@ -7,8 +7,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarColor02">
       <ul class="navbar-nav me-auto">
+      <li class="nav-item">
+          <a class=" btn btn-success btn-sm" href="?PG_SA=CPF_ENTRI_01"><i class="fas fa-pencil-alt"></i> ENTRI CP</a>
+        </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">ENTRI CP</a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">His.Data CP</a>
           <div class="dropdown-menu">
           <a class="dropdown-item" href="?PG_SA=CPF01_CP_01_FORMVIEW"><i class="fas fa-folder"></i>&nbsp;DATA CP FORM *Non Bedah</a>
           <a class="dropdown-item" href="?PG_SA=CPF01_CP_01_FORMVIEW02"><i class="fas fa-folder"></i>&nbsp;DATA CP FORM *Bedah</a>

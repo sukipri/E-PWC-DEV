@@ -55,7 +55,7 @@
 			$cpf_vw03_vkeg02_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg03_02 WHERE idmain_keg_02='$IDKEG02'");
 			$cpf_vw03_vkeg02_sww = $CL_FAS($cpf_vw03_vkeg02_sw);
 			#DATA VIEW KEG03  03
-			$cpf_vw03_vkeg03_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg03_03 WHERE idmain_keg_02='$IDKEG03'");
+			$cpf_vw03_vkeg03_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg03_03 WHERE idmain_keg_03='$IDKEG03'");
 			$cpf_vw03_vkeg03_sww = $CL_FAS($cpf_vw03_vkeg03_sw);
 #--------------------------------------------#
 
@@ -83,6 +83,16 @@
 					
 				}else{
 					$cpf_vw_vkeg0203rec_sww_gen = $cpf_vw_vkeg0203rec_sww['rec_urut_01'];
+				}
+
+				#GENRATING rec_urut_01  KEG03 rec
+				$cpf_vw_gen_vkeg0303rec_sw = $CL_Q("$SL  rec_urut_01 FROM Citarum.dbo.tb_cpf01_keg03_03_rec WHERE idmain_keg_03='$IDKEG03' order by rec_urut_01 desc ");
+				$cpf_vw_gen_vkeg0303rec_sww = $CL_FAS($cpf_vw_gen_vkeg0303rec_sw);
+				if(empty($cpf_vw_vkeg0303rec_sww['rec_urut_01'])){
+					$cpf_vw_vkeg0303rec_sww_gen = $cpf_vw_gen_vkeg0303rec_sww['rec_urut_01'] + 1;
+					
+				}else{
+					$cpf_vw_vkeg0303rec_sww_gen = $cpf_vw_vkeg0303rec_sww['rec_urut_01'];
 				}
 
 			

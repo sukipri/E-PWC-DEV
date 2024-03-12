@@ -78,10 +78,21 @@
 								#DATA KASUS
 								$cpf_vkeg0203_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg02_03 order by keg_nama_03 asc");
 									while($cpf_vkeg0203_sww = $CL_FAS($cpf_vkeg0203_sw)){
-										echo"<a href='?PG_SA=CPF01_CP02_01_FORM&IDADM01=$cpf_vinap01_sww[InapNoAdmisi]&IDRM01=$cpf_vinap01_sww[PasienNomorRM]&IDKEG03=$cpf_vkeg0203_sww[idmain_keg_03]' class='btn btn-outline-warning btn-sm'><i class='fas fa-download'></i> $cpf_vkeg0203_sww[keg_nama_03]</a>";
+										echo"<a href='?PG_SA=CPF01_CP02_01_FORM&IDADM01=$cpf_vinap01_sww[InapNoAdmisi]&IDRM01=$cpf_vinap01_sww[PasienNomorRM]&IDKEG03=$cpf_vkeg0203_sww[idmain_keg_03]' class='btn btn-outline-danger btn-sm'><i class='fas fa-download'></i> $cpf_vkeg0203_sww[keg_nama_03]</a>";
 										echo"&nbsp";
 									}
 							?>
+							<br><br>
+							<b>-Obsgin-</b> <br>
+							<?PHP 
+								#DATA KASUS
+								$cpf_vkeg0303_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg03_03 order by keg_nama_03 asc");
+									while($cpf_vkeg0303_sww = $CL_FAS($cpf_vkeg0303_sw)){
+										echo"<a href='?PG_SA=CPF01_CP03_01_FORM&IDADM01=$cpf_vinap01_sww[InapNoAdmisi]&IDRM01=$cpf_vinap01_sww[PasienNomorRM]&IDKEG03=$cpf_vkeg0303_sww[idmain_keg_03]' class='btn btn-outline-primary btn-sm'><i class='fas fa-download'></i> $cpf_vkeg0303_sww[keg_nama_03]</a>";
+										echo"&nbsp";
+									}
+							?>
+
 
                     </td>
                   </tr>

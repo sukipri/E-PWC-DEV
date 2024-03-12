@@ -50,11 +50,17 @@
 				 case'CPF01_MD_KEG02_01_IN03':
 					include"E-CPF/CPF01_MD_KEG02_01_IN03.php";
 				 break;
+				 case'CPF01_MD_KEG03_01_IN03':
+					include"E-CPF/CPF01_MD_KEG03_01_IN03.php";
+				 break;
 				 case'CPF01_MD_KEG_01_IN03REC':
 					include"E-CPF/CPF01_MD_KEG_01_IN03REC.php";
 				 break;
 				 case'CPF01_MD_KEG02_01_IN03REC':
 					include"E-CPF/CPF01_MD_KEG02_01_IN03REC.php";
+				 break;
+				 case'CPF01_MD_KEG03_01_IN03REC':
+					include"E-CPF/CPF01_MD_KEG03_01_IN03REC.php";
 				 break;
 				 case'CPF01_MD_KEG_01_IN03REC02':
 					include"E-CPF/CPF01_MD_KEG_01_IN03REC02.php";
@@ -62,17 +68,26 @@
 				 case'CPF01_MD_KEG02_01_IN03REC02':
 					include"E-CPF/CPF01_MD_KEG02_01_IN03REC02.php";
 				 break;
+				 case'CPF01_MD_KEG03_01_IN03REC02':
+					include"E-CPF/CPF01_MD_KEG03_01_IN03REC02.php";
+				 break;
 				 case'CPF01_MD_KEG_01_FORM':
 					include"E-CPF/CPF01_MD_KEG_01_FORM.php";
 				 break;
 				 case'CPF01_MD_KEG02_01_FORM':
 					include"E-CPF/CPF01_MD_KEG02_01_FORM.php";
 				 break;
+				 case'CPF01_MD_KEG03_01_FORM':
+					include"E-CPF/CPF01_MD_KEG03_01_FORM.php";
+				 break;
 				 case'CPF01_MD_KEG02_01_FORM_RWT':
 					include"E-CPF/CPF01_MD_KEG02_01_FORM_RWT.php";
 				 break;
 				 case'CPF01_MD_KEG_01_FORM_RWT':
 					include"E-CPF/CPF01_MD_KEG_01_FORM_RWT.php";
+				 break;
+				 case'CPF01_MD_KEG03_01_FORM_RWT':
+					include"E-CPF/CPF01_MD_KEG03_01_FORM_RWT.php";
 				 break;
 
            }

@@ -1,7 +1,7 @@
 <b>LIST KASUS TERTERA</b>
 <!--  -->
     <table class="table table-sm table-bordered table-striped">
-    <tr class="table-info">
+    <tr class="table-dark">
         <td width="24%">PENYAKIT</td>
         <td></td>
         <td width="20%">##</td>
