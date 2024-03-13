@@ -21,7 +21,7 @@
 				$ep_dept01_sw = $CL_Q("$CL_SL HR_Personnel WHERE Per_Code='$IDEMP02'");
                     $ep_dept01_sww = $CL_FAS($ep_dept01_sw);
 ?>
-<h4><a href="http://182.253.60.178/E-PWC/DFMBL_V3/DFMBL/EPWC_HOME_01.php?NAVI=EPWC_MENU_01_EP&PG_SA=WS-EPWC_EP_APP_JDW_IN" class="btn  btn-warning btn-sm mx-2"><i class="fas fa-angle-double-left"></i>BACK</a> Entri Jadwal</h4>
+<h4><a href="http://103.164.114.138/E-PWC/DFMBL_V3/DFMBL/EPWC_HOME_01.php?NAVI=EPWC_MENU_01_EP&PG_SA=WS-EPWC_EP_APP_JDW_IN" class="btn  btn-danger btn-sm mx-2"><i class="fas fa-angle-double-left"></i>BACK</a> Entri Jadwal</h4>
 <form method="post">
 <div style="max-width:20rem;" class="mx-2">
 <div class="input-group input-group-sm mb-3">
@@ -75,7 +75,7 @@
 						return $outputsf;
 					}
 					
-					$sendsf = curlsf("http://182.253.60.178/E-PWC/BJH12/EP_API/API_EP_TSHIFT_01.php");
+					$sendsf = curlsf("http://103.164.114.138/E-PWC/BJH12/EP_API/API_EP_TSHIFT_01.php");
 					
 					// mengubah JSON menjadi array
 					@$data_shif = json_decode($sendsf, TRUE);

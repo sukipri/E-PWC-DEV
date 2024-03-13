@@ -8,13 +8,13 @@
             $ep_shift_01 = @$_POST['ep_shift_01'];
 
                     #AUTH
-                    $ep_cek_tjadwal01_sw = $CL_Q("$SL bulan from tJadwal WHERE NIK='$IDEMP02' and Bulan='$ep_bulan_01'");
+                    $ep_cek_tjadwal01_sw = $CL_Q("$SL bulan from TJ_Main_Data.dbo.tJadwal WHERE NIK='$IDEMP02' and Bulan='$ep_bulan_01'");
                         $ep_cek_tjadwal01_sww = $CL_NR($ep_cek_tjadwal01_sw);
 
                     #PROCCESSING
                             if($ep_cek_tjadwal01_sww > 0){
 
-                        $ep_save_tjadwal_01 = $CL_Q("$UP TJadwal set $ep_tgl_01='$ep_shift_01' WHERE NIK='$IDEMP02' AND Bulan='$ep_bulan_01'");
+                        $ep_save_tjadwal_01 = $CL_Q("$UP TJ_Main_Data.dbo.TJadwal set $ep_tgl_01='$ep_shift_01' WHERE NIK='$IDEMP02' AND Bulan='$ep_bulan_01'");
 
                         if($ep_save_tjadwal_01){
                             $data_jadwal = array(
@@ -29,7 +29,7 @@
                             );
                         } 
                             }else{
-                    $ep_save_tjadwal_01 = $CL_Q("$IN tJadwal(Bulan,Gustu,NIK,$ep_tgl_01)VALUES('$ep_bulan_01','0','$IDEMP02','$ep_shift_01')");
+                    $ep_save_tjadwal_01 = $CL_Q("$IN TJ_Main_Data.dbo.tJadwal(Bulan,Gustu,NIK,$ep_tgl_01)VALUES('$ep_bulan_01','0','$IDEMP02','$ep_shift_01')");
                 
                     if($ep_save_tjadwal_01){
                         $data_jadwal = array(
@@ -58,7 +58,7 @@
                     
 
                         #PROCCESING
-                        $ep_save_tjadwal_01 = $CL_Q("$IN tJadwal(Bulan,Gustu,NIK)VALUES('$ep_bulan_01_mnl','0','$IDEMP02')");
+                        $ep_save_tjadwal_01 = $CL_Q("$IN TJ_Main_Data.dbo.tJadwal(Bulan,Gustu,NIK)VALUES('$ep_bulan_01_mnl','0','$IDEMP02')");
 
                         if($ep_save_tjadwal_01){
                             header("LOCATION:WS-EPWC_EP_APP_JDW_IN0301_MNL.php?&IDEMP02=$IDEMP02&IDEMP01=$IDEMP01");
@@ -77,7 +77,7 @@
                         $ep_tgl_01 = @$_POST['T'.$ep_conv02_tgl_no];
                         $ep_shift01_01 = @$_POST['ep_shift01_01'.$ep_jdwin_no];
                         #PROCCESING
-                             $ep_save_tjadwal_01 = $CL_Q("$UP TJadwal set $ep_tgl_01='$ep_shift01_01' WHERE NIK='$IDEMP02' AND Bulan='$IDBLN01'");
+                             $ep_save_tjadwal_01 = $CL_Q("$UP TJ_Main_Data.dbo.TJadwal set $ep_tgl_01='$ep_shift01_01' WHERE NIK='$IDEMP02' AND Bulan='$IDBLN01'");
                         $ep_jdwin_no++; }
 
                         if($ep_save_tjadwal_01){

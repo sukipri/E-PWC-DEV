@@ -40,7 +40,7 @@
 						return $outputsf;
 					}
 					
-					$send01 = curl01("http://182.253.60.178/E-PWC/BJH12/EP_API/API_EP_TJADWAL_03.php?IDEMP01=$IDEMP01");
+					$send01 = curl01("http://103.164.114.138/E-PWC/BJH12/EP_API/API_EP_TJADWAL_03.php?IDEMP01=$IDEMP01");
 					
 					// mengubah JSON menjadi array
 					@$data_kry = json_decode($send01, TRUE);
@@ -165,7 +165,7 @@
 						return $outputsf;
 					}
 					
-					$sendsf = curlsf("http://182.253.60.178/E-PWC/BJH12/EP_API/API_EP_TSHIFT_01.php");
+					$sendsf = curlsf("http://103.164.114.138/E-PWC/BJH12/EP_API/API_EP_TSHIFT_01.php");
 					
 					// mengubah JSON menjadi array
 					@$data_shif = json_decode($sendsf, TRUE);

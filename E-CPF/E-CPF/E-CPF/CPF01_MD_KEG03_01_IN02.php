@@ -21,7 +21,7 @@
     #HARI RAWAT
     <input type="text" class="form-control form-control-sm" required name="keg_rawat_02" value="<?PHP echo $cpf_vw03_vkeg02_sww['keg_rawat_02'] ?>" style="max-width:10rem;">
     #URAIAN KEGIATAN
-    <textarea class="form-control" required name="keg_ket_02"><?PHP echo $cpf_vw03_vkeg02_sww['keg_ket_02'] ?></textarea>
+    <textarea class="form-control" required name="keg_ket_02"><?PHP echo $cpf_vw03_vke g02_sww['keg_ket_02'] ?></textarea>
     <br>
     <?PHP if(isset($_GET['UPKEG02'])){ ?>
         <button class="btn btn-warning btn-sm" name="keg03_up_02">UPDATE DATA</button>

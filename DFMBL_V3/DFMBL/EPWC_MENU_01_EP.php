@@ -35,11 +35,11 @@
            <a href="<?PHP echo"?NAVI=EPWC_MENU_01_EP&PG_SA=WS-EPWC_EP_APP_JDW_IN"; ?>" class="mx-2 btn btn-success" style="color:#FFF;"><i class="fas fa-upload"></i>&nbsp;Entri Jadwal</a>
         </li>
             <?PHP } ?>
-         <?PHP if($epwc_vkry01_sww['KaryJbtStruktural']=="01" OR $epwc_vkry01_sww['KaryJbtStruktural']=="02"){ ?>
-         <li  class="nav-link">
-           <a href="<?PHP echo"?NAVI=EPWC_MENU_01_EP&PG_SA=WS-EPWC_EP_APP_JDW_LBR_APP"; ?>" class="mx-2 btn btn-success" style="color:#FFF;"><i class="fas fa-bell-slash"></i>&nbsp;App.Lembur</a>
-        </li>
-        <?PHP } ?>
+         <?PHP #if($epwc_vkry01_sww['KaryJbtStruktural']=="01" OR $epwc_vkry01_sww['KaryJbtStruktural']=="02"){ ?>
+         <!-- <li  class="nav-link">
+           <a href="<?PHP #echo"?NAVI=EPWC_MENU_01_EP&PG_SA=WS-EPWC_EP_APP_JDW_LBR_APP"; ?>" class="mx-2 btn btn-success" style="color:#FFF;"><i class="fas fa-bell-slash"></i>&nbsp;App.Lembur</a>
+        </li> -->
+        <?PHP #} ?>
         <li  class="nav-link">
               <a href="?NAVI=EPWC_MENU_01_EP&PG_SA=#" class="mx-2 btn btn-success" style="color:#FFF;"><i class="fas fa-user-alt-slash"></i>&nbsp;Form Ijin</a>
           </li>
