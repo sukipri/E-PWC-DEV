@@ -139,6 +139,19 @@
                     <td><?PHP echo "Rp ".$nf($epwc_vgajiy01_sww['GajiDiterima']) ?></td>
                 </tr>
             </table>
+			<br><br><br>
+			<!--  -->
+			<table class="table-borderless">
+			<tr>
+			<td>
+				<center>
+				Kabag SDM 
+				<br><br><br><br>
+				<u>Bayu Setiawan, S.Pd</u>
+				</center>
+			</td>
+			</tr>
+			</table>
         </div>
         <script>
 		    window.print();

@@ -48,6 +48,9 @@
                 case'WS-EPWC_EP_DATA_PRESENSI02':
                     include"DFMBL/WS-EPWC_EP_DATA_PRESENSI02.php";
                 break;
+                case'EPWC_EJADWAL_01_IN':
+                    include"DFMBL/EPWC_EJADWAL_01_IN.php";
+                break;
                 #----------PROFILE----------#
                 case'EPWC_PROFIL_01':
                     include"DFMBL/EPWC_PROFIL_01.php";

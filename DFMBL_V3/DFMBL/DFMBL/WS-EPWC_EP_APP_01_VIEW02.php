@@ -41,7 +41,7 @@
             $epwc_sub_view02_vkry01_sw = substr($epwc_view02_vkry01_sww['KaryNomorYakkum'],1);
             $IDEMPUNIT01 = $epwc_sub_view02_vkry01_sw;
 
-            $send = curl("http://182.253.60.178/E-PWC-DEV/BJH12/EP_API/API_EP_SAVE_RECINFO_01_VIEW02.php?IDEMPUNIT01=$IDEMPUNIT01");
+            $send = curl("http://103.164.114.138/E-PWC-DEV/BJH12/EP_API/API_EP_SAVE_RECINFO_01_VIEW02.php?IDEMPUNIT01=$IDEMPUNIT01");
 					
             // mengubah JSON menjadi array
             @$data_ri = json_decode($send, TRUE);

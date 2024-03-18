@@ -1,6 +1,6 @@
 <?PHP 
  
-		$epwc_vkry01_sw02 = $ms_q("$sl KaryNomor,KaryNomorYakkum,KaryNama,KaryJbtStruktural,UnitKode FROM TKaryawan WHERE KaryNomorYakkum='0$IDEMP01'");
+		$epwc_vkry01_sw02 = $ms_q("$sl KaryNomor,KaryNomorYakkum,KaryNama,KaryJbtStruktural,UnitKode FROM Citarum.dbo.TKaryawan WHERE KaryNomorYakkum='0$IDEMP01'");
 			$epwc_vkry01_sww02 = $ms_fas($epwc_vkry01_sw02);
                 #DATA UNIT
                     $epwc_vunit01_sw = $ms_q("$call_sel TUnitPrs WHERE UnitKode='$epwc_vkry01_sww02[UnitKode]'");

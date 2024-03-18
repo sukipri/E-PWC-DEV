@@ -72,11 +72,17 @@
                  case'CPF01_CP02_01_FORM':
 					include"E-CPF/CPF01_CP02_01_FORM.php";
 				 break;
+                 case'CPF01_CP03_01_FORM':
+					include"E-CPF/CPF01_CP03_01_FORM.php";
+				 break;
 				 case'CPF01_CP_01_FORMVIEW':
 					include"E-CPF/CPF01_CP_01_FORMVIEW.php";
 				 break;
                  case'CPF01_CP_01_FORMVIEW02':
 					include"E-CPF/CPF01_CP_01_FORMVIEW02.php";
+				 break;
+                 case'CPF01_CP_01_FORMVIEW03':
+					include"E-CPF/CPF01_CP_01_FORMVIEW03.php";
 				 break;
 				 #REPORT VIEW
 				 case'CPF01_RPT_VW_01_VFORM':
@@ -84,6 +90,9 @@
 				 break;
                  case'CPF01_RPT_VW02_01_VFORM':
 					include"E-CPF/CPF01_RPT_VW02_01_VFORM.php";
+				 break;
+                 case'CPF01_RPT_VW03_01_VFORM':
+					include"E-CPF/CPF01_RPT_VW03_01_VFORM.php";
 				 break;
 
                 //--VIEW--//

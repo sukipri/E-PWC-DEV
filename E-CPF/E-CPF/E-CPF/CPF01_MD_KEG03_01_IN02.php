@@ -21,7 +21,7 @@
     #HARI RAWAT
     <input type="text" class="form-control form-control-sm" required name="keg_rawat_02" value="<?PHP echo $cpf_vw03_vkeg02_sww['keg_rawat_02'] ?>" style="max-width:10rem;">
     #URAIAN KEGIATAN
-    <textarea class="form-control" required name="keg_ket_02"><?PHP echo $cpf_vw03_vke g02_sww['keg_ket_02'] ?></textarea>
+    <textarea class="form-control" required name="keg_ket_02"><?PHP echo $cpf_vw03_vkeg02_sww['keg_ket_02'] ?></textarea>
     <br>
     <?PHP if(isset($_GET['UPKEG02'])){ ?>
         <button class="btn btn-warning btn-sm" name="keg03_up_02">UPDATE DATA</button>
@@ -39,7 +39,7 @@
     $cpf_vkeg01_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg03_01 order by keg_urut_01 asc");
         while($cpf_vkeg01_sww = $CL_FAS($cpf_vkeg01_sw)){
 ?>
-<span class="badge badge-primary"><?PHP echo $cpf_vkeg01_sww['keg_nama_01'] ?></span>
+<span class="badge bg-info"><?PHP echo $cpf_vkeg01_sww['keg_nama_01'] ?></span> 
 <table class="table table-bordered table-sm table-striped">
 <tr class="table-dark">
     <td width="23%">KEGIATAN</td>
@@ -47,13 +47,13 @@
     <td>-</td>
 </tr>
 <?PHP 
-    $cpf_vkeg01_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg03_02 WHERE idmain_keg_01='$cpf_vkeg01_sww[idmain_keg_01]' ");
-            while($cpf_vkeg01_sww = $CL_FAS($cpf_vkeg01_sw)){
+    $cpf_vkeg02_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg03_02 WHERE idmain_keg_01='$cpf_vkeg01_sww[idmain_keg_01]' ");
+            while($cpf_vkeg02_sww = $CL_FAS($cpf_vkeg02_sw)){
 ?>
 <tr>
-    <td><?PHP echo "<a href=?PG_SA=CPF01_MD_KEG03_01&PG_SA_SUB=CPF01_MD_KEG03_01_IN02&IDKEG02=$cpf_vkeg01_sww[idmain_keg_02]&UPKEG02=UPKEG02>". $cpf_vkeg01_sww['keg_nama_02']."</a>" ?></td>
-    <td><?PHP echo $cpf_vkeg01_sww['keg_ket_02'] ?></td>
-    <td><?PHP echo $cpf_vkeg01_sww['keg_rawat_02'] ?></td>
+    <td><?PHP echo "<a href=?PG_SA=CPF01_MD_KEG03_01&PG_SA_SUB=CPF01_MD_KEG03_01_IN02&IDKEG02=$cpf_vkeg02_sww[idmain_keg_02]&UPKEG02=UPKEG02>". $cpf_vkeg02_sww['keg_nama_02']."</a>" ?></td>
+    <td><?PHP echo $cpf_vkeg02_sww['keg_ket_02'] ?></td>
+    <td><?PHP echo $cpf_vkeg02_sww['keg_rawat_02'] ?></td>
 </tr>
 <?PHP } ?>
 </table>

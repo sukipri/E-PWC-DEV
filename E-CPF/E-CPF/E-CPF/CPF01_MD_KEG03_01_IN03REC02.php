@@ -4,10 +4,10 @@
     $cpf_vkeg01_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg03_01 order by keg_nama_01");
         while($cpf_vkeg01_sww = $CL_FAS($cpf_vkeg01_sw)){
 ?>
-<span class="badge badge-primary"><?PHP echo $cpf_vkeg01_sww['keg_nama_01'] ?></span>
+<span class="badge bg-info"><?PHP echo $cpf_vkeg01_sww['keg_nama_01'] ?></span>
 <table class="table table-bordered table-sm table-striped">
 <tr class="table-dark">
-    <td width="23%">KEGIATAN</td>
+    <td width="7%">#</td>
     <td>URAIAN</td>
     <td>-</td>
 </tr>
@@ -16,7 +16,7 @@
      while($cpf_vkeg02_sww = $CL_FAS($cpf_vkeg02_sw)){
 ?>
 <tr>
-    <td><?PHP echo $cpf_vkeg02_sww['keg_nama_02'] ?></td>
+    <td><?PHP #echo $cpf_vkeg02_sww['keg_nama_02'] ?></td>
     <td><?PHP echo $cpf_vkeg02_sww['keg_ket_02'] ?></td>
     <td>
         <?PHP 

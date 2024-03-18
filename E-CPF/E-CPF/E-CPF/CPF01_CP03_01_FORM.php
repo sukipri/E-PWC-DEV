@@ -1,7 +1,7 @@
 <?PHP echo"<h5>NO ADMISI $IDADM01 #FORM CPF $cpf_vw_vkeg0203_sww[keg_nama_03] - Denomerator $cpf_vw_vkeg0203_sww[keg_rawat_03] </h5>"; #TITLE
         
         #DATA VALIDATION
-        $cpf_val_vform01_sw = $CL_Q("$SL idmain_cpf01_form_01,idmain_pasien_01,idmain_inap_01,idmain_keg_03 FROM Citarum.dbo.tb_cpf01_form02_01 WHERE idmain_pasien_01='$IDRM01' AND idmain_inap_01='$IDADM01'AND idmain_keg_03='$IDKEG03'");
+        $cpf_val_vform01_sw = $CL_Q("$SL idmain_cpf01_form_01,idmain_pasien_01,idmain_inap_01,idmain_keg_03 FROM Citarum.dbo.tb_cpf01_form03_01 WHERE idmain_pasien_01='$IDRM01' AND idmain_inap_01='$IDADM01'AND idmain_keg_03='$IDKEG03'");
         $cpf_nr_val_vform01_sww = $CL_NR($cpf_val_vform01_sw);
         if($cpf_nr_val_vform01_sww > 0){
             echo"<span class='badge bg-success'>#SUDAH TERDATA</span>";
@@ -30,30 +30,30 @@
 <form method="post">
 <?PHP 
     $cpf_keg01_no = 1;
-    $cpf_vkeg01_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg02_01 order by keg_urut_01 asc ");
+    $cpf_vkeg01_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg03_01 order by keg_urut_01 asc ");
     $cpf_nr_vkeg01_sw = $CL_NR($cpf_vkeg01_sw);
     #echo $cpf_nr_vkeg01_sw;
         while($cpf_vkeg01_sww = $CL_FAS($cpf_vkeg01_sw)){
 
 ?>
-<span class="badge badge-primary"><?PHP echo $cpf_vkeg01_sww['keg_nama_01'] ?></span>
+<span class="badge bg-primary"><?PHP echo $cpf_vkeg01_sww['keg_nama_01'] ?></span>
 <table class="table table-bordered table-sm table-striped">
 <tr class="table-dark">
     <td width="7%">#</td>
     <td width="23%">KEGIATAN</td>
     <td>URAIAN</td>
-    <td width="25%"><?PHP echo  $cpf_vkeg01_sww['keg_ket_01']; ?></td>
+    <td width="25%"><?PHP #echo  $cpf_vkeg01_sww['keg_ket_01']; ?> HARI</td>
 </tr>
 <?PHP 
     $cpf_cp_no = 1;
-    $cpf_vkeg03rec_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg02_03_rec WHERE idmain_keg_03='$cpf_vw_vkeg0203_sww[idmain_keg_03]' AND idmain_keg_01='$cpf_vkeg01_sww[idmain_keg_01]'"); #MAIN DATA VIEW REC
+    $cpf_vkeg03rec_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg03_03_rec WHERE idmain_keg_03='$cpf_vw03_vkeg03_sww[idmain_keg_03]' AND idmain_keg_01='$cpf_vkeg01_sww[idmain_keg_01]'"); #MAIN DATA VIEW REC
     $cpf_nr02_vkeg03rec_sww = $CL_NR($cpf_vkeg03rec_sw);
     
      while($cpf_vkeg03rec_sww = $CL_FA($cpf_vkeg03rec_sw)){
-        $cpf_vkeg02_sw = $CL_Q("$SL idmain_keg_02,idmain_keg_01,keg_nama_02,keg_ket_02,keg_status_02 FROM Citarum.dbo.tb_cpf01_keg02_02 WHERE idmain_keg_02='$cpf_vkeg03rec_sww[idmain_keg_02]'");#DATA KEG_02
+        $cpf_vkeg02_sw = $CL_Q("$SL idmain_keg_02,idmain_keg_01,keg_nama_02,keg_ket_02,keg_status_02 FROM Citarum.dbo.tb_cpf01_keg03_02 WHERE idmain_keg_02='$cpf_vkeg03rec_sww[idmain_keg_02]'");#DATA KEG_02
             $cpf_vkeg02_sww = $CL_FAS($cpf_vkeg02_sw);
           #DATA FORM 01
-			$cpf_vform01_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_form02_01 WHERE idmain_pasien_01='$IDRM01' AND idmain_inap_01='$IDADM01'AND idmain_keg_03='$IDKEG03' AND idmain_keg_03_rec='$cpf_vkeg03rec_sww[idmain_keg_03_rec]'");
+			$cpf_vform01_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_form03_01 WHERE idmain_pasien_01='$IDRM01' AND idmain_inap_01='$IDADM01'AND idmain_keg_03='$IDKEG03' AND idmain_keg_03_rec='$cpf_vkeg03rec_sww[idmain_keg_03_rec]'");
 			$cpf_vform01_sww = $CL_FAS($cpf_vform01_sw);
             #KALKULASI
             if($cpf_vform01_sww['form_nilai_01']=="0"){
@@ -92,9 +92,9 @@
     </td>
 </tr>
 <?PHP $cpf_cp_no++; } 
-    $cpf_sum_vform01_sw = $CL_Q("$SL SUM(form_nilai_01) as sum_nilai FROM Citarum.dbo.tb_cpf01_form02_01 WHERE idmain_pasien_01='$IDRM01' AND idmain_inap_01='$IDADM01'AND idmain_keg_03='$IDKEG03' AND idmain_keg_01='$cpf_vkeg01_sww[idmain_keg_01]' ");
+    $cpf_sum_vform01_sw = $CL_Q("$SL SUM(form_nilai_01) as sum_nilai FROM Citarum.dbo.tb_cpf01_form03_01 WHERE idmain_pasien_01='$IDRM01' AND idmain_inap_01='$IDADM01'AND idmain_keg_03='$IDKEG03' AND idmain_keg_01='$cpf_vkeg01_sww[idmain_keg_01]' ");
     $cpf_sum_vform01_sww = $CL_FAS($cpf_sum_vform01_sw);
-    $cpf_nr_1_vform01_sw = $CL_Q("$SL SUM(form_nilai02_01) as tot_nilai02 FROM Citarum.dbo.tb_cpf01_form02_01  WHERE form_nilai02_01='1' AND idmain_pasien_01='$IDRM01' AND  idmain_inap_01='$IDADM01' AND idmain_keg_01='$cpf_vkeg01_sww[idmain_keg_01]'");
+    $cpf_nr_1_vform01_sw = $CL_Q("$SL SUM(form_nilai02_01) as tot_nilai02 FROM Citarum.dbo.tb_cpf01_form03_01  WHERE form_nilai02_01='1' AND idmain_pasien_01='$IDRM01' AND  idmain_inap_01='$IDADM01' AND idmain_keg_01='$cpf_vkeg01_sww[idmain_keg_01]'");
         $cpf_nr_1_vform01_sww = $CL_FAS($cpf_nr_1_vform01_sw);
         
         #HIT
@@ -124,7 +124,7 @@
 </table>
 <?PHP  $cpf_keg01_no++;}  
     #DATA NR Jumlah NOMOR
-    $cpf_nr_vkeg03rec_sw = $CL_Q("$SL idmain_keg_03_rec,idmain_keg_03 FROM Citarum.dbo.tb_cpf01_keg02_03_rec WHERE idmain_keg_03='$cpf_vw_vkeg0203_sww[idmain_keg_03]'"); #HIT NUMBER
+    $cpf_nr_vkeg03rec_sw = $CL_Q("$SL idmain_keg_03_rec,idmain_keg_03 FROM Citarum.dbo.tb_cpf01_keg03_03_rec WHERE idmain_keg_03='$cpf_vw03_vkeg03_sww[idmain_keg_03]'"); #HIT NUMBER
    $cpf_nr_vkeg03rec_sww = $CL_NR($cpf_nr_vkeg03rec_sw);
      
      #echo $cpf_nr_vkeg03rec_sww; ?>
@@ -132,22 +132,22 @@
 <?PHP 
      if($cpf_nr_val_vform01_sww > 0){
 ?>
-    <button class="btn btn-warning" name="cp02_up_01"> 1.UPDATE DATA</button>
+    <button class="btn btn-warning" name="cp03_up_01"> 1.UPDATE DATA</button>
 &nbsp
-    <button class="btn btn-dark" name="cp02_upload_01"><i class="fas fa-calculator"></i> 2.KALKULASI DENOM</button>
+    <button class="btn btn-dark" name="cp03_upload_01"><i class="fas fa-calculator"></i> 2.KALKULASI DENOM</button>
 &nbsp
     <?PHP
         #DATA ROW F HEAD
-        $cpf_nr_vfhead01_sw = $CL_Q("$SL idmain_cpf01_form_01_head,idmain_inap_01 FROM Citarum.dbo.tb_cpf01_form02_01_head WHERE idmain_inap_01='$IDADM01'");
+        $cpf_nr_vfhead01_sw = $CL_Q("$SL idmain_cpf01_form_01_head,idmain_inap_01 FROM Citarum.dbo.tb_cpf01_form03_01_head WHERE idmain_inap_01='$IDADM01'");
             $cpf_nr_vfhead01_sww = $CL_NR($cpf_nr_vfhead01_sw);
     ?>
     <?PHP if($cpf_nr_vfhead01_sww > 0 ){ ?>
-    <button class="btn btn-info" name="cp02_tutup02_01"><i class="fas fa-toggle-off"></i> 3.TUTUP FORM</button>
+    <button class="btn btn-info" name="cp03_tutup02_01"><i class="fas fa-toggle-off"></i> 3.TUTUP FORM</button>
     <?PHP }elseif($cpf_nr_vfhead01_sww < 1){ ?>
-        <button class="btn btn-secondary" name="cp02_tutup_01"><i class="fas fa-toggle-off"></i> 3.TUTUP FORM</button>
+        <button class="btn btn-secondary" name="cp03_tutup_01"><i class="fas fa-toggle-off"></i> 3.TUTUP FORM</button>
     <?PHP } ?>
 <?PHP }else{ ?>
-    <button class="btn btn-success" name="cp02_simpan_01"> 1.SIMPAN DATA</button>
+    <button class="btn btn-success" name="cp03_simpan_01"> 1.SIMPAN DATA</button>
 <?PHP } ?>
 </form>
 <br>
@@ -157,4 +157,4 @@
 <br>
 <i>*Jika ada persentase lebih dari 100 ada gagal hitungan tahap I</i>
 <br><br>
-<?PHP include"../LOGIC/PRC/EXE_MIX.php"; ?>
+    <?PHP include"../LOGIC/PRC/EXE_MIX.php"; ?>

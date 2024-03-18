@@ -4,7 +4,7 @@
     $cpf_vkeg01_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg_01 order by keg_nama_01");
         while($cpf_vkeg01_sww = $CL_FAS($cpf_vkeg01_sw)){
 ?>
-<span class="badge badge-primary"><?PHP echo $cpf_vkeg01_sww['keg_nama_01'] ?></span>
+<span class="badge bg-primary"><?PHP echo $cpf_vkeg01_sww['keg_nama_01'] ?></span>
 <table class="table table-bordered table-sm table-striped">
 <tr class="table-dark">
     <td width="23%">KEGIATAN</td>

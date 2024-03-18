@@ -1,6 +1,7 @@
 <?php //error_reporting(0); ?>
 <head>  
-	<link href="https://bootswatch.com/5/sketchy/bootstrap.css" rel="stylesheet" type="text/css" />
+	<!-- <link href="https://bootswatch.com/5/sketchy/bootstrap.css" rel="stylesheet" type="text/css" /> -->
+	<link href="https://pantiwilasa-citarum.co.id/CDN/LITERA.css" rel="stylesheet" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:400,600italic,700italic' rel='stylesheet' type='text/css'>
 	<link href="../sd/LOAD_BODY.css" rel="stylesheet" type="text/css" />
    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>

@@ -8,18 +8,20 @@
 		
 ?>
 <body>
-	<h3>Pencarian Pasien...</h3>
+	<b>[]Pencarian Pasien</b>
+	<br>
     <form method="post">
 	<div class="input-group input-group-sm mb-3" style="max-width:20rem;">
       <input type="text" class="form-control form-control-sm" name="cpf_nomorrm_01" required autocomplete="off" placeholder="Cari Nomor RM.." aria-label="Recipient's username" aria-describedby="basic-addon2">
       <button class="btn btn-primary btn-sm" name="cpf_cari_rm_01">Cari Data</button>
 	</div>
-    	<b>#Riwayat Pemeriksaan</b>
+    	
 			<!-- -->
             <?PHP 
 					if(isset($_POST['cpf_cari_rm_01'])){
 						$cpf_nomorrm_01 = @$SQL_SL($_POST['cpf_nomorrm_01']);
 			?>
+			<b>#Riwayat Pemeriksaan</b>
            <table width="100%" border="0" class="table table-bordered table-striped table-sm">
                   <tr>
                     <td width="10%">#</td>

@@ -14,7 +14,7 @@
 
     <!-- CSS -->
         <!-- <link href="<?php //echo"http://$MY_HOST/ARGONET/LAYOUT/CSS/CSS_SENDSTONE.css"; ?>" rel="stylesheet" type="text/css" /> -->
-        <link href="<?php echo"https://bootswatch.com/5/journal/bootstrap.css"; ?>" rel="stylesheet" type="text/css" />
+        <link href="https://pantiwilasa-citarum.co.id/CDN/LITERA.css" rel="stylesheet" type="text/css" />
         <link href="<?php #echo"http://$MY_HOST/E-PWC/EP/LAYOUT/CSS/NA-MIX-01.css"; ?>" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="<?php echo"http://$MY_HOST/E-PWC/EP/LAYOUT/CSS/bootnavbar.css"; ?> ">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">

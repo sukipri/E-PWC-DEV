@@ -355,6 +355,63 @@
 			$cpf_keg01_no02++; }
 			header("LOCATION:?PG_SA=CPF01_CP02_01_FORM&IDADM01=$IDADM01&IDRM01=$IDRM01&IDKEG03=$IDKEG03");
 		}
+		/*-----------------------------------------------------*/
+
+		#CPF01_CP02_01_FORM -Obsgin-
+		#PROCCESSING INSERT
+		if(isset($_POST['cp03_simpan_01'])){
+			#echo "OKEE";
+			$cpf_cp_02 = 1;
+			while($cpf_cp_02 <= $cpf_nr_vkeg03rec_sww){
+			$rec_angka_01 = @$_POST['rec_angka_01'.$cpf_cp_02];
+			$idmain_kegf_01 = @$_POST['idmain_kegf_01'.$cpf_cp_02];
+			$idmain_keg_03_rec = @$_POST['idmain_keg_03_rec'.$cpf_cp_02];
+			$cpf_save_form_01 = $CL_Q("$IN tb_cpf01_form03_01(idmain_cpf01_form_01,idmain_pasien_01,idmain_inap_01,idmain_keg_03_rec,form_kode_01,form_nilai_01,form_nilai02_01,idmain_keg_03,form_uploader,form_status_01,idmain_keg_01,form_tglinput_01)VALUES('$IDMAIN-$cpf_cp_02','$IDRM01','$IDADM01','$idmain_keg_03_rec','CP$IDKODE-$cpf_cp_02','$rec_angka_01','0','$IDKEG03','$vus01_sww[idmain]','1','$idmain_kegf_01','$DATE_HTML5_SQL $TIME_HTML5')"); #QUERING DATA
+			#echo"$rec_angka_01<br>";
+			#echo"$cpf_cp_02<br>"; 
+			$cpf_cp_02++; } 
+			header("LOCATION:?PG_SA=CPF01_CP03_01_FORM&IDADM01=$IDADM01&IDRM01=$IDRM01&IDKEG03=$IDKEG03");
+			}
+		#PROCCESSING UPDATE form_nilai_01
+		if(isset($_POST['cp03_up_01'])){
+			#echo "OKEE";
+			$cpf_cp_02 = 1;
+			while($cpf_cp_02 <= $cpf_nr_vkeg03rec_sww){
+			$rec_angka_01 = @$_POST['rec_angka_01'.$cpf_cp_02];
+			$idmain_keg_03_rec = @$_POST['idmain_keg_03_rec'.$cpf_cp_02];
+			$idmain_cpf01_form_01 = @$_POST['idmain_cpf01_form_01'.$cpf_cp_02];
+			$cpf_up_form_01 = $CL_Q("$UP tb_cpf01_form03_01 SET form_nilai_01='$rec_angka_01' WHERE idmain_cpf01_form_01='$idmain_cpf01_form_01' "); #QUERING DATA
+			#echo"$rec_angka_01<br>";
+			#echo"$cpf_cp_02<br>"; 
+			$cpf_cp_02++; } 
+			header("LOCATION:?PG_SA=CPF01_CP03_01_FORM&IDADM01=$IDADM01&IDRM01=$IDRM01&IDKEG03=$IDKEG03");
+			}
+		#PROCCESSING UPLOAD form_nilai02_01
+		if(isset($_POST['cp03_upload_01'])){
+			#echo "OKEE";
+			$cpf_cp_02 = 1;
+			while($cpf_cp_02 <= $cpf_nr_vkeg03rec_sww){
+			$idmain_cpf01_form_01 = @$_POST['idmain_cpf01_form_01'.$cpf_cp_02];
+			$form_nilai02_01 = @$_POST['form_nilai02_01'.$cpf_cp_02];
+			$cpf_upload_form_01 = $CL_Q("$UP tb_cpf01_form03_01 SET form_nilai02_01='$form_nilai02_01' WHERE idmain_cpf01_form_01='$idmain_cpf01_form_01' "); #QUERING DATA
+			#echo"$rec_angka_01<br>";
+			#echo"$cpf_cp_02<br>"; 
+			$cpf_cp_02++; } 
+			header("LOCATION:?PG_SA=CPF01_CP03_01_FORM&IDADM01=$IDADM01&IDRM01=$IDRM01&IDKEG03=$IDKEG03");
+			}
+		#PROCCESSING UPDATE form_01_head 
+		if(isset($_POST['cp03_tutup_01'])){
+			$cpf_keg01_no02 = 1;
+			$idmain_keg_01 = @$_POST['idmain_keg_01'];
+			while($cpf_keg01_no02 <=  $cpf_nr_vkeg01_sw){
+				$head_tot_01 = @$_POST['head_tot_01'.$cpf_keg01_no02];
+				$head_tot_02 = @$_POST['head_tot_02'.$cpf_keg01_no02];
+				$idmain_keg_01 = @$_POST['idmain_keg_01'.$cpf_keg01_no02];
+				#echo $head_tot_01."<br>";
+				$cpf_save_form_01_head = $CL_Q("$IN tb_cpf01_form03_01_head(idmain_cpf01_form_01_head,idmain_inap_01,head_kode_01,head_tot_01,head_tot02_02,head_tglinput_01,head_status_01,idmain_keg_03,idmain_keg_01,uploader)VALUES('$IDMAIN-$cpf_keg01_no02','$IDADM01','HD-$IDKODE-$cpf_keg01_no02','$head_tot_01','$head_tot_02','$DATE_HTML5_SQL $TIME_HTML5','1','$IDKEG03','$idmain_keg_01','$vus01_sww[idmain]')");
+			$cpf_keg01_no02++; }
+			header("LOCATION:?PG_SA=CPF01_CP03_01_FORM&IDADM01=$IDADM01&IDRM01=$IDRM01&IDKEG03=$IDKEG03");
+		}
 	/*-----------------------------------------------------*/	
 		
 		#######DELETE QUERY############
@@ -406,6 +463,18 @@
 			
 		if($keg_del_0203rec){
 			header("LOCATION:?PG_SA=CPF01_MD_KEG02_01&PG_SA_SUB=CPF01_MD_KEG02_01_IN03REC02&IDKEG03=$IDKEG03");
+			#include"../LAYOUT/NOTIF/NF_SAVE_SUCCESS.php";
+		}else{
+			include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
+		} }
+/*-----------------------------------------------------*/	
+		#CPF01_MD_KEG02_01_IN03REC02
+		if(isset($_GET['DELKEG0303REC'])){
+			#PROCCESSING
+			$keg_del_0203rec = $CL_Q("$DL FROM Citarum.dbo.tb_cpf01_keg03_03_rec WHERE idmain_keg_03_rec='$IDDELKEG0203REC'");
+			
+		if($keg_del_0203rec){
+			header("LOCATION:?PG_SA=CPF01_MD_KEG03_01&PG_SA_SUB=CPF01_MD_KEG03_01_IN03REC02&IDKEG03=$IDKEG03");
 			#include"../LAYOUT/NOTIF/NF_SAVE_SUCCESS.php";
 		}else{
 			include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";

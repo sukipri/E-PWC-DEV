@@ -11,9 +11,9 @@
 <span class="mx-2"><b>Daftar Approvement Lembur </b></span>
 *Tekan F3 pada keyboard untuk melakukan pencarian
 <br>
-<span class="badge bg-success mx-2">Approved.HO</span> = Status Sudah Terkirim ke Direksi</span>
+<span class="btn btn-info btn-sm mx-2">Approved.HO</span> = Status Sudah Terkirim ke Direksi</span>
 <br>
-<span class="badge bg-success mx-2">Approved.CEO</span> = Status Sudah Disetujui Direksi
+<span class="btn btn-success btn-sm mx-2">Approved.CEO</span> = Status Sudah Disetujui Direksi
 <hr>
 <?PHP 
   #UNIT KODE
@@ -39,14 +39,14 @@
     <?PHP 
     #DATA LEMBUR
         $epwc_ls_vlem01_sw = $CL_Q("SELECT   * FROM Citarum.dbo.TKaryLemburHari WHERE NOT LemburApp='0' AND NOT LemburBulanRng LIKE '%2023%' AND Uploader='$epwc_vkry01_sww[KaryNomor]' AND KaryNomor='$epwc_ls_vkry01_sww[KaryNomor]' order by LemburTanggal asc  ");
+            $pl_nr_ls_vlem01_sww = $CL_NR($pl_ls_vlem01_sw);
             while($epwc_ls_vlem01_sww = $CL_FAS($epwc_ls_vlem01_sw)){
         #DATA TANGGAL LEMBUR
         $epwc_ls02_vlem01_sw = $CL_Q("$SL CONVERT(date,LemburTanggal) as lstgl FROM Citarum.dbo.TKaryLemburHari WHERE KaryNomor='$epwc_ls_vlem01_sww[KaryNomor]' AND LemburTanggal='$epwc_ls_vlem01_sww[LemburTanggal]' order by LemburTanggal desc"); 
                 $epwc_ls02_vlem01_sww = $CL_FAS($epwc_ls02_vlem01_sw);
                 #DATA KARYAWAN
         $epwc_ls02_vkry01_sw = $CL_Q("$SL KaryNomor,KaryNama FROM Citarum.dbo.TKaryawan WHERE KaryNomor='$epwc_ls_vlem01_sww[KaryNomor]'");
-        $epwc_ls02_vkry01_sww = $CL_FAS($epwc_ls02_vkry01_sw);
-               
+        $epwc_ls02_vkry01_sww = $CL_FAS($epwc_ls02_vkry01_sw);       
     ?>
     <tr>
         <td><?PHP 
@@ -64,23 +64,28 @@
         <td>
             <?PHP
                 if($epwc_ls_vlem01_sww['LemburApp']=="1"){ #?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=04181102
-                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLTGL=$epwc_ls02_vlem01_sww[lstgl]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPAPPL01=UPAPPL01&IDKARYDIR=$epwc_vkry01_sww[KaryDir]' class='badge bg-info'>Aprrove?</a>";
+                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLTGL=$epwc_ls02_vlem01_sww[lstgl]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPAPPL01=UPAPPL01&IDKARYDIR=$epwc_vkry01_sww[KaryDir]' class='btn btn-info btn-sm form-control'>Aprrove?</a>";
                     echo"&nbsp";
-                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLTGL=$epwc_ls02_vlem01_sww[lstgl]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPRJL01=UPRJL01&IDKARYDIR=$epwc_vkry01_sww[KaryDir]' class='badge bg-danger'>Reject</a>";
+                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLTGL=$epwc_ls02_vlem01_sww[lstgl]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPRJL01=UPRJL01&IDKARYDIR=$epwc_vkry01_sww[KaryDir]' class='btn btn-warning btn-sm form-control'>Reject</a>";
                     echo"&nbsp";
-                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=04181102' class='badge bg-danger'>Update</a>";
+                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]' class='btn btn-danger btn-sm form-control'>Update</a>";
                 }elseif($epwc_ls_vlem01_sww['LemburApp']=="3"){
-                    echo"<span class='badge bg-dark'>Rejected</span>";
+                    echo"<span class='btn btn-dark btn-sm form-control'>Rejected</span>";
+                    echo"&nbsp";
+                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLTGL=$epwc_ls02_vlem01_sww[lstgl]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPRJL01=UPRJL01&IDKARYDIR=$epwc_vkry01_sww[KaryDir]' class='btn btn-danger btn-sm form-control'>Delete</a>";
                 }elseif($epwc_ls_vlem01_sww['LemburApp']=="2"){
-                    echo"<span class='badge bg-success'>Approved.HO</span>";
+                    echo"<span class='btn btn-info btn-sm form-control'>Approved.HO</span>";
                     echo"<br>";
-                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLTGL=$epwc_ls02_vlem01_sww[lstgl]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPRJL01=UPRJL01&IDKARYDIR=$epwc_vkry01_sww[KaryDir]' class='badge bg-primary'>Reject</a>";
+                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLTGL=$epwc_ls02_vlem01_sww[lstgl]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPRJL01=UPRJL01&IDKARYDIR=$epwc_vkry01_sww[KaryDir]' class='btn btn-primary btn-sm form-control'>Reject</a>";
                     echo"&nbsp";
-                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPLMBR01=UPLMBR01' class='badge bg-danger'>Update</a>";
+                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPLMBR01=UPLMBR01' class='btn btn-danger btn-sm form-control'>Update</a>";
                 }elseif($epwc_ls_vlem01_sww['LemburApp']=="4"){
-                    echo"<span class='badge bg-success'>Approved.CEO</span>";
+                    echo"<span class='btn btn-success btn-sm form-control'>Approved.CEO</span>";
                     echo"&nbsp";
-                }else{echo"<span class='badge bg-dark'>Rejected</span>"; }
+                }else{echo"<span class='btn btn-secondary btn-sm form-control'>Pending</span>"; 
+                    echo"<br>";
+                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPLMBR01=UPLMBR01' class='btn btn-danger btn-sm form-control'>Update</a>";
+                }
             ?>
         </td>
     </tr>

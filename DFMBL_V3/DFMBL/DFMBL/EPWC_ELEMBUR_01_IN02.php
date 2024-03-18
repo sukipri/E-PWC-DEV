@@ -89,7 +89,7 @@
                 echo"<option value=INFAL>CUTI/INFAL</option>";
                 echo"<option value=BIASA>LEMBUR BIASA</option>";
                 echo"<option value=PP>PENYELESAIAN PEKERJAAN</option>";
-                #echo"<option value=DM>DINAS MALAM</option>";
+                echo"<option value=DM>DINAS MALAM</option>";
             }
         ?>
        
@@ -104,6 +104,26 @@
         <input type="text" class="form-control" autocomplete="off" name="elembur_jmljam_01" autocomplete value="<?PHP echo $epwc_vw_vlmbr01_sww['LemburBiasa'] ?>" style="max-width:12rem;">
         <span class="input-group-text" id="basic-addon1">for Halftime ex: 1.5</span>
     </div> 
+    <?PHP 
+        if($epwc_vkry01_sww['KaryNomorYakkum']=="04950490"){ ?>
+        <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Uraian</span>
+            <select name="elembur_ur_01" class="form-control form-control-sm">
+                <option value=""></option>
+                <option value="Admisi Ranap">Admisi Ranap</option>
+                <option value="Pendaftaran Onsite">Pendaftaran Onsite</option>
+            </select>
+            </div>
+
+            <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Alasan</span>
+            <select name="elembur_al_01" class="form-control form-control-sm">
+                <option value=""></option>
+                <option value="Menggantikan Petugas Cuti / Libur">Menggantikan Petugas Cuti / Libur</option>
+                <option value="Menggantikan Petugas Sakit">Menggantikan Petugas Sakit</option>
+            </select>
+            </div>
+     <?PHP }else{ ?>
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Uraian</span>
        <textarea class="form-control" name="elembur_ur_01"><?PHP echo $epwc_vw_vlmbr01_sww['LemburUraian'] ?></textarea>
@@ -113,7 +133,7 @@
         <span class="input-group-text" id="basic-addon1">Alasan</span>
         <textarea class="form-control" name="elembur_al_01"><?PHP echo $epwc_vw_vlmbr01_sww['LemburAlasan'] ?></textarea>
     </div>
-
+        <?PHP } ?>
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Target</span>
         <textarea class="form-control" name="elembur_tar_01">Harus Terselesaikan</textarea>
@@ -163,7 +183,6 @@
         
 		#PROCCESSING INSERT
 		if(isset($_POST['simpan_elembur_in02'])){
-			
 				#JOIN DATA
                     $add_one = "01";
                     $add_bulan = (int)$elembur_bulan_01 + $add_one;
@@ -184,19 +203,17 @@
 			
 			$upahlembur_fix =  $upahlembur_rev02;
 			#PROCCESSING INSERT
-			$save_elembur_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$elembur_thnbln_02','$IDKRY','$elembur_lemtgl_01 00:00:00','100','$elembur_lemtgl_01 00:00:00','$elembur_lemtgl_01 00:00:00','$elembur_jmljam_01','$upahlembur_fix','$elembur_ur_01','$elembur_al_01','$elembur_tar_01','$elembur_has_01','2','$IDMAIN','$epwc_vkry01_sww[KaryDir]','$elembur_jenis_01','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')");
+			$save_elembur_01 = @$CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$elembur_thnbln_02','$IDKRY','$elembur_lemtgl_01 00:00:00','100','$elembur_lemtgl_01 00:00:00','$elembur_lemtgl_01 00:00:00','$elembur_jmljam_01','$upahlembur_fix','$elembur_ur_01','$elembur_al_01','$elembur_tar_01','$elembur_has_01','2','$IDMAIN','$epwc_vkry01_sww[KaryDir]','$elembur_jenis_01','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')");
 			if($save_elembur_01){
-
 				include"../LAYOUT/NOTIF/NF_SAVE_SUCCESS.php";
 				#header("LOCATION:?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02");
 			}else{
-				echo"GAGAL";
+				include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
 			}
 		}
 
 		#PROCCESSING UPDATE
-		if(isset($_POST['update_elembur_in02'])){
-			
+		if(isset($_POST['update_elembur_in02'])){		
 			#JOIN DATA
 				$elembur_thnbln_01 = "$DATE_Y$DATE_m";
 				$elembur_thnbln_02 = "$elembur_lemtgl_0102$elembur_bulan_01";
@@ -216,7 +233,7 @@
 		#$upahlembur_fix =  $hit_new_lem_01;
 		#$save_elembur_01 ="oke";
 		#PROCCESSING QUERY
-		$save_elembur_01 = $CL_Q("$UP  Citarum.dbo.TKaryLemburHari SET LemburBulan='$elembur_thnbln_01',LemburBulanRng='$elembur_thnbln_02',KaryNomor='$IDKRY',LemburTanggal='$elembur_lemtgl_01 00:00:00',LemburPersen='100',LemburJam1='$elembur_lemtgl_01 00:00:00',LemburJam2='$elembur_lemtgl_01 00:00:00',LemburBiasa='$elembur_jmljam_01',LemburBiasaJumlah='$upahlembur_fix',LemburUraian='$elembur_ur_01',LemburAlasan='$elembur_al_01',LemburTarget='$elembur_tar_01',LemburHasil='$elembur_has_01',KaryDir='$epwc_vkry01_sww[KaryDir]',UnitKode='$epwc_vw_vkry01_sww[UnitKode]' WHERE LemburID='$IDLBR01'");
+		$save_elembur_01 = @$CL_Q("$UP  Citarum.dbo.TKaryLemburHari SET LemburBulan='$elembur_thnbln_01',LemburBulanRng='$elembur_thnbln_02',KaryNomor='$IDKRY',LemburTanggal='$elembur_lemtgl_01 00:00:00',LemburPersen='100',LemburJam1='$elembur_lemtgl_01 00:00:00',LemburJam2='$elembur_lemtgl_01 00:00:00',LemburBiasa='$elembur_jmljam_01',LemburBiasaJumlah='$upahlembur_fix',LemburUraian='$elembur_ur_01',LemburAlasan='$elembur_al_01',LemburTarget='$elembur_tar_01',LemburHasil='$elembur_has_01',KaryDir='$epwc_vkry01_sww[KaryDir]',UnitKode='$epwc_vw_vkry01_sww[UnitKode]' WHERE LemburID='$IDLBR01'");
 		if($save_elembur_01){
 			#echo $NF($upahlembur_fix);
 			#echo"SUKSESS $IDMAIN";
@@ -224,7 +241,7 @@
 			#include"../LAYOUT/NOTIF/NF_SAVE_SUCCESS.php";
 			header("LOCATION:?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02");
 		}else{
-			echo"GAGAL";
+			include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
 		}
 	}
     ?>

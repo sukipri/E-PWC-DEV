@@ -38,5 +38,5 @@
   </div>
 <?PHP }else{   ?>
 <meta http-equiv="refresh" content="0; url=<?php echo"EPWC_HOME_01.php"; ?>">
-<?PHP } ob_flush(); ?>
+<?PHP } ob_flush(); echo"<span class='badge bg-dark'>&copy LULABY $DATE_Y </span>"; ?>
 </div>

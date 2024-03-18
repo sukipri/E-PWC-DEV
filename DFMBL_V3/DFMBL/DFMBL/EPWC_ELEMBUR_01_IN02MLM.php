@@ -20,7 +20,8 @@
                                 $add_bulan = (int)$DATE_m + $add_one;
                                 $add_sp =  sprintf("%'.02d\n",$add_bulan);
                                 $elembur_thnbln_01 = "$DATE_Y$add_sp";
-                            
+                                $DATE_input = "$DATE_m-$DATE_Y";
+                                
     ?>
 <span class="mx-2"><b>Daftar Approvement Lembur Malam <?PHP echo "<span class='badge bg-info'>".$epwc_vw_vkry01_sww['KaryNama']."</span>"; ?> </b></span>
 <br>
@@ -237,7 +238,8 @@
                                      <td>
                                      <?PHP 
                                         if($tj_ls_vjdw01_sww['T16']=="M" OR $tj_ls_vjdw01_sww['T16']=="X" OR $tj_ls_vjdw01_sww['T16']=="Y" ){                                     
-                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T16'>";
+                                            echo"<input type='date' required class='form-control form-control' name='txt_tgl_T16' value='16$DATE_input'>";
+                                            #echo "";
                                             $sts_T16 = "ADA";
                                         }else{
                                             $sts_T16 = "NADA";
