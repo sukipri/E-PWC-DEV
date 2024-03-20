@@ -11,8 +11,17 @@
 <span class="mx-2"><b>Daftar Approvement Lembur </b></span>
 <form method="post">
 <div class="input-group mb-3 mx-2">
-  <input type="text" class="form-control" name="txt_nama_01" required>
-  <select name="slc_bulan_01" class="form-control form-control-sm" required>
+  <!-- <input type="text" class="form-control" name="txt_nama_01" required> -->
+  <select name="txt_nama_01" class="form-control form-control-sm" required style="max-width:20rem;">
+        <option value=""></option>
+        <?PHP 
+                $epwc_sl_vkry01_sw = $CL_Q("$SL KaryNomor,KaryNomorYakkum,KaryNama FROM Citarum.dbo.TKaryawan WHERE (KaryStatus='10' OR KaryStatus='22') AND (UnitKode='$epwc_vkry01_sww[UnitKode]' OR UnitKode='$epwc_vkry01_sww[UnitKode01]') order by KaryNama asc");
+                while($epwc_sl_vkry01_sww = $CL_FAS($epwc_sl_vkry01_sw)){
+                    echo"<option value=$epwc_sl_vkry01_sww[KaryNomorYakkum]>$epwc_sl_vkry01_sww[KaryNama]</option>";
+                }
+            ?>
+        </select>
+  <select name="slc_bulan_01" class="form-control form-control-sm" required style="max-width:20rem;">
         <?PHP 
             $epwc_sl_vlb01_sw = $CL_Q("$SL  DISTINCT TOP 12 LemburBulan  FROM Citarum.dbo.TKaryLemburHari order by LemburBulan desc");
             while($epwc_sl_vlb01_sww = $CL_FAS($epwc_sl_vlb01_sw)){
@@ -74,11 +83,11 @@
                 }elseif($epwc_ls_vlem01_sww['LemburApp']=="2"){
                     echo"<span class='badge bg-success'>Approved.HO</span>";
                     echo"&nbsp";
-                    echo"<a href='#' class='badge bg-danger'>Reject</a>";
+                    echo"<a href='#' class='badge bg-secondary'>Pending</a>";
                 }elseif($epwc_ls_vlem01_sww['LemburApp']=="4"){
                     echo"<span class='badge bg-success'>Approved.CEO</span>";
                     echo"&nbsp";
-                }else{echo"<span class='badge bg-dark'>Rejected</span>"; }
+                }elseif($epwc_ls_vlem01_sww['LemburApp']=="31"){echo"<span class='badge bg-secondary'>Pending</span>"; }
             ?>
         </td>
     </tr>
