@@ -1,4 +1,5 @@
 <?PHP 
+    error_reporting(0);
     if(isset($_GET['UPAPPL01'])){ #APPROVED
         $up_lbr_01 = $CL_Q("$UP Citarum.dbo.TKaryLemburHari SET LemburApp='2',KaryDir='$IDKARYDIR' WHERE LemburID='$IDLBR01' ");
         header("LOCATION:?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02");
@@ -42,8 +43,8 @@
             $pl_nr_ls_vlem01_sww = $CL_NR($pl_ls_vlem01_sw);
             while($epwc_ls_vlem01_sww = $CL_FAS($epwc_ls_vlem01_sw)){
         #DATA TANGGAL LEMBUR
-        $epwc_ls02_vlem01_sw = $CL_Q("$SL CONVERT(date,LemburTanggal) as lstgl FROM Citarum.dbo.TKaryLemburHari WHERE KaryNomor='$epwc_ls_vlem01_sww[KaryNomor]' AND LemburTanggal='$epwc_ls_vlem01_sww[LemburTanggal]' order by LemburTanggal desc"); 
-                $epwc_ls02_vlem01_sww = $CL_FAS($epwc_ls02_vlem01_sw);
+        $epwc_ls02_vlem01_sw = @$CL_Q("$SL CONVERT(date,LemburTanggal) as lstgl FROM Citarum.dbo.TKaryLemburHari WHERE KaryNomor='$epwc_ls_vlem01_sww[KaryNomor]' AND LemburTanggal='$epwc_ls_vlem01_sww[LemburTanggal]' order by LemburTanggal desc"); 
+                $epwc_ls02_vlem01_sww = @$CL_FAS($epwc_ls02_vlem01_sw);
                 #DATA KARYAWAN
         $epwc_ls02_vkry01_sw = $CL_Q("$SL KaryNomor,KaryNama FROM Citarum.dbo.TKaryawan WHERE KaryNomor='$epwc_ls_vlem01_sww[KaryNomor]'");
         $epwc_ls02_vkry01_sww = $CL_FAS($epwc_ls02_vkry01_sw);       
@@ -66,7 +67,7 @@
                 if($epwc_ls_vlem01_sww['LemburApp']=="1"){ #?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=04181102
                     echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLTGL=$epwc_ls02_vlem01_sww[lstgl]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPAPPL01=UPAPPL01&IDKARYDIR=$epwc_vkry01_sww[KaryDir]' class='btn btn-info btn-sm form-control'>Aprrove?</a>";
                     echo"&nbsp";
-                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLTGL=$epwc_ls02_vlem01_sww[lstgl]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPRJL01=UPRJL01&IDKARYDIR=$epwc_vkry01_sww[KaryDir]' class='btn btn-warning btn-sm form-control'>Reject</a>";
+                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLTGL=$epwc_ls02_vlem01_sww[lstgl]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPRJL01=UPRJL01&IDKARYDIR=$epwc_vkry01_sww[KaryDir]' class='btn btn-dark btn-sm form-control'>Reject?</a>";
                     echo"&nbsp";
                     echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]' class='btn btn-danger btn-sm form-control'>Update</a>";
                 }elseif($epwc_ls_vlem01_sww['LemburApp']=="3"){
@@ -76,7 +77,7 @@
                 }elseif($epwc_ls_vlem01_sww['LemburApp']=="2"){
                     echo"<span class='btn btn-info btn-sm form-control'>Approved.HO</span>";
                     echo"<br>";
-                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLTGL=$epwc_ls02_vlem01_sww[lstgl]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPRJL01=UPRJL01&IDKARYDIR=$epwc_vkry01_sww[KaryDir]' class='btn btn-primary btn-sm form-control'>Reject</a>";
+                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLTGL=$epwc_ls02_vlem01_sww[lstgl]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPRJL01=UPRJL01&IDKARYDIR=$epwc_vkry01_sww[KaryDir]' class='btn btn-dark btn-sm form-control'>Reject?</a>";
                     echo"&nbsp";
                     echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPLMBR01=UPLMBR01' class='btn btn-danger btn-sm form-control'>Update</a>";
                 }elseif($epwc_ls_vlem01_sww['LemburApp']=="4"){
@@ -85,6 +86,7 @@
                 }else{echo"<span class='btn btn-secondary btn-sm form-control'>Pending</span>"; 
                     echo"<br>";
                     echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPLMBR01=UPLMBR01' class='btn btn-danger btn-sm form-control'>Update</a>";
+                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLTGL=$epwc_ls02_vlem01_sww[lstgl]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPRJL01=UPRJL01&IDKARYDIR=$epwc_vkry01_sww[KaryDir]' class='btn btn-dark btn-sm form-control'>Reject?</a>";
                 }
             ?>
         </td>

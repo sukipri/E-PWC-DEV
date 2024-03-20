@@ -163,8 +163,7 @@
 						<li>Dokter Jaga</li>
 						<?PHP }elseif($vkryy['KaryNoUrut']=="0007"){ ?>
 						<li>Home Care</li>
-						<li>Tunj.Kerja Minimal</li>
-						<?PHP }elseif($vkryy['KaryNoUrut']=="0002" OR $vkryy['KaryNoUrut']=="0003" OR $vkryy['KaryNoUrut']=="0039"){ ?>
+						<?PHP }elseif($vkryy['KaryNoUrut']=="0002" OR $vkryy['KaryNoUrut']=="0003" OR $vkryy['KaryNoUrut']=="0039" OR $vkryy['KaryNoUrut']=="0007"){ ?>
 						<li>Resep</li>
 						<li>Tunj.Kerja Minimal</li>
 						<?PHP }elseif($vkryy['KaryNoUrut']=="0011"){ ?>
@@ -184,8 +183,7 @@
 								echo"<li>Rp.".$nf($epwc_vgajiy01_sww['GajiJagaDokter'])."</li>";
 							}elseif($vkryy['KaryNoUrut']=="0007"){
 								echo"<li>Rp.".$nf($epwc_vgajiy01_sww['GajiHomeCare'])."</li>";
-								echo"<li>Rp.".$nf($epwc_vgajiy01_sww['GajiTunjKinerjaMin'])."</li>";
-							}elseif($vkryy['KaryNoUrut']=="0002" OR $vkryy['KaryNoUrut']=="0003" OR $vkryy['KaryNoUrut']=="0039"){
+							}elseif($vkryy['KaryNoUrut']=="0002" OR $vkryy['KaryNoUrut']=="0003" OR $vkryy['KaryNoUrut']=="0039" OR $vkryy['KaryNoUrut']=="0007"){
 								echo"<li>Rp.".$nf($epwc_vgajiy01_sww['GajiBonusResep'])."</li>";
 								echo"<li>Rp.".$nf($epwc_vgajiy01_sww['GajiTunjKinerjaMin'])."</li>";
 							}elseif($vkryy['KaryNoUrut']=="0011"){

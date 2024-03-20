@@ -100,7 +100,7 @@
                       <td><?PHP echo number_format($pl_ls_vlem01_sww['LemburBiasaJumlah']) ?></td>
                       <td>
                         <?PHP 
-                             if($pl_ls_vlem01_sww['LemburApp']=="1" OR $pl_ls_vlem01_sww['LemburApp']=="2"){
+                             if($pl_ls_vlem01_sww['LemburApp']=="1" OR $pl_ls_vlem01_sww['LemburApp']=="2" OR $pl_ls_vlem01_sww['LemburApp']=="31"){
                                   echo"<a href='#' class='badge bg-info'>Proccessing</a>";
                               }elseif($pl_ls_vlem01_sww['LemburApp']=="3"){
                                   echo"<a href='#' class='badge bg-dark'>Rejected</a>";
@@ -121,7 +121,7 @@
        
           <?PHP 
               #DATA LEMBUR TOTAL
-              $pl_tot_vlem01_sw = $ms_q("$sl SUM(LemburBiasaJumlah) as tot_lem FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01' AND KaryNomor='$pl_ls_vkry01_sww[KaryNomor]'");
+              $pl_tot_vlem01_sw = $ms_q("$sl SUM(LemburBiasaJumlah) as tot_lem FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01' AND KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburApp='4'");
               $pl_tot_vlem01_sww = $ms_fas($pl_tot_vlem01_sw);
               echo number_format($pl_tot_vlem01_sww['tot_lem']);
           ?>
@@ -129,12 +129,12 @@
        </td>
     </tr>
     <?PHP } ?>
-    <tr class="table-info">
-       <td><a href="#" class="btn btn-success btn-sm"><i class="far fa-file-excel"></i> Download Data</button></td>
+    <tr>
+       <td><a href="<?PHP echo"FIN_M_FIN_LEMBUR01_DTL-XLS.php?IDKLP01=$IDKLP01&IDLBULAN01=$IDLBULAN01";  ?>" target="_blank" class="btn btn-success"><i class="far fa-file-excel"></i> Download Data</button></td>
        <td align="right">
           <?PHP 
               #DATA LEMBUR TOTAL
-              $pl_tot02_vlem01_sw = $ms_q("$sl SUM(LemburBiasaJumlah) as tot02_lem FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01' AND UnitKode='$IDKLP01'");
+              $pl_tot02_vlem01_sw = $ms_q("$sl SUM(LemburBiasaJumlah) as tot02_lem FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01' AND UnitKode='$IDKLP01' AND LemburApp='4'");
               $pl_tot02_vlem01_sww = $ms_fas($pl_tot02_vlem01_sw);
               echo number_format($pl_tot02_vlem01_sww['tot02_lem']);
           ?>
