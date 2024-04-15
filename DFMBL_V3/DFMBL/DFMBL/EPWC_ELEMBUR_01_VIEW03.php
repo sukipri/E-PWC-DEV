@@ -14,7 +14,7 @@
 <hr>
 
 <?PHP 
-    $epwc_sl_vblmbr01_sw = $CL_Q("$SL DISTINCT LemburBulanRng FROM TKaryLemburHari WHERE LemburBulanRng LIKE '%$DATE_Y%'");
+    $epwc_sl_vblmbr01_sw = $CL_Q("$SL DISTINCT LemburBulanRng FROM TKaryLemburHari WHERE LemburBulanRng LIKE '%$DATE_Y%' order by LemburBulanRng asc");
         while($epwc_sl_vblmbr01_sww = $CL_FAS($epwc_sl_vblmbr01_sw)){
             echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW03&NAVIBLN01=NAVIBLN01&IDBLMBR01=$epwc_sl_vblmbr01_sww[LemburBulanRng]' class='btn btn-secondary btn-sm mx-2'><i class='fas fa-bookmark'></i> $epwc_sl_vblmbr01_sww[LemburBulanRng]</a>";
         }

@@ -39,7 +39,7 @@
     </tr>
     <?PHP 
     #DATA LEMBUR
-        $epwc_ls_vlem01_sw = $CL_Q("SELECT   * FROM Citarum.dbo.TKaryLemburHari WHERE NOT LemburApp='0' AND NOT LemburBulanRng LIKE '%2023%' AND Uploader='$epwc_vkry01_sww[KaryNomor]' AND KaryNomor='$epwc_ls_vkry01_sww[KaryNomor]' order by LemburTanggal asc  ");
+        $epwc_ls_vlem01_sw = $CL_Q("SELECT   * FROM Citarum.dbo.TKaryLemburHari WHERE NOT LemburApp='0' AND NOT LemburBulanRng LIKE '%2023%' AND Uploader='$epwc_vkry01_sww[KaryNomor]' AND KaryNomor='$epwc_ls_vkry01_sww[KaryNomor]' order by LemburTanggal desc  ");
             $pl_nr_ls_vlem01_sww = $CL_NR($pl_ls_vlem01_sw);
             while($epwc_ls_vlem01_sww = $CL_FAS($epwc_ls_vlem01_sw)){
         #DATA TANGGAL LEMBUR
