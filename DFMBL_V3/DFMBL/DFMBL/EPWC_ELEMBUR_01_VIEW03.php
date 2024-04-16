@@ -51,7 +51,9 @@
     </div>
   </div>
 </nav>
-<br>      
+<br>
+<p class="mx-2">
+Tekan F3 pada keyboard , ketikan "Pending / Approved / Reject" untuk menemukan beberapa form lembur yang akan di eksekusi . bisa juga ketikan kata kunci lain untuk menemukan data yang akan dicari</p>  
         <?PHP       
                     #echo"<hr>";
         $epwc_nr_ls_vlem01_sw = $CL_Q("SELECT  * FROM Citarum.dbo.TKaryLemburHari WHERE   KaryDir='$epwc_vkry01_sww[KaryNomorYakkum]' AND LemburBulanRng='$IDBLMBR01' AND Uploader='$IDKRY'   order by LemburTanggal desc  ");
@@ -110,11 +112,11 @@
         </td>
         <?PHP 
          if($epwc_ls_vlem01_sww['LemburApp']=="3"){
-            echo"<td class=table-dark></td>";
+            echo"<td class=table-dark><span class='badge bg-dark'>Rejected</span></td>";
          }elseif($epwc_ls_vlem01_sww['LemburApp']=="31" OR $epwc_ls_vlem01_sww['LemburApp']=="2"){
-            echo"<td class=table-info></td>";
+            echo"<td class=table-info><span class='badge bg-info'>Pending</span></td>";
         }elseif($epwc_ls_vlem01_sww['LemburApp']=="4"){
-            echo"<td class=table-success></td>";
+            echo"<td class=table-success><span class='badge bg-success'>Approved</span></td>";
          }
         ?>
         
