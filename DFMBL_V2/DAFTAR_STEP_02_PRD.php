@@ -81,7 +81,7 @@
 		  <label for="email">Poli</label>
       <input name="poli" type="text" class="validate" readonly value="<?php echo"$txt_01"; ?>">
 	   <label for="email">No pendaftaran</label>
-         <input name="noreg" type="text" class="validate" readonly value="<?php if($hit_zero > 9999){ echo"PL-$month$ON$hit_zero";}elseif($hit_zero < 9999){ echo"PL-$month$ON$hit_zero";} ?>">
+         <input name="noreg" type="text" class="validate" readonly value="<?php if($hit_zero > 9999){ echo"PL-$ON$month$hit_zero";}elseif($hit_zero < 9999){ echo"PL-$ON$month$hit_zero";} ?>">
               <label for="email">No RM(Rekam Medis)</label>
 		   <input name="rm" type="number" class="validate" required>
 		   
