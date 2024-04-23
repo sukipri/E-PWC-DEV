@@ -184,15 +184,15 @@
 		$elembur_al_01 = @$SQL_SL($_POST['elembur_al_01']);
 		$elembur_tar_01 = @$SQL_SL($_POST['elembur_tar_01']);
 		$elembur_has_01 = @$SQL_SL($_POST['elembur_has_01']);
-        
+        #JOIN DATA
+        $add_one = "01";
+        $add_bulan = (int)$elembur_bulan_01 + $add_one;
+        $add_sp =  sprintf("%'.02d\n",$add_bulan);
+        $elembur_thnbln_01 = "$DATE_Y$add_sp";
+        $elembur_thnbln_02 = "$elembur_lemtgl_0102$elembur_bulan_01";
 		#PROCCESSING INSERT
 		if(isset($_POST['simpan_elembur_in02'])){
-				#JOIN DATA
-                    $add_one = "01";
-                    $add_bulan = (int)$elembur_bulan_01 + $add_one;
-                    $add_sp =  sprintf("%'.02d\n",$add_bulan);
-					$elembur_thnbln_01 = "$DATE_Y$add_sp";
-					$elembur_thnbln_02 = "$elembur_lemtgl_0102$elembur_bulan_01";
+				
 			 /*UpahPerJam = ((JmlUP1 + JmlUP2 + JMLKlg + JmlKinerjaMin + _
     		JmlInsentifRad + JmlInsentifProg + JmlTunjPeralihan) / 173) */
      		   #GajiUP1Yakkum,GajiUP2Yakkum,GajiKlgYakkum,GajiTunjKinerjaMinYakkum,GajiInsentifRadYakkum,GajiInsentifProgYakkum,GajiTunjPeralihanYakkum,KaryStatus,KaryLemburKhusus  
@@ -219,7 +219,7 @@
 		#PROCCESSING UPDATE
 		if(isset($_POST['update_elembur_in02'])){		
 			#JOIN DATA
-				$elembur_thnbln_01 = "$DATE_Y$DATE_m";
+				#$elembur_thnbln_01 = "$DATE_Y$DATE_m";
 				$elembur_thnbln_02 = "$elembur_lemtgl_0102$elembur_bulan_01";
 		 /*UpahPerJam = ((JmlUP1 + JmlUP2 + JMLKlg + JmlKinerjaMin + _
 		JmlInsentifRad + JmlInsentifProg + JmlTunjPeralihan) / 173) */
