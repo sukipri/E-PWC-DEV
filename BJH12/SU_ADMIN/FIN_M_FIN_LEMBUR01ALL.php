@@ -60,7 +60,7 @@
               #DATA LEMBUR BIASA TOTAL
               $pl_tot_vlem01_sw = $ms_q("$sl SUM(LemburBiasaJumlah) as tot_lem FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01' AND KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburApp='4' AND NOT LemburJenis='DM'");
               $pl_tot_vlem01_sww = $ms_fas($pl_tot_vlem01_sw);
-              echo number_format($pl_tot_vlem01_sww['tot_lem']);
+              echo number_format(ceil($pl_tot_vlem01_sww['tot_lem']));
           ?>
          
        </td>

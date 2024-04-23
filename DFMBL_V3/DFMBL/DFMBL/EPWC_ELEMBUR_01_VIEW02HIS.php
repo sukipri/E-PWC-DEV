@@ -22,6 +22,7 @@
             ?>
         </select>
   <select name="slc_bulan_01" class="form-control form-control-sm" required style="max-width:20rem;">
+        <option value="">Bulan Pencarian</option>
         <?PHP 
             $epwc_sl_vlb01_sw = $CL_Q("$SL  DISTINCT TOP 12 LemburBulan  FROM Citarum.dbo.TKaryLemburHari order by LemburBulan desc");
             while($epwc_sl_vlb01_sww = $CL_FAS($epwc_sl_vlb01_sw)){
@@ -46,7 +47,7 @@
 
 <table class="table table-sm table-bordered table-striped mx-2">
     <tr class="">
-        <td width="10%"><b>Bulan</b></td>
+        <td width="10%"><b>Bulan Pencairan</b></td>
         <td><b>Tanggal Lembur</b></td>
         <td><b>Jumlah Jam</b></td>
         <td><b>Uraian</b></td>
@@ -65,7 +66,7 @@
                
     ?>
     <tr>
-        <td><?PHP echo"<a href='#'>$epwc_ls_vlem01_sww[LemburBulanRng]</a>"; ?></td>
+        <td><?PHP echo"<a href='#'>$epwc_ls_vlem01_sww[LemburBulan]</a>"; ?></td>
         <td><?PHP echo"$epwc_ls02_vlem01_sww[lstgl]"; ?></td>
         <td><?PHP echo"$epwc_ls_vlem01_sww[LemburBiasa]"; ?></td>
         <td><?PHP echo"$epwc_ls_vlem01_sww[LemburUraian]"; ?></td>
@@ -81,7 +82,7 @@
                 }elseif($epwc_ls_vlem01_sww['LemburApp']=="3"){
                     echo"<span class='badge bg-dark'>Rejected</span>";
                 }elseif($epwc_ls_vlem01_sww['LemburApp']=="2"){
-                    echo"<span class='badge bg-success'>Approved.HO</span>";
+                    echo"<span class='badge bg-primary'>Approved.HO</span>";
                     echo"&nbsp";
                     echo"<a href='#' class='badge bg-secondary'>Pending</a>";
                 }elseif($epwc_ls_vlem01_sww['LemburApp']=="4"){

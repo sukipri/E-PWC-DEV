@@ -20,6 +20,24 @@
         $no_kry = 1;
       $pl_ls_vkry01_sw = $ms_q("$sl KaryNomor,KaryNama,UnitKode FROM Citarum.dbo.TKaryawan WHERE   (KaryStatus='10' OR KaryStatus='22') order by KaryNama asc");
         while($pl_ls_vkry01_sww = $ms_fas($pl_ls_vkry01_sw)){
+
+             #DATA LEMBUR BIASA TOTAL
+             $pl_tot_vlem01_sw = $ms_q("$sl SUM(LemburBiasaJumlah) as tot_lem FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01' AND KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburApp='4' AND NOT LemburJenis='DM'");
+             $pl_tot_vlem01_sww = $ms_fas($pl_tot_vlem01_sw);
+             
+              #DATA LEMBUR BIASA TOTAL
+              $pl_tot02_vlem01_sw = $ms_q("$sl SUM(LemburBiasaJumlah) as tot_lem02 FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01' AND KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburApp='4' AND LemburJenis='DM'");
+              $pl_tot02_vlem01_sww = $ms_fas($pl_tot02_vlem01_sw);
+
+               #DATA LEMBUR TOTAL
+               $pl_tot03_vlem01_sw = $ms_q("$sl SUM(LemburBiasaJumlah) as tot_lem03 FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01' AND KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburApp='4'");
+               $pl_tot03_vlem01_sww = $ms_fas($pl_tot03_vlem01_sw);
+
+                #PEMBULATAN
+                $pl_tot_vlem01_sww_rd = round($pl_tot_vlem01_sww['tot_lem'],2);
+                $pl_tot_vlem01_sww_rd02 = round($pl_tot02_vlem01_sww['tot_lem02'],2);
+                $pl_tot_vlem01_sww_rd03 = round($pl_tot03_vlem01_sww['tot_lem03'],2);
+               
           
     ?>
     <tr>
@@ -29,20 +47,16 @@
        <td align="right">
        
           <?PHP 
-              #DATA LEMBUR BIASA TOTAL
-              $pl_tot_vlem01_sw = $ms_q("$sl SUM(LemburBiasaJumlah) as tot_lem FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01' AND KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburApp='4' AND NOT LemburJenis='DM'");
-              $pl_tot_vlem01_sww = $ms_fas($pl_tot_vlem01_sw);
-              echo number_format($pl_tot_vlem01_sww['tot_lem'],0,",","."); 
+             
+              echo number_format($pl_tot_vlem01_sww_rd,0,",","."); 
           ?>
          
        </td>
        <td align="right">
        
           <?PHP 
-              #DATA LEMBUR BIASA TOTAL
-              $pl_tot02_vlem01_sw = $ms_q("$sl SUM(LemburBiasaJumlah) as tot_lem FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01' AND KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburApp='4' AND LemburJenis='DM'");
-              $pl_tot02_vlem01_sww = $ms_fas($pl_tot02_vlem01_sw);
-              echo number_format($pl_tot02_vlem01_sww['tot_lem'],0,",",".");
+               
+               echo number_format($pl_tot_vlem01_sww_rd02,0,",","."); 
           ?>
          
        </td>
@@ -50,10 +64,7 @@
        <td align="right">
        
           <?PHP 
-              #DATA LEMBUR TOTAL
-              $pl_tot03_vlem01_sw = $ms_q("$sl SUM(LemburBiasaJumlah) as tot_lem03 FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01' AND KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburApp='4'");
-              $pl_tot03_vlem01_sww = $ms_fas($pl_tot03_vlem01_sw);
-              echo number_format($pl_tot03_vlem01_sww['tot_lem03'],0,",",".");
+            echo number_format($pl_tot_vlem01_sww_rd03,0,",","."); 
           ?>
          
        </td>
@@ -71,14 +82,19 @@
          #DATA LEMBUR TOTAL All
          $pl_totall_vlem01_sw = $ms_q("$sl SUM(LemburBiasaJumlah) as tot_all FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01' AND  LemburApp='4'");
          $pl_totall_vlem01_sww = $ms_fas($pl_totall_vlem01_sw);
+
+         #PEMBULATAN
+           $pl_totall01_vlem01_sww_rd = round($pl_totall01_vlem01_sww['tot_all01'],2);
+           $pl_totall02_vlem01_sww_rd02 = round($pl_totall02_vlem01_sww['tot_all02'],2);
+           $pl_totall_vlem01_sww_rd03 = round($pl_totall_vlem01_sww['tot_all'],2);
          
     ?>
             <tr class="table-dark">
             <td width="3%">-</td>
                 <td width="17%">-</td>
             <td>-</td>
-            <td><?PHP echo number_format($pl_totall01_vlem01_sww['tot_all01'],0,",","."); ?></td>
-            <td><?PHP echo number_format($pl_totall02_vlem01_sww['tot_all02'],0,",","."); ?></td>
-            <td><?PHP echo number_format($pl_totall_vlem01_sww['tot_all'],0,",","."); ?></td>
+            <td><?PHP echo number_format(  $pl_totall01_vlem01_sww_rd,0,",","."); ?></td>
+            <td><?PHP echo number_format( $pl_totall02_vlem01_sww_rd02,0,",","."); ?></td>
+            <td><?PHP echo number_format( $pl_totall_vlem01_sww_rd03,0,",","."); ?></td>
             </tr>
         </table>
