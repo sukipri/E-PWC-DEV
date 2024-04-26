@@ -14,6 +14,8 @@
          @$cpf_cq_vform02_sw = "CPN$DATE_ymd-$cpf_hit_zero_vform02_cq"; 
 
         //--GET VIEW--//
+                $TG01 = @$SQL_SL($_GET['TG01']);
+                $TG02 = @$SQL_SL($_GET['TG02']);
               $IDRM01 = @$SQL_SL($_GET['IDRM01']);
               $IDADM01 = @$SQL_SL($_GET['IDADM01']);
               $IDCFORM01= @$SQL_SL($_GET['IDCFORM01']);

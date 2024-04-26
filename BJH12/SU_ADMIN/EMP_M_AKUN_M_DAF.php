@@ -29,14 +29,11 @@
                        </div>
 				 
 				<?php
-					
 				}else{
 						$ms_q("$in TBUser(idmain,kode,namauser,passuser,akses,password_text)values('$IDMAIN','$kode','$namauser','$passuser','$akses','$pass_text')");
 						//header("location:?HLM=EMP_M&SUB=EMP_M_AKUN_M&SUB_CHILD=EMP_M_AKUN_M_DAF");
 
-					?>
-                    	
-                  
+					?>              
                     <div class="collection">
                  			<a href="#!" class="collection-item active">Berhasil tersimpan</a>
                        </div>

@@ -7,8 +7,8 @@
   <option value=""></option>
   <?PHP 
       $pl_sl_vlbulan01_sw = $ms_q("$sl DISTINCT TOP 14  LemburBulan FROM Citarum.dbo.TKaryLemburHari order by LemburBulan desc");
-      while($pl_sl_vlbulan01_sww  = $ms_fas($pl_sl_vlbulan01_sw)){
-        echo"<option value=$pl_sl_vlbulan01_sww[LemburBulan]>$pl_sl_vlbulan01_sww[LemburBulan]</option>";
+        while($pl_sl_vlbulan01_sww  = $ms_fas($pl_sl_vlbulan01_sw)){
+          echo"<option value=$pl_sl_vlbulan01_sww[LemburBulan]>$pl_sl_vlbulan01_sww[LemburBulan]</option>"; 
       }
 ?>
 </select>
@@ -42,7 +42,8 @@
        <td>Nom.Lembur Biasa</td>
        <td>Nom.Lembur Malam</td>
        <td>Nom.Total</td>
-       <td class="table-warning">Belum Ter-Verif</td>
+       <td>Total Jam</td>
+       <td class="table-warning" width="5%">Belum Ter-Verif</td>
     </tr>
     <?PHP 
         $no_kry = 1;
@@ -62,7 +63,7 @@
               $pl_tot_vlem01_sww = $ms_fas($pl_tot_vlem01_sw);
               echo number_format(ceil($pl_tot_vlem01_sww['tot_lem']));
           ?>
-         
+
        </td>
        <td align="right">
        
@@ -85,7 +86,15 @@
          
        </td>
        <td align="center">
-            <?PHP 
+       <?PHP 
+              #DATA JAM SUB TOTAL
+              $pl_totjam_vlem01_sw = $ms_q("$sl SUM(LemburBiasa) as totjam FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01' AND KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburApp='4'");
+              $pl_totjam_vlem01_sww = $ms_fas($pl_totjam_vlem01_sw);
+              echo $pl_totjam_vlem01_sww['totjam'];
+          ?>
+       </td>
+       <td>
+          <?PHP 
                 $pl_cek_vlem01_sw = $ms_q("$sl LemburBulan,LemburBulanRng,KaryNomor FROM Citarum.dbo.TKaryLemburhari WHERE  KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND (LemburApp='2' OR LemburApp='31') AND LemburBulan='$IDLBULAN01'");
                 $pl_nr_cek_vlem01_sww = $ms_nr($pl_cek_vlem01_sw);
 
@@ -152,5 +161,5 @@
        <td>-</td>
     </tr>
   </table>
-  <a href="<?PHP echo"FIN_M_FIN_LEMBUR01_DTL-XLS02.php?IDLBULAN01=$IDLBULAN01";  ?>" target="_blank" class="btn btn-success"><i class="far fa-file-excel"></i> Download Data</button>
+      <a href="<?PHP echo"FIN_M_FIN_LEMBUR01_DTL-XLS02.php?IDLBULAN01=$IDLBULAN01";  ?>" target="_blank" class="btn btn-success"><i class="far fa-file-excel"></i> Download Data</button>
   <?PHP } ?>

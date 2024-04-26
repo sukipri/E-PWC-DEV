@@ -15,6 +15,7 @@
        <td>Nom.Lembur Biasa</td>
        <td>Nom.Lembur Malam</td>
        <td>Nom.Total</td>
+       <td>Total Jam</td>
     </tr>
     <?PHP 
         $no_kry = 1;
@@ -32,6 +33,12 @@
                #DATA LEMBUR TOTAL
                $pl_tot03_vlem01_sw = $ms_q("$sl SUM(LemburBiasaJumlah) as tot_lem03 FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01' AND KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburApp='4'");
                $pl_tot03_vlem01_sww = $ms_fas($pl_tot03_vlem01_sw);
+
+               #DATA JAM SUB TOTAL
+               $pl_totjam_vlem01_sw = $ms_q("$sl SUM(LemburBiasa) as totjam FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01' AND KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburApp='4'");
+               $pl_totjam_vlem01_sww = $ms_fas($pl_totjam_vlem01_sw);
+               
+  
 
                 #PEMBULATAN
                 $pl_tot_vlem01_sww_rd = round($pl_tot_vlem01_sww['tot_lem'],2);
@@ -68,6 +75,7 @@
           ?>
          
        </td>
+       <td><?PHP echo $pl_totjam_vlem01_sww['totjam']; ?></td>
     </tr>
     <?PHP $no_kry++; } 
 
@@ -83,6 +91,10 @@
          $pl_totall_vlem01_sw = $ms_q("$sl SUM(LemburBiasaJumlah) as tot_all FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01' AND  LemburApp='4'");
          $pl_totall_vlem01_sww = $ms_fas($pl_totall_vlem01_sw);
 
+          #DATA JAM TOTAL
+          $pl_totjamall_vlem01_sw = $ms_q("$sl SUM(LemburBiasa) as totjamall FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01'  AND LemburApp='4'");
+          $pl_totjamall_vlem01_sww = $ms_fas($pl_totjamall_vlem01_sw);
+
          #PEMBULATAN
            $pl_totall01_vlem01_sww_rd = round($pl_totall01_vlem01_sww['tot_all01'],2);
            $pl_totall02_vlem01_sww_rd02 = round($pl_totall02_vlem01_sww['tot_all02'],2);
@@ -96,5 +108,6 @@
             <td><?PHP echo number_format(  $pl_totall01_vlem01_sww_rd,0,",","."); ?></td>
             <td><?PHP echo number_format( $pl_totall02_vlem01_sww_rd02,0,",","."); ?></td>
             <td><?PHP echo number_format( $pl_totall_vlem01_sww_rd03,0,",","."); ?></td>
+            <td><?PHP echo $pl_totjamall_vlem01_sww['totjamall'] ?></td>
             </tr>
         </table>
