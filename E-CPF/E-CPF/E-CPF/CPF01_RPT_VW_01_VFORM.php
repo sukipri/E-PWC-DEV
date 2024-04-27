@@ -3,8 +3,8 @@
 <br>
 <form method="post">
 <div class="input-group mb-3" style="max-width:35rem;">
-  <input type="date" class="form-control form-control-sm" required name="tg01" value="<?PHP echo $DATE_HTML5_SQL ?>" required>
-  <input type="date" class="form-control form-control-sm" required name="tg02" value="<?PHP echo $DATE_HTML5_SQL ?>" required>
+  <input type="date" class="form-control form-control-sm" required name="tg01" value="<?PHP echo $TG01 ?>" required>
+  <input type="date" class="form-control form-control-sm" required name="tg02" value="<?PHP echo $TG02 ?>" required>
   <select name="list01" class="form-control form-control-sm" required>
     <?PHP 
         $cpf_vkeg03_sw = $CL_Q("$SL idmain_keg_03,keg_nama_03 FROM Citarum.dbo.tb_cpf01_keg_03 ");
@@ -27,8 +27,9 @@
         echo "<META HTTP-EQUIV='Refresh' Content='0; URL=?PG_SA=CPF01_RPT_VW_01_VFORM&TG01=$TG01&TG02=$TG02&IDKEG03=$IDKEG03&GET_CPF01=GET_CPF01'>";
     }
 
-    $cpf_vkeg03_sw02 = $CL_Q("$SL idmain_keg_03,keg_nama_03 FROM Citarum.dbo.tb_cpf01_keg_03 WHERE idmain_keg_03='$IDKEG03' ");
+    $cpf_vkeg03_sw02 = $CL_Q("$SL idmain_keg_03,keg_nama_03,keg_rawat_03 FROM Citarum.dbo.tb_cpf01_keg_03 WHERE idmain_keg_03='$IDKEG03' ");
         $cpf_vkeg03_sww02 = $CL_FAS($cpf_vkeg03_sw02);
+        #echo $cpf_vkeg03_sww02['keg_rawat_03']
 ?>
     <?PHP if(isset($_GET['GET_CPF01'])){ ?>
 <?PHP echo"<h5>INTERVAL ".FS_DATE($TG01)." - ". FS_DATE($TG02)." | <b>#CASE $cpf_vkeg03_sww02[keg_nama_03] </b></h5>"; ?>
@@ -44,20 +45,29 @@
     $cpf_totcp_vfhead01_sw = $CL_Q("$SL SUM(head_tot_01) as tot_cp FROM Citarum.dbo.tb_cpf01_form_01_head WHERE head_tglinput_01 BETWEEN '$TG01' AND '$TG02 23:59:00' AND idmain_keg_03='$IDKEG03' ");
     $cpf_totcp_vfhead01_sww = $CL_FAS($cpf_totcp_vfhead01_sw); #DATA SUM TOTAL CP head
     #KALKULASI TOTAL
-    $hit_totcp_vfhead_sw_prc = 1 / 100 * 100;
+    $hit_totcp_vfhead_sw_prc = 100 / 100 * 100;
     $hit_totcp_vfhead_sw_prc02 = $cpf_totcp_vfhead01_sww['tot_cp'] / $cpf_disnr_vfhead01_sww;
     $hit_totcp_vfhead_sw = $hit_totcp_vfhead_sw_prc02 / 5 * $hit_totcp_vfhead_sw_prc;
     
-    #KALKULASI TESTING
+    #KALKULASI NUMERATOR / DENOM 
     $cpf_totkal_ls_vform01_sw = $CL_Q("$SL SUM(form_nilai_01) as totform FROM Citarum.dbo.tb_cpf01_form_01 WHERE form_tglinput_01 BETWEEN '$TG01' AND '$TG02 23:59:00' AND idmain_keg_03='$IDKEG03' ");
     $cpf_totkal_ls_vform01_sww = $CL_FAS($cpf_totkal_ls_vform01_sw);
-
-    $cpf_kal_ls_vform01_sww = $cpf_totkal_ls_vform01_sww['totform'] *
+    $cpf_kaldenum_ls_vform01_sww = $cpf_vkeg03_sww02['keg_rawat_03'] * $cpf_disnr_vfhead01_sww;
+    $cpf_kal_ls_vform01_sww = $cpf_totkal_ls_vform01_sww['totform'] / $cpf_kaldenum_ls_vform01_sww;
+    $cpf_kal02_ls_vform01_sww = $cpf_kal_ls_vform01_sww * 100;
+    #echo ceil($cpf_kal02_ls_vform01_sww);
     
 ?>
     <h4>
         <?PHP 
-            echo "Total CP  = ".$cpf_disnr_vfhead01_sww." FORM  <span class='badge bg-info'>".ceil($hit_totcp_vfhead_sw) ."% </span>";
+            echo "Total CP  = ".$cpf_disnr_vfhead01_sww."";
+            echo"<br>";
+            #echo "N/D * 100  = ".$cpf_totkal_ls_vform01_sww['totform']." : ".$cpf_kaldenum_ls_vform01_sww."<span class='badge bg-info'>".ceil($cpf_kal02_ls_vform01_sww)."%</span>";
+            echo "Numerator = ".$cpf_totkal_ls_vform01_sww['totform'];
+            echo"<br>";
+            echo "Denom = ".$cpf_kaldenum_ls_vform01_sww;
+            echo"<hr>";
+            echo"<span class='badge bg-info'>".ceil($cpf_kal02_ls_vform01_sww)."%</span>";
             echo"<br>";
             #DATA KAL FORM HEAD
         $cpf_lskal_vfhead01_sw = $CL_Q("$SL DISTINCT idmain_keg_01  FROM Citarum.dbo.tb_cpf01_form_01_head WHERE head_tglinput_01 BETWEEN '$TG01' AND '$TG02 23:59:00' AND idmain_keg_03='$IDKEG03' ");
@@ -72,6 +82,10 @@
             $cpf_htot_prc = 1 / 100 * 100;
             $cpf_htot_vcp01_sw =  $cpf_sum_vfhead01_sww['sum_tot01'] /  $cpf_disnr_vfhead01_sww *   $cpf_htot_prc;
               #echo $cpf_lskal_vkeg01_sww['keg_nama_01']." <span class='badge bg-success'> ".ceil($cpf_htot_vcp01_sw)."%</span>";
+
+            #KALKULASI Numerator / Denom Per Sub kasus
+
+            /*
             if($cpf_htot_vcp01_sw > 85){
                 echo $cpf_lskal_vkeg01_sww['keg_nama_01']." <span class='badge bg-success'> ".ceil($cpf_htot_vcp01_sw)."%</span>";
             echo"<br>";
@@ -81,7 +95,7 @@
              }elseif($cpf_htot_vcp01_sw > 0){
             echo $cpf_lskal_vkeg01_sww['keg_nama_01']." <span class='badge bg-danger'> ".ceil($cpf_htot_vcp01_sw)."%</span>";
             echo"<br>";
-            }
+            } */
         }
          ?>
 
