@@ -298,6 +298,15 @@
 			$cpf_keg01_no02++; }
 			header("LOCATION:?PG_SA=CPF01_CP_01_FORM&IDADM01=$IDADM01&IDRM01=$IDRM01&IDKEG03=$IDKEG03");
 		}
+		#PROCCESSING INSERT form_01_head_persen 
+		if(isset($_POST['cp_tutup02_01'])){
+			$cpf_save_form_01_head_persen = $CL_Q("$IN  Citarum.dbo.tb_cpf01_form_01_head_persen(idmain_formp_01,idmain_inap_01,formp_tot_01)VALUES('$IDMAIN','$IDADM01','$cpf_hit_per_vformh01_sw')");
+			if($cpf_save_form_01_head_persen){
+				header("LOCATION:?PG_SA=CPF01_CP_01_FORM&IDADM01=$IDADM01&IDRM01=$IDRM01&IDKEG03=$IDKEG03");
+			}else{
+				include"../LAYOUT/NOTIF/NF_FAILED.php";
+			}
+		}
 /*-----------------------------------------------------*/
 
 		#CPF01_CP02_01_FORM -Bedah-
