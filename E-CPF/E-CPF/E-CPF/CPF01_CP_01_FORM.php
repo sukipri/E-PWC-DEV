@@ -110,7 +110,9 @@
             $cpf_hit_penj_02 =  100 - $cpf_hit_penj_01;
 
         #HIT Total Persentasi form
-                 $cpf_hit_per_vformh01_sw =  $cpf_sum_vform01_sww['tot_persen'] / 5;
+                 $cpf_hit_per_vformh01_swcount =  $cpf_sum_vform01_sww['tot_persen'] / 5;
+                 $cpf_hit_per_vformh01_sw = ceil($cpf_hit_per_vformh01_swcount);
+
                  
 
     
@@ -140,6 +142,15 @@
      #echo $cpf_nr_vkeg03rec_sww; ?>
 <br>
 <?PHP 
+    //CONDITION JIKA PERSENTASE AKHIR SUDAH TERUPLOAD
+        $cpf_cek_vformp01_sw = $CL_Q("$SL idmain_formp_01 FROM Citarum.dbo.tb_cpf01_form_01_head_persen WHERE idmain_inap_01='$IDADM01'");
+        $cpf_cek_vformp01_sww = $CL_FAS($cpf_cek_vformp01_sw);
+        $cpf_nr_cek_vformp01_sww = $CL_NR($cpf_cek_vformp01_sw);
+        #PENGKONDISIAN PERSENTASE TOTAL
+        if($cpf_nr_cek_vformp01_sww > 0){
+            echo"<button class='btn btn-success' name='###'><i class='fas fa-toggle-off'></i> <b>Selesai</button>";
+        }elseif($cpf_nr_cek_vformp01_sww <= 0){
+        #--------------//
      if($cpf_nr_val_vform01_sww > 0){
 
     echo"<button class='btn btn-warning' name='cp_up_01'> 1.UPDATE DATA</button>";
@@ -152,13 +163,15 @@
             $cpf_nr_vfhead01_sww = $CL_NR($cpf_nr_vfhead01_sw);   
 
     if($cpf_nr_vfhead01_sww > 0 ){ 
-    echo"<button class='btn btn-info' name='cp_tutup02_01'><i class='fas fa-toggle-off'></i> <b>$cpf_hit_per_vformh01_sw.</b>% KIRIM HASIL?</button>";
+    echo"<button class='btn btn-info' name='cp_tutup02_01'><i class='fas fa-toggle-off'></i> <b>$cpf_hit_per_vformh01_sw</b>% KIRIM HASIL?</button>";
  }elseif($cpf_nr_vfhead01_sww < 1){ 
         echo"<button class='btn btn-secondary' name='cp_tutup_01'><i class='fas fa-toggle-off'></i> 3.TUTUP FORM</button>";
         } 
     }else{ 
         echo"<button class='btn btn-success' name='cp_simpan_01'> 1.SIMPAN DATA</button>";
     } 
+    #-----------//
+}
     ?>
 </form>
 <br>
