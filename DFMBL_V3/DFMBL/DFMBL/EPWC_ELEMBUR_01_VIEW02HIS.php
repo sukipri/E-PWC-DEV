@@ -17,7 +17,7 @@
         <?PHP 
                 $epwc_sl_vkry01_sw = $CL_Q("$SL KaryNomor,KaryNomorYakkum,KaryNama FROM Citarum.dbo.TKaryawan WHERE (KaryStatus='10' OR KaryStatus='22') AND (UnitKode='$epwc_vkry01_sww[UnitKode]' OR UnitKode='$epwc_vkry01_sww[UnitKode01]') order by KaryNama asc");
                 while($epwc_sl_vkry01_sww = $CL_FAS($epwc_sl_vkry01_sw)){
-                    echo"<option value=$epwc_sl_vkry01_sww[KaryNomorYakkum]>$epwc_sl_vkry01_sww[KaryNama]</option>";
+                    echo"<option value=$epwc_sl_vkry01_sww[KaryNomor]>$epwc_sl_vkry01_sww[KaryNama]</option>";
                 }
             ?>
         </select>
@@ -74,21 +74,14 @@
         <td><?PHP echo"$epwc_ls_vlem01_sww[LemburTarget]"; ?></td>
         <td><?PHP echo"$epwc_ls_vlem01_sww[LemburHasil]"; ?></td>
         <td>
-            <?PHP
-                if($epwc_ls_vlem01_sww['LemburApp']=="1"){
-                    echo"<a href='#' class='badge bg-info'>Aprrove?</a>";
-                    echo"&nbsp";
-                    echo"<a href='#' class='badge bg-danger'>Reject</a>";
+        <?PHP
+                if($epwc_ls_vlem01_sww['LemburApp']=="1" OR $epwc_ls_vlem01_sww['LemburApp']=="2" OR $epwc_ls_vlem01_sww['LemburApp']=="31"){
+                    echo"<a href='#' class='badge bg-info'>Proccessing</a>";
                 }elseif($epwc_ls_vlem01_sww['LemburApp']=="3"){
-                    echo"<span class='badge bg-dark'>Rejected</span>";
-                }elseif($epwc_ls_vlem01_sww['LemburApp']=="2"){
-                    echo"<span class='badge bg-primary'>Approved.HO</span>";
-                    echo"&nbsp";
-                    echo"<a href='#' class='badge bg-secondary'>Pending</a>";
+                    echo"<a href='#' class='badge bg-dark'>Rejected</a>";
                 }elseif($epwc_ls_vlem01_sww['LemburApp']=="4"){
-                    echo"<span class='badge bg-success'>Approved.CEO</span>";
-                    echo"&nbsp";
-                }elseif($epwc_ls_vlem01_sww['LemburApp']=="31"){echo"<span class='badge bg-secondary'>Pending</span>"; }
+                    echo"<a href='#' class='badge bg-success'>Approved.CEO</a>";
+                }
             ?>
         </td>
     </tr>
