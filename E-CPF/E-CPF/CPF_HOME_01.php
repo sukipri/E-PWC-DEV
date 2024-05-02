@@ -27,7 +27,7 @@
 		</div>
 		<div style="padding-top:7%"></div>
 		<hr>
-		<span class="mx-2"><?PHP echo"$DATE_Y RS Panti Wilasa Citarum"; ?> &copy LULABY</span>
+		<span class="badge bg-dark mx-2"><?PHP echo"$DATE_Y RS Panti Wilasa Citarum"; ?> &copy LULABY</span>
 		
 
 </body>

@@ -86,7 +86,8 @@
 				 break;
 				 #REPORT VIEW
 				 case'CPF01_RPT_VW_01_VFORM':
-					include"E-CPF/CPF01_RPT_VW_01_VFORM.php";
+					include"E-CPF/CPF01_RPT_VW_01_VFORMNEW.php";
+                    #include"E-CPF/CPF01_RPT_VW_01_VFORM.php";
 				 break;
                  case'CPF01_RPT_VW02_01_VFORM':
 					include"E-CPF/CPF01_RPT_VW02_01_VFORM.php";

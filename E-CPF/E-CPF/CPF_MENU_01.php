@@ -26,7 +26,7 @@
       <a href="?PG_SA=CPF01_MD_KEG02_01" class="dropdown-item"><i class="fas fa-database"></i> MASTER DATA *Bedah</a>
       <a href="?PG_SA=CPF01_MD_KEG03_01" class="dropdown-item"><i class="fas fa-database"></i> MASTER DATA *OBSGIN</a>
       <a href="?PG_SA=CPF01_RPT_VW_01_VFORM" class="dropdown-item"><i class="fas fa-file-alt"></i> REPORTING *non bedah</a>
-      <a href="?PG_SA=CPF01_RPT_VW02_01_VFORM" class="dropdown-item"><i class="fas fa-file-alt"></i> REPORTING *bedah</a>
+      <!-- <a href="?PG_SA=CPF01_RPT_VW02_01_VFORM" class="dropdown-item"><i class="fas fa-file-alt"></i> REPORTING *bedah</a> -->
       <a href="?PG_SA=CPF01_RPT_VW03_01_VFORM" class="dropdown-item"><i class="fas fa-file-alt"></i> REPORTING *Obsgin</a>
           </div>
         </li>
