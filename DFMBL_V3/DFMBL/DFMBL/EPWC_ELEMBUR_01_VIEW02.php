@@ -27,7 +27,7 @@
 
 <table class="table table-sm table-bordered table-striped mx-2">
     <tr class="">
-        <td width="10%"><b>Bulan</b></td>
+        <td width="10%"><b>Bulan Lembur</b></td>
         <td>Nama</td>
         <td><b>Tanggal Lembur</b></td>
         <td><b>Jumlah Jam</b></td>

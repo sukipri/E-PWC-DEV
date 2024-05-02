@@ -1,4 +1,5 @@
 <?PHP 
+    error_reporting(0);
         #GENERATE UPLOADER
         if($epwc_vkry01_sww['UnitKode']=="95"){
             $IDUPLOADER = "04161031";
@@ -16,7 +17,7 @@
 <br>
 <form method="post">
     <?PHP 
-        #echo "$epwc_vw_vkry01_sww[GajiUP1Yakkum]";
+        
     ?>
     
 <div class="card border-primary mb-3 mx-2" style="max-width: 50rem;">
@@ -59,8 +60,8 @@
         
     </select>
     <input type="number" class="form-control" name="elembur_lemtgl_0102" required placeholder="Tahun..." value="<?PHP echo $DATE_Y; ?>">
-    <input type="time" class="form-control" name="elembur_tgljam1_01" required  value="">
-    <input type="time" class="form-control" name="elembur_tgljam2_01" required  value="">
+    <input type="time" class="form-control" name="elembur_tgljam1_01" required  value="<?PHP echo $epwc_vw_vlmbr01_sww['LemburTgljam1'] ?>">
+    <input type="time" class="form-control" name="elembur_tgljam2_01" required  value="<?PHP echo $epwc_vw_vlmbr01_sww['LemburTgljam2'] ?>">
     </div>
 
      <!--  -->
@@ -105,11 +106,11 @@
     <br>
     Jika <span class="badge bg-primary">Dinas Malam</span> Silahkan sesuaikan dengan jadwal masuk
     <br><br>
-    <div class="input-group mb-3">
+    <!-- <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Jumlah Jam</span>
-        <input type="text" class="form-control" autocomplete="off" name="elembur_jmljam_01" autocomplete value="<?PHP echo $epwc_vw_vlmbr01_sww['LemburBiasa'] ?>" style="max-width:12rem;">
+        <input type="text" class="form-control" autocomplete="off" name="elembur_jmljam_01" autocomplete value="<?PHP #echo $epwc_vw_vlmbr01_sww['LemburBiasa'] ?>" style="max-width:12rem;">
         <span class="input-group-text" id="basic-addon1">for Halftime ex: 1.5</span>
-    </div> 
+    </div>  -->
     <?PHP 
         if($epwc_vkry01_sww['KaryNomorYakkum']=="04950490"){ ?>
         <div class="input-group mb-3">
@@ -181,13 +182,27 @@
 		$elembur_hittgl_01 = "$elembur_lemtgl_0102-$elembur_bulan_01-$elembur_lemtgl_0101";
 		$elembur_lemtgl_01 = "$elembur_hittgl_01";
 		$elembur_jenis_01 = @$SQL_SL($_POST['elembur_jenis_01']);
-		$elembur_jmljam_01 = @$SQL_SL($_POST['elembur_jmljam_01']);
+		#$elembur_jmljam_01 = @$SQL_SL($_POST['elembur_jmljam_01']);
 		$elembur_ur_01 = @$SQL_SL($_POST['elembur_ur_01']);
 		$elembur_al_01 = @$SQL_SL($_POST['elembur_al_01']);
 		$elembur_tar_01 = @$SQL_SL($_POST['elembur_tar_01']);
 		$elembur_has_01 = @$SQL_SL($_POST['elembur_has_01']);
         $elembur_tgljam1_01 = @$SQL_SL($_POST['elembur_tgljam1_01']);
         $elembur_tgljam2_01 = @$SQL_SL($_POST['elembur_tgljam2_01']);
+        #KONVERSI DATA
+        $datetime1 = new DateTime("$elembur_lemtgl_01  $elembur_tgljam1_01");
+        $datetime2 = new DateTime("$elembur_lemtgl_01 $elembur_tgljam2_01");
+        $interval = $datetime1->diff($datetime2); 
+        $elembur_ls_jmljam_01 = $interval->format('%h'); 
+        $elembur_ls_jmljam_02 = $interval->format('%i'); 
+        if($elembur_ls_jmljam_02 < 10){
+            $elembur_rsl_jmljam_02 =  $elembur_ls_jmljam_01;
+        }elseif($elembur_ls_jmljam_02 < 29){
+            $elembur_rsl_jmljam_02 =  $elembur_ls_jmljam_01.".3";
+        }elseif($elembur_ls_jmljam_02 < 58){
+            $elembur_rsl_jmljam_02 =  $elembur_ls_jmljam_01.".5";
+        }
+        $elembur_jmljam_01 = $elembur_rsl_jmljam_02;
         #JOIN DATA
         $add_one = "01";
         $add_bulan = (int)$elembur_bulan_01 + $add_one;
@@ -214,6 +229,7 @@
 			$save_elembur_01 = @$CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode,LemburTglInput,LemburTgljam1,LemburTgljam2)VALUES('$elembur_thnbln_01','$elembur_thnbln_02','$IDKRY','$elembur_lemtgl_01 00:00:00','100','$elembur_lemtgl_01 00:00:00','$elembur_lemtgl_01 00:00:00','$elembur_jmljam_01','$upahlembur_fix','$elembur_ur_01','$elembur_al_01','$elembur_tar_01','$elembur_has_01','2','$IDMAIN','$epwc_vkry01_sww[KaryDir]','$elembur_jenis_01','$IDUPLOADER','$epwc_vw_vkry01_sww[UnitKode]','$DATE_HTML5_SQL','$elembur_tgljam1_01','$elembur_tgljam2_01')");
 			if($save_elembur_01){
 				include"../LAYOUT/NOTIF/NF_SAVE_SUCCESS.php";
+                #echo $interval->format('%h')." Hours ".$interval->format('%i')." Minutes";
 				#header("LOCATION:?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02");
 			}else{
 				include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
