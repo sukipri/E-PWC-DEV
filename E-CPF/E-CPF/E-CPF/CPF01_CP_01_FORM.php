@@ -175,7 +175,7 @@
     ?>
 </form>
 <br>
-<span class="badge bg-success">1.SIMPAN DATA</span> = Melakukan penyimpanan record baru / form baru |  <span class="badge bg-warning">1.UPDATE DATA</span> = Melakukan Update kolom untuk Hari Rawat | <span class="badge bg-dark">KALKULASI DENOM</span> = Kalkulasi Nilai Denomerator per Penunjang | <span class="badge bg-secondary">Tutup Form</span> = Dilakukan ketika semua terkalkulasi
+<span class="badge bg-success">1.SIMPAN DATA</span> = Melakukan penyimpanan record baru / form baru |  <span class="badge bg-warning">1.UPDATE DATA</span> = Melakukan Update kolom untuk Hari Rawat | <span class="badge bg-dark">KALKULASI DENOM</span> = Kalkulasi Nilai Denomerator per Penunjang | <span class="badge bg-secondary">Tutup Form</span> = Dilakukan ketika semua terkalkulasi | <span class="badge bg-info">KIRIM HASIL ?</span> = Klik untuk mengirimkan hasil ke database
 <br>
 <i>*Lakukan Sesuai Urutan , cek data terlebih dahulu semebelum melakukan penutupan form</i>
 <br>

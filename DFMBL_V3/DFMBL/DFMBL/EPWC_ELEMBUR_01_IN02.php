@@ -19,7 +19,7 @@
         #echo "$epwc_vw_vkry01_sww[GajiUP1Yakkum]";
     ?>
     
-<div class="card border-primary mb-3 mx-2" style="max-width: 35rem;">
+<div class="card border-primary mb-3 mx-2" style="max-width: 50rem;">
   <div class="card-header">FORM LEMBUR</div>
   <div class="card-body">
    <!--  -->
@@ -59,13 +59,15 @@
         
     </select>
     <input type="number" class="form-control" name="elembur_lemtgl_0102" required placeholder="Tahun..." value="<?PHP echo $DATE_Y; ?>">
+    <input type="time" class="form-control" name="elembur_tgljam1_01" required  value="">
+    <input type="time" class="form-control" name="elembur_tgljam2_01" required  value="">
     </div>
 
      <!--  -->
    <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Jenis Lembur</span>
         <!-- <input type="number" class="form-control" name="elembur_lemtgl_01" required> -->
-        <select name="elembur_jenis_01" class="form-control" required>
+        <select name="elembur_jenis_01" class="form-control" required style="max-width:17rem;">
        
         <?PHP  
             if($epwc_vw_vlmbr01_sww['LemburJenis']=="INFAL"){
@@ -184,6 +186,8 @@
 		$elembur_al_01 = @$SQL_SL($_POST['elembur_al_01']);
 		$elembur_tar_01 = @$SQL_SL($_POST['elembur_tar_01']);
 		$elembur_has_01 = @$SQL_SL($_POST['elembur_has_01']);
+        $elembur_tgljam1_01 = @$SQL_SL($_POST['elembur_tgljam1_01']);
+        $elembur_tgljam2_01 = @$SQL_SL($_POST['elembur_tgljam2_01']);
         #JOIN DATA
         $add_one = "01";
         $add_bulan = (int)$elembur_bulan_01 + $add_one;
@@ -207,7 +211,7 @@
 			
 			$upahlembur_fix =  $upahlembur_rev02;
 			#PROCCESSING INSERT
-			$save_elembur_01 = @$CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$elembur_thnbln_02','$IDKRY','$elembur_lemtgl_01 00:00:00','100','$elembur_lemtgl_01 00:00:00','$elembur_lemtgl_01 00:00:00','$elembur_jmljam_01','$upahlembur_fix','$elembur_ur_01','$elembur_al_01','$elembur_tar_01','$elembur_has_01','2','$IDMAIN','$epwc_vkry01_sww[KaryDir]','$elembur_jenis_01','$IDUPLOADER','$epwc_vw_vkry01_sww[UnitKode]')");
+			$save_elembur_01 = @$CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode,LemburTglInput,LemburTgljam1,LemburTgljam2)VALUES('$elembur_thnbln_01','$elembur_thnbln_02','$IDKRY','$elembur_lemtgl_01 00:00:00','100','$elembur_lemtgl_01 00:00:00','$elembur_lemtgl_01 00:00:00','$elembur_jmljam_01','$upahlembur_fix','$elembur_ur_01','$elembur_al_01','$elembur_tar_01','$elembur_has_01','2','$IDMAIN','$epwc_vkry01_sww[KaryDir]','$elembur_jenis_01','$IDUPLOADER','$epwc_vw_vkry01_sww[UnitKode]','$DATE_HTML5_SQL','$elembur_tgljam1_01','$elembur_tgljam2_01')");
 			if($save_elembur_01){
 				include"../LAYOUT/NOTIF/NF_SAVE_SUCCESS.php";
 				#header("LOCATION:?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02");

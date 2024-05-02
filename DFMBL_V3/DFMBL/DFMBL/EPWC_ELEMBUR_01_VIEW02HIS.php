@@ -66,7 +66,7 @@
                
     ?>
     <tr>
-        <td><?PHP echo"<a href='#'>$epwc_ls_vlem01_sww[LemburBulan]</a>"; ?></td>
+        <td><?PHP echo"<a href='#'>$epwc_ls_vlem01_sww[LemburBulan]</a><br><b>$epwc_ls_vlem01_sww[LemburJenis]</b>"; ?></td>
         <td><?PHP echo"$epwc_ls02_vlem01_sww[lstgl]"; ?></td>
         <td><?PHP echo"$epwc_ls_vlem01_sww[LemburBiasa]"; ?></td>
         <td><?PHP echo"$epwc_ls_vlem01_sww[LemburUraian]"; ?></td>
