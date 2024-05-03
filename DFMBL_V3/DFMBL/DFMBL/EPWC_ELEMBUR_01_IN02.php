@@ -60,9 +60,11 @@
         
     </select>
     <input type="number" class="form-control" name="elembur_lemtgl_0102" required placeholder="Tahun..." value="<?PHP echo $DATE_Y; ?>">
+    <span class="badge bg-info">Format jam <br>  24 jam</span>
     <input type="time" class="form-control" name="elembur_tgljam1_01" required  value="<?PHP echo $epwc_vw_vlmbr01_sww['LemburTgljam1'] ?>">
     <input type="time" class="form-control" name="elembur_tgljam2_01" required  value="<?PHP echo $epwc_vw_vlmbr01_sww['LemburTgljam2'] ?>">
     </div>
+    
 
      <!--  -->
    <div class="input-group mb-3">
@@ -211,12 +213,17 @@
         $elembur_thnbln_02 = "$elembur_lemtgl_0102$elembur_bulan_01";
 		
 		if(isset($_POST['simpan_elembur_in02'])){#PROCCESSING INSERT
+            #CEKING DATA
+            $pl_ck_vlem01_sw = $CL_Q("$SL LemburBulan,LemburBulanRng,LemburTglInput,LemburTgljam1,LemburTgljam2 FROM Citarum.dbo.TKaryLemburHari WHERE LemburTanggal='$elembur_lemtgl_01 00:00:00' AND LemburTgljam1='$elembur_tgljam1_01' AND LemburTgljam2='$elembur_tgljam2_01' AND KaryNomor='$IDKRY'");
+            $pl_ck_nr_vlem01_sww = $CL_NR($pl_ck_vlem01_sw);
+            #echo "Ada".$pl_ck_vlem01_sww;
+            if($pl_ck_nr_vlem01_sww > 0){
+                            echo"<div class='alert alert-dismissible alert-danger'>
+            <strong>Oh snap!</strong> Tanggal Sudah pernah Di input sebelumnya
+                    </div>";
+            }else{
 				
-			 /*UpahPerJam = ((JmlUP1 + JmlUP2 + JMLKlg + JmlKinerjaMin + _
-    		JmlInsentifRad + JmlInsentifProg + JmlTunjPeralihan) / 173) */
-     		   #GajiUP1Yakkum,GajiUP2Yakkum,GajiKlgYakkum,GajiTunjKinerjaMinYakkum,GajiInsentifRadYakkum,GajiInsentifProgYakkum,GajiTunjPeralihanYakkum,KaryStatus,KaryLemburKhusus  
-			   #Round2Hundred(((1.5 * UpahPerJam) + _((IsNull(e.Row("LemburBiasa"), 0) - 1) * 2) * UpahPerJam))
-			
+
 			$upahlembur = $epwc_vw_vkry01_sww['GajiUP1Yakkum'] + $epwc_vw_vkry01_sww['GajiUP2Yakkum'] + $epwc_vw_vkry01_sww['GajiKlgYakkum'] + $epwc_vw_vkry01_sww['GajiTunjKinerjaMinYakkum'] + $epwc_vw_vkry01_sww['GajiInsentifRadYakkum'] + $epwc_vw_vkry01_sww['GajiInsentifProgYakkum'] + $epwc_vw_vkry01_sww['GajiTunjPeralihanYakkum'] ; #Upah Lembur 02
 			// $hit_new_lem_01 = ($elembur_jmljam_01 * 2) / 0.5;
 			$upahlembur_02 = $upahlembur / 173 ; #Upah lembur 02
@@ -235,6 +242,7 @@
 				include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
 			}
 		}
+    } #CLOSE else for Cek data
 
 		if(isset($_POST['update_elembur_in02'])){	#PROCCESSING UPDATE	 
 			#JOIN DATA
@@ -256,7 +264,7 @@
 		#$upahlembur_fix =  $hit_new_lem_01;
 		#$save_elembur_01 ="oke";
 		#PROCCESSING QUERY
-		$save_elembur_01 = @$CL_Q("$UP  Citarum.dbo.TKaryLemburHari SET LemburBulan='$elembur_thnbln_01',LemburBulanRng='$elembur_thnbln_02',KaryNomor='$IDKRY',LemburTanggal='$elembur_lemtgl_01 00:00:00',LemburPersen='100',LemburJam1='$elembur_lemtgl_01 00:00:00',LemburJam2='$elembur_lemtgl_01 00:00:00',LemburBiasa='$elembur_jmljam_01',LemburBiasaJumlah='$upahlembur_fix',LemburUraian='$elembur_ur_01',LemburAlasan='$elembur_al_01',LemburTarget='$elembur_tar_01',LemburHasil='$elembur_has_01',KaryDir='$epwc_vkry01_sww[KaryDir]',UnitKode='$epwc_vw_vkry01_sww[UnitKode]' WHERE LemburID='$IDLBR01'");
+		$save_elembur_01 = @$CL_Q("$UP  Citarum.dbo.TKaryLemburHari SET LemburBulan='$elembur_thnbln_01',LemburBulanRng='$elembur_thnbln_02',KaryNomor='$IDKRY',LemburTanggal='$elembur_lemtgl_01 00:00:00',LemburPersen='100',LemburJam1='$elembur_lemtgl_01 00:00:00',LemburJam2='$elembur_lemtgl_01 00:00:00',LemburBiasa='$elembur_jmljam_01',LemburBiasaJumlah='$upahlembur_fix',LemburUraian='$elembur_ur_01',LemburAlasan='$elembur_al_01',LemburTarget='$elembur_tar_01',LemburHasil='$elembur_has_01',KaryDir='$epwc_vkry01_sww[KaryDir]',UnitKode='$epwc_vw_vkry01_sww[UnitKode]',LemburTgljam1='$elembur_tgljam1_01',LemburTgljam2='$elembur_tgljam2_01' WHERE LemburID='$IDLBR01'");
 		if($save_elembur_01){
 			#echo $NF($upahlembur_fix);
 			#echo"SUKSESS $IDMAIN";

@@ -21,12 +21,12 @@
 <tr class="table-dark">
     <td width="10%">NIP</td>
     <td width="30%">NAMA</td>
-    <td width="30%">Total Jam Lembur / Bulan ini</td>
-    <td>AKSI</td>
+    <td width="20%">Total Jam Lembur / Bulan ini</td>
+    <td>ENTRI</td>
 </tr>
 <?PHP 
     #DATA PENCARIAN KARYAWAN  BAGIAN 01
-    $epwc_sl_vkry01_sw = $CL_Q("$SL KaryNomor,KaryNomorYakkum,KaryNama,KaryJbtStruktural,UnitKode,UnitKode01 FROM Citarum.dbo.TKaryawan WHERE  UnitKode='$epwc_vkry01_sww[UnitKode]' AND KaryNama LIKE '%$txt_nama%' AND KaryStatus='10' ");
+    $epwc_sl_vkry01_sw = $CL_Q("$SL KaryNomor,KaryNomorYakkum,KaryNama,KaryJbtStruktural,UnitKode,UnitKode01 FROM Citarum.dbo.TKaryawan WHERE  (UnitKode='$epwc_vkry01_sww[UnitKode]' OR UnitKode='$epwc_vkry01_sww[UnitKode01]') AND KaryNama LIKE '%$txt_nama%' AND (KaryStatus='10' OR KaryStatus='22') ");
     while($epwc_sl_vkry01_sww = $CL_FAS($epwc_sl_vkry01_sw)){
 
         #DATA LEMBUR
@@ -37,51 +37,19 @@
 <tr>
     <td><?PHP echo $epwc_sl_vkry01_sww['KaryNomorYakkum'] ?></td>
     <td><?PHP echo $epwc_sl_vkry01_sww['KaryNama'] ?></td>
-    <td><?PHP echo $epwc_tot_sl_vlmbr01_sww['jml01_lmbr'] ?></td>
+    <td align="center"><?PHP echo $epwc_tot_sl_vlmbr01_sww['jml01_lmbr'] ?></td>
     <td>
-        <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$epwc_sl_vkry01_sww[KaryNomor]"; ?>" class="badge bg-info"><i class="fas fa-info-circle"></i> ENTRI LEMBUR</a>
+        <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$epwc_sl_vkry01_sww[KaryNomor]"; ?>" class="badge bg-info"><i class="fas fa-info-circle"></i> LEMBUR HARIAN</a>
         &nbsp
-        <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02MLM&IDKRY=$epwc_sl_vkry01_sww[KaryNomor]&IDKRY02=$epwc_sl_vkry01_sww[KaryNomorYakkum]"; ?>" class="badge bg-dark"><i class="fas fa-info-circle"></i> ENTRI LEMBUR MALAM</a>
-    </td>
-</tr>
-<?PHP } ?>
-<?PHP  
-    #PENCARIAN KARYAWAN BAGIAN 02
-    $epwc_sl02_vkry01_sw = $CL_Q("$SL KaryNomor,KaryNomorYakkum,KaryNama,KaryJbtStruktural,UnitKode,UnitKode01 FROM Citarum.dbo.TKaryawan WHERE   UnitKode='$epwc_vkry01_sww[UnitKode01]' AND KaryNama LIKE '%$txt_nama%' AND KaryStatus='10'   ");
-    while($epwc_sl02_vkry01_sww = $CL_FAS($epwc_sl02_vkry01_sw)){
-         #DATA LEMBUR
-         $epwc_tot_sl02_vlmbr01_sw = $CL_Q("$SL SUM(LemburBiasa) as jml02_lmbr FROM  Citarum.dbo.TKaryLemburHari WHERE KaryNomor='$epwc_sl02_vkry01_sww[KaryNomor]' AND LemburBulanRng='$DATE_Y$DATE_m'");
-         $epwc_tot_sl02_vlmbr01_sww = $CL_FAS($epwc_tot_sl02_vlmbr01_sw);
-?>  
-<tr>
-    <td><?PHP echo $epwc_sl02_vkry01_sww['KaryNomorYakkum'] ?></td>
-    <td><?PHP echo $epwc_sl02_vkry01_sww['KaryNama'] ?></td>
-    <td><?PHP echo $epwc_tot_sl02_vlmbr01_sww['jml02_lmbr'] ?></td>
-    <td>
-        <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$epwc_sl02_vkry01_sww[KaryNomor]"; ?>" class="badge bg-info"><i class="fas fa-info-circle"></i> ENTRI LEMBUR</a>
-        &nbsp
-        <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02MLM&IDKRY=$epwc_sl02_vkry01_sww[KaryNomor]&IDKRY02=$epwc_sl02_vkry01_sww[KaryNomorYakkum]"; ?>" class="badge bg-dark"><i class="fas fa-info-circle"></i> ENTRI LEMBUR MALAM</a>
-    </td>
-</tr>
-<?PHP } ?>
-<?PHP 
-    #DATA PENCARIAN KARYAWAN STATUS '22' BAGIAN 1
-    $epwc_sl03_vkry01_sw = $CL_Q("$SL KaryNomor,KaryNomorYakkum,KaryNama,KaryJbtStruktural,UnitKode,UnitKode01 FROM Citarum.dbo.TKaryawan WHERE  UnitKode='$epwc_vkry01_sww[UnitKode]' AND KaryNama LIKE '%$txt_nama%' AND KaryStatus='22' ");
-    while($epwc_sl03_vkry01_sww = $CL_FAS($epwc_sl03_vkry01_sw)){
-
-        #DATA LEMBUR
-        @$epwc_tot_sl03_vlmbr01_sw = $CL_Q("$SL SUM(LemburBiasa) as jml01_lmbr FROM  Citarum.dbo.TKaryLemburHari WHERE KaryNomor='$epwc_sl03_vkry01_sww[KaryNomor]' AND LemburBulanRng='$DATE_Y$DATE_m'");
-        @$epwc_tot_sl03_vlmbr01_sww = $CL_FAS($epwc_tot_sl03_vlmbr01_sw);
-
-?>  
-<tr>
-    <td><?PHP echo $epwc_sl03_vkry01_sww['KaryNomorYakkum'] ?></td>
-    <td><?PHP echo $epwc_sl03_vkry01_sww['KaryNama'] ?></td>
-    <td><?PHP echo $epwc_tot_sl03_vlmbr01_sww['jml01_lmbr'] ?></td>
-    <td>
-        <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$epwc_sl03_vkry01_sww[KaryNomor]"; ?>" class="badge bg-info"><i class="fas fa-info-circle"></i> ENTRI LEMBUR</a>
-        &nbsp
-        <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02MLM&IDKRY=$epwc_sl03_vkry01_sww[KaryNomor]&IDKRY02=$epwc_sl03_vkry01_sww[KaryNomorYakkum]"; ?>" class="badge bg-dark"><i class="fas fa-info-circle"></i> ENTRI LEMBUR MALAM</a>
+        <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02MLM&IDKRY=$epwc_sl_vkry01_sww[KaryNomor]&IDKRY02=$epwc_sl_vkry01_sww[KaryNomorYakkum]"; ?>" class="badge bg-dark"><i class="fas fa-info-circle"></i> LEMBUR MALAM</a>
+        <br>
+        <?PHP 
+            if($epwc_vkry01_sww['UnitKode']=="43"){
+                echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02RAD&IDKRY=$epwc_sl_vkry01_sww[KaryNomor]&IDKRY02=$epwc_sl_vkry01_sww[KaryNomorYakkum]' class='badge bg-danger'><i class='fas fa-info-circle'></i> LEMBUR RADIOLOGI</a>";
+            }
+            
+        ?>
+        
     </td>
 </tr>
 <?PHP } ?>

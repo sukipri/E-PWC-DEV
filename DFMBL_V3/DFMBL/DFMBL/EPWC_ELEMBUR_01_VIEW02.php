@@ -79,7 +79,13 @@
                     echo"<br>";
                     echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLTGL=$epwc_ls02_vlem01_sww[lstgl]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPRJL01=UPRJL01&IDKARYDIR=$epwc_vkry01_sww[KaryDir]' class='btn btn-dark btn-sm form-control'>Delete?</a>";
                     echo"&nbsp";
-                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPLMBR01=UPLMBR01' class='btn btn-danger btn-sm form-control'>Update</a>";
+                    if($epwc_ls_vlem01_sww['LemburJenis']=="RAD"){
+
+                        echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02RAD&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPLMBR01=UPLMBR01' class='btn btn-danger btn-sm form-control'>Update</a>";
+                    }else{
+
+                        echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$epwc_ls_vlem01_sww[KaryNomor]&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPLMBR01=UPLMBR01' class='btn btn-danger btn-sm form-control'>Update</a>";
+                    }
                 }elseif($epwc_ls_vlem01_sww['LemburApp']=="4"){
                     echo"<span class='btn btn-success btn-sm form-control'>Approved.CEO</span>";
                     echo"&nbsp";

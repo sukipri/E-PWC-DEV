@@ -90,6 +90,9 @@
                 case'EPWC_ELEMBUR_01_IN02MLM':
                     include"DFMBL/EPWC_ELEMBUR_01_IN02MLM.php";
                 break;
+                case'EPWC_ELEMBUR_01_IN02RAD':
+                    include"DFMBL/EPWC_ELEMBUR_01_IN02RAD.php";
+                break;
                 case'EPWC_ELEMBUR_01_VIEW02HIS':
                     include"DFMBL/EPWC_ELEMBUR_01_VIEW02HIS.php";
                 break;
