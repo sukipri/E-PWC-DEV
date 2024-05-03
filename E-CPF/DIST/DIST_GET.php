@@ -9,6 +9,7 @@
 			$cpf_vw_vinap01_sw = $CL_Q("$CL_SL Citarum.dbo.TRawatInap WHERE InapNoAdmisi='$IDADM01'");
 			$cpf_vw_vinap01_sww = $CL_FAS($cpf_vw_vinap01_sw);
 
+
 			#DATA PASIEN
 			$cpf_vw_vpasien01_sw = $CL_Q("$SL PasienNomorRM,PasienNama,PasienAlamat FROM TPasien WHERE PasienNomorRM='$IDRM01'");
 			$cpf_vw_vpasien01_sww = $CL_FAS($cpf_vw_vpasien01_sw);
@@ -43,6 +44,9 @@
 			$cpf_vw03_vkeg03_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg03_03 WHERE idmain_keg_03='$IDKEG03'");
 			$cpf_vw03_vkeg03_sww = $CL_FAS($cpf_vw03_vkeg03_sw);
 #--------------------------------------------#
+		#Citarum.dbo.tb_cpf01_form_01_head
+		$cpf_vw_vformh_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_form_01_head WHERE idmain_inap_01='$IDADM01'");
+			$cpf_vw_vformh_sww = $CL_FAS($cpf_vw_vformh_sw);
 
 			#DATA VIEW KEG  REC
 			$cpf_vw_vkeg03rec_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg_03_rec WHERE idmain_keg_03_rec='$IDKEG03REC'");

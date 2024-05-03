@@ -31,7 +31,7 @@
 <?PHP 
     if(isset($_GET['GET_CPF01'])){
 ?>
-<?PHP echo"<h5>INTERVAL ".FS_DATE($TG01)." - ". FS_DATE($TG02)."</h5>"; ?>
+<?PHP echo"<h5>INTERVAL ".FS_DATE($TG01)." - ". FS_DATE($TG02)." ".$cpf_vkeg03_sww02['keg_nama_03']."</h5>"; ?>
 <table class="table table-sm table-bordered table-striped">
 <tr class="table-dark">
     <td width="3%">#</td>
@@ -119,7 +119,7 @@
     </td>
 </tr>
 <?PHP $cpf_cp_no++; }
-    $cpf_totpersen_vformp01_sw = $CL_Q("$SL SUM(formp_tot_01) as tot_persen FROM Citarum.dbo.tb_cpf01_form_01_head_persen WHERE idmain_keg_03='$IDKEG03' AND formp_tglinput_01 BETWEEN '$TG01' AND '$TG02'");
+    $cpf_totpersen_vformp01_sw = $CL_Q("$SL SUM(formp_tot_01) as tot_persen FROM Citarum.dbo.tb_cpf01_form_01_head_persen WHERE  formp_tglinput_01 BETWEEN '$TG01' AND '$TG02 23:59:00' AND idmain_keg_03='$IDKEG03'");
     $cpf_totpersen_vformp01_sww = $CL_FAS($cpf_totpersen_vformp01_sw);
             #KALKULASI
             $cpf_kal_totpersen_vformp01_sw = $cpf_totpersen_vformp01_sww['tot_persen'] / $cpf_nr_inap_vform01_sww;

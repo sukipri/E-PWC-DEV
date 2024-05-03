@@ -209,8 +209,8 @@
         $add_sp =  sprintf("%'.02d\n",$add_bulan);
         $elembur_thnbln_01 = "$DATE_Y$add_sp";
         $elembur_thnbln_02 = "$elembur_lemtgl_0102$elembur_bulan_01";
-		#PROCCESSING INSERT
-		if(isset($_POST['simpan_elembur_in02'])){
+		
+		if(isset($_POST['simpan_elembur_in02'])){#PROCCESSING INSERT
 				
 			 /*UpahPerJam = ((JmlUP1 + JmlUP2 + JMLKlg + JmlKinerjaMin + _
     		JmlInsentifRad + JmlInsentifProg + JmlTunjPeralihan) / 173) */
@@ -236,8 +236,7 @@
 			}
 		}
 
-		#PROCCESSING UPDATE
-		if(isset($_POST['update_elembur_in02'])){		
+		if(isset($_POST['update_elembur_in02'])){	#PROCCESSING UPDATE	 
 			#JOIN DATA
 				#$elembur_thnbln_01 = "$DATE_Y$DATE_m";
 				$elembur_thnbln_02 = "$elembur_lemtgl_0102$elembur_bulan_01";
