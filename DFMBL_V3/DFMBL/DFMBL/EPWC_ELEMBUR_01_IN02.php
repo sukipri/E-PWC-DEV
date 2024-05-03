@@ -20,7 +20,7 @@
         
     ?>
     
-<div class="card border-primary mb-3 mx-2" style="max-width: 50rem;">
+<div class="card border-primary mb-3 mx-2" style="max-width: 52rem;">
   <div class="card-header">FORM LEMBUR</div>
   <div class="card-body">
    <!--  -->
@@ -60,7 +60,7 @@
         
     </select>
     <input type="number" class="form-control" name="elembur_lemtgl_0102" required placeholder="Tahun..." value="<?PHP echo $DATE_Y; ?>">
-    <span class="badge bg-info">Format jam <br>  24 jam</span>
+    <span class="badge bg-info">Format <br>  24 jam</span>
     <input type="time" class="form-control" name="elembur_tgljam1_01" required  value="<?PHP echo $epwc_vw_vlmbr01_sww['LemburTgljam1'] ?>">
     <input type="time" class="form-control" name="elembur_tgljam2_01" required  value="<?PHP echo $epwc_vw_vlmbr01_sww['LemburTgljam2'] ?>">
     </div>
@@ -156,9 +156,7 @@
     <ul>
         <li>#<b>KETENTUAN PENGISIAN FORM</b>
             <ul>
-                <li>Isikan setiap memberikan lembur</li>
-                <li>Untuk perhitungan halftime ex: 1.5 jam . u/ perhitungan jumlah jam gunakan tanda (.) = titik untuk pengganti tanda (,) = Koma 
-    </li>    
+                <li>Isikan data dengan benar setiap memberikan lembur</li>
     </ul>
     <br>
    <!--  -->
