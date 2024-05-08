@@ -22,7 +22,7 @@
             $tanggalawal = "2020-12-01";
             $tanggalahir = "2020-12-31";
             */
-            $vbjadwal01_sw = $ms_q("$call_sel Citarum.dbo.TBedahJadwal WHERE JadwalTanggal BETWEEN '$tanggalawal' AND '$tanggalakhir' order by JadwalTanggal desc");
+            $vbjadwal01_sw = $ms_q("$call_sel Citarum.dbo.TBedahJadwal WHERE JadwalTanggal BETWEEN '$tanggalawal' AND '$tanggalakhir 23:59:00' order by JadwalTanggal desc");
                 $cp_vbjadwal01_sw = $ms_nr($vbjadwal01_sw);
                 while($vbjadwal01_sww = $ms_fas($vbjadwal01_sw)){
                         //--DATE PASIEN--//

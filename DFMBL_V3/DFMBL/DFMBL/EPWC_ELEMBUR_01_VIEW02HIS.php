@@ -22,7 +22,7 @@
             ?>
         </select>
   <select name="slc_bulan_01" class="form-control form-control-sm" required style="max-width:20rem;">
-        <option value="">Bulan Pencarian</option>
+        <option value="">Bulan Pencairan</option>
         <?PHP 
             $epwc_sl_vlb01_sw = $CL_Q("$SL  DISTINCT TOP 12 LemburBulan  FROM Citarum.dbo.TKaryLemburHari order by LemburBulan desc");
             while($epwc_sl_vlb01_sww = $CL_FAS($epwc_sl_vlb01_sw)){

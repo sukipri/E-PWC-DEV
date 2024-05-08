@@ -37,6 +37,9 @@
 				$epwc_vw02_vlmbr01_sw = $CL_Q("$SL CONVERT(date ,LemburTanggal) as ltgl FROM  Citarum.dbo.TKaryLemburHari WHERE LemburID='$IDLBR01'");
 				$epwc_vw02_vlmbr01_sww  = $CL_FAS($epwc_vw02_vlmbr01_sw); #LEMBUR TANGGAL
 				#--------------------#
+				#DATA TEMPLATE LEMBUR
+				$epwc_vw_vlemtmp01_sw = $CL_Q("$CL_SL  Citarum.dbo.tb_lembur_01_lemtmp WHERE idmain_lemtmp_01='$IDLEMTMP01'");
+					$epwc_vw_vlemtmp01_sww = $CL_FAS($epwc_vw_vlemtmp01_sw);
 
 				#DATA QUOTE
 				$epwc_ls_vkuote01_sw = $CL_Q("$CL_SL Citarum.dbo.tb_kuote_01 order by NEWID()");

@@ -37,9 +37,8 @@
               $IDLBR01 = @$SQL_SL($_GET['IDLBR01']); #PARAMER LEMBURID
               $IDKARYDIR = @$SQL_SL($_GET['IDKARYDIR']); #PARAMER KARY DIR
               $IDBLMBR01 = @$SQL_SL($_GET['IDBLMBR01']); #PARAMER LEMBUR
+              $IDLEMTMP01 = @$SQL_SL($_GET['IDLEMTMP01']); #PARAMER IDLEMBURTMP
         //--GET DML--//
-    
-                
                 //-Question-//
                 /**/
                         $cpf_vquest_sw = $CL_Q("$CL_SL  tb_qc_01 order by NEWID()");
