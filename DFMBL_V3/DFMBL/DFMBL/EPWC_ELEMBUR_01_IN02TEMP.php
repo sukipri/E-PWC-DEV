@@ -1,19 +1,23 @@
 <b class="mx-2 badge bg-info"><?PHP echo"Entri Templat Uraian lembur"; ?></b>
 <br>
-<form method="post">
 
+<form method="post">
 <div class="card border-primary mb-3 mx-2" style="max-width: 52rem;">
   <div class="card-header">FORM TEMPLAT LEMBUR</div>
   <div class="card-body">
 <!--  -->
+
+    <code>Exm : Menggantikan shift siang</code>
 <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Uraian</span>
-       <textarea class="form-control" name="lemtmp_uisi_01"><?PHP echo $epwc_vw_vlemtmp01_sww['lemtmp_uisi_01'] ?></textarea>
+       <textarea class="form-control" name="lemtmp_uisi_01" required><?PHP echo $epwc_vw_vlemtmp01_sww['lemtmp_uisi_01'] ?></textarea>
     </div>
 
+    
+    <code>Exm : Karena yang bersangkutan izin sakit</code>
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Alasan</span>
-        <textarea class="form-control" name="lemtmp_aisi_01"><?PHP echo $epwc_vw_vlemtmp01_sww['lemtmp_aisi_01'] ?></textarea>
+        <textarea class="form-control" name="lemtmp_aisi_01" required><?PHP echo $epwc_vw_vlemtmp01_sww['lemtmp_aisi_01'] ?></textarea>
     </div>
     <br>
         <?PHP 
@@ -73,4 +77,5 @@
             }
 
         }
+        
     ?>

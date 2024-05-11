@@ -19,7 +19,8 @@
 <hr>
 
 <form method="post">
-<div class="input-group mb-3" style="max-width:40rem;">
+<div class="input-group mb-3 mx-2" style="max-width:40rem;">
+<span class="input-group-text btn btn-dark" id="basic-addon1">Interval tanggal</span>
   <input type="date" class="form-control form-control-sm" required name="txt_tg01" value="<?PHP echo $IDTG01 ?>">
   <input type="date" class="form-control form-control-sm" required name="txt_tg02" value="<?PHP echo $IDTG02 ?>">
   <button class="btn btn-info btn-sm" name="btn_tglcari">CEK DATA</button>

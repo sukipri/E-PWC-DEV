@@ -111,8 +111,8 @@
         <span class="input-group-text" id="basic-addon1">for Halftime ex: 1.5</span>
     </div>  -->
     <?PHP 
-        if($epwc_vkry01_sww['KaryNomorYakkum']=="04950490"){ ?>
-        <div class="input-group mb-3">
+        #if($epwc_vkry01_sww['KaryNomorYakkum']=="04950490"){ ?>
+        <!-- <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Uraian</span>
             <select name="elembur_ur_01" class="form-control form-control-sm">
                 <option value=""></option>
@@ -128,37 +128,42 @@
                 <option value="Menggantikan Petugas Cuti / Libur">Menggantikan Petugas Cuti / Libur</option>
                 <option value="Menggantikan Petugas Sakit">Menggantikan Petugas Sakit</option>
             </select>
-            </div>
-     <?PHP }else{ ?>
+            </div> -->
+     <?PHP #}else{ ?>
     <!-- <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Uraian</span>
        <textarea class="form-control" name="elembur_ur_01"><?PHP #echo $epwc_vw_vlmbr01_sww['LemburUraian'] ?></textarea>
     </div> -->
-   
-     <div class="input-group mb-3">
-  <span class="input-group-text" id="basic-addon1">Uraian</span>
-  <select name="elembur_ur_01" class="form-control form-control-sm" required>
-    <option value=""></option>
-        <?PHP 
-             $epwc_sl_vlemtmp01_sw = $CL_Q("$SL idmain_lemtmp_01,lemtmp_uisi_01,lemtmp_uisi_01  FROM tb_lembur_01_lemtmp WHERE (UnitKode='$epwc_vkry01_sww[UnitKode]' OR UnitKode01='$epwc_vkry01_sww[UnitKode01]') AND KaryNomor='$epwc_vkry01_sww[KaryNomor]' ");
-             while($epwc_sl_vlemtmp01_sww = $CL_FAS($epwc_sl_vlemtmp01_sw)){ #SLC TEMPATE
-                echo"<option value=$epwc_sl_vlemtmp01_sww[idmain_lemtmp_01]>$epwc_sl_vlemtmp01_sww[lemtmp_uisi_01]</option>";
-             }
-        ?>
-     </select>
-     <code> U/ uraian bisa diisikan di menu <a href="?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02TEMP">TEMP.LEMBUR</a> . setelah mengisi di temp.Lembur , isikan pilihan uraian sesuai dengan informasi lembur yang akan dimasukan </code>
-</div>
-<br>
-    <!-- <div class="input-group mb-3">
+   <?PHP 
+        if(@$_GET['UPLMBR01']){
+   ?>
+     
+    <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Uraian</span>
        <textarea class="form-control" name="elembur_ur_01"><?PHP echo $epwc_vw_vlmbr01_sww['LemburUraian'] ?></textarea>
-    </div> -->
+    </div> 
 
-    <!-- <div class="input-group mb-3">
+    <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Alasan</span>
         <textarea class="form-control" name="elembur_al_01"><?PHP echo $epwc_vw_vlmbr01_sww['LemburAlasan'] ?></textarea>
-    </div> -->
-        <?PHP } ?>
+    </div>  
+             <?PHP }else{ ?>
+                <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Uraian > Alasan</span>
+                <select name="elembur_ur_01" class="form-control form-control-sm" required>
+                    <option value=""></option>
+                        <?PHP 
+                            $epwc_sl_vlemtmp01_sw = $CL_Q("$SL idmain_lemtmp_01,lemtmp_uisi_01,lemtmp_aisi_01  FROM tb_lembur_01_lemtmp WHERE (UnitKode='$epwc_vkry01_sww[UnitKode]' OR UnitKode01='$epwc_vkry01_sww[UnitKode01]') AND KaryNomor='$epwc_vkry01_sww[KaryNomor]' ");
+                            while($epwc_sl_vlemtmp01_sww = $CL_FAS($epwc_sl_vlemtmp01_sw)){ #SLC TEMPATE
+                                echo"<option value=$epwc_sl_vlemtmp01_sww[idmain_lemtmp_01]>$epwc_sl_vlemtmp01_sww[lemtmp_uisi_01] > $epwc_sl_vlemtmp01_sww[lemtmp_aisi_01]</option>";
+                            }
+                        ?>
+                    </select>
+                    <code> U/ uraian bisa diisikan di menu <a href="?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02TEMP">TEMP.LEMBUR</a> . setelah mengisi di temp.Lembur , isikan pilihan uraian sesuai dengan informasi lembur yang akan dimasukan . <p>dan U/ alasan uraian , sudah otomatis terinput sesuai dengan template yang sudah ditetapkan</p> </code>
+                </div>
+<br>
+            <?PHP } ?>
+        <?PHP #} ?>
     <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">Target</span>
         <textarea class="form-control" name="elembur_tar_01">Harus Terselesaikan</textarea>
@@ -251,6 +256,7 @@
 			$upahlembur_fix =  $upahlembur_rev02; 
 			#PROCCESSING INSERT
 			$save_elembur_01 = @$CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode,LemburTglInput,LemburTgljam1,LemburTgljam2)VALUES('$elembur_thnbln_01','$elembur_thnbln_02','$IDKRY','$elembur_lemtgl_01 00:00:00','100','$elembur_lemtgl_01 00:00:00','$elembur_lemtgl_01 00:00:00','$elembur_jmljam_01','$upahlembur_fix','$epwc_ck_vlemtmp01_sww[lemtmp_uisi_01]','$epwc_ck_vlemtmp01_sww[lemtmp_aisi_01]','$elembur_tar_01','$elembur_has_01','2','$IDMAIN','$epwc_vkry01_sww[KaryDir]','$elembur_jenis_01','$IDUPLOADER','$epwc_vw_vkry01_sww[UnitKode]','$DATE_HTML5_SQL','','')");
+            
             #$save_elembur_01 = @$CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode,LemburTglInput,LemburTgljam1,LemburTgljam2)VALUES('$elembur_thnbln_01','$elembur_thnbln_02','$IDKRY','$elembur_lemtgl_01 00:00:00','100','$elembur_lemtgl_01 00:00:00','$elembur_lemtgl_01 00:00:00','$elembur_jmljam_01','$upahlembur_fix','$elembur_ur_01','$elembur_al_01','$elembur_tar_01','$elembur_has_01','2','$IDMAIN','$epwc_vkry01_sww[KaryDir]','$elembur_jenis_01','$IDUPLOADER','$epwc_vw_vkry01_sww[UnitKode]','$DATE_HTML5_SQL','$elembur_tgljam1_01','$elembur_tgljam2_01')");
 			if($save_elembur_01){
 				include"../LAYOUT/NOTIF/NF_SAVE_SUCCESS.php";
@@ -283,6 +289,7 @@
 		#$save_elembur_01 ="oke";
 		#PROCCESSING QUERY
 		$save_elembur_01 = @$CL_Q("$UP  Citarum.dbo.TKaryLemburHari SET LemburBulan='$elembur_thnbln_01',LemburBulanRng='$elembur_thnbln_02',KaryNomor='$IDKRY',LemburTanggal='$elembur_lemtgl_01 00:00:00',LemburPersen='100',LemburJam1='$elembur_lemtgl_01 00:00:00',LemburJam2='$elembur_lemtgl_01 00:00:00',LemburBiasa='$elembur_jmljam_01',LemburBiasaJumlah='$upahlembur_fix',LemburUraian='$elembur_ur_01',LemburAlasan='$elembur_al_01',LemburTarget='$elembur_tar_01',LemburHasil='$elembur_has_01',KaryDir='$epwc_vkry01_sww[KaryDir]',UnitKode='$epwc_vw_vkry01_sww[UnitKode]',LemburTgljam1='',LemburTgljam2='' WHERE LemburID='$IDLBR01'");
+        
         #$save_elembur_01 = @$CL_Q("$UP  Citarum.dbo.TKaryLemburHari SET LemburBulan='$elembur_thnbln_01',LemburBulanRng='$elembur_thnbln_02',KaryNomor='$IDKRY',LemburTanggal='$elembur_lemtgl_01 00:00:00',LemburPersen='100',LemburJam1='$elembur_lemtgl_01 00:00:00',LemburJam2='$elembur_lemtgl_01 00:00:00',LemburBiasa='$elembur_jmljam_01',LemburBiasaJumlah='$upahlembur_fix',LemburUraian='$elembur_ur_01',LemburAlasan='$elembur_al_01',LemburTarget='$elembur_tar_01',LemburHasil='$elembur_has_01',KaryDir='$epwc_vkry01_sww[KaryDir]',UnitKode='$epwc_vw_vkry01_sww[UnitKode]',LemburTgljam1='$elembur_tgljam1_01',LemburTgljam2='$elembur_tgljam2_01' WHERE LemburID='$IDLBR01'");
 		if($save_elembur_01){
 			#echo $NF($upahlembur_fix);
