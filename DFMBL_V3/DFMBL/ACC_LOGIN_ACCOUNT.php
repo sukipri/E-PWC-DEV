@@ -4,9 +4,10 @@
 <?php include"../DIST/DIST_GET.php";  ?>
 <style>
 .bg_img {
-  background-image: url("https://pantiwilasa-citarum.co.id/WEB-PWC/OPT-03/IMG/HD/H4_new.jpg"); /* The image used */ /* Used if the image is unavailable */
+  background-image: url("https://rspwc.net/WALL.png"); /* The image used */ /* Used if the image is unavailable */
   height: 100%; /* You must set a specified height */
-  width:100% /* Do not repeat the image */ /* Resize the background image to cover the entire container */
+  width:100%; /* Do not repeat the image */ /* Resize the background image to cover the entire container */
+  background-repeat: no-repeat;
 }
 </style>
 	<?PHP  if(empty($_SESSION['namauser']) AND empty($_SESSION['passuser'])){ ?>

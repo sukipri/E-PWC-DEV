@@ -50,8 +50,19 @@
              echo $cpf_vform01_sww['idmain_pasien_01']."( $cpf_vpasien01_sww[PasienNama] )";
              echo"<br>";
              echo $cpf_vkeg03_sww['keg_nama_03'];
-             echo"<br>";
+             #echo"<br>";
              #echo $cpf_vform01_sww['idmain_keg_01'];
+             echo"<br>";
+              //CONDITION JIKA PERSENTASE AKHIR SUDAH TERUPLOAD
+        $cpf_cek_vformp01_sw = $CL_Q("$SL idmain_formp_01,formp_tot_01 FROM Citarum.dbo.tb_cpf01_form03_01_head_persen WHERE idmain_inap_01='$cpf_inap_vform01_sww[idmain_inap_01]'");
+        $cpf_cek_vformp01_sww = $CL_FAS($cpf_cek_vformp01_sw);
+        $cpf_nr_cek_vformp01_sww = $CL_NR($cpf_cek_vformp01_sw);
+        #PENGKONDISIAN PERSENTASE TOTAL
+        if($cpf_nr_cek_vformp01_sww > 0){
+            echo"<span class='badge bg-info'>".$cpf_cek_vformp01_sww['formp_tot_01']."%</span>";
+        }elseif($cpf_nr_cek_vformp01_sww <= 0){
+            echo"";
+        }
         ?>
 
     </td>

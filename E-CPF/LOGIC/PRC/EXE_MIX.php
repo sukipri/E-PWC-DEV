@@ -379,7 +379,7 @@
 			#echo"$rec_angka_01<br>";
 			#echo"$cpf_cp_02<br>"; 
 			$cpf_cp_02++; } 
-			header("LOCATION:?PG_SA=CPF01_CP03_01_FORM&IDADM01=$IDADM01&IDRM01=$IDRM01&IDKEG03=$IDKEG03");
+				header("LOCATION:?PG_SA=CPF01_CP03_01_FORM&IDADM01=$IDADM01&IDRM01=$IDRM01&IDKEG03=$IDKEG03#proses");
 			}
 		#PROCCESSING UPDATE form_nilai_01
 		if(isset($_POST['cp03_up_01'])){
@@ -393,7 +393,7 @@
 			#echo"$rec_angka_01<br>";
 			#echo"$cpf_cp_02<br>"; 
 			$cpf_cp_02++; } 
-			header("LOCATION:?PG_SA=CPF01_CP03_01_FORM&IDADM01=$IDADM01&IDRM01=$IDRM01&IDKEG03=$IDKEG03");
+			header("LOCATION:?PG_SA=CPF01_CP03_01_FORM&IDADM01=$IDADM01&IDRM01=$IDRM01&IDKEG03=$IDKEG03#proses");
 			}
 		#PROCCESSING UPLOAD form_nilai02_01
 		if(isset($_POST['cp03_upload_01'])){
@@ -406,7 +406,7 @@
 			#echo"$rec_angka_01<br>";
 			#echo"$cpf_cp_02<br>"; 
 			$cpf_cp_02++; } 
-			header("LOCATION:?PG_SA=CPF01_CP03_01_FORM&IDADM01=$IDADM01&IDRM01=$IDRM01&IDKEG03=$IDKEG03");
+			header("LOCATION:?PG_SA=CPF01_CP03_01_FORM&IDADM01=$IDADM01&IDRM01=$IDRM01&IDKEG03=$IDKEG03#proses");
 			}
 		#PROCCESSING UPDATE form_01_head 
 		if(isset($_POST['cp03_tutup_01'])){
@@ -419,7 +419,16 @@
 				#echo $head_tot_01."<br>";
 				$cpf_save_form_01_head = $CL_Q("$IN tb_cpf01_form03_01_head(idmain_cpf01_form_01_head,idmain_inap_01,head_kode_01,head_tot_01,head_tot02_02,head_tglinput_01,head_status_01,idmain_keg_03,idmain_keg_01,uploader)VALUES('$IDMAIN-$cpf_keg01_no02','$IDADM01','HD-$IDKODE-$cpf_keg01_no02','$head_tot_01','$head_tot_02','$DATE_HTML5_SQL $TIME_HTML5','1','$IDKEG03','$idmain_keg_01','$vus01_sww[idmain]')");
 			$cpf_keg01_no02++; }
-			header("LOCATION:?PG_SA=CPF01_CP03_01_FORM&IDADM01=$IDADM01&IDRM01=$IDRM01&IDKEG03=$IDKEG03");
+			header("LOCATION:?PG_SA=CPF01_CP03_01_FORM&IDADM01=$IDADM01&IDRM01=$IDRM01&IDKEG03=$IDKEG03#proses");
+		}
+		#PROCCESSING INSERT form03_01_head_persen 
+		if(isset($_POST['cp03_tutup02_01'])){
+			$cpf_save_form_01_head_persen = $CL_Q("$IN  Citarum.dbo.tb_cpf01_form03_01_head_persen(idmain_formp_01,idmain_inap_01,formp_tot_01,formp_tglinput_01,idmain_keg_03)VALUES('$IDMAIN','$IDADM01','$cpf_hit_per_vformh01_sw','$cpf_vw_vformh_sww[head_tglinput_01]','$IDKEG03')");
+			if($cpf_save_form_01_head_persen){
+				header("LOCATION:?PG_SA=CPF01_CP03_01_FORM&IDADM01=$IDADM01&IDRM01=$IDRM01&IDKEG03=$IDKEG03#proses");
+			}else{
+				include"../LAYOUT/NOTIF/NF_FAILED.php";
+			}
 		}
 	/*-----------------------------------------------------*/	
 		
