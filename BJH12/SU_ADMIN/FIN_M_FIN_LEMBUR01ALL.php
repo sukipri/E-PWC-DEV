@@ -38,10 +38,12 @@
     <tr class="table-dark">
     <td width="3%">#</td>
         <td width="17%">NIP</td>
-       <td>NIP | Nama</td>
+       <td>Nama</td>
+       <td>Tot.Jam Lembur Biasa</td>
        <td>Nom.Lembur Biasa</td>
+       <td>Tot.Jam Lembur Malam</td>
        <td>Nom.Lembur Malam</td>
-       <td>Nom.Total</td>
+       <td>Nom.Lembur Total</td>
        <td>Total Jam</td>
        <td class="table-warning" width="5%">Belum Ter-Verif</td>
     </tr>
@@ -55,6 +57,14 @@
         <td><?PHP echo $no_kry; ?></td>
         <td><?PHP echo  $pl_ls_vkry01_sww['KaryNomor']; ?></td>
        <td><?PHP echo $pl_ls_vkry01_sww['KaryNama']; ?></td>
+       <td>
+       <?PHP 
+              #DATA JAM BIASA
+              $pl_totjamb_vlem01_sw = $ms_q("$sl SUM(LemburBiasa) as totjamb FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01' AND KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburApp='4' AND NOT LemburJenis='DM' ");
+              $pl_totjamb_vlem01_sww = $ms_fas($pl_totjamb_vlem01_sw);
+              echo $pl_totjamb_vlem01_sww['totjamb'];
+          ?>
+       </td>
        <td align="right">
        
           <?PHP 
@@ -65,10 +75,18 @@
           ?>
 
        </td>
+       <td>
+       <?PHP 
+              #DATA JAM Malam
+              $pl_totjamdm_vlem01_sw = $ms_q("$sl SUM(LemburBiasa) as totjamdm FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01' AND KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburApp='4' AND  LemburJenis='DM' ");
+              $pl_totjamdm_vlem01_sww = $ms_fas($pl_totjamdm_vlem01_sw);
+              echo $pl_totjamdm_vlem01_sww['totjamdm'];
+          ?>
+       </td>
        <td align="right">
        
           <?PHP 
-              #DATA LEMBUR BIASA TOTAL
+              #DATA LEMBUR Malam TOTAL
               $pl_tot02_vlem01_sw = $ms_q("$sl SUM(LemburBiasaJumlah) as tot_lem02 FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01' AND KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburApp='4' AND LemburJenis='DM'");
               $pl_tot02_vlem01_sww = $ms_fas($pl_tot02_vlem01_sw);
               echo number_format($pl_tot02_vlem01_sww['tot_lem02']);
