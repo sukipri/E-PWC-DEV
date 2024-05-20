@@ -58,9 +58,15 @@
     <input type="number" class="form-control" name="elembur_lemtgl_0102" required placeholder="Tahun..." value="<?PHP echo $DATE_Y; ?>">
     <span class="badge bg-info">Jumlah Jam</span>
     <input type="text" class="form-control" autocomplete="off" name="elembur_jmljam_01" required value="<?PHP echo $epwc_vw_vlmbr01_sww['LemburBiasa']; ?>">
-     <!-- <input type="time" class="form-control" name="elembur_tgljam1_01" required  value="<?PHP #echo $epwc_vw_vlmbr01_sww['LemburTgljam1'] ?>">
-    <input type="time" class="form-control" name="elembur_tgljam2_01" required  value="<?PHP #Eecho $epwc_vw_vlmbr01_sww['LemburTgljam2'] ?>"> -->
+     <!--  -->
     </div>
+
+    <div class="input-group mb-3" style="max-width: 35rem;">
+    <a href="#" class="btn btn-info">Jam Mulai</a>
+    <input type="time" class="form-control" name="elembur_tgljam1_01" required  value="<?PHP echo $epwc_vw_vlmbr01_sww['LemburTgljam1'] ?>">
+    <a href="#" class="btn btn-info">Jam Selesai</a>
+    <input type="time" class="form-control" name="elembur_tgljam2_01" required  value="<?PHP echo $epwc_vw_vlmbr01_sww['LemburTgljam2'] ?>"> 
+</div>
     
 
      <!--  -->
@@ -233,14 +239,14 @@
 		
 		if(isset($_POST['simpan_elembur_in02'])){#PROCCESSING INSERT
             #CEKING DATA Jam
-            // $pl_ck_vlem01_sw = $CL_Q("$SL LemburBulan,LemburBulanRng,LemburTglInput,LemburTgljam1,LemburTgljam2 FROM Citarum.dbo.TKaryLemburHari WHERE LemburTanggal='$elembur_lemtgl_01 00:00:00' AND LemburTgljam1='$elembur_tgljam1_01' AND LemburTgljam2='$elembur_tgljam2_01' AND KaryNomor='$IDKRY'");
-            // $pl_ck_nr_vlem01_sww = $CL_NR($pl_ck_vlem01_sw);
-            // #echo "Ada".$pl_ck_vlem01_sww;
-            // if($pl_ck_nr_vlem01_sww > 0){
-            //                 echo"<div class='alert alert-dismissible alert-danger'>
-            // <strong>Oh snap!</strong> Tanggal Sudah pernah Di input sebelumnya
-            //         </div>";
-            // }else{
+            $pl_ck_vlem01_sw = $CL_Q("$SL LemburBulan,LemburBulanRng,LemburTglInput,LemburTgljam1,LemburTgljam2 FROM Citarum.dbo.TKaryLemburHari WHERE LemburTanggal='$elembur_lemtgl_01 00:00:00' AND LemburTgljam1='$elembur_tgljam1_01' AND LemburTgljam2='$elembur_tgljam2_01' AND KaryNomor='$IDKRY'");
+             $pl_ck_nr_vlem01_sww = $CL_NR($pl_ck_vlem01_sw);
+             #echo "Ada".$pl_ck_vlem01_sww;
+             if($pl_ck_nr_vlem01_sww > 0){
+                            echo"<div class='alert alert-dismissible alert-danger'>
+            <strong>Oh snap!</strong> Tanggal Sudah pernah Di input sebelumnya
+            /       </div>";
+             }else{
 
             #CEKING DATA URAIAN LEMBUR 
             $epwc_ck_vlemtmp01_sw = $CL_Q("$SL idmain_lemtmp_01,lemtmp_uisi_01,lemtmp_aisi_01  FROM Citarum.dbo.tb_lembur_01_lemtmp WHERE  idmain_lemtmp_01='$elembur_ur_01' ");
@@ -255,7 +261,7 @@
 			
 			$upahlembur_fix =  $upahlembur_rev02; 
 			#PROCCESSING INSERT
-			$save_elembur_01 = @$CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode,LemburTglInput,LemburTgljam1,LemburTgljam2)VALUES('$elembur_thnbln_01','$elembur_thnbln_02','$IDKRY','$elembur_lemtgl_01 00:00:00','100','$elembur_lemtgl_01 00:00:00','$elembur_lemtgl_01 00:00:00','$elembur_jmljam_01','$upahlembur_fix','$epwc_ck_vlemtmp01_sww[lemtmp_uisi_01]','$epwc_ck_vlemtmp01_sww[lemtmp_aisi_01]','$elembur_tar_01','$elembur_has_01','2','$IDMAIN','$epwc_vkry01_sww[KaryDir]','$elembur_jenis_01','$IDUPLOADER','$epwc_vw_vkry01_sww[UnitKode]','$DATE_HTML5_SQL','','')");
+			$save_elembur_01 = @$CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode,LemburTglInput,LemburTgljam1,LemburTgljam2)VALUES('$elembur_thnbln_01','$elembur_thnbln_02','$IDKRY','$elembur_lemtgl_01 00:00:00','100','$elembur_lemtgl_01 00:00:00','$elembur_lemtgl_01 00:00:00','$elembur_jmljam_01','$upahlembur_fix','$epwc_ck_vlemtmp01_sww[lemtmp_uisi_01]','$epwc_ck_vlemtmp01_sww[lemtmp_aisi_01]','$elembur_tar_01','$elembur_has_01','2','$IDMAIN','$epwc_vkry01_sww[KaryDir]','$elembur_jenis_01','$IDUPLOADER','$epwc_vw_vkry01_sww[UnitKode]','$DATE_HTML5_SQL','$elembur_tgljam1_01','$elembur_tgljam2_01')");
             
             #$save_elembur_01 = @$CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode,LemburTglInput,LemburTgljam1,LemburTgljam2)VALUES('$elembur_thnbln_01','$elembur_thnbln_02','$IDKRY','$elembur_lemtgl_01 00:00:00','100','$elembur_lemtgl_01 00:00:00','$elembur_lemtgl_01 00:00:00','$elembur_jmljam_01','$upahlembur_fix','$elembur_ur_01','$elembur_al_01','$elembur_tar_01','$elembur_has_01','2','$IDMAIN','$epwc_vkry01_sww[KaryDir]','$elembur_jenis_01','$IDUPLOADER','$epwc_vw_vkry01_sww[UnitKode]','$DATE_HTML5_SQL','$elembur_tgljam1_01','$elembur_tgljam2_01')");
 			if($save_elembur_01){
@@ -266,6 +272,7 @@
 				include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
 			}
 		}
+    }
     #} #CLOSE else for Cek data
 
 		if(isset($_POST['update_elembur_in02'])){	#PROCCESSING UPDATE	 
@@ -288,10 +295,10 @@
 		#$upahlembur_fix =  $hit_new_lem_01;
 		#$save_elembur_01 ="oke";
 		#PROCCESSING QUERY
-		$save_elembur_01 = @$CL_Q("$UP  Citarum.dbo.TKaryLemburHari SET LemburBulan='$elembur_thnbln_01',LemburBulanRng='$elembur_thnbln_02',KaryNomor='$IDKRY',LemburTanggal='$elembur_lemtgl_01 00:00:00',LemburPersen='100',LemburJam1='$elembur_lemtgl_01 00:00:00',LemburJam2='$elembur_lemtgl_01 00:00:00',LemburBiasa='$elembur_jmljam_01',LemburBiasaJumlah='$upahlembur_fix',LemburUraian='$elembur_ur_01',LemburAlasan='$elembur_al_01',LemburTarget='$elembur_tar_01',LemburHasil='$elembur_has_01',KaryDir='$epwc_vkry01_sww[KaryDir]',UnitKode='$epwc_vw_vkry01_sww[UnitKode]',LemburTgljam1='',LemburTgljam2='' WHERE LemburID='$IDLBR01'");
+		$update_elembur_01 = @$CL_Q("$UP  Citarum.dbo.TKaryLemburHari SET LemburBulan='$elembur_thnbln_01',LemburBulanRng='$elembur_thnbln_02',KaryNomor='$IDKRY',LemburTanggal='$elembur_lemtgl_01 00:00:00',LemburPersen='100',LemburJam1='$elembur_lemtgl_01 00:00:00',LemburJam2='$elembur_lemtgl_01 00:00:00',LemburBiasa='$elembur_jmljam_01',LemburBiasaJumlah='$upahlembur_fix',LemburUraian='$elembur_ur_01',LemburAlasan='$elembur_al_01',LemburTarget='$elembur_tar_01',LemburHasil='$elembur_has_01',KaryDir='$epwc_vkry01_sww[KaryDir]',UnitKode='$epwc_vw_vkry01_sww[UnitKode]',LemburTgljam1='$elembur_tgljam1_01',LemburTgljam2='$elembur_tgljam2_01' WHERE LemburID='$IDLBR01'");
         
         #$save_elembur_01 = @$CL_Q("$UP  Citarum.dbo.TKaryLemburHari SET LemburBulan='$elembur_thnbln_01',LemburBulanRng='$elembur_thnbln_02',KaryNomor='$IDKRY',LemburTanggal='$elembur_lemtgl_01 00:00:00',LemburPersen='100',LemburJam1='$elembur_lemtgl_01 00:00:00',LemburJam2='$elembur_lemtgl_01 00:00:00',LemburBiasa='$elembur_jmljam_01',LemburBiasaJumlah='$upahlembur_fix',LemburUraian='$elembur_ur_01',LemburAlasan='$elembur_al_01',LemburTarget='$elembur_tar_01',LemburHasil='$elembur_has_01',KaryDir='$epwc_vkry01_sww[KaryDir]',UnitKode='$epwc_vw_vkry01_sww[UnitKode]',LemburTgljam1='$elembur_tgljam1_01',LemburTgljam2='$elembur_tgljam2_01' WHERE LemburID='$IDLBR01'");
-		if($save_elembur_01){
+		if($update_elembur_01){
 			#echo $NF($upahlembur_fix);
 			#echo"SUKSESS $IDMAIN";
 			#echo"<br>";
