@@ -23,17 +23,19 @@
         #$tg01 = @$SQL_SL($_POST['tg01']);
         #$tg02 = @$SQL_SL($_POST['tg02']);
         $slc_bln = @$SQL_SL($_POST['slc_bln']);
+        
 ?>
 <table class="table table-sm table-bordered table-striped mx-2">
     <tr class="table-dark">
         <!-- <td width="10%">Nama</td> -->
-        <td>Bagian</td>
+        <td>Bulan Lembur</td>
+        <td>Bulan Cair</td>
         <td>Tanggal Lembur</td>
         <td>Jumlah Jam</td>
-        <td>Uraian</td>
-        <td>Alasan</td>
+        <td>Ket</td>
+        <!-- <td>Alasan</td>
         <td>Target</td>
-        <td>Hasil</td>
+        <td>Hasil</td> -->
         <td>Nominal</td>
         <td width="10%">###</td>
     </tr>
@@ -55,13 +57,25 @@
     ?>
     <tr>
         <!-- <td><?PHP #echo"$epwc_ls_vkary01_sww[KaryNama]"; ?></td> -->
-        <td><?PHP echo $epwc_ls_vunit01_sww['UnitNama']; ?></td>
+        <td><?PHP echo $epwc_ls_vlem01_sww['LemburBulanRng']; ?></td>
+        <td><?PHP echo $epwc_ls_vlem01_sww['LemburBulan']; ?></td>
         <td><?PHP echo"$epwc_ls02_vlem01_sww[lstgl]"; ?></td>
         <td><?PHP echo"$epwc_ls_vlem01_sww[LemburBiasa]"; ?></td>
-        <td><?PHP echo"$epwc_ls_vlem01_sww[LemburUraian]"; ?></td>
-        <td><?PHP echo"$epwc_ls_vlem01_sww[LemburAlasan]"; ?></td>
-        <td><?PHP echo"$epwc_ls_vlem01_sww[LemburTarget]"; ?></td>
-        <td><?PHP echo"$epwc_ls_vlem01_sww[LemburHasil]"; ?></td>
+        <td>
+            <?PHP 
+                echo"<b>Uraian :</b>  $epwc_ls_vlem01_sww[LemburUraian]";
+                echo"<br>";
+                echo"<b>Alasan :</b>  $epwc_ls_vlem01_sww[LemburAlasan]";
+                echo"<br>";
+                echo"<b>Target : </b>$epwc_ls_vlem01_sww[LemburTarget]";
+                echo"<br>";
+                echo"<b>Hasil : </b> $epwc_ls_vlem01_sww[LemburHasil]";
+            
+            ?>
+        </td>
+        <!-- <td><?PHP #echo"$epwc_ls_vlem01_sww[LemburAlasan]"; ?></td>
+        <td><?PHP #echo"$epwc_ls_vlem01_sww[LemburTarget]"; ?></td>
+        <td><?PHP #echo"$epwc_ls_vlem01_sww[LemburHasil]"; ?></td> -->
         <td><?PHP echo$NF($epwc_ls_vlem01_sww['LemburBiasaJumlah']); ?></td>
         <td>
             <?PHP
@@ -76,20 +90,26 @@
         </td>
     </tr>
                 <?PHP }
+                #TOTAL VERIF
                 $epwc_tot_vlem01_sw = $CL_Q("$SL SUM(LemburBiasaJumlah) as tot_jum FROM  Citarum.dbo.TKaryLemburHari WHERE LemburBulan='$slc_bln' AND NOT LemburBiasa='0' AND  KaryNomor='$epwc_vkry01_sww[KaryNomor]' AND LemburApp='4'");
                 $epwc_tot_vlem01_sww = $CL_FAS($epwc_tot_vlem01_sw);
+
+                #TOTAL UnVERIF
+                $epwc_rjtot_vlem01_sw = $CL_Q("$SL SUM(LemburBiasaJumlah) as rjtot_jum FROM  Citarum.dbo.TKaryLemburHari WHERE LemburBulan='$slc_bln' AND NOT LemburBiasa='0' AND  KaryNomor='$epwc_vkry01_sww[KaryNomor]' AND (LemburApp='2' OR LemburApp='31' OR LemburApp='3')");
+                $epwc_rjtot_vlem01_sww = $CL_FAS($epwc_rjtot_vlem01_sw);
                 ?>
          <tr>
         <!-- <td><?PHP #echo"$epwc_ls_vkary01_sww[KaryNama]"; ?></td> -->
         <td>-</td>
         <td>-</td>
         <td>-</td>
+        <!-- <td>-</td>
+        <td>-</td>
+        <td>-</td> -->
         <td>-</td>
         <td>-</td>
-        <td>-</td>
-        <td>-</td>
-        <td class="table-primary"><?PHP echo $NF($epwc_tot_vlem01_sww['tot_jum']); ?></td>
-        <td>-</td>
+        <td class="table-primary"><?PHP echo $NF($epwc_rjtot_vlem01_sww['rjtot_jum']); ?></td>
+        <td class="table-success"><?PHP echo $NF($epwc_tot_vlem01_sww['tot_jum']); ?></td>
     </tr>
 </table>
 <?PHP } ?>

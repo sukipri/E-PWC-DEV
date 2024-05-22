@@ -84,6 +84,9 @@
                 case'EPWC_ELEMBUR_01_IN02':
                     include"DFMBL/EPWC_ELEMBUR_01_IN02.php";
                 break;
+                case'EPWC_ELEMBUR_01_IN02DAY':
+                    include"DFMBL/EPWC_ELEMBUR_01_IN02DAY.php";
+                break;
                 case'EPWC_ELEMBUR_01_VIEW02':
                     include"DFMBL/EPWC_ELEMBUR_01_VIEW02.php";
                 break;

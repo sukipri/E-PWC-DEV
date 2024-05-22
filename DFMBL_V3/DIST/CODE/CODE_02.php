@@ -38,6 +38,7 @@
               $IDKARYDIR = @$SQL_SL($_GET['IDKARYDIR']); #PARAMER KARY DIR
               $IDBLMBR01 = @$SQL_SL($_GET['IDBLMBR01']); #PARAMER LEMBUR
               $IDLEMTMP01 = @$SQL_SL($_GET['IDLEMTMP01']); #PARAMER IDLEMBURTMP
+              $IDJBULAN01 = @$SQL_SL($_GET['IDJBULAN01']); #PARAMER JDW BULAN
         //--GET DML--//
                 //-Question-//
                 /**/

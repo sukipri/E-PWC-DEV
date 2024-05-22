@@ -1,5 +1,5 @@
 <?PHP 
-    error_reporting(0);
+         error_reporting(0);
         #GENERATE UPLOADER
         if($epwc_vkry01_sww['UnitKode']=="95"){
             $IDUPLOADER = "04161031";

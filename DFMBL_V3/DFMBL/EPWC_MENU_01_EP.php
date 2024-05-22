@@ -31,12 +31,12 @@
         <li  class="nav-link">
            <a href="?NAVI=EPWC_MENU_01_EP&PG_SA=WS-EPWC_EP_APP_01_VIEW02" class="mx-2 h5" style="color:#FFF;"><i class="far fa-address-book"></i>&nbsp;R.P.Personel</a>
         </li>
-        <li  class="nav-link">
-           <a href="<?PHP echo"?NAVI=EPWC_MENU_01_EP&PG_SA=EPWC_EJADWAL_01_IN"; ?>" class="mx-2 h5" style="color:#FFF;"><i class="fas fa-upload"></i>&nbsp;Entri Jadwal</a>
-        </li>
         <!-- <li  class="nav-link">
-           <a href="<?PHP #echo"?NAVI=EPWC_MENU_01_EP&PG_SA=WS-EPWC_EP_APP_JDW_IN"; ?>" class="mx-2 btn btn-success" style="color:#FFF;"><i class="fas fa-upload"></i>&nbsp;Entri Jadwal</a>
+           <a href="<?PHP echo"?NAVI=EPWC_MENU_01_EP&PG_SA=EPWC_EJADWAL_01_IN"; ?>" class="mx-2 h5" style="color:#FFF;"><i class="fas fa-upload"></i>&nbsp;Entri Jadwal</a>
         </li> -->
+        <li  class="nav-link">
+           <a href="<?PHP echo"?NAVI=EPWC_MENU_01_EP&PG_SA=WS-EPWC_EP_APP_JDW_IN"; ?>" class="mx-2 h5" style="color:#FFF;"><i class="fas fa-upload"></i>&nbsp;Entri Jadwal</a>
+        </li>
             <?PHP } ?>
          <?PHP #if($epwc_vkry01_sww['KaryJbtStruktural']=="01" OR $epwc_vkry01_sww['KaryJbtStruktural']=="02"){ ?>
          <!-- <li  class="nav-link">

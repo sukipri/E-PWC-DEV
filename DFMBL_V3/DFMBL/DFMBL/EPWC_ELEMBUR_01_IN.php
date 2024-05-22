@@ -39,13 +39,15 @@
     <td><?PHP echo $epwc_sl_vkry01_sww['KaryNama'] ?></td>
     <td align="center"><?PHP echo $epwc_tot_sl_vlmbr01_sww['jml01_lmbr'] ?></td>
     <td>
-        <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$epwc_sl_vkry01_sww[KaryNomor]"; ?>" class="badge bg-info"><i class="fas fa-info-circle"></i> LEMBUR HARIAN</a>
+        <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$epwc_sl_vkry01_sww[KaryNomor]"; ?>" class="badge bg-info"><i class="fas fa-info-circle"></i> LEM. HARIAN</a>
         &nbsp
-        <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02MLM&IDKRY=$epwc_sl_vkry01_sww[KaryNomor]&IDKRY02=$epwc_sl_vkry01_sww[KaryNomorYakkum]"; ?>" class="badge bg-dark"><i class="fas fa-info-circle"></i> LEMBUR MALAM</a>
+        <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02DAY&IDKRY=$epwc_sl_vkry01_sww[KaryNomor]"; ?>" class="badge bg-primary"><i class="fas fa-info-circle"></i> LEM. Harian /List</a>
+        &nbsp
+        <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02MLM&IDKRY=$epwc_sl_vkry01_sww[KaryNomor]&IDKRY02=$epwc_sl_vkry01_sww[KaryNomorYakkum]"; ?>" class="badge bg-dark"><i class="fas fa-info-circle"></i> LEM.MALAM</a>
         <br>
         <?PHP 
             if($epwc_vkry01_sww['UnitKode']=="43"){
-                echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02RAD&IDKRY=$epwc_sl_vkry01_sww[KaryNomor]&IDKRY02=$epwc_sl_vkry01_sww[KaryNomorYakkum]' class='badge bg-danger'><i class='fas fa-info-circle'></i> LEMBUR RADIOLOGI</a>";
+                echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02RAD&IDKRY=$epwc_sl_vkry01_sww[KaryNomor]&IDKRY02=$epwc_sl_vkry01_sww[KaryNomorYakkum]' class='badge bg-danger'><i class='fas fa-info-circle'></i> LEM.RADIOLOGI</a>";
             }
             
         ?>
