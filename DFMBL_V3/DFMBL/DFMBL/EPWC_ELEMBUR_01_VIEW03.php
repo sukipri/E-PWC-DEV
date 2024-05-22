@@ -20,7 +20,6 @@
         }
 ?>
 <hr>
-
 <?PHP 
     if(isset($_GET['NAVIBLN01'])){ ?>
 
@@ -38,11 +37,11 @@
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#">Action</a>
            <?PHP 
-                $epwc_sg_vkunit01_sw = $CL_Q("$SL KaryNomor,KaryNama,KaryDir FROM Citarum.dbo.Tkaryawan WHERE  KaryDir='$epwc_vkry01_sww[KaryNomorYakkum]' AND (KaryJbtStruktural='08' OR KaryJbtStruktural='07' OR KaryJbtStruktural='06' OR KaryJbtStruktural='02') order by KaryNama asc  ");
+                $epwc_sg_vkunit01_sw = $CL_Q("$SL KaryNomor,KaryNama,KaryDir FROM Citarum.dbo.Tkaryawan WHERE  KaryDir='$epwc_vkry01_sww[KaryNomorYakkum]' AND (KaryJbtStruktural='08' OR KaryJbtStruktural='07' OR KaryJbtStruktural='06' OR KaryJbtStruktural='02'  OR KaryJbtStruktural='03') order by KaryNama asc  ");
                 while($epwc_sg_vkunit01_sww = $CL_FAS($epwc_sg_vkunit01_sw)){
                     $epwc_nr02_vlem01_sw = $CL_Q("SELECT  * FROM Citarum.dbo.TKaryLemburHari WHERE   KaryDir='$epwc_vkry01_sww[KaryNomorYakkum]' AND LemburBulanRng='$IDBLMBR01' AND Uploader='$epwc_sg_vkunit01_sww[KaryNomor]' AND (LemburApp='2' OR LemburApp='31')");
                     $epwc_nr02_ls_vlem01_sw  = $CL_NR($epwc_nr02_vlem01_sw);
-                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW03&NAVIBLN01=NAVIBLN01&IDBLMBR01&IDKRY=$epwc_sg_vkunit01_sww[KaryNomor]&IDBLMBR01=$IDBLMBR01' class='dropdown-item'><i class='fas fa-bookmark'></i> $epwc_sg_vkunit01_sww[KaryNama] <span class='badge bg-danger'>$epwc_nr02_ls_vlem01_sw</span></a>";
+                    echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW03&NAVIBLN01=NAVIBLN01&NAVKOOR01=NAVKOOR01&IDBLMBR01&IDKRY=$epwc_sg_vkunit01_sww[KaryNomor]&IDBLMBR01=$IDBLMBR01' class='dropdown-item'><i class='fas fa-bookmark'></i> $epwc_sg_vkunit01_sww[KaryNama] <span class='badge bg-danger'>$epwc_nr02_ls_vlem01_sw</span></a>";
                     }
            ?>
           </div>
@@ -52,6 +51,11 @@
   </div>
 </nav>
 <br>
+    <?PHP } ?>
+
+<?PHP 
+    if(isset($_GET['NAVKOOR01'])){ 
+?>
 <p class="mx-2">
 Tekan F3 pada keyboard , ketikan "Pending / Approved / Reject" untuk menemukan beberapa form lembur yang akan di eksekusi . bisa juga ketikan kata kunci lain untuk menemukan data yang akan dicari</p>  
         <?PHP       
@@ -118,8 +122,7 @@ Tekan F3 pada keyboard , ketikan "Pending / Approved / Reject" untuk menemukan b
         }elseif($epwc_ls_vlem01_sww['LemburApp']=="4"){
             echo"<td class=table-success><span class='badge bg-success'>Approved</span></td>";
          }
-        ?>
-        
+        ?>       
         <td><?PHP echo$NF($epwc_ls_vlem01_sww['LemburBiasaJumlah']); ?></td>
         <td>
             <?PHP
@@ -178,7 +181,7 @@ Tekan F3 pada keyboard , ketikan "Pending / Approved / Reject" untuk menemukan b
                         $up_lbr_01 = $CL_Q("$UP Citarum.dbo.TKaryLemburHari SET LemburApp='$slc_app_01',UnitKode='$txt_unitkode_01' WHERE LemburID='$txt_id_01' ");
 
                         $no_lembur_02++; }
-                        header("LOCATION:?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW03&NAVIBLN01=NAVIBLN01&IDBLMBR01=$IDBLMBR01&IDKRY=$IDKRY");
+                        header("LOCATION:?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW03&NAVIBLN01=NAVIBLN01&NAVKOOR01=NAVKOOR01&IDBLMBR01=$IDBLMBR01&IDKRY=$IDKRY");
 
                 }
         ?>
@@ -190,10 +193,10 @@ Tekan F3 pada keyboard , ketikan "Pending / Approved / Reject" untuk menemukan b
             $epwc_tot02_vlem01_sww = $CL_FAS($epwc_tot02_vlem01_sw); #TOTAL SUCCESSS
 ?>
 <div class="alert alert-dismissible alert-info">
-                <?PHP echo"<b>TOTAL Pending : Rp.".$NF($epwc_tot_vlem01_sww['tot_lembur']); ?>
+        <?PHP echo"<b>TOTAL Pending : Rp.".$NF($epwc_tot_vlem01_sww['tot_lembur']); ?>
 </div>
 <div class="alert alert-dismissible alert-success">
-                <?PHP echo"<b>TOTAL Sending : Rp.".$NF($epwc_tot02_vlem01_sww['tot02_lembur']); ?>
+    <?PHP echo"<b>TOTAL Sending : Rp.".$NF($epwc_tot02_vlem01_sww['tot02_lembur']); ?>
 </div>
-
 <?PHP } ?>
+

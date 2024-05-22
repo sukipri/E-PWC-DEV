@@ -4,7 +4,7 @@
 <!-- <select name="txt_thn" class="form-control form-control-sm">
 </select> -->
 <select name="slc_bln" class="form-control form-control" required>
-  <option value=""></option>
+  <option value="">Bulan Pencairan</option>
   <?PHP 
       $pl_sl_vlbulan01_sw = $ms_q("$sl DISTINCT TOP 14  LemburBulan FROM Citarum.dbo.TKaryLemburHari order by LemburBulan desc");
         while($pl_sl_vlbulan01_sww  = $ms_fas($pl_sl_vlbulan01_sw)){

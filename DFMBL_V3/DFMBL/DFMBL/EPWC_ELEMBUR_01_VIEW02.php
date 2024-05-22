@@ -42,7 +42,8 @@
 <table class="table table-sm table-bordered table-striped mx-2">
     <tr class="">
         <td width="10%"><b>Bulan Lembur</b></td>
-        <td>Nama</td>
+        <!-- <td>Nama</td> -->
+        <td><b>Bulan Pencairan</b></td>
         <td><b>Tanggal Lembur</b></td>
         <td><b>Jumlah Jam</b></td>
         <td><b>Uraian</b></td>
@@ -65,11 +66,11 @@
     ?>
     <tr>
         <td><?PHP 
-        echo"<a href='#'>$epwc_ls_vlem01_sww[LemburBulanRng]</a>"; 
+        echo"$epwc_ls_vlem01_sww[LemburBulanRng]"; 
         echo"<br>";
-        echo"<b>#".$epwc_ls_vlem01_sww['LemburJenis']."</b>";
-        ?></td>
-        <td><?PHP echo $epwc_ls_vkry01_sww['KaryNama']; ?></td>
+        echo"<b>#".$epwc_ls_vlem01_sww['LemburJenis']."</b>"; ?></td>
+        <!-- <td><?PHP #echo $epwc_ls_vkry01_sww['KaryNama']; ?></td> -->
+        <td><?PHP echo $epwc_ls_vlem01_sww[LemburBulan] ?> </td>
         <td><?PHP echo"$epwc_ls02_vlem01_sww[lstgl]<br><span class='badge bg-secondary'>$epwc_ls_vlem01_sww[UnitKode]</span>"; ?></td>
         <td><?PHP echo"$epwc_ls_vlem01_sww[LemburBiasa]"; ?></td>
         <td><?PHP echo"$epwc_ls_vlem01_sww[LemburUraian]"; ?></td>
