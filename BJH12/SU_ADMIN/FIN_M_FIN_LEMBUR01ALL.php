@@ -37,8 +37,8 @@
   <table class="table table-sm table-bordered table-striped">
     <tr class="table-dark">
     <td width="3%">#</td>
-        <td width="17%">NIP</td>
-       <td>Nama</td>
+        <td>Nama</td>
+        <td width="17%">Bagian</td>
        <td>Tot.Jam Lembur Biasa</td>
        <td>Nom.Lembur Biasa</td>
        <td>Tot.Jam Lembur Malam</td>
@@ -51,12 +51,15 @@
         $no_kry = 1;
       $pl_ls_vkry01_sw = $ms_q("$sl KaryNomor,KaryNama,UnitKode FROM Citarum.dbo.TKaryawan WHERE   (KaryStatus='10' OR KaryStatus='22') order by KaryNama asc");
         while($pl_ls_vkry01_sww = $ms_fas($pl_ls_vkry01_sw)){
+            #DATA UNIT  
+            $pl_ls_vunit01_sw = $ms_q("$sl UnitKode,UnitNama FROM Citarum.dbo.TUnitPrs WHERE  UnitKode='$pl_ls_vkry01_sww[UnitKode]'");
+            $pl_ls_vunit01_sww = $ms_fas($pl_ls_vunit01_sw);
           
     ?>
     <tr>
         <td><?PHP echo $no_kry; ?></td>
-        <td><?PHP echo  $pl_ls_vkry01_sww['KaryNomor']; ?></td>
        <td><?PHP echo $pl_ls_vkry01_sww['KaryNama']; ?></td>
+        <td><?PHP echo  $pl_ls_vunit01_sww['UnitNama']; ?></td>
        <td>
        <?PHP 
               #DATA JAM BIASA
@@ -126,7 +129,9 @@
 
 <table class="table table-sm table-bordered table-striped">
     <tr>
-       <td>-</td>
+       <td>
+        <b>Data Pending</b>
+       </td>
        
        <td align="right" class="table-dark">
           <?PHP 

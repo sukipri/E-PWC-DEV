@@ -8,9 +8,12 @@
         header("LOCATION:?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW03");
     }
 ?>
+
+<div class="alert alert-dismissible alert-info mx-2">
 <span class="mx-2"><b>DAFTAR PERMINTAAN LEMBUR</b></span>
-<br>
 <p class="mx-2">Pilih Periode bulan untuk memulai verifikasi & pengecekan data lembur <a class="btn btn-secondary btn-sm">YYYY/MM</a></p>
+</div>
+
 <hr>
 <b class="mx-2">Bulan Lembur</b> : 
 <?PHP 
@@ -123,7 +126,7 @@ Tekan F3 pada keyboard , ketikan "Pending / Approved / Reject" untuk menemukan b
          }elseif($epwc_ls_vlem01_sww['LemburApp']=="31"){
             echo"<td class=table-secondary><span class='badge bg-info'>Pending</span></td>";
         }elseif($epwc_ls_vlem01_sww['LemburApp']=="2"){
-            echo"<td class=table-info><span class='badge bg-info'>Pending</span></td>";
+            echo"<td class=table-info></td>";
         }elseif($epwc_ls_vlem01_sww['LemburApp']=="4"){
             echo"<td class=table-success><span class='badge bg-success'>Approved</span></td>";
          }
@@ -153,7 +156,7 @@ Tekan F3 pada keyboard , ketikan "Pending / Approved / Reject" untuk menemukan b
                         <option value="3">REJECT</option>
                         <option value="4">APPROVE</option>
                         <option value="31">Pending</option>
-                        <?PHP }elseif($epwc_ls_vlem01_sww['LemburApp']=="31" OR $epwc_ls_vlem01_sww['LemburApp']=="2"){ ?>
+                        <?PHP }elseif($epwc_ls_vlem01_sww['LemburApp']=="31"){ ?>
                             <option value="31">Pending</option>
                             <option value="4">APPROVE</option>
                             <option value="3">REJECT</option>
@@ -163,6 +166,7 @@ Tekan F3 pada keyboard , ketikan "Pending / Approved / Reject" untuk menemukan b
                             <option value="3">REJECT</option>
                             <option value="31">Pending</option>
             <?PHP }else{ ?>
+            <option value="">-Pilih-</option>
             <option value="31">Pending</option>
             <option value="4">APPROVE</option>
             <option value="3">REJECT</option>
@@ -198,7 +202,7 @@ Tekan F3 pada keyboard , ketikan "Pending / Approved / Reject" untuk menemukan b
             $epwc_tot02_vlem01_sw = $CL_Q("SELECT SUM(LemburBiasaJumlah) as tot02_lembur FROM Citarum.dbo.TKaryLemburHari WHERE  LemburApp='4' AND KaryDir='$epwc_vkry01_sww[KaryNomorYakkum]'  AND LemburBulanRng='$IDBLMBR01' AND Uploader='$IDKRY' ");
             $epwc_tot02_vlem01_sww = $CL_FAS($epwc_tot02_vlem01_sw); #TOTAL SUCCESSS
 ?>
-<div class="alert alert-dismissible alert-info">
+<div class="alert alert-dismissible alert-secondary">
         <?PHP echo"<b>TOTAL Pending : Rp.".$NF($epwc_tot_vlem01_sww['tot_lembur']); ?>
 </div>
 <div class="alert alert-dismissible alert-success">

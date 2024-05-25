@@ -61,16 +61,17 @@
             <td><?PHP echo FS_DATE($sp_daytxt); ?></td>
             
             <td align="center">
-                <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$IDKRY&IDHARI=$sp_day&IDBULAN=$epwc_bulan_jdw&IDTAHUN=$epwc_bulan_jdw02&INDAY=INDAY&IDJBULAN01=$IDJBULAN01"; ?>" class="btn btn-success btn-sm">Entri Lembur</a>
+                <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$IDKRY&IDHARI=$sp_day&IDBULAN=$epwc_bulan_jdw&IDTAHUN=$epwc_bulan_jdw02&INDAY=INDAY&IDJBULAN01=$IDJBULAN01"; ?>" class="btn btn-success btn-sm"><i class='fas fa-pen'></i> Entri Lembur</a>
             </td>
             <td>
                 <!--  -->
                 <?PHP 
-                    $epwc_ls_vlem01_sw = $CL_Q("$SL LemburID,KaryNomor,LemburTanggal,LemburUraian,LemburAlasan FROM Citarum.dbo.TKaryLemburHari WHERE KaryNomor='$IDKRY' AND YEAR(LemburTanggal)=' $epwc_bulan_jdw02' AND MONTH(LemburTanggal)='$epwc_bulan_jdw' AND DAY(LemburTanggal)='$sp_day' ");
+                    $epwc_ls_vlem01_sw = $CL_Q("$SL LemburID,KaryNomor,LemburBiasa,LemburTanggal,LemburUraian,LemburAlasan FROM Citarum.dbo.TKaryLemburHari WHERE KaryNomor='$IDKRY' AND YEAR(LemburTanggal)=' $epwc_bulan_jdw02' AND MONTH(LemburTanggal)='$epwc_bulan_jdw' AND DAY(LemburTanggal)='$sp_day' ");
                         while($epwc_ls_vlem01_sww = $CL_FAS($epwc_ls_vlem01_sw)){
                             echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$IDKRY&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPLMBR01=UPLMBR01'>";
                             echo"
                                 <div class='alert alert-dismissible alert-primary'>
+                                <b>Total Jam</b> : $epwc_ls_vlem01_sww[LemburBiasa]<br>
                                 <b>Uraian : </b> $epwc_ls_vlem01_sww[LemburUraian]<br>
                                 <b>Alasan : </b> $epwc_ls_vlem01_sww[LemburAlasan]
                                 </div>";
