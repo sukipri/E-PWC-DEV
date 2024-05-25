@@ -136,42 +136,71 @@
               #DATA LEMBUR MALAM TOTAL
               $pl_totav02_vlem01_sw = $ms_q("$sl SUM(LemburBiasaJumlah) as tot_av02 FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01'  AND LemburApp='4' AND LemburJenis='DM'");
               $pl_totav02_vlem01_sww = $ms_fas($pl_totav02_vlem01_sw);
+              #DATA LEMBUR  TOTAL GLobal
+              $pl_totavg_vlem01_sw = $ms_q("$sl SUM(LemburBiasaJumlah) as tot_avg FROM Citarum.dbo.TKaryLemburhari WHERE LemburBulan='$IDLBULAN01'  AND LemburApp='4'");
+              $pl_totavg_vlem01_sww = $ms_fas($pl_totavg_vlem01_sw);
+
               echo "Total lembur Biasa ".number_format($pl_totav_vlem01_sww['tot_av']);
               echo"<br>";
               echo "Total lembur Malam ".number_format($pl_totav02_vlem01_sww['tot_av02']);
+              echo"<br>";
+              echo "<b>Total lembur Global</b>  ".number_format($pl_totavg_vlem01_sww['tot_avg']);
           ?>
        </td>
        <td>-</td>
     </tr>
     <tr>
-       <td>
+       <td width="55%">
         <?PHP 
-            #DATA CEKING VERIFIKATOR Direktur
-            $pl_nr_dir01_vlem01_sw = $ms_q("$sl KaryNomor,KaryDir FROM Citarum.dbo.TKaryLemburhari WHERE KaryDir='04000671' AND  (LemburApp='2' OR LemburApp='31') AND LemburBulan='$IDLBULAN01'");
+            #DATA CEKING VERIFIKATOR Direktur UnVerif
+            $pl_nr_dir01_vlem01_sw = $ms_q("$sl KaryNomor,KaryDir FROM Citarum.dbo.TKaryLemburhari WHERE KaryDir='04000671' AND  (LemburApp='2') AND LemburBulan='$IDLBULAN01'");
             $pl_nr_dir01_vlem01_sww = $ms_nr($pl_nr_dir01_vlem01_sw);
+             #DATA CEKING VERIFIKATOR Direktur Pending atau Reject
+             $pl_nr_dirpen01_vlem01_sw = $ms_q("$sl KaryNomor,KaryDir FROM Citarum.dbo.TKaryLemburhari WHERE KaryDir='04000671' AND  (LemburApp='3' OR LemburApp='31') AND LemburBulan='$IDLBULAN01'");
+             $pl_nr_dirpen01_vlem01_sww = $ms_nr($pl_nr_dirpen01_vlem01_sw);
 
             #DATA CEKING VERIFIKATOR Direktur
             $pl_nr_dir02_vlem01_sw = $ms_q("$sl KaryNomor,KaryDir FROM Citarum.dbo.TKaryLemburhari WHERE KaryDir='04130956' AND  (LemburApp='2' OR LemburApp='31') AND LemburBulan='$IDLBULAN01'");
             $pl_nr_dir02_vlem01_sww = $ms_nr($pl_nr_dir02_vlem01_sw);
+            #DATA CEKING VERIFIKATOR Direktur Pending atau Reject
+            $pl_nr_dirpen02_vlem01_sw = $ms_q("$sl KaryNomor,KaryDir FROM Citarum.dbo.TKaryLemburhari WHERE KaryDir='04130956' AND  (LemburApp='3' OR LemburApp='31') AND LemburBulan='$IDLBULAN01'");
+            $pl_nr_dirpen02_vlem01_sww = $ms_nr($pl_nr_dirpen02_vlem01_sw);
 
             #DATA CEKING VERIFIKATOR Direktur
             $pl_nr_dir03_vlem01_sw = $ms_q("$sl KaryNomor,KaryDir FROM Citarum.dbo.TKaryLemburhari WHERE KaryDir='04100869' AND  (LemburApp='2' OR LemburApp='31') AND LemburBulan='$IDLBULAN01'");
             $pl_nr_dir03_vlem01_sww = $ms_nr($pl_nr_dir03_vlem01_sw);
+            #DATA CEKING VERIFIKATOR Direktur Pending atau Reject
+            $pl_nr_dirpen03_vlem01_sw = $ms_q("$sl KaryNomor,KaryDir FROM Citarum.dbo.TKaryLemburhari WHERE KaryDir='04100869' AND  (LemburApp='3' OR LemburApp='31') AND LemburBulan='$IDLBULAN01'");
+            $pl_nr_dirpen03_vlem01_sww = $ms_nr($pl_nr_dirpen03_vlem01_sw);
 
+            // #DATA Samples
+            // $pl_nrt_dir01_vlem01_sw = $ms_q("$sl KaryNomor,KaryDir,Uploader FROM Citarum.dbo.TKaryLemburhari WHERE KaryDir='04000671' AND  (LemburApp='2' OR LemburApp='31') AND LemburBulan='$IDLBULAN01'");
+            // while($pl_nrt_dir01_vlem01_sww = $ms_fas($pl_nrt_dir01_vlem01_sw)){
+            //     echo "KRY ".$pl_nrt_dir01_vlem01_sww['KaryNomor']." DIR ".$pl_nrt_dir01_vlem01_sww['KaryDir']." UP ".$pl_nrt_dir01_vlem01_sww['Uploader']."<br>";  } 04100869
+           
         ?>
         <div class="alert alert-dismissible alert-info">
                <i class="fas fa-info"></i>
                 <strong>drg. Kriswidiati, M.Kes</strong> <?PHP echo "<span class='badge bg-dark'>".$pl_nr_dir01_vlem01_sww."</span> Belum diverifikasi"; ?>
+                <br>
+                <i class="fas fa-info"></i>
+                <strong>drg. Kriswidiati, M.Kes</strong> <?PHP echo "Menolak <span class='badge bg-dark'>".$pl_nr_dirpen01_vlem01_sww."</span> Form"; ?>
         </div>
 
         <div class="alert alert-dismissible alert-info">
                <i class="fas fa-info"></i>
                 <strong>dr. Tiurlan Pardamean BR. Sibarani</strong> <?PHP echo "<span class='badge bg-dark'>".$pl_nr_dir02_vlem01_sww."</span> Belum diverifikasi"; ?>
+                <br>
+                <i class="fas fa-info"></i>
+                <strong>dr. Tiurlan Pardamean BR. Sibarani</strong> <?PHP echo "Menolak <span class='badge bg-dark'>".$pl_nr_dirpen02_vlem01_sww."</span> Form"; ?>
         </div>
 
         <div class="alert alert-dismissible alert-info">
                <i class="fas fa-info"></i>
                 <strong>dr. Santi Kristiani, Sp.PK</strong> <?PHP echo "<span class='badge bg-dark'>".$pl_nr_dir03_vlem01_sww."</span> Belum diverifikasi"; ?>
+                <br>
+                <i class="fas fa-info"></i>
+                <strong>dr. Santi Kristiani, Sp.PK</strong> <?PHP echo "Menolak <span class='badge bg-dark'>".$pl_nr_dirpen03_vlem01_sww."</span> Form"; ?>
         </div>
 
        </td>

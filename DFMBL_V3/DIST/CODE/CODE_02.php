@@ -39,6 +39,9 @@
               $IDBLMBR01 = @$SQL_SL($_GET['IDBLMBR01']); #PARAMER LEMBUR
               $IDLEMTMP01 = @$SQL_SL($_GET['IDLEMTMP01']); #PARAMER IDLEMBURTMP
               $IDJBULAN01 = @$SQL_SL($_GET['IDJBULAN01']); #PARAMER JDW BULAN
+              $IDHARI = @$SQL_SL($_GET['IDHARI']); #PARAMER HARI
+              $IDBULAN = @$SQL_SL($_GET['IDBULAN']); #PARAMER BUlan
+              $IDTAHUN = @$SQL_SL($_GET['IDTAHUN']); #PARAMER TAHNUN
         //--GET DML--//
                 //-Question-//
                 /**/

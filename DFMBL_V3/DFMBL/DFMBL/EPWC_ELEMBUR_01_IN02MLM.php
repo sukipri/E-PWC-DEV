@@ -26,7 +26,7 @@
         ?>
     
     <?PHP    
-            if(isset($_GET['JDWBULAN01'])){
+                if(isset($_GET['JDWBULAN01'])){
                                 #DATA KALKULASI LEMBUR
                                 $tj_ls_vjdw01_sw = $CL_Q("$CL_SL TJ_Main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$IDJBULAN01'  order by Bulan Desc");
                                 $tj_ls_vjdw01_sww = $CL_FAS($tj_ls_vjdw01_sw); #M X Y
@@ -772,8 +772,9 @@
 
                                    if($save_lmalam_01){
                                        #echo $txt_tgl_T05;
-                                       include"../LAYOUT/NOTIF/NF_SAVE_SUCCESS.php";
+                                       #include"../LAYOUT/NOTIF/NF_SAVE_SUCCESS.php";
                                        #header("LOCATION:?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02");
+                                       header("LOCATION:?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02DAY&IDKRY=$IDKRY&IDKRY02=$epwc_vw_vkry01_sww[KaryNomorYakkum]&LEMBULAN01=LEMBULAN01&IDJBULAN01=$tj_ls_vjdw01_sww[Bulan]");
                                    }else{
                                        echo"GAGAL";
                                    }                       

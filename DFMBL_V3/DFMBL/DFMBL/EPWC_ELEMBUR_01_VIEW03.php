@@ -12,9 +12,9 @@
 <br>
 <p class="mx-2">Pilih Periode bulan untuk memulai verifikasi & pengecekan data lembur <a class="btn btn-secondary btn-sm">YYYY/MM</a></p>
 <hr>
-
+<b class="mx-2">Bulan Lembur</b> : 
 <?PHP 
-    $epwc_sl_vblmbr01_sw = $CL_Q("$SL DISTINCT LemburBulanRng FROM TKaryLemburHari WHERE LemburBulanRng LIKE '%$DATE_Y%' order by LemburBulanRng asc");
+    $epwc_sl_vblmbr01_sw = $CL_Q("$SL  DISTINCT TOP 4 LemburBulanRng FROM TKaryLemburHari WHERE LemburBulanRng LIKE '%$DATE_Y%' order by LemburBulanRng desc");
         while($epwc_sl_vblmbr01_sww = $CL_FAS($epwc_sl_vblmbr01_sw)){
             echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW03&NAVIBLN01=NAVIBLN01&IDBLMBR01=$epwc_sl_vblmbr01_sww[LemburBulanRng]' class='btn btn-secondary btn-sm mx-2'><i class='fas fa-bookmark'></i> $epwc_sl_vblmbr01_sww[LemburBulanRng]</a>";
         }
@@ -25,7 +25,7 @@
 
 <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Koordinator</a>
+    <a class="navbar-brand" href="#"><i class="far fa-folder"></i></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -37,7 +37,7 @@
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#">Action</a>
            <?PHP 
-                $epwc_sg_vkunit01_sw = $CL_Q("$SL KaryNomor,KaryNama,KaryDir FROM Citarum.dbo.Tkaryawan WHERE  KaryDir='$epwc_vkry01_sww[KaryNomorYakkum]' AND (KaryJbtStruktural='08' OR KaryJbtStruktural='07' OR KaryJbtStruktural='06' OR KaryJbtStruktural='02'  OR KaryJbtStruktural='03') order by KaryNama asc  ");
+                $epwc_sg_vkunit01_sw = $CL_Q("$SL KaryNomor,KaryNama,KaryDir FROM Citarum.dbo.Tkaryawan WHERE  KaryDir='$epwc_vkry01_sww[KaryNomorYakkum]' AND (KaryJbtStruktural='08' OR KaryJbtStruktural='07' OR KaryJbtStruktural='06' OR KaryJbtStruktural='02'  OR KaryJbtStruktural='03') order by KaryNama asc ");
                 while($epwc_sg_vkunit01_sww = $CL_FAS($epwc_sg_vkunit01_sw)){
                     $epwc_nr02_vlem01_sw = $CL_Q("SELECT  * FROM Citarum.dbo.TKaryLemburHari WHERE   KaryDir='$epwc_vkry01_sww[KaryNomorYakkum]' AND LemburBulanRng='$IDBLMBR01' AND Uploader='$epwc_sg_vkunit01_sww[KaryNomor]' AND (LemburApp='2' OR LemburApp='31')");
                     $epwc_nr02_ls_vlem01_sw  = $CL_NR($epwc_nr02_vlem01_sw);
@@ -45,6 +45,9 @@
                     }
            ?>
           </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><?PHP echo "Tahun/Bulan ".$IDBLMBR01; ?></a>
         </li>
       </ul>
     </div>
@@ -54,7 +57,7 @@
     <?PHP } ?>
 
 <?PHP 
-    if(isset($_GET['NAVKOOR01'])){ 
+     if(isset($_GET['NAVKOOR01'])){ 
 ?>
 <p class="mx-2">
 Tekan F3 pada keyboard , ketikan "Pending / Approved / Reject" untuk menemukan beberapa form lembur yang akan di eksekusi . bisa juga ketikan kata kunci lain untuk menemukan data yang akan dicari</p>  
@@ -117,7 +120,9 @@ Tekan F3 pada keyboard , ketikan "Pending / Approved / Reject" untuk menemukan b
         <?PHP 
          if($epwc_ls_vlem01_sww['LemburApp']=="3"){
             echo"<td class=table-dark><span class='badge bg-dark'>Rejected</span></td>";
-         }elseif($epwc_ls_vlem01_sww['LemburApp']=="31" OR $epwc_ls_vlem01_sww['LemburApp']=="2"){
+         }elseif($epwc_ls_vlem01_sww['LemburApp']=="31"){
+            echo"<td class=table-secondary><span class='badge bg-info'>Pending</span></td>";
+        }elseif($epwc_ls_vlem01_sww['LemburApp']=="2"){
             echo"<td class=table-info><span class='badge bg-info'>Pending</span></td>";
         }elseif($epwc_ls_vlem01_sww['LemburApp']=="4"){
             echo"<td class=table-success><span class='badge bg-success'>Approved</span></td>";
@@ -152,6 +157,7 @@ Tekan F3 pada keyboard , ketikan "Pending / Approved / Reject" untuk menemukan b
                             <option value="31">Pending</option>
                             <option value="4">APPROVE</option>
                             <option value="3">REJECT</option>
+                        
                         <?PHP }elseif($epwc_ls_vlem01_sww['LemburApp']=="4"){ ?>
                             <option value="4">APPROVE</option>
                             <option value="3">REJECT</option>

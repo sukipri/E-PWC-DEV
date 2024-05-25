@@ -18,7 +18,6 @@
        <td>Nom.Lembur Malam</td>
        <td>Nom.Lembur Total</td>
        <td>Total Jam</td>
-       <td class="table-warning" width="5%">Belum Ter-Verif</td>
     </tr>
     <?PHP 
         $no_kry = 1;
@@ -124,7 +123,9 @@
             <td width="3%">-</td>
                 <td width="17%">-</td>
             <td>-</td>
+            <td>-</td>
             <td><?PHP echo number_format(  $pl_totall01_vlem01_sww_rd,0,",","."); ?></td>
+            <td>-</td>
             <td><?PHP echo number_format( $pl_totall02_vlem01_sww_rd02,0,",","."); ?></td>
             <td><?PHP echo number_format( $pl_totall_vlem01_sww_rd03,0,",","."); ?></td>
             <td><?PHP echo $pl_totjamall_vlem01_sww['totjamall'] ?></td>

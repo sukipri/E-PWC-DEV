@@ -19,6 +19,20 @@
 <div class="card border-primary mb-3 mx-2" style="max-width: 52rem;">
   <div class="card-header">FORM LEMBUR</div>
   <div class="card-body">
+    <?PHP if(isset($_GET['INDAY'])){ ?>
+ <!--  -->
+ <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">DATE</span>
+        <!-- <input type="number" class="form-control" name="elembur_lemtgl_01" required> -->
+        <input type="text" class="form-control" value="<?PHP echo $IDHARI ?>"  name="elembur_lemtgl_0101" readonly>
+        <input type="text" class="form-control" value="<?PHP echo $IDBULAN ?>" name="elembur_bulan_01" readonly>
+    <input type="number" class="form-control" name="elembur_lemtgl_0102" required placeholder="Tahun..." readonly value="<?PHP echo $DATE_Y; ?>">
+    <span class="badge bg-info">Jumlah Jam</span>
+    <input type="text" class="form-control" autocomplete="off" name="elembur_jmljam_01" required value="<?PHP echo $epwc_vw_vlmbr01_sww['LemburBiasa']; ?>">
+     <!--  -->
+    </div>
+
+        <?PHP }else{ ?>
    <!--  -->
    <div class="input-group mb-3">
         <span class="input-group-text" id="basic-addon1">DATE</span>
@@ -29,13 +43,13 @@
             $no_lembur = 1;
                 while($no_lembur <= 31){
                    $no_spritf =  sprintf("%'.02d\n", $no_lembur);
-                   if($no_spritf==$epwc_dt_vlmbr01_sww['day_dt']){
+                   if($no_spritf==$epwc_dt_vlmbr01_sww['day_dt'] OR $IDHARI){
                     echo"<option value=$no_spritf selected>$no_spritf</option>";
                    }else{
                     echo"<option value=$no_spritf>$no_spritf</option>";
                 }
                 $no_lembur++; 
-                  
+                
                 }
         ?>      
     </select>
@@ -45,7 +59,7 @@
             $no_lemburbulan = 1;
                 while($no_lemburbulan <= 12){ #$epwc_dtbulan
                    $no_spritf =  sprintf("%'.02d\n", $no_lemburbulan);
-                   if($no_spritf==$epwc_dtbulan){
+                   if($no_spritf==$epwc_dtbulan OR $IDBULAN){
                     echo"<option value=$no_spritf selected>$no_spritf</option>";
                    }else{
                     echo"<option value=$no_spritf>$no_spritf</option>";
@@ -60,12 +74,20 @@
     <input type="text" class="form-control" autocomplete="off" name="elembur_jmljam_01" required value="<?PHP echo $epwc_vw_vlmbr01_sww['LemburBiasa']; ?>">
      <!--  -->
     </div>
+    <?PHP } ?>
+<!--  -->
+
+    
 
     <div class="input-group mb-3" style="max-width: 35rem;">
-    <a href="#" class="btn btn-info">Jam Mulai</a>
-    <input type="time" class="form-control" name="elembur_tgljam1_01" required  value="<?PHP echo $epwc_vw_vlmbr01_sww['LemburTgljam1'] ?>">
+    <!-- <a href="#" class="btn btn-info">Jam Mulai</a>
+    <input type="time" class="form-control" name="elembur_tgljam1_01" required  value="<?PHP #echo $epwc_vw_vlmbr01_sww['LemburTgljam1'] ?>">
     <a href="#" class="btn btn-info">Jam Selesai</a>
-    <input type="time" class="form-control" name="elembur_tgljam2_01" required  value="<?PHP echo $epwc_vw_vlmbr01_sww['LemburTgljam2'] ?>"> 
+    <input type="time" class="form-control" name="elembur_tgljam2_01" required  value="<?PHP #echo $epwc_vw_vlmbr01_sww['LemburTgljam2'] ?>">  -->
+
+    <input type="hidden" class="form-control" name="elembur_tgljam1_01"   value="<?PHP echo $TIME_HTML5 ?>">
+    <input type="hidden" class="form-control" name="elembur_tgljam2_01"   value="<?PHP echo $TIME_HTML5 ?>"> 
+    
 </div>
     
 
@@ -263,11 +285,12 @@
 			#PROCCESSING INSERT
 			$save_elembur_01 = @$CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode,LemburTglInput,LemburTgljam1,LemburTgljam2)VALUES('$elembur_thnbln_01','$elembur_thnbln_02','$IDKRY','$elembur_lemtgl_01 00:00:00','100','$elembur_lemtgl_01 00:00:00','$elembur_lemtgl_01 00:00:00','$elembur_jmljam_01','$upahlembur_fix','$epwc_ck_vlemtmp01_sww[lemtmp_uisi_01]','$epwc_ck_vlemtmp01_sww[lemtmp_aisi_01]','$elembur_tar_01','$elembur_has_01','2','$IDMAIN','$epwc_vkry01_sww[KaryDir]','$elembur_jenis_01','$IDUPLOADER','$epwc_vw_vkry01_sww[UnitKode]','$DATE_HTML5_SQL','$elembur_tgljam1_01','$elembur_tgljam2_01')");
             
-            #$save_elembur_01 = @$CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode,LemburTglInput,LemburTgljam1,LemburTgljam2)VALUES('$elembur_thnbln_01','$elembur_thnbln_02','$IDKRY','$elembur_lemtgl_01 00:00:00','100','$elembur_lemtgl_01 00:00:00','$elembur_lemtgl_01 00:00:00','$elembur_jmljam_01','$upahlembur_fix','$elembur_ur_01','$elembur_al_01','$elembur_tar_01','$elembur_has_01','2','$IDMAIN','$epwc_vkry01_sww[KaryDir]','$elembur_jenis_01','$IDUPLOADER','$epwc_vw_vkry01_sww[UnitKode]','$DATE_HTML5_SQL','$elembur_tgljam1_01','$elembur_tgljam2_01')");
+            
 			if($save_elembur_01){
-				include"../LAYOUT/NOTIF/NF_SAVE_SUCCESS.php";
+				#include"../LAYOUT/NOTIF/NF_SAVE_SUCCESS.php";
                 #echo $interval->format('%h')." Hours ".$interval->format('%i')." Minutes";
-				#header("LOCATION:?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02");
+				header("LOCATION:?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02DAY&IDKRY=$IDKRY&IDKRY02=$epwc_vw_vkry01_sww[KaryNomorYakkum]&LEMBULAN01=LEMBULAN01&IDJBULAN01=$IDJBULAN01");
+
 			}else{
 				include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
 			}
@@ -299,7 +322,8 @@
         
 		if($update_elembur_01){
 			#include"../LAYOUT/NOTIF/NF_SAVE_SUCCESS.php";
-			header("LOCATION:?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW02");
+			header("LOCATION:?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02DAY&IDKRY=$IDKRY&IDKRY02=$epwc_vw_vkry01_sww[KaryNomorYakkum]&LEMBULAN01=LEMBULAN01&IDJBULAN01=$elembur_thnbln_02");
+            
 		}else{
 			include"../LAYOUT/NOTIF/NF_SAVE_FAILED.php";
 		}
