@@ -129,9 +129,7 @@
 
 <table class="table table-sm table-bordered table-striped">
     <tr>
-       <td>
-        <b>Data Pending</b>
-       </td>
+       <td></td>
        
        <td align="right" class="table-dark">
           <?PHP 
@@ -152,10 +150,9 @@
               echo "<b>Total lembur Global</b>  ".number_format($pl_totavg_vlem01_sww['tot_avg']);
           ?>
        </td>
-       <td>-</td>
     </tr>
     <tr>
-       <td width="55%">
+       <td width="50%">
         <?PHP 
             #DATA CEKING VERIFIKATOR Direktur UnVerif
             $pl_nr_dir01_vlem01_sw = $ms_q("$sl KaryNomor,KaryDir FROM Citarum.dbo.TKaryLemburhari WHERE KaryDir='04000671' AND  (LemburApp='2') AND LemburBulan='$IDLBULAN01'");
@@ -209,8 +206,36 @@
         </div>
 
        </td>
-       <td>-</td>
-       <td>-</td>
+       <td>
+       <b><?PHP echo"Data Pending "; ?></b>
+       <table class="table">
+                <tr class="table-primary">
+                    <td>Nama</td>
+                    <td>Otorisator</td>
+                    <td width="30%">Tanggal</td>
+                </tr>
+                <?PHP 
+                    #DATA LEMBUR PENDDING
+                    $pl_pen_ls_vlem01_sw = $ms_q("$sl LemburBulan,LemburBulanRNg,KaryNomor,KaryDir,CONVERT(date,LemburTanggal) as ltgl FROM Citarum.dbo.TKaryLemburHari WHERE (LemburApp='3' OR LemburApp='31') AND LemburBulan='$IDLBULAN01'");
+                    while($pl_pen_ls_vlem01_sww = $ms_fas($pl_pen_ls_vlem01_sw)){
+                        #DATA KARYAWAN
+                        $pl_pen_ls_vkry01_sw = $ms_q("$sl KaryNomor,KaryNama FROM Citarum.dbo.TKaryawan WHERE  KaryNomor='$pl_pen_ls_vlem01_sww[KaryNomor]'");
+                            $pl_pen_ls_vkry01_sww = $ms_fas($pl_pen_ls_vkry01_sw);
+                        #DATA KARYAWAN DIREKSI
+                        #DATA KARYAWAN
+                        $pl_pen_ls_vdkry01_sw = $ms_q("$sl KaryNomor,KaryNama FROM Citarum.dbo.TKaryawan WHERE  KaryNomorYakkum='$pl_pen_ls_vlem01_sww[KaryDir]'");
+                            $pl_pen_ls_vdkry01_sww = $ms_fas($pl_pen_ls_vdkry01_sw);
+
+                ?>
+                <tr>
+                    <td><?PHP echo $pl_pen_ls_vkry01_sww['KaryNama'] ?></td>
+                    <td><?PHP echo $pl_pen_ls_vdkry01_sww['KaryNama'] ?></td>
+                    <td><?PHP echo $pl_pen_ls_vlem01_sww['ltgl']; ?></td>
+                </tr>
+                <?PHP } ?>
+            </table>
+
+       </td>
     </tr>
   </table>
       <a href="<?PHP echo"FIN_M_FIN_LEMBUR01_DTL-XLS02.php?IDLBULAN01=$IDLBULAN01";  ?>" target="_blank" class="btn btn-success"><i class="far fa-file-excel"></i> Download Data</button>
