@@ -79,8 +79,10 @@
         <td><?PHP echo$NF($epwc_ls_vlem01_sww['LemburBiasaJumlah']); ?></td>
         <td>
             <?PHP
-                if($epwc_ls_vlem01_sww['LemburApp']=="1" OR $epwc_ls_vlem01_sww['LemburApp']=="2" OR $epwc_ls_vlem01_sww['LemburApp']=="31"){
+                if($epwc_ls_vlem01_sww['LemburApp']=="1" OR $epwc_ls_vlem01_sww['LemburApp']=="2"){
                     echo"<a href='#' class='badge bg-info'>Proccessing</a>";
+                }elseif($epwc_ls_vlem01_sww['LemburApp']=="31"){
+                    echo"<a href='#' class='badge bg-secondary'>Pending</a>";
                 }elseif($epwc_ls_vlem01_sww['LemburApp']=="3"){
                     echo"<a href='#' class='badge bg-dark'>Rejected</a>";
                 }elseif($epwc_ls_vlem01_sww['LemburApp']=="4"){

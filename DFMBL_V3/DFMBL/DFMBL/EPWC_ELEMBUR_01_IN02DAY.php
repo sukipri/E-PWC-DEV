@@ -1,4 +1,4 @@
-<?PHP $IDKRY02 = @$_GET['IDKRY02']; $epwc_sub_vkry01_sw = substr($IDKRY02,1); ?>
+<?PHP $IDKRY02 = @$_GET['IDKRY02']; $epwc_sub_vkry01_sw = substr($IDKRY02,1);  ?>
 <b class="mx-2 badge bg-info"><?PHP echo"Entri Lembur Harian /List Bulan"; ?></b>
 <span class="mx-2"><b><?PHP echo "<span class='badge bg-dark'><i class='fas fa-id-card-alt'></i> ".$epwc_vw_vkry01_sww['KaryNama']."</span>"; ?> </b></span>
 <br>

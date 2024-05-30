@@ -48,6 +48,9 @@
 						case'FIN_M_FIN_LEMBUR01':
 							include"FIN_M_FIN_LEMBUR01.php";
 						break;
+						case'FIN_M_FIN_LEMBUR01-COM':
+							include"FIN_M_FIN_LEMBUR01-COM.php";
+						break;
 						case'FIN_M_FIN_LEMBUR01ALL':
 							include"FIN_M_FIN_LEMBUR01ALL.php";
 						break;
