@@ -51,7 +51,10 @@
   <div class="card-body">
     <!--  -->
     <?PHP 
-        echo "BULAN <b>".$IDLBULAN01."</b>";
+        #kalkulasi 
+        $kal_bulan01_sw = $IDLBULAN01 - 1;
+        echo "Bulan Cair<b> ".$IDLBULAN01."</b><br>";
+        echo "Bulan Lembur<b> ".$kal_bulan01_sw."</b>";
         echo"<br>";
         echo $pl_sg_vkry01_sww['KaryNama'];
     ?>
@@ -75,7 +78,7 @@
        <td><?PHP echo $pl_ls_vkry01_sww['KaryNomor']."<br>".$pl_ls_vkry01_sww['KaryNama']; ?>
           <br>
           <?PHP 
-              $pl_ls_vlem01_sw = $ms_q("$sl LemburBulan,LemburBulan,KaryNomor,CONVERT(date,LemburTanggal,101) as lem_tgl,LemburBiasa,LemburBiasaJumlah,LemburApp,LemburJenis FROM Citarum.dbo.TkaryLemburHari WHERE KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburBulan='$IDLBULAN01' order by LemburTanggal asc");
+              $pl_ls_vlem01_sw = $ms_q("$sl LemburID,LemburBulan,LemburBulanRng,KaryNomor,CONVERT(date,LemburTanggal,101) as lem_tgl,LemburBiasa,LemburBiasaJumlah,LemburApp,LemburJenis FROM Citarum.dbo.TkaryLemburHari WHERE KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburBulan='$IDLBULAN01' order by LemburTanggal asc");
               $pl_nr_ls_vlem01_sww = $ms_nr($pl_ls_vlem01_sw);
 
                 if($pl_nr_ls_vlem01_sww > 0){
@@ -94,7 +97,7 @@
               
                   while($pl_ls_vlem01_sww = $ms_fas($pl_ls_vlem01_sw)){ ?>  
                     <tr>
-                      <td><?PHP echo $pl_ls_vlem01_sww['lem_tgl'] ?></td>
+                      <td><?PHP echo $pl_ls_vlem01_sww['lem_tgl']."<br><i>".$pl_ls_vlem01_sww['LemburID']."</i>"; ?></td>
                       <td><?PHP echo $pl_ls_vlem01_sww['LemburJenis'] ?></td>
                       <td><?PHP echo $pl_ls_vlem01_sww['LemburBiasa'] ?></td>
                       <td><?PHP echo number_format($pl_ls_vlem01_sww['LemburBiasaJumlah']) ?></td>
@@ -180,6 +183,16 @@
                                    echo" <td>06</td>";
                                    
                                  }
+
+                                 $pl_ck07_ls_vlem01_sw = $ms_q("$sl DAY(LemburTanggal) as lhari FROM Citarum.dbo.TKaryLemburHari WHERE KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburBulan='$IDLBULAN01' AND DAY(LemburTanggal)='7' " );
+                                 $pl_ck07_ls_vlem01_sww = $ms_fas($pl_ck07_ls_vlem01_sw);
+                                 #echo $pl_ck07_ls_vlem01_sww['lhari'];
+                                      if($pl_ck07_ls_vlem01_sww['lhari']=="7"){
+                                        echo" <td class='table-success'>07</td>";
+                                      }else{
+                                        echo" <td>07</td>";
+                                        
+                                      }
 
                                  $pl_ck08_ls_vlem01_sw = $ms_q("$sl DAY(LemburTanggal) as lhari FROM Citarum.dbo.TKaryLemburHari WHERE KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburBulan='$IDLBULAN01' AND DAY(LemburTanggal)='8' " );
                                  $pl_ck08_ls_vlem01_sww = $ms_fas($pl_ck08_ls_vlem01_sw);
@@ -270,6 +283,18 @@
                                         echo" <td>16</td>";
                                         
                                       }
+
+                                      
+                          $pl_ck17_ls_vlem01_sw = $ms_q("$sl DAY(LemburTanggal) as lhari FROM Citarum.dbo.TKaryLemburHari WHERE KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburBulan='$IDLBULAN01' AND DAY(LemburTanggal)='17' " );
+                          $pl_ck17_ls_vlem01_sww = $ms_fas($pl_ck17_ls_vlem01_sw);
+                          #echo $pl_ck17_ls_vlem01_sww['lhari'];
+                               if($pl_ck17_ls_vlem01_sww['lhari']=="17"){
+                                 echo" <td class='table-success'>17</td>";
+                               }else{
+                                 echo" <td>17</td>";
+                                 
+                               }
+
                     $pl_ck18_ls_vlem01_sw = $ms_q("$sl DAY(LemburTanggal) as lhari FROM Citarum.dbo.TKaryLemburHari WHERE KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburBulan='$IDLBULAN01' AND DAY(LemburTanggal)='18' " );
                                  $pl_ck18_ls_vlem01_sww = $ms_fas($pl_ck18_ls_vlem01_sw);
                                  #echo $pl_ck18_ls_vlem01_sww['lhari'];
@@ -309,27 +334,6 @@
                                         echo" <td>21</td>";
                                         
                                       }
-
-                 $pl_ck21_ls_vlem01_sw = $ms_q("$sl DAY(LemburTanggal) as lhari FROM Citarum.dbo.TKaryLemburHari WHERE KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburBulan='$IDLBULAN01' AND DAY(LemburTanggal)='21' " );
-                                 $pl_ck21_ls_vlem01_sww = $ms_fas($pl_ck21_ls_vlem01_sw);
-                                 #echo $pl_ck21_ls_vlem01_sww['lhari'];
-                                      if($pl_ck21_ls_vlem01_sww['lhari']=="21"){
-                                        echo" <td class='table-success'>21</td>";
-                                      }else{
-                                        echo" <td>21</td>";
-                                        
-                                      }
-
-                    $pl_ck21_ls_vlem01_sw = $ms_q("$sl DAY(LemburTanggal) as lhari FROM Citarum.dbo.TKaryLemburHari WHERE KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburBulan='$IDLBULAN01' AND DAY(LemburTanggal)='21' " );
-                                      $pl_ck21_ls_vlem01_sww = $ms_fas($pl_ck21_ls_vlem01_sw);
-                                      #echo $pl_ck21_ls_vlem01_sww['lhari'];
-                                           if($pl_ck21_ls_vlem01_sww['lhari']=="21"){
-                                             echo" <td class='table-success'>21</td>";
-                                           }else{
-                                             echo" <td>21</td>";
-                                             
-                                           }
-
                      $pl_ck22_ls_vlem01_sw = $ms_q("$sl DAY(LemburTanggal) as lhari FROM Citarum.dbo.TKaryLemburHari WHERE KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburBulan='$IDLBULAN01' AND DAY(LemburTanggal)='22' " );
                                            $pl_ck22_ls_vlem01_sww = $ms_fas($pl_ck22_ls_vlem01_sw);
                                            #echo $pl_ck22_ls_vlem01_sww['lhari'];
@@ -384,7 +388,7 @@
                                                                       
                                                                     }
 
-                                                                    $pl_ck27_ls_vlem01_sw = $ms_q("$sl DAY(LemburTanggal) as lhari FROM Citarum.dbo.TKaryLemburHari WHERE KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburBulan='$IDLBULAN01' AND DAY(LemburTanggal)='27' " );
+                         $pl_ck27_ls_vlem01_sw = $ms_q("$sl DAY(LemburTanggal) as lhari FROM Citarum.dbo.TKaryLemburHari WHERE KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburBulan='$IDLBULAN01' AND DAY(LemburTanggal)='27' " );
                                                                     $pl_ck27_ls_vlem01_sww = $ms_fas($pl_ck27_ls_vlem01_sw);
                                                                     #echo $pl_ck27_ls_vlem01_sww['lhari'];
                                                                          if($pl_ck27_ls_vlem01_sww['lhari']=="27"){
@@ -441,10 +445,136 @@
                     </tr>
                     <!-- COMPARASI DATA  -->
                     <tr>
+                      <td class="table-warning">JDW</td>
                       <?PHP 
-                          $pl_tj01_ls_vjdw01_sw = $ms_q("$sl Bulan,NIK,T01,T01,T01,T01,T01,T01,T01,T01,T01,T01 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$IDLBULAN01' ");
+                      
+                          $pl_tj01_ls_vjdw01_sw = $ms_q("$sl Bulan,NIK,T01 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
                           $pl_tj01_ls_vjdw01_sww = $ms_fas($pl_tj01_ls_vjdw01_sw);
+                          echo"<td>$pl_tj01_ls_vjdw01_sww[T01]</td>";
 
+                          $pl_tj02_ls_vjdw02_sw = $ms_q("$sl Bulan,NIK,T02 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj02_ls_vjdw02_sww = $ms_fas($pl_tj02_ls_vjdw02_sw);
+                          echo"<td>$pl_tj02_ls_vjdw02_sww[T02]</td>";
+
+                          $pl_tj03_ls_vjdw03_sw = $ms_q("$sl Bulan,NIK,T03 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj03_ls_vjdw03_sww = $ms_fas($pl_tj03_ls_vjdw03_sw);
+                          echo"<td>$pl_tj03_ls_vjdw03_sww[T03]</td>";
+
+                          $pl_tj04_ls_vjdw04_sw = $ms_q("$sl Bulan,NIK,T04 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj04_ls_vjdw04_sww = $ms_fas($pl_tj04_ls_vjdw04_sw);
+                          echo"<td>$pl_tj04_ls_vjdw04_sww[T04]</td>";
+
+                          $pl_tj05_ls_vjdw05_sw = $ms_q("$sl Bulan,NIK,T05 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj05_ls_vjdw05_sww = $ms_fas($pl_tj05_ls_vjdw05_sw);
+                          echo"<td>$pl_tj05_ls_vjdw05_sww[T05]</td>";
+
+                          $pl_tj06_ls_vjdw06_sw = $ms_q("$sl Bulan,NIK,T06 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj06_ls_vjdw06_sww = $ms_fas($pl_tj06_ls_vjdw06_sw);
+                          echo"<td>$pl_tj06_ls_vjdw06_sww[T06]</td>";
+
+                          $pl_tj07_ls_vjdw07_sw = $ms_q("$sl Bulan,NIK,T07 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj07_ls_vjdw07_sww = $ms_fas($pl_tj07_ls_vjdw07_sw);
+                          echo"<td>$pl_tj07_ls_vjdw07_sww[T07]</td>";
+
+                          $pl_tj08_ls_vjdw08_sw = $ms_q("$sl Bulan,NIK,T08 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj08_ls_vjdw08_sww = $ms_fas($pl_tj08_ls_vjdw08_sw);
+                          echo"<td>$pl_tj08_ls_vjdw08_sww[T08]</td>";
+
+                          $pl_tj09_ls_vjdw09_sw = $ms_q("$sl Bulan,NIK,T09 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj09_ls_vjdw09_sww = $ms_fas($pl_tj09_ls_vjdw09_sw);
+                          echo"<td>$pl_tj09_ls_vjdw09_sww[T09]</td>";
+
+                          $pl_tj10_ls_vjdw10_sw = $ms_q("$sl Bulan,NIK,T10 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj10_ls_vjdw10_sww = $ms_fas($pl_tj10_ls_vjdw10_sw);
+                          echo"<td>$pl_tj10_ls_vjdw10_sww[T10]</td>";
+
+                          $pl_tj11_ls_vjdw11_sw = $ms_q("$sl Bulan,NIK,T11 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj11_ls_vjdw11_sww = $ms_fas($pl_tj11_ls_vjdw11_sw);
+                          echo"<td>$pl_tj11_ls_vjdw11_sww[T11]</td>";
+
+                          $pl_tj12_ls_vjdw12_sw = $ms_q("$sl Bulan,NIK,T12 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj12_ls_vjdw12_sww = $ms_fas($pl_tj12_ls_vjdw12_sw);
+                          echo"<td>$pl_tj12_ls_vjdw12_sww[T12]</td>";
+
+                          $pl_tj13_ls_vjdw13_sw = $ms_q("$sl Bulan,NIK,T13 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj13_ls_vjdw13_sww = $ms_fas($pl_tj13_ls_vjdw13_sw);
+                          echo"<td>$pl_tj13_ls_vjdw13_sww[T13]</td>";
+
+                          $pl_tj14_ls_vjdw14_sw = $ms_q("$sl Bulan,NIK,T14 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj14_ls_vjdw14_sww = $ms_fas($pl_tj14_ls_vjdw14_sw);
+                          echo"<td>$pl_tj14_ls_vjdw14_sww[T14]</td>";
+
+                          $pl_tj15_ls_vjdw15_sw = $ms_q("$sl Bulan,NIK,T15 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj15_ls_vjdw15_sww = $ms_fas($pl_tj15_ls_vjdw15_sw);
+                          echo"<td>$pl_tj15_ls_vjdw15_sww[T15]</td>";
+
+                          $pl_tj16_ls_vjdw16_sw = $ms_q("$sl Bulan,NIK,T16 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj16_ls_vjdw16_sww = $ms_fas($pl_tj16_ls_vjdw16_sw);
+                          echo"<td>$pl_tj16_ls_vjdw16_sww[T16]</td>";
+
+                          $pl_tj17_ls_vjdw17_sw = $ms_q("$sl Bulan,NIK,T17 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj17_ls_vjdw17_sww = $ms_fas($pl_tj17_ls_vjdw17_sw);
+                          echo"<td>$pl_tj17_ls_vjdw17_sww[T17]</td>";
+
+                          $pl_tj18_ls_vjdw18_sw = $ms_q("$sl Bulan,NIK,T18 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj18_ls_vjdw18_sww = $ms_fas($pl_tj18_ls_vjdw18_sw);
+                          echo"<td>$pl_tj18_ls_vjdw18_sww[T18]</td>";
+
+                          $pl_tj19_ls_vjdw19_sw = $ms_q("$sl Bulan,NIK,T19 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj19_ls_vjdw19_sww = $ms_fas($pl_tj19_ls_vjdw19_sw);
+                          echo"<td>$pl_tj19_ls_vjdw19_sww[T19]</td>";
+
+                          $pl_tj20_ls_vjdw20_sw = $ms_q("$sl Bulan,NIK,T20 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj20_ls_vjdw20_sww = $ms_fas($pl_tj20_ls_vjdw20_sw);
+                          echo"<td>$pl_tj20_ls_vjdw20_sww[T20]</td>";
+
+                          $pl_tj21_ls_vjdw21_sw = $ms_q("$sl Bulan,NIK,T21 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj21_ls_vjdw21_sww = $ms_fas($pl_tj21_ls_vjdw21_sw);
+                          echo"<td>$pl_tj21_ls_vjdw21_sww[T21]</td>";
+
+                          $pl_tj22_ls_vjdw22_sw = $ms_q("$sl Bulan,NIK,T22 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj22_ls_vjdw22_sww = $ms_fas($pl_tj22_ls_vjdw22_sw);
+                          echo"<td>$pl_tj22_ls_vjdw22_sww[T22]</td>";
+
+                          $pl_tj23_ls_vjdw23_sw = $ms_q("$sl Bulan,NIK,T23 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj23_ls_vjdw23_sww = $ms_fas($pl_tj23_ls_vjdw23_sw);
+                          echo"<td>$pl_tj23_ls_vjdw23_sww[T23]</td>";
+
+                          $pl_tj24_ls_vjdw24_sw = $ms_q("$sl Bulan,NIK,T24 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj24_ls_vjdw24_sww = $ms_fas($pl_tj24_ls_vjdw24_sw);
+                          echo"<td>$pl_tj24_ls_vjdw24_sww[T24]</td>";
+
+                          $pl_tj25_ls_vjdw25_sw = $ms_q("$sl Bulan,NIK,T25 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj25_ls_vjdw25_sww = $ms_fas($pl_tj25_ls_vjdw25_sw);
+                          echo"<td>$pl_tj25_ls_vjdw25_sww[T25]</td>";
+
+                          $pl_tj26_ls_vjdw26_sw = $ms_q("$sl Bulan,NIK,T26 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj26_ls_vjdw26_sww = $ms_fas($pl_tj26_ls_vjdw26_sw);
+                          echo"<td>$pl_tj26_ls_vjdw26_sww[T26]</td>";
+
+                          $pl_tj27_ls_vjdw27_sw = $ms_q("$sl Bulan,NIK,T27 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj27_ls_vjdw27_sww = $ms_fas($pl_tj27_ls_vjdw27_sw);
+                          echo"<td>$pl_tj27_ls_vjdw27_sww[T27]</td>";
+
+                          $pl_tj28_ls_vjdw28_sw = $ms_q("$sl Bulan,NIK,T28 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj28_ls_vjdw28_sww = $ms_fas($pl_tj28_ls_vjdw28_sw);
+                          echo"<td>$pl_tj28_ls_vjdw28_sww[T28]</td>";
+
+                          $pl_tj29_ls_vjdw29_sw = $ms_q("$sl Bulan,NIK,T29 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj29_ls_vjdw29_sww = $ms_fas($pl_tj29_ls_vjdw29_sw);
+                          echo"<td>$pl_tj29_ls_vjdw29_sww[T29]</td>";
+
+                          $pl_tj30_ls_vjdw30_sw = $ms_q("$sl Bulan,NIK,T30 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj30_ls_vjdw30_sww = $ms_fas($pl_tj30_ls_vjdw30_sw);
+                          echo"<td>$pl_tj30_ls_vjdw30_sww[T30]</td>";
+
+                          $pl_tj31_ls_vjdw31_sw = $ms_q("$sl Bulan,NIK,T31 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
+                          $pl_tj31_ls_vjdw31_sww = $ms_fas($pl_tj31_ls_vjdw31_sw);
+                          echo"<td>$pl_tj31_ls_vjdw31_sww[T31]</td>";
+
+
+                          
+                          
                       ?>
                     </tr>
 

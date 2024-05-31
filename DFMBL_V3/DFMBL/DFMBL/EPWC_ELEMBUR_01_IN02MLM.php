@@ -7,7 +7,7 @@
     <div class="input-group mb-3 mx-2 input-group-sm" style="max-width:20rem;">
         <select name="slc_jdwbulan" class="form-control form-control-sm" required>
         <?PHP 
-             $tj_sl_vjdw01_sw = $CL_Q("$SL TOP 2 Bulan  FROM TJ_Main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw'  order by Bulan Desc");
+             $tj_sl_vjdw01_sw = $CL_Q("$SL TOP 3 Bulan  FROM TJ_Main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw'  order by Bulan Desc");
              while($tj_sl_vjdw01_sww = $CL_FAS($tj_sl_vjdw01_sw)){
                 echo"<option value=$tj_sl_vjdw01_sww[Bulan]>$tj_sl_vjdw01_sww[Bulan]</option>";
              }
@@ -507,6 +507,8 @@
 
          </table>
                                         <button class="btn btn-success btn-sm mx-2" name="btn_simpan_IN02MLM_01">SIMPAN DATA</button>
+                                        <br>
+                                        <p class="mx-2">*Klik sekali  untuk melakukan penyimpanan , agar tidak terjadi double data</p>
                                     </form>
                                     <!--  -->
                         <?PHP 
@@ -575,200 +577,329 @@
 
                                if(isset($_POST['btn_simpan_IN02MLM_01'])){ #PROCCESSING
                                 $save_lmalam_01  = "IKEEEH";
+                               
 
                              if($sts_T01=="ADA"){     
+                                 #CEKING DATA 
+                                 $pl_ck01_ls_vlem01_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T01 00:00:00' ");
+                                 $pl_nr_ck01_ls_vlem01_sww = $CL_NR($pl_ck01_ls_vlem01_sw);
+                                 if($pl_nr_ck01_ls_vlem01_sww > 0) {
+                                    #echo"<b>SUDAH TER-ENTRI</b>";
+                                 }else{
+                                #echo"$elembur_thnbln_01-$IDKRY-$txt_tgl_T01<br>";
+                                #echo"$pl_nr_ck01_ls_vlem01_sww";
                                 $save_T01_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T01 00:00:00','100','$txt_tgl_T01 00:00:00','$txt_tgl_T01 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T01$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T01 
-                              
-                                    }else{
-                                        echo"";
-                                    }
+                                 }
+                             } #CLOSE 01 
                                     
                             if($sts_T02=="ADA"){     
+                                    #CEKING DATA 
+                                    $pl_ck02_ls_vlem02_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T02 00:00:00' ");
+                                    $pl_nr_ck02_ls_vlem02_sww = $CL_NR($pl_ck02_ls_vlem02_sw);
+                                    if($pl_nr_ck02_ls_vlem02_sww > 0) {
+                                       #echo"<b>SUDAH TER-ENTRI</b>";
+                                    }else{  
                             $save_T02_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T02 00:00:00','100','$txt_tgl_T02 00:00:00','$txt_tgl_T02 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T02$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T02
-                                      
-                             }else{
-                                    echo"";
+                                  }
                             }
 
-                            if($sts_T03=="ADA"){     
+                            if($sts_T03=="ADA"){   
+                                 #CEKING DATA 
+                                 $pl_ck03_ls_vlem03_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T03 00:00:00' ");
+                                 $pl_nr_ck03_ls_vlem03_sww = $CL_NR($pl_ck03_ls_vlem03_sw);
+                                 if($pl_nr_ck03_ls_vlem03_sww > 0) {
+                                    #echo"<b>SUDAH TER-ENTRI</b>";
+                                 }else{  
                              $save_T03_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T03 00:00:00','100','$txt_tgl_T03 00:00:00','$txt_tgl_T03 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T03$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T03
-                                              
-                             }else{
-                                echo"";
-                             }
+                                 }
+                                }
 
                             if($sts_T04=="ADA"){     
+                                  #CEKING DATA 
+                                  $pl_ck04_ls_vlem04_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T04 00:00:00' ");
+                                  $pl_nr_ck04_ls_vlem04_sww = $CL_NR($pl_ck04_ls_vlem04_sw);
+                                  if($pl_nr_ck04_ls_vlem04_sww > 0) {
+                                     #echo"<b>SUDAH TER-ENTRI</b>";
+                                  }else{  
                             $save_T04_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T04 00:00:00','100','$txt_tgl_T04 00:00:00','$txt_tgl_T04 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T04$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T04
-                                                      
-                             }else{
-                                 echo"";
+                                  }
                              }
+
                             if($sts_T05=="ADA"){
+                                  #CEKING DATA 
+                                  $pl_ck05_ls_vlem05_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T05 00:00:00' ");
+                                  $pl_nr_ck05_ls_vlem05_sww = $CL_NR($pl_ck05_ls_vlem05_sw);
+                                  if($pl_nr_ck05_ls_vlem05_sww > 0) {
+                                     #echo"<b>SUDAH TER-ENTRI</b>";
+                                  }else{  
                                                                 #$save_lmalam_01  = "IKEEEH";
                               $save_T05_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T05 00:00:00','100','$txt_tgl_T05 00:00:00','$txt_tgl_T05 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T05$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T05
                                                                 #echo"MASUK";
-                                 }else{
-                                     echo"";
-                                    }
+                                   } 
+                                }
+
                             if($sts_T06=="ADA"){     
+                                 #CEKING DATA 
+                                 $pl_ck06_ls_vlem06_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T06 00:00:00' ");
+                                 $pl_nr_ck06_ls_vlem06_sww = $CL_NR($pl_ck06_ls_vlem06_sw);
+                                 if($pl_nr_ck06_ls_vlem06_sww > 0) {
+                                    #echo"<b>SUDAH TER-ENTRI</b>";
+                                 }else{  
                              $save_T06_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T06 00:00:00','100','$txt_tgl_T06 00:00:00','$txt_tgl_T06 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T06$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T06
                                                                                  
-                                  }else{
-                                     echo"";
-                                      }
+                                    }
+                                }
 
                           if($sts_T07=="ADA"){     
+                             #CEKING DATA 
+                             $pl_ck07_ls_vlem07_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T07 00:00:00' ");
+                             $pl_nr_ck07_ls_vlem07_sww = $CL_NR($pl_ck07_ls_vlem07_sw);
+                             if($pl_nr_ck07_ls_vlem07_sww > 0) {
+                                #echo"<b>SUDAH TER-ENTRI</b>";
+                             }else{  
                              $save_T07_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T07 00:00:00','100','$txt_tgl_T07 00:00:00','$txt_tgl_T07 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T07$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T07
                                                                                                          
-                              }else{
-                             echo"";
                              }
+                            }
                               if($sts_T08=="ADA"){     
+                                $pl_ck08_ls_vlem08_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T08 00:00:00' ");
+                                $pl_nr_ck08_ls_vlem08_sww = $CL_NR($pl_ck08_ls_vlem08_sw);
+                                if($pl_nr_ck08_ls_vlem08_sww > 0) {
+                                   #echo"<b>SUDAH TER-ENTRI</b>";
+                                }else{  
                              $save_T08_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T08 00:00:00','100','$txt_tgl_T08 00:00:00','$txt_tgl_T08 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T08$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T08
                                
-                           }else{
-                          echo"";
-                           }
-                            if($sts_T09=="ADA"){     
-                            $save_T09_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T09 00:00:00','100','$txt_tgl_T09 00:00:00','$txt_tgl_T09 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T09$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T09
-                                             
-                                                   }else{
-                                                       echo"";
-                                                   }
-                            if($sts_T10=="ADA"){     
-                             $save_T10_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T10 00:00:00','100','$txt_tgl_T10 00:00:00','$txt_tgl_T10 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T10$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T10
-                              
-                                    }else{
-                                        echo"";
-                                    }
-                            if($sts_T11=="ADA"){     
-                            $save_T11_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T11 00:00:00','100','$txt_tgl_T11 00:00:00','$txt_tgl_T11 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T11$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T11
-                              
-                                    }else{
-                                        echo"";
-                                    }
-                           if($sts_T12=="ADA"){     
-                             $save_T12_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T12 00:00:00','100','$txt_tgl_T12 00:00:00','$txt_tgl_T12 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T12$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T12
-                              
-                                    }else{
-                                        echo"";
-                                    }
-                            if($sts_T13=="ADA"){     
-                          $save_T13_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T13 00:00:00','100','$txt_tgl_T13 00:00:00','$txt_tgl_T13 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T13$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T13
-                              
-                                    }else{
-                                        echo"";
-                                    }
-                            if($sts_T14=="ADA"){     
-                           $save_T14_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T14 00:00:00','100','$txt_tgl_T14 00:00:00','$txt_tgl_T14 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T14$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T14
-                              
-                                    }else{
-                                        echo"";
-                                    }
-                          if($sts_T15=="ADA"){     
-                             $save_T15_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T15 00:00:00','100','$txt_tgl_T15 00:00:00','$txt_tgl_T15 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T15$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T15
-                              
-                                    }else{
-                                        echo"";
-                                    }
-                            if($sts_T16=="ADA"){     
-                            $save_T16_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T16 00:00:00','100','$txt_tgl_T16 00:00:00','$txt_tgl_T16 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T16$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T16
-                              
-                                    }else{
-                                        echo"";
-                                    }
-
-                            if($sts_T17=="ADA"){     
-                            $save_T17_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T17 00:00:00','100','$txt_tgl_T17 00:00:00','$txt_tgl_T17 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T17$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T17
-                              
-                                    }else{
-                                        echo"";
-                                    }
-                             if($sts_T18=="ADA"){     
-                            $save_T18_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T18 00:00:00','100','$txt_tgl_T18 00:00:00','$txt_tgl_T18 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T18$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T18
-                              
-                                    }else{
-                                        echo"";
-                                    }
-                            if($sts_T19=="ADA"){     
-                             $save_T19_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T19 00:00:00','100','$txt_tgl_T19 00:00:00','$txt_tgl_T19 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T19$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T19
-                              
-                                 }else{
-                                   echo"";
-                               }
-                            if($sts_T20=="ADA"){     
-                            $save_T20_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T20 00:00:00','100','$txt_tgl_T20 00:00:00','$txt_tgl_T20 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T20$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T20
-                                                 
-                            }else{
-                             echo"";
+                                 }
                                 }
-                            if($sts_T21=="ADA"){     
-                            $save_T21_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T21 00:00:00','100','$txt_tgl_T21 00:00:00','$txt_tgl_T21 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T21$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T21
-                              
-                                    }else{
-                                        echo"";
-                                    }
-                            if($sts_T22=="ADA"){     
-                         $save_T22_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T22 00:00:00','100','$txt_tgl_T22 00:00:00','$txt_tgl_T22 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T22$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T22
-                              
-                                    }else{
-                                        echo"";
-                                    }
-                         if($sts_T23=="ADA"){     
-                           $save_T23_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T23 00:00:00','100','$txt_tgl_T23 00:00:00','$txt_tgl_T23 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T23$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T23
-                              
-                                    }else{
-                                        echo"";
-                                    }
-                         if($sts_T24=="ADA"){     
-                         $save_T24_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T24 00:00:00','100','$txt_tgl_T24 00:00:00','$txt_tgl_T24 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T24$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T24
-                              
-                                    }else{
-                                        echo"";
-                                    }
-                            if($sts_T25=="ADA"){     
-                         $save_T25_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T25 00:00:00','100','$txt_tgl_T25 00:00:00','$txt_tgl_T25 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T25$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T25
-                              
-                                    }else{
-                                        echo"";
-                                    }
-                        if($sts_T26=="ADA"){     
-                          $save_T26_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T26 00:00:00','100','$txt_tgl_T26 00:00:00','$txt_tgl_T26 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T26$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T26
-                              
-                                    }else{
-                                        echo"";
-                                    }
-                            if($sts_T27=="ADA"){     
-                          $save_T27_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T27 00:00:00','100','$txt_tgl_T27 00:00:00','$txt_tgl_T27 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T27$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T27
-                              
-                                    }else{
-                                        echo"";
-                                    }
-                            if($sts_T28=="ADA"){     
-                           $save_T28_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T28 00:00:00','100','$txt_tgl_T28 00:00:00','$txt_tgl_T28 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T28$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T28
-                              
-                                    }else{
-                                        echo"";
-                                    }
-                            if($sts_T29=="ADA"){     
-                           $save_T29_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T29 00:00:00','100','$txt_tgl_T29 00:00:00','$txt_tgl_T29 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T29$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T29
-                              
-                                    }else{
-                                        echo"";
-                                    }
-                            if($sts_T30=="ADA"){     
-                          $save_T30_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T30 00:00:00','100','$txt_tgl_T30 00:00:00','$txt_tgl_T30 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T30$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T30
-                              
-                                    }else{
-                                        echo"";
-                                    }
-                            if($sts_T31=="ADA"){     
-                          $save_T31_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T31 00:00:00','100','$txt_tgl_T31 00:00:00','$txt_tgl_T31 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T31$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T31
-                              
-                                    }else{
-                                        echo"";
-                                    }
 
+                            if($sts_T09=="ADA"){    
+                                $pl_ck09_ls_vlem09_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T09 00:00:00' ");
+                                $pl_nr_ck09_ls_vlem09_sww = $CL_NR($pl_ck09_ls_vlem09_sw);
+                                if($pl_nr_ck09_ls_vlem09_sww > 0) {
+                                   #echo"<b>SUDAH TER-ENTRI</b>";
+                                }else{   
+                            $save_T09_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T09 00:00:00','100','$txt_tgl_T09 00:00:00','$txt_tgl_T09 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T09$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T09
+                                }
+                            }
+
+                            if($sts_T10=="ADA"){    
+                                $pl_ck10_ls_vlem10_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T10 00:00:00' ");
+                                $pl_nr_ck10_ls_vlem10_sww = $CL_NR($pl_ck10_ls_vlem10_sw);
+                                if($pl_nr_ck10_ls_vlem10_sww > 0) {
+                                   #echo"<b>SUDAH TER-ENTRI</b>";
+                                }else{    
+                             $save_T10_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T10 00:00:00','100','$txt_tgl_T10 00:00:00','$txt_tgl_T10 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T10$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T10
+                                }
+                            }
+
+                            if($sts_T11=="ADA"){     
+                                $pl_ck11_ls_vlem11_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T11 00:00:00' ");
+                                $pl_nr_ck11_ls_vlem11_sww = $CL_NR($pl_ck11_ls_vlem11_sw);
+                                if($pl_nr_ck11_ls_vlem11_sww > 0) {
+                                   #echo"<b>SUDAH TER-ENTRI</b>";
+                                }else{   
+                            $save_T11_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T11 00:00:00','100','$txt_tgl_T11 00:00:00','$txt_tgl_T11 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T11$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T11
+                                }
+                            }
+
+                           if($sts_T12=="ADA"){  
+                            $pl_ck12_ls_vlem12_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T12 00:00:00' ");
+                                $pl_nr_ck12_ls_vlem12_sww = $CL_NR($pl_ck12_ls_vlem12_sw);
+                                if($pl_nr_ck12_ls_vlem12_sww > 0) {
+                                   #echo"<b>SUDAH TER-ENTRI</b>";
+                                }else{    
+                             $save_T12_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T12 00:00:00','100','$txt_tgl_T12 00:00:00','$txt_tgl_T12 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T12$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T12
+                                }
+                            }
+
+                            if($sts_T13=="ADA"){
+                                $pl_ck13_ls_vlem13_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T13 00:00:00' ");
+                                $pl_nr_ck13_ls_vlem13_sww = $CL_NR($pl_ck13_ls_vlem13_sw);
+                                if($pl_nr_ck13_ls_vlem13_sww > 0) {
+                                   #echo"<b>SUDAH TER-ENTRI</b>";
+                                }else{         
+                          $save_T13_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T13 00:00:00','100','$txt_tgl_T13 00:00:00','$txt_tgl_T13 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T13$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T13
+                                }
+                            }
+
+                            if($sts_T14=="ADA"){  
+                                $pl_ck14_ls_vlem14_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T14 00:00:00' ");
+                                $pl_nr_ck14_ls_vlem14_sww = $CL_NR($pl_ck14_ls_vlem14_sw);
+                                if($pl_nr_ck14_ls_vlem14_sww > 0) {
+                                   #echo"<b>SUDAH TER-ENTRI</b>";
+                                }else{            
+                           $save_T14_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T14 00:00:00','100','$txt_tgl_T14 00:00:00','$txt_tgl_T14 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T14$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T14
+                                }
+                            }
+
+                          if($sts_T15=="ADA"){  
+                            $pl_ck15_ls_vlem15_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T15 00:00:00' ");
+                            $pl_nr_ck15_ls_vlem15_sww = $CL_NR($pl_ck15_ls_vlem15_sw);
+                            if($pl_nr_ck15_ls_vlem15_sww > 0) {
+                               #echo"<b>SUDAH TER-ENTRI</b>";
+                            }else{            
+                             $save_T15_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T15 00:00:00','100','$txt_tgl_T15 00:00:00','$txt_tgl_T15 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T15$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T15
+                            }
+                        }
+
+                            if($sts_T16=="ADA"){  
+                                $pl_ck16_ls_vlem16_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T16 00:00:00' ");
+                                $pl_nr_ck16_ls_vlem16_sww = $CL_NR($pl_ck16_ls_vlem16_sw);
+                                if($pl_nr_ck16_ls_vlem16_sww > 0) {
+                                   #echo"<b>SUDAH TER-ENTRI</b>";
+                                }else{      
+                            $save_T16_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T16 00:00:00','100','$txt_tgl_T16 00:00:00','$txt_tgl_T16 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T16$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T16
+                                }
+                            }
+
+                            if($sts_T17=="ADA"){  
+                                $pl_ck17_ls_vlem17_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T17 00:00:00' ");
+                                $pl_nr_ck17_ls_vlem17_sww = $CL_NR($pl_ck17_ls_vlem17_sw);
+                                if($pl_nr_ck17_ls_vlem17_sww > 0) {
+                                   #echo"<b>SUDAH TER-ENTRI</b>";
+                                }else{      
+                            $save_T17_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T17 00:00:00','100','$txt_tgl_T17 00:00:00','$txt_tgl_T17 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T17$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T17
+                                }
+                            }
+
+                             if($sts_T18=="ADA"){  
+                                $pl_ck18_ls_vlem18_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T18 00:00:00' ");
+                                $pl_nr_ck18_ls_vlem18_sww = $CL_NR($pl_ck18_ls_vlem18_sw);
+                                if($pl_nr_ck18_ls_vlem18_sww > 0) {
+                                   #echo"<b>SUDAH TER-ENTRI</b>";
+                                }else{      
+                            $save_T18_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T18 00:00:00','100','$txt_tgl_T18 00:00:00','$txt_tgl_T18 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T18$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T18
+                                }
+                            }
+
+                            if($sts_T19=="ADA"){   
+                                $pl_ck19_ls_vlem19_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T19 00:00:00' ");
+                                $pl_nr_ck19_ls_vlem19_sww = $CL_NR($pl_ck19_ls_vlem19_sw);
+                                if($pl_nr_ck19_ls_vlem19_sww > 0) {
+                                   #echo"<b>SUDAH TER-ENTRI</b>";
+                                }else{     
+                             $save_T19_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T19 00:00:00','100','$txt_tgl_T19 00:00:00','$txt_tgl_T19 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T19$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T19
+                                }
+                            }
+
+                            if($sts_T20=="ADA"){    
+                                $pl_ck20_ls_vlem20_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T20 00:00:00' ");
+                                $pl_nr_ck20_ls_vlem20_sww = $CL_NR($pl_ck20_ls_vlem20_sw);
+                                if($pl_nr_ck20_ls_vlem20_sww > 0) {
+                                   #echo"<b>SUDAH TER-ENTRI</b>";
+                                }else{    
+                            $save_T20_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T20 00:00:00','100','$txt_tgl_T20 00:00:00','$txt_tgl_T20 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T20$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T20
+                                }
+                            }
+
+                            if($sts_T21=="ADA"){     
+                                $pl_ck21_ls_vlem21_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T21 00:00:00' ");
+                                $pl_nr_ck21_ls_vlem21_sww = $CL_NR($pl_ck21_ls_vlem21_sw);
+                                if($pl_nr_ck21_ls_vlem21_sww > 0) {
+                                   #echo"<b>SUDAH TER-ENTRI</b>";
+                                }else{   
+                            $save_T21_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T21 00:00:00','100','$txt_tgl_T21 00:00:00','$txt_tgl_T21 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T21$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T21
+                                }
+                            }
+
+                            if($sts_T22=="ADA"){   
+                                $pl_ck22_ls_vlem22_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T22 00:00:00' ");
+                                $pl_nr_ck22_ls_vlem22_sww = $CL_NR($pl_ck22_ls_vlem22_sw);
+                                if($pl_nr_ck22_ls_vlem22_sww > 0) {
+                                   #echo"<b>SUDAH TER-ENTRI</b>";
+                                }else{     
+                         $save_T22_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T22 00:00:00','100','$txt_tgl_T22 00:00:00','$txt_tgl_T22 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T22$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T22
+                                }
+                            }
+
+                         if($sts_T23=="ADA"){     
+                            $pl_ck23_ls_vlem23_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T23 00:00:00' ");
+                            $pl_nr_ck23_ls_vlem23_sww = $CL_NR($pl_ck23_ls_vlem23_sw);
+                            if($pl_nr_ck23_ls_vlem23_sww > 0) {
+                               #echo"<b>SUDAH TER-ENTRI</b>";
+                            }else{     
+                           $save_T23_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T23 00:00:00','100','$txt_tgl_T23 00:00:00','$txt_tgl_T23 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T23$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T23
+                            }
+                        }
+
+                         if($sts_T24=="ADA"){ 
+                            $pl_ck24_ls_vlem24_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T24 00:00:00' ");
+                            $pl_nr_ck24_ls_vlem24_sww = $CL_NR($pl_ck24_ls_vlem24_sw);
+                            if($pl_nr_ck24_ls_vlem24_sww > 0) {
+                               #echo"<b>SUDAH TER-ENTRI</b>";
+                            }else{         
+                         $save_T24_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T24 00:00:00','100','$txt_tgl_T24 00:00:00','$txt_tgl_T24 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T24$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T24
+                            }
+                        }
+
+                            if($sts_T25=="ADA"){     
+                                $pl_ck25_ls_vlem25_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T25 00:00:00' ");
+                                $pl_nr_ck25_ls_vlem25_sww = $CL_NR($pl_ck25_ls_vlem25_sw);
+                                if($pl_nr_ck25_ls_vlem25_sww > 0) {
+                                   #echo"<b>SUDAH TER-ENTRI</b>";
+                                }else{     
+                         $save_T25_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T25 00:00:00','100','$txt_tgl_T25 00:00:00','$txt_tgl_T25 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T25$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T25
+                                }
+                            }
+
+                        if($sts_T26=="ADA"){    
+                            $pl_ck26_ls_vlem26_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T26 00:00:00' ");
+                            $pl_nr_ck26_ls_vlem26_sww = $CL_NR($pl_ck26_ls_vlem26_sw);
+                            if($pl_nr_ck26_ls_vlem26_sww > 0) {
+                               #echo"<b>SUDAH TER-ENTRI</b>";
+                            }else{      
+                          $save_T26_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T26 00:00:00','100','$txt_tgl_T26 00:00:00','$txt_tgl_T26 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T26$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T26
+                            }
+                        }
+
+                            if($sts_T27=="ADA"){   
+                                $pl_ck27_ls_vlem27_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T27 00:00:00' ");
+                                $pl_nr_ck27_ls_vlem27_sww = $CL_NR($pl_ck27_ls_vlem27_sw);
+                                if($pl_nr_ck27_ls_vlem27_sww > 0) {
+                                   #echo"<b>SUDAH TER-ENTRI</b>";
+                                }else{       
+                          $save_T27_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T27 00:00:00','100','$txt_tgl_T27 00:00:00','$txt_tgl_T27 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T27$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T27
+                                }
+                            }
+
+                            if($sts_T28=="ADA"){     
+                                $pl_ck28_ls_vlem28_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T28 00:00:00' ");
+                                $pl_nr_ck28_ls_vlem28_sww = $CL_NR($pl_ck28_ls_vlem28_sw);
+                                if($pl_nr_ck28_ls_vlem28_sww > 0) {
+                                   #echo"<b>SUDAH TER-ENTRI</b>";
+                                }else{   
+                           $save_T28_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T28 00:00:00','100','$txt_tgl_T28 00:00:00','$txt_tgl_T28 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T28$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T28
+                                }
+                            }
+
+                            if($sts_T29=="ADA"){  
+                                $pl_ck29_ls_vlem29_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T29 00:00:00' ");
+                                $pl_nr_ck29_ls_vlem29_sww = $CL_NR($pl_ck29_ls_vlem29_sw);
+                                if($pl_nr_ck29_ls_vlem29_sww > 0) {
+                                   #echo"<b>SUDAH TER-ENTRI</b>";
+                                }else{      
+                           $save_T29_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T29 00:00:00','100','$txt_tgl_T29 00:00:00','$txt_tgl_T29 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T29$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T29
+                                }
+                            }
+
+                            if($sts_T30=="ADA"){  
+                                $pl_ck30_ls_vlem30_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T30 00:00:00' ");
+                                $pl_nr_ck30_ls_vlem30_sww = $CL_NR($pl_ck30_ls_vlem30_sw);
+                                if($pl_nr_ck30_ls_vlem30_sww > 0) {
+                                   #echo"<b>SUDAH TER-ENTRI</b>";
+                                }else{      
+                          $save_T30_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T30 00:00:00','100','$txt_tgl_T30 00:00:00','$txt_tgl_T30 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T30$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T30
+                                }
+                            }
+                            if($sts_T31=="ADA"){
+                                $pl_ck31_ls_vlem31_sw = $CL_Q("$SL LemburBulan,KaryNomor,LemburTanggal FROM Citarum.dbo.TKaryLemburHari WHERE  KaryNomor='$IDKRY' AND LemburTanggal='$txt_tgl_T31 00:00:00' ");
+                                $pl_nr_ck31_ls_vlem31_sww = $CL_NR($pl_ck31_ls_vlem31_sw);
+                                if($pl_nr_ck31_ls_vlem31_sww > 0) {
+                                   #echo"<b>SUDAH TER-ENTRI</b>";
+                                }else{        
+                          $save_T31_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T31 00:00:00','100','$txt_tgl_T31 00:00:00','$txt_tgl_T31 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T31$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T31
+                                }
+                            }
 
                                    if($save_lmalam_01){
                                        #echo $txt_tgl_T05;
