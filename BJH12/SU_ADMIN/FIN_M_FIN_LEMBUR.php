@@ -17,6 +17,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="?HLM=FIN_M&SUB=FIN_M_FIN_LEMBUR&SUB_CHILD=FIN_M_FIN_LEMBUR01ALL"><i class="fas fa-hashtag"></i> Lembur Akumulasi *Global</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="?HLM=FIN_M&SUB=FIN_M_FIN_LEMBUR&SUB_CHILD=FIN_M_FIN_LEMBUR01CEKALL"><i class="fas fa-hashtag"></i> Lembur Redudansi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="?HLM=FIN_M&SUB=FIN_M_FIN_LEMBUR&SUB_CHILD=FIN_M_FIN_LEMBUR01LOG"><i class="fas fa-hashtag"></i> RealTime Log</a>
+                </li>
                 <!-- <li class="nav-item">
                     <a class="nav-link" href="?HLM=FIN_M&SUB=FIN_M_FIN_LEMBUR&SUB_CHILD=FIN_M_FIN_LEMBUR01-COM"><i class="fas fa-hashtag"></i>LEMBUR <> Jadwal</a>
                 </li> -->

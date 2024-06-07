@@ -26,7 +26,7 @@
 							$vtbuu = $ms_fas($vtbu);
 				
 		?>
-        	<?php echo"<b>Nama</b> $vkryy_up[KaryNama] <b>$vkryy_up[KaryNomor]</b><br>Usernama //$vtbuu[namauser]<br> Password //$vtbuu[password_text]<br><br> <a href=../SU_PUBLIC/CTK_EMP_AKUN_KARY.php?IDKARY=$vkryy_up[KaryNomor]&IDUNIT=$vkryy_up[UnitKode] target=_blank>#Cetak Akun</a><hr>"; ?>
+        	<?php echo"<b>Nama</b> $vkryy_up[KaryNama] <b>$vkryy_up[KaryNomor]</b><br>Usernama //$vtbuu[namauser]<br> Password //$vtbuu[password_text]<br><br> <a href='../../DFMBL_V3/DFMBL/EPWC_HOME_01.php?IDKRY=$vkryy_up[KaryNomor]' target=_blank class='btn btn-dark btn-sm'>#CEK AKUN</a><hr>"; ?>
         <?php } ?>
         </td>
   </tr>

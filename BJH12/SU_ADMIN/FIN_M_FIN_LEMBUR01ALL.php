@@ -207,7 +207,9 @@
 
        </td>
        <td>
+
        <b><?PHP echo"Data Pending "; ?></b>
+       <div id="" style="overflow:scroll; height:750px;">
        <table class="table">
                 <tr class="table-primary">
                     <td>Nama</td>
@@ -216,7 +218,7 @@
                 </tr>
                 <?PHP 
                     #DATA LEMBUR PENDDING
-                    $pl_pen_ls_vlem01_sw = $ms_q("$sl LemburBulan,LemburBulanRNg,KaryNomor,KaryDir,CONVERT(date,LemburTanggal) as ltgl FROM Citarum.dbo.TKaryLemburHari WHERE (LemburApp='3' OR LemburApp='31') AND LemburBulan='$IDLBULAN01'");
+                    $pl_pen_ls_vlem01_sw = $ms_q("$sl LemburBulan,LemburBulanRNg,KaryNomor,LemburApp,KaryDir,CONVERT(date,LemburTanggal) as ltgl FROM Citarum.dbo.TKaryLemburHari WHERE (LemburApp='3' OR LemburApp='31') AND LemburBulan='$IDLBULAN01'");
                     while($pl_pen_ls_vlem01_sww = $ms_fas($pl_pen_ls_vlem01_sw)){
                         #DATA KARYAWAN
                         $pl_pen_ls_vkry01_sw = $ms_q("$sl KaryNomor,KaryNama FROM Citarum.dbo.TKaryawan WHERE  KaryNomor='$pl_pen_ls_vlem01_sww[KaryNomor]'");
@@ -228,7 +230,17 @@
 
                 ?>
                 <tr>
-                    <td><?PHP echo $pl_pen_ls_vkry01_sww['KaryNama'] ?></td>
+                    <td>
+                        <?PHP echo $pl_pen_ls_vkry01_sww['KaryNama'];
+                                echo"<br>";
+                                if($pl_pen_ls_vlem01_sww['LemburApp']=="3"){
+                                    echo"<a href='#' class='badge bg-dark'>Reject</a>";
+                                  }elseif($pl_pen_ls_vlem01_sww['LemburApp']=="31"){
+                                    echo"<a href='#' class='badge bg-secondary'>Pending</a>";
+                                    }
+                    
+                    ?>
+                    </td>
                     <td><?PHP echo $pl_pen_ls_vdkry01_sww['KaryNama'] ?></td>
                     <td><?PHP echo $pl_pen_ls_vlem01_sww['ltgl']; ?></td>
                 </tr>
@@ -238,5 +250,6 @@
        </td>
     </tr>
   </table>
+  </div>
       <a href="<?PHP echo"FIN_M_FIN_LEMBUR01_DTL-XLS02.php?IDLBULAN01=$IDLBULAN01";  ?>" target="_blank" class="btn btn-success"><i class="far fa-file-excel"></i> Download Data</button>
   <?PHP } ?>

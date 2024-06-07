@@ -900,6 +900,9 @@
                           $save_T31_lmbr_01 = $CL_Q("$IN Citarum.dbo.TKaryLemburHari(LemburBulan,LemburBulanRng,KaryNomor,LemburTanggal,LemburPersen,LemburJam1,LemburJam2,LemburBiasa,LemburBiasaJumlah,LemburUraian,LemburAlasan,LemburTarget,LemburHasil,LemburApp,LemburID,KaryDir,LemburJenis,Uploader,UnitKode)VALUES('$elembur_thnbln_01','$tj_ls_vjdw01_sww[Bulan]','$IDKRY','$txt_tgl_T31 00:00:00','100','$txt_tgl_T31 00:00:00','$txt_tgl_T31 00:00:00','3','$upahlembur_fix','$ket_lembur','$ket_lembur','$ket_lembur','$ket_lembur','2','T31$IDMAIN','$epwc_vkry01_sww[KaryDir]','DM','$epwc_vkry01_sww[KaryNomor]','$epwc_vw_vkry01_sww[UnitKode]')"); #T31
                                 }
                             }
+                            $elembur_log = "$vus01_sww[kode] Melakukan Entri lembur Malam $epwc_vw_vkry01_sww[KaryNama]  , dengan Modul khusus Lembur Malam ";
+
+                            $save_log_lembur_01 = mysqli_query($CONN01,"$IN pl_log_01.log_lembur(idmain_log,log_ket,log_tgl,log_jam)VALUES('$IDMAIN','$elembur_log','$DATE_HTML5_SQL','$TIME_HTML5')"); 
 
                                    if($save_lmalam_01){
                                        #echo $txt_tgl_T05;

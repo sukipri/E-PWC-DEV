@@ -17,7 +17,7 @@
                 $NF = @number_format;
             
             //...VAR DATE AND TIME 
-              date_default_timezone_set('Asia/Jakarta');
+                date_default_timezone_set('Asia/Jakarta');
                 $DATE_Ymd = date("Ymd");
                 $DATE_Y = date("Y");
                 $DATE_m = date("m");

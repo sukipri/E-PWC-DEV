@@ -1,9 +1,9 @@
 <?php
-	$host = "localhost";
-	$db ="bjlat";
-	$user="root";
-	$pass="holihks45";
-			$con = mysql_connect($host,$user,$pass) or die("FAILED...");
-			mysql_select_db($db,$con) or die("ERROR TO OPEN DATABASE")	;
-		
+    $db_host = "localhost";
+    $db_user = "root";
+    $db_pass = "holihks45";
+    #$db_name = "eprs";
+    
+    $CONN01 = mysqli_connect($db_host, $db_user, $db_pass);
+
 ?>
