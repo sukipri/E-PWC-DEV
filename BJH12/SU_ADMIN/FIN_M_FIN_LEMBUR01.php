@@ -53,8 +53,8 @@
     <?PHP 
         #kalkulasi 
         $kal_bulan01_sw = $IDLBULAN01 - 1;
+        echo "Bulan Lembur<b> ".$kal_bulan01_sw."</b><br>";
         echo "Bulan Cair<b> ".$IDLBULAN01."</b><br>";
-        echo "Bulan Lembur<b> ".$kal_bulan01_sw."</b>";
         echo"<br>";
         echo $pl_sg_vkry01_sww['KaryNama'];
     ?>

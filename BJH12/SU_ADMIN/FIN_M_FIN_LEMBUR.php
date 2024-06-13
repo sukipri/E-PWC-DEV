@@ -20,6 +20,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="?HLM=FIN_M&SUB=FIN_M_FIN_LEMBUR&SUB_CHILD=FIN_M_FIN_LEMBUR01CEKALL"><i class="fas fa-hashtag"></i> Lembur Redudansi</a>
                 </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="?HLM=FIN_M&SUB=FIN_M_FIN_LEMBUR&SUB_CHILD=FIN_M_FIN_LEMBUR01MNG"><i class="fas fa-hashtag"></i> MNG.Lembur / Personal</a>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link" href="?HLM=FIN_M&SUB=FIN_M_FIN_LEMBUR&SUB_CHILD=FIN_M_FIN_LEMBUR01LOG"><i class="fas fa-hashtag"></i> RealTime Log</a>
                 </li>

@@ -41,7 +41,7 @@
     #KALKULASI TOTAL
     $hit_totcp_vfhead_sw_prc = 1 / 100 * 100;
     $hit_totcp_vfhead_sw_prc02 = $cpf_totcp_vfhead01_sww['tot_cp'] / $cpf_disnr_vfhead01_sww;
-    $hit_totcp_vfhead_sw = $hit_totcp_vfhead_sw_prc02 / 12 * $hit_totcp_vfhead_sw_prc;
+    $hit_totcp_vfhead_sw = $hit_totcp_vfhead_sw_prc02 / 10 * $hit_totcp_vfhead_sw_prc;
 ?>
     <b>
         <?PHP 

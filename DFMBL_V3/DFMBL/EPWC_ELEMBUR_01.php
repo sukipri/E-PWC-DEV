@@ -9,14 +9,14 @@
           <li class="nav-link">
           <a href="?" class="mx-2 h4" style="color:#FFF;"> <i class="fas fa-angle-double-left"></i> &nbsp;Back</a>
         </li>
-        <?PHP  if($epwc_vkry01_sww['UnitKode']=="93" ){ ?>
-          <li class="nav-link">
-          <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN"; ?>" class="mx-2 h5" style="color:#FFF;"><i class="fas fa-receipt"></i>&nbsp;Entri Lembur</a>
+        <?PHP  #if($epwc_vkry01_sww['UnitKode']=="93" ){ ?>
+          <!-- <li class="nav-link">
+          <a href="<?PHP #echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN"; ?>" class="mx-2 h5" style="color:#FFF;"><i class="fas fa-receipt"></i>&nbsp;Entri Lembur</a>
         </li>
         <li class="nav-link">
-          <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02TEMP"; ?>" class="mx-2 h5" style="color:#FFF;"><i class="fas fa-receipt"></i>&nbsp;Temp.Lembur</a>
-        </li>
-          <?PHP } ?>
+          <a href="<?PHP #echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02TEMP"; ?>" class="mx-2 h5" style="color:#FFF;"><i class="fas fa-receipt"></i>&nbsp;Temp.Lembur</a>
+        </li> -->
+          <?PHP #} ?>
         <?PHP  if($epwc_vkry01_sww['KaryNomor']=="04181143" OR $epwc_vkry01_sww['KaryJbtStruktural']=="08" OR $epwc_vkry01_sww['KaryJbtStruktural']=="06" OR  $epwc_vkry01_sww['KaryJbtStruktural']=="07" OR $epwc_vkry01_sww['KaryJbtStruktural']=="03" OR $epwc_vkry01_sww['KaryNomor']=="04181107" OR $epwc_vkry01_sww['KaryNomor']=="04241255"  OR $epwc_vkry01_sww['KaryNomor']=="744/SMG/YAKKUM" ){ ?>
         <li class="nav-link">
           <a href="<?PHP echo"?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN"; ?>" class="mx-2 h5" style="color:#FFF;"><i class="fas fa-receipt"></i>&nbsp;Entri Lembur</a>

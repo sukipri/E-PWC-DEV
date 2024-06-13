@@ -4,9 +4,9 @@
         if($epwc_vkry01_sww['UnitKode']=="95"){
             $IDUPLOADER = "04161031";
             $KDIR  = "04000671";
-        }elseif($epwc_vkry01_sww['UnitKode']=="93"){
-            $IDUPLOADER = "00000000";
-            $KDIR  = "04130956";
+        #}elseif($epwc_vkry01_sww['UnitKode']=="93"){
+            #$IDUPLOADER = "00000000";
+           # $KDIR  = "04130956";
         }else{
             $IDUPLOADER = "$epwc_vkry01_sww[KaryNomor]";
             $KDIR = "$epwc_vkry01_sww[KaryDir]";

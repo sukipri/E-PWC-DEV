@@ -110,7 +110,7 @@
             $cpf_hit_penj_02 =  100 - $cpf_hit_penj_01;
 
         #HIT Total Persentasi form
-                 $cpf_hit_per_vformh01_swcount =  $cpf_sum_vform01_sww['tot_persen'] / 12;
+                 $cpf_hit_per_vformh01_swcount =  $cpf_sum_vform01_sww['tot_persen'] / 10;
                  $cpf_hit_per_vformh01_sw = ceil($cpf_hit_per_vformh01_swcount);
 
                  

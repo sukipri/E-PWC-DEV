@@ -1,31 +1,13 @@
-<a class="badge bg-dark"><i class="fas fa-folder-open"></i>Ceking Data Redudansi</a>
-<form method="post">
-<div class="input-group mb-3" style="max-width:30rem;">
-<!-- <select name="txt_thn" class="form-control form-control-sm">
-</select> -->
-<select name="slc_bln" class="form-control form-control" required>
-  <option value="">Bulan Pencairan</option>
-  <?PHP 
-      $pl_sl_vlbulan01_sw = $ms_q("$sl DISTINCT TOP 14  LemburBulan FROM Citarum.dbo.TKaryLemburHari order by LemburBulan desc");
-        while($pl_sl_vlbulan01_sww  = $ms_fas($pl_sl_vlbulan01_sw)){
-          echo"<option value=$pl_sl_vlbulan01_sww[LemburBulan]>$pl_sl_vlbulan01_sww[LemburBulan]</option>"; 
-      }
-?>
-</select>
-        <button class="btn btn-success btn-sm" name="btn_cari_01">CARI DATA</button>
-        </div>
-</form>
-
 <?PHP 
- if(isset($_POST['btn_cari_01'])){
-  #$slc_bag = @$_POST['slc_bag'];
-  $slc_bln = @$_POST['slc_bln'];
- 
-    echo "<META HTTP-EQUIV='Refresh' Content='0; URL=?HLM=FIN_M&SUB=FIN_M_FIN_LEMBUR&SUB_CHILD=FIN_M_FIN_LEMBUR01CEKALL&IDLBULAN01=$slc_bln&GETCARI01=GETCARI01'>";
- }
-    if(isset($_GET['GETCARI01'])){
-      #echo $IDKLP01;
-  ?>
+include"../config/connec_01_srv.php";
+include"../sc/stack_Q.php"; //Query SQL
+$IDLBULAN01 = @$_GET['IDLBULAN01'];
+header("Content-type: application/vnd-ms-excel");
+header("Content-Disposition: attachment; filename=FLREDUDAN-$IDLBULAN01.xls");
+
+?>
+<h3> Data Redudansi</h3>
+
   <div class="card border-primary mb-3" style="max-width: 20rem;">
   <div class="card-header">REDUDANSI CHEKING</div>
    <div class="card-body">
@@ -42,7 +24,7 @@
   </div>
     </div>
 
-<table class="table table-striped table-bordered table-sm">
+<table class="table table-striped table-bordered table-sm" border="1">
       <tr class="table-dark">
             <td width="7%">#</td>
             <td width="32%">NIP / Nama</td>
@@ -101,14 +83,10 @@
                             $pl_sum_sl_vlem01_sw = $ms_q("$sl SUM(LemburBiasaJumlah) as tnom FROM Citarum.dbo.TKaryLemburHari WHERE LemburBulan='$IDLBULAN01' AND KaryNomor='$pl_ls_vkry01_sww[KaryNomor]' AND LemburApp='4'");
                             $pl_sum_sl_vlem01_sww = $ms_fas($pl_sum_sl_vlem01_sw);
 
-                            echo"<b>".$nf($pl_sum_sl_vlem01_sww['tnom'])."</b>";
+                            echo"<b>".number_format($pl_sum_sl_vlem01_sww['tnom'])."</b>";
                         ?>
                 <!--  -->
             </td>
         </tr>
         <?PHP $no_kry++;} ?>
 </table>
-<br>
-    <?PHP echo"<a href='FIN_M_FIN_LEMBUR01CEKALL-XLS.php?IDLBULAN01=$IDLBULAN01' target='_blank' class='btn btn-success'><i class='far fa-file-excel'></i> Download Excel</a>"; ?>
-
-<?PHP } ?>

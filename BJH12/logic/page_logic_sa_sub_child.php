@@ -54,6 +54,9 @@
 						case'FIN_M_FIN_LEMBUR01CEKALL':
 							include"FIN_M_FIN_LEMBUR01CEKALL.php";
 						break;
+						case'FIN_M_FIN_LEMBUR01MNG':
+							include"FIN_M_FIN_LEMBUR01MNG.php";
+						break;
 						case'FIN_M_FIN_LEMBUR01LOG':
 							include"FIN_M_FIN_LEMBUR01LOG.php";
 						break;
