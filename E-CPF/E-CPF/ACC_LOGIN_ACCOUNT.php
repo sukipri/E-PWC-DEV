@@ -5,7 +5,7 @@
 <?php include"../DIST/DIST_GET.php";  ?>
 <style>
 .bg_img {
-  background-image: url("https://rspwc.net/E-PWC/CDN/medical.jpg"); /* The image used */ /* Used if the image is unavailable */
+  background-image: url("../IMG/HD/IMGLOGIN.png"); /* The image used */ /* Used if the image is unavailable */
   background-color: #cccccc; /* Used if the image is unavailable */
   height: 100%; /* You must set a specified height */
   width:auto;
@@ -30,12 +30,10 @@
             <span class="input-group-text" id="basic-addon1"><?php echo"<b>$cpf_vquest_sww[qc_pertanyaan_01]</b>"; ?></span>
           </div>
           <input autocomplete="off" type="text" required class="form-control" name="jawab_us"  style="max-width:6rem;" placeholder="Answer.." aria-label="Username" aria-describedby="basic-addon1">
-        </div>
-         
+        </div>         
          <br />
          <button name="cpf_acs_login" class="btn btn-success"><i class="fas fa-sign-in-alt"></i>&nbsp;LOGIN</button>
        <?php include"../LOGIC/ACS/ACS_LOGIN.php"; ?> 
   </div>
 </form>
 </div>
-

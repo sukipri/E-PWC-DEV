@@ -1,5 +1,5 @@
 <?PHP echo"<h5>NO ADMISI $IDADM01 #FORM CPF $cpf_vw03_vkeg03_sww[keg_nama_03] - Denomerator $cpf_vw03_vkeg03_sww[keg_rawat_03] </h5>"; #TITLE
-        
+
         #DATA VALIDATION
         $cpf_val_vform01_sw = $CL_Q("$SL idmain_cpf01_form_01,idmain_pasien_01,idmain_inap_01,idmain_keg_03 FROM Citarum.dbo.tb_cpf01_form03_01 WHERE idmain_pasien_01='$IDRM01' AND idmain_inap_01='$IDADM01'AND idmain_keg_03='$IDKEG03'");
         $cpf_nr_val_vform01_sww = $CL_NR($cpf_val_vform01_sw);
@@ -113,9 +113,7 @@
                  $cpf_hit_per_vformh01_swcount =  $cpf_sum_vform01_sww['tot_persen'] / 10;
                  $cpf_hit_per_vformh01_sw = ceil($cpf_hit_per_vformh01_swcount);
 
-                 
-
-    
+                    
 ?>
 <tr>
     <td width="7%">-</td>
@@ -153,10 +151,10 @@
         #--------------//
      if($cpf_nr_val_vform01_sww > 0){
 
-    echo"<button class='btn btn-warning' name='cp03_up_01'> 1.UPDATE DATA</button>";
-    echo"&nbsp";
-    echo"<button class='btn btn-dark' name='cp03_upload_01'><i class='fas fa-calculator'></i> 2.KALKULASI DENOM</button>";
-    echo"&nbsp";
+        echo"<button class='btn btn-warning' name='cp03_up_01'> 1.UPDATE DATA</button>";
+        echo"&nbsp";
+        echo"<button class='btn btn-dark' name='cp03_upload_01'><i class='fas fa-calculator'></i> 2.KALKULASI DENOM</button>";
+        echo"&nbsp";
     
         #DATA ROW F HEAD
         $cpf_nr_vfhead01_sw = $CL_Q("$SL idmain_cpf01_form_01_head,idmain_inap_01 FROM Citarum.dbo.tb_cpf01_form03_01_head WHERE idmain_inap_01='$IDADM01'");
