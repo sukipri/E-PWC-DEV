@@ -19,8 +19,6 @@
   
 
         //--GET VIEW--//
-              $TG01 = @$SQL_SL($_GET['TG01']);
-              $TG02 = @$SQL_SL($_GET['TG02']);
               $IDRM01 = @$SQL_SL($_GET['IDRM01']); #NOMOR REKAM MEDIS
               $IDADM01 = @$SQL_SL($_GET['IDADM01']); #NOMORADMISI
               $IDCFORM01= @$SQL_SL($_GET['IDCFORM01']); 
