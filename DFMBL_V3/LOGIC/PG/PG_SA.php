@@ -105,6 +105,12 @@
                 case'EPWC_ELEMBUR_01_VIEW03':
                     include"DFMBL/EPWC_ELEMBUR_01_VIEW03.php";
                 break;
+                case'EPWC_ELEMBUR_01_VIEW03DATE':
+                    include"DFMBL/EPWC_ELEMBUR_01_VIEW03DATE.php";
+                break;
+                case'EPWC_ELEMBUR_01_VIEWM':
+                    include"DFMBL/EPWC_ELEMBUR_01_VIEWM.php";
+                break;
                 case'EPWC_ELEMBUR_01_VIEW04':
                     include"DFMBL/EPWC_ELEMBUR_01_VIEW04.php";
                 break;

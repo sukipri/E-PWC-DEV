@@ -97,7 +97,19 @@
               
                   while($pl_ls_vlem01_sww = $ms_fas($pl_ls_vlem01_sw)){ ?>  
                     <tr>
-                      <td><?PHP echo $pl_ls_vlem01_sww['lem_tgl']."<br><i>".$pl_ls_vlem01_sww['LemburID']."</i>"; ?></td>
+                      <td>
+                          <?PHP echo $pl_ls_vlem01_sww['lem_tgl']."<br><i>".$pl_ls_vlem01_sww['LemburID']."</i><br>"; ?>
+                          <?PHP 
+                               echo"<a href='#' class='badge bg-secondary'>Approved?</a>";
+                               echo"&nbsp";
+                               echo"<a href='#' class='badge bg-secondary'>Proccessing?</a>";
+                               echo"&nbsp";
+                               echo"<a href='#' class='badge bg-secondary'>Reject?</a>";
+                               echo"&nbsp";
+                               echo"<a href='#' class='badge bg-secondary'>Pending?</a>";
+                          ?>
+
+                    </td>
                       <td><?PHP echo $pl_ls_vlem01_sww['LemburJenis'] ?></td>
                       <td><?PHP echo $pl_ls_vlem01_sww['LemburBiasa'] ?></td>
                       <td><?PHP echo number_format($pl_ls_vlem01_sww['LemburBiasaJumlah']) ?></td>
@@ -112,6 +124,7 @@
                               }elseif($pl_ls_vlem01_sww['LemburApp']=="4"){
                                   echo"<a href='#' class='badge bg-success'>Approved</a>";
                               }
+                            
                         ?>
                       </td>
                   </tr>
@@ -571,9 +584,6 @@
                           $pl_tj31_ls_vjdw31_sw = $ms_q("$sl Bulan,NIK,T31 FROM TJ_main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw' AND Bulan='$kal_bulan01_sw' ");
                           $pl_tj31_ls_vjdw31_sww = $ms_fas($pl_tj31_ls_vjdw31_sw);
                           echo"<td>$pl_tj31_ls_vjdw31_sww[T31]</td>";
-
-
-                          
                           
                       ?>
                     </tr>

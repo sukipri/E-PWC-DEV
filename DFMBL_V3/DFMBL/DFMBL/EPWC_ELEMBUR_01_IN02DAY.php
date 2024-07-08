@@ -11,7 +11,7 @@
         <select name="slc_jdwbulan" class="form-control form-control-sm" required>
             <option value="">Bulan Lembur</option>
         <?PHP 
-             $tj_sl_vjdw01_sw = $CL_Q("$SL TOP 3 Bulan  FROM TJ_Main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw'  order by Bulan Desc");
+             $tj_sl_vjdw01_sw = $CL_Q("$SL TOP 12 Bulan  FROM TJ_Main_Data.dbo.TJadwal WHERE NIK='$epwc_sub_vkry01_sw'  order by Bulan Desc");
              while($tj_sl_vjdw01_sww = $CL_FAS($tj_sl_vjdw01_sw)){
                 if($IDJBULAN01==$tj_sl_vjdw01_sww['Bulan']){
                     echo"<option value=$tj_sl_vjdw01_sww[Bulan] selected>$tj_sl_vjdw01_sww[Bulan]</option>";

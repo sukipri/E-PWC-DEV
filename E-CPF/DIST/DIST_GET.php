@@ -48,6 +48,10 @@
 		$cpf_vw_vformh_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_form_01_head WHERE idmain_inap_01='$IDADM01'");
 			$cpf_vw_vformh_sww = $CL_FAS($cpf_vw_vformh_sw);
 
+			#Citarum.dbo.tb_cpf01_form03_01_head
+		$cpf_vw03_vformh_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_form03_01_head WHERE idmain_inap_01='$IDADM01'");
+		$cpf_vw03_vformh_sww = $CL_FAS($cpf_vw03_vformh_sw);
+
 			#DATA VIEW KEG  REC
 			$cpf_vw_vkeg03rec_sw = $CL_Q("$CL_SL Citarum.dbo.tb_cpf01_keg_03_rec WHERE idmain_keg_03_rec='$IDKEG03REC'");
 				$cpf_vw_vkeg03rec_sww = $CL_FAS($cpf_vw_vkeg03rec_sw);

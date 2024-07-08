@@ -35,6 +35,7 @@
    <?PHP 
     #KALKULASI 
     $cpf_disnr_vfhead01_sw = $CL_Q("$SL DISTINCT idmain_inap_01 FROM Citarum.dbo.tb_cpf01_form03_01_head WHERE head_tglinput_01 BETWEEN '$tg01' AND '$tg02 23:59:00' AND idmain_keg_03='$list01'");
+    $cpf_nr_inap_vform01_sww = $CL_NR($cpf_disnr_vfhead01_sw);
     $cpf_disnr_vfhead01_sww = $CL_NR($cpf_disnr_vfhead01_sw); #DATA DIS INAP
     $cpf_totcp_vfhead01_sw = $CL_Q("$SL SUM(head_tot_01) as tot_cp FROM Citarum.dbo.tb_cpf01_form03_01_head WHERE head_tglinput_01 BETWEEN '$tg01' AND '$tg02 23:59:00' AND idmain_keg_03='$list01' ");
     $cpf_totcp_vfhead01_sww = $CL_FAS($cpf_totcp_vfhead01_sw); #DATA SUM TOTAL CP head
@@ -120,6 +121,26 @@
         </td>
         <td><?PHP echo $cpf_upl_vusr01_sww['namauser']  ?></td>
     </tr>
-    <?PHP } ?>
+    <?PHP $cpf_cp_no++; } 
+    $cpf_totpersen_vformp01_sw = $CL_Q("$SL SUM(formp_tot_01) as tot_persen FROM Citarum.dbo.tb_cpf01_form03_01_head_persen WHERE  formp_tglinput_01 BETWEEN '$tg01' AND '$tg02 23:59:00' AND idmain_keg_03='$list01'");
+    $cpf_totpersen_vformp01_sww = $CL_FAS($cpf_totpersen_vformp01_sw);
+            #KALKULASI
+            $cpf_kal_totpersen_vformp01_sw = $cpf_totpersen_vformp01_sww['tot_persen'] / $cpf_nr_inap_vform01_sww;
+            $cpf_kal_totpersen_bulat_vformp01_sw = ceil($cpf_kal_totpersen_vformp01_sw);
+?>
+<tr class="">
+    <td width="3%">-</td>
+    <td width="30%" align="center">
+
+        <?PHP
+            echo"$cpf_totpersen_vformp01_sww[tot_persen] %";
+            echo"<hr>"; 
+            echo"$cpf_nr_inap_vform01_sww";
+            echo"<br>";
+            
+         ?>
+    </td>
+    <td><?PHP echo "<h4>Hasil = <span class='badge bg-info'>".$cpf_kal_totpersen_bulat_vformp01_sw."%</span></h4>"; ?></td>
+</tr>
 </table>
 <?PHP } ?>

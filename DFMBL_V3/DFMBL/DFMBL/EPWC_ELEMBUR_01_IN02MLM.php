@@ -167,8 +167,8 @@
                                      <?PHP 
                                       $new_txt_date06  = strtotime("06-$epwc_datekon01_sw");
                                       $new_date06 = DATE("Y-m-d",$new_txt_date06);
-                                        if($tj_ls_vjdw01_sww['T06']=="M" OR $tj_ls_vjdw01_sww['T05']=="X" OR $tj_ls_vjdw01_sww['T06']=="Y" ){                                     
-                                            echo"<input type='date' required class='form-control form-control-sm' value='$new_date06' readonly>";
+                                        if($tj_ls_vjdw01_sww['T06']=="M" OR $tj_ls_vjdw01_sww['T06']=="X" OR $tj_ls_vjdw01_sww['T06']=="Y" ){                                     
+                                            echo"<input type='date' required class='form-control form-control-sm' name='txt_tgl_T06' value='$new_date06' readonly>";
                                             $sts_T06 = "ADA";
                                         }else{
                                             $sts_T06 = "NADA";
