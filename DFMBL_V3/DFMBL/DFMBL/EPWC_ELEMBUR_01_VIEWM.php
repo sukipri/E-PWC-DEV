@@ -1,4 +1,4 @@
-<h4 class="mx-2">Verifikasi </h4>
+<h4 class="mx-2">Modul Filter </h4>
 <div class="list-group mx-2">
   <a href="?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_VIEW03DATE" class="list-group-item list-group-item-action flex-column align-items-start active">
     <div class="d-flex w-100 justify-content-between">
@@ -48,10 +48,10 @@
 ?>
 <tr>
       <td><?PHP echo $pl_dis_bulan_vlem01_sww['LemburBulanRng'] ?></td>
-      <td><?PHP echo $pl_nr_sl_vlem01_sww ?></td>
-      <td><?PHP echo $pl_nr_pen_vlem01_sww ?></td>
-      <td><?PHP echo $pl_nr_rjc_vlem01_sww ?></td>
-      <td><?PHP echo number_format($pl_tot_vr_vlem01_sww['totvr']); ?></td>
+      <td align="center"><?PHP echo $pl_nr_sl_vlem01_sww ?></td>
+      <td align="center"><?PHP echo $pl_nr_pen_vlem01_sww ?></td>
+      <td align="center"><?PHP echo $pl_nr_rjc_vlem01_sww ?></td>
+      <td align="right"><?PHP echo number_format($pl_tot_vr_vlem01_sww['totvr']); ?></td>
 </tr>
 <?PHP } ?>
 </table>

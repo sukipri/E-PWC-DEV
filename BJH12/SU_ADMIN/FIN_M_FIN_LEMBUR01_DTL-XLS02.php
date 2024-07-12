@@ -5,19 +5,18 @@
  header("Content-type: application/vnd-ms-excel");
  header("Content-Disposition: attachment; filename=FILE-$IDLBULAN01.xls");
 ?>
-<?PHP echo "<h3>Bulan TF : ".$IDLBULAN01."</h3>"; ?>
+<?PHP echo "<h3>Bulan TF : ".$IDLBULAN01."</h3>"; #No_NIP_Nama_Bagian_Jam Lembur Biasa_Rp Lembur Biasa_Jam Lembur Malam_Rp Lembur Malam_Total Jam Lembur_Total Rupiah Lembur ?>
 <hr>
   <table class="table table-sm table-bordered table-striped" border="1">
     <tr class="table-dark">
     <td width="3%">#</td>
-        <td>Nama</td>
+        <td>No_NIP_Nama</td>
         <td width="17%">Bagian</td>
-       <td>Tot.Jam Lembur Biasa</td>
-       <td>Tot.Jam Lembur Biasa</td>
-       <td>Nom.Lembur Biasa</td>
-       <td>Tot.Jam Lembur Malam</td>
-       <td>Nom.Lembur Malam</td>
-       <td>Nom.Lembur Total</td>
+       <td>Lembur Biasa_Jam</td>
+       <td>Lembur Biasa_Rp</td>
+       <td>Lembur Malam_Total Jam</td>
+       <td>Lembur Malam_Rp</td>
+       <td>Lembur_Total Rupiah Lembur</td>
        <td>Total Jam</td>
     </tr>
     <?PHP 
@@ -69,7 +68,7 @@
        
           <?PHP 
              
-              echo number_format($pl_tot_vlem01_sww_rd,0,",","."); 
+              echo number_format($pl_tot_vlem01_sww_rd,0,",",","); 
           ?>
          
        </td>
@@ -85,7 +84,7 @@
        
           <?PHP 
                
-               echo number_format($pl_tot_vlem01_sww_rd02,0,",","."); 
+               echo number_format($pl_tot_vlem01_sww_rd02,0,",",","); 
           ?>
          
        </td>
@@ -93,7 +92,7 @@
        <td align="right">
        
           <?PHP 
-            echo number_format($pl_tot_vlem01_sww_rd03,0,",","."); 
+            echo number_format($pl_tot_vlem01_sww_rd03,0,",",","); 
           ?>
          
        </td>
@@ -128,10 +127,10 @@
                 <td width="17%">-</td>
             <td>-</td>
             <td>-</td>
-            <td><?PHP echo number_format(  $pl_totall01_vlem01_sww_rd,0,",","."); ?></td>
+            <td><?PHP echo number_format(  $pl_totall01_vlem01_sww_rd,0,",",","); ?></td>
             <td>-</td>
-            <td><?PHP echo number_format( $pl_totall02_vlem01_sww_rd02,0,",","."); ?></td>
-            <td><?PHP echo number_format( $pl_totall_vlem01_sww_rd03,0,",","."); ?></td>
+            <td><?PHP echo number_format( $pl_totall02_vlem01_sww_rd02,0,",",","); ?></td>
+            <td><?PHP echo number_format( $pl_totall_vlem01_sww_rd03,0,",",","); ?></td>
             <td><?PHP echo $pl_totjamall_vlem01_sww['totjamall'] ?></td>
             </tr>
         </table>
