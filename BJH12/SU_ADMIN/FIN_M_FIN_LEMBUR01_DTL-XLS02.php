@@ -46,9 +46,9 @@
   
 
                 #PEMBULATAN
-                $pl_tot_vlem01_sww_rd = round($pl_tot_vlem01_sww['tot_lem'],2);
-                $pl_tot_vlem01_sww_rd02 = round($pl_tot02_vlem01_sww['tot_lem02'],2);
-                $pl_tot_vlem01_sww_rd03 = round($pl_tot03_vlem01_sww['tot_lem03'],2);
+                $pl_tot_vlem01_sww_rd = round($pl_tot_vlem01_sww['tot_lem']);
+                $pl_tot_vlem01_sww_rd02 = round($pl_tot02_vlem01_sww['tot_lem02']);
+                $pl_tot_vlem01_sww_rd03 = round($pl_tot03_vlem01_sww['tot_lem03']);
                
           
     ?>
@@ -68,7 +68,7 @@
        
           <?PHP 
              
-              echo number_format($pl_tot_vlem01_sww_rd,0,",",","); 
+              echo number_format($pl_tot_vlem01_sww['tot_lem'],0,".","."); 
           ?>
          
        </td>
@@ -84,7 +84,7 @@
        
           <?PHP 
                
-               echo number_format($pl_tot_vlem01_sww_rd02,0,",",","); 
+               echo number_format($pl_tot02_vlem01_sww['tot_lem02'],0,".","."); 
           ?>
          
        </td>
@@ -92,7 +92,7 @@
        <td align="right">
        
           <?PHP 
-            echo number_format($pl_tot_vlem01_sww_rd03,0,",",","); 
+            echo number_format($pl_tot03_vlem01_sww['tot_lem03'],0,".","."); 
           ?>
          
        </td>
