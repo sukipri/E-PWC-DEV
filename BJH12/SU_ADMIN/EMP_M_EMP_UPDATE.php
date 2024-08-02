@@ -74,20 +74,28 @@
               <?PHP if($vemm['KaryDir']=="04000671"){ ?>
               <option value="04000671">drg. Kriswidiati, M.Kes</option>
               <option value="04100869">	dr. Santi Kristiani, Sp.PK</option>
-              <option value="04130956">dr. Tiurlan Pardamean BR. Sibarani	</option>
+              <option value="04161065">	dr. Inneke Elysia Lavender </option>
+              <option value="04080837">	dr. Hestyani Kelananingrum, Sp.N,MKM </option>
+              <!-- <option value="04130956">dr. Tiurlan Pardamean BR. Sibarani	</option> -->
               <?PHP }elseif($vemm['KaryDir']=="04100869"){ ?>
               <option value="04100869">	dr. Santi Kristiani, Sp.PK</option>
               <option value="04000671">drg. Kriswidiati, M.Kes</option>
-              <option value="04130956">dr. Tiurlan Pardamean BR. Sibarani	</option>
+              <option value="04161065">	dr. Inneke Elysia Lavender </option>
+              <option value="04080837">	dr. Hestyani Kelananingrum, Sp.N,MKM </option>
+              <!-- <option value="04130956">dr. Tiurlan Pardamean BR. Sibarani	</option> -->
               <?PHP }elseif($vemm['KaryDir']=="04130956"){ ?>
-              <option value="04130956">dr. Tiurlan Pardamean BR. Sibarani	</option>
+              <!-- <option value="04130956">dr. Tiurlan Pardamean BR. Sibarani	</option> -->
               <option value="04100869">	dr. Santi Kristiani, Sp.PK</option>
               <option value="04000671">drg. Kriswidiati, M.Kes</option>
+              <option value="04161065">	dr. Inneke Elysia Lavender </option>
+              <option value="04080837">	dr. Hestyani Kelananingrum, Sp.N,MKM </option>
               <?PHP }else{ ?>
               <option value=""></option>
               <option value="04000671">drg. Kriswidiati, M.Kes</option>
               <option value="04100869">	dr. Santi Kristiani, Sp.PK</option>
-              <option value="04130956">dr. Tiurlan Pardamean BR. Sibarani	</option>
+              <!-- <option value="04130956">dr. Tiurlan Pardamean BR. Sibarani	</option> -->
+              <option value="04161065">	dr. Inneke Elysia Lavender </option>
+              <option value="04080837">	dr. Hestyani Kelananingrum, Sp.N,MKM </option>
               <?PHP } ?>
             </select>
     </td>

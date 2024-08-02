@@ -24,6 +24,7 @@
         <button type="button" class="btn btn-outline-warning btn-sm"><i class="fas fa-clipboard"></i> PASIEN DALAM MASA INAP</button>
         <?PHP } ?>
     </div>
+   
 
 <!-- DATA FORM -->
 <hr>
@@ -172,6 +173,15 @@
 }
     ?>
 </form>
+<br>
+<a href="<?PHP echo"?PG_SA=CPF01_CP03_01_FORM&IDADM01=$IDADM01&IDRM01=$IDRM01&IDKEG03=$IDKEG03&DELADM01=DELADM01&IDDELADM01=$IDADM01";  ?>" class="btn btn-danger btn-sm"><i class=" fas fa-exclamation-triangle"></i> Clear Data</a>
+    <?PHP 
+        if(isset($_GET['DELADM01'])){
+            $IDDELADM01 = @$SQL_SL($_GET['IDDELADM01']);
+            
+            
+        }
+    ?>
 <div id="proses"></id>
 <br>
 <span class="badge bg-success">1.SIMPAN DATA</span> = Melakukan penyimpanan record baru / form baru |  <span class="badge bg-warning">1.UPDATE DATA</span> = Melakukan Update kolom untuk Hari Rawat | <span class="badge bg-dark">KALKULASI DENOM</span> = Kalkulasi Nilai Denomerator per Penunjang | <span class="badge bg-secondary">Tutup Form</span> = Dilakukan ketika semua terkalkulasi | <span class="badge bg-info">KIRIM HASIL ?</span> = Klik untuk mengirimkan hasil ke database
