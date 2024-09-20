@@ -1,0 +1,9 @@
+/* FIX on Bottom */
+    .fixed_btm {
+        position: fixed;
+        width: auto;
+        background-color: #0099FF;
+        color: cornsilk;
+        bottom: 10px;
+        border: 3px solid;
+    } 

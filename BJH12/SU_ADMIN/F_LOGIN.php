@@ -56,6 +56,7 @@
 	<div class="container">
 		<?php
 			$hasil_01 = "$an$an_02";
+			echo crc32("sdm");
 		?>
 	<form name="form1" method="post" action="../logic/LOGIN_SA.php">
 	<div class="card border-primary mb-3" style="max-width: 20rem;">

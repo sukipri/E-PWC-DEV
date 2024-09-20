@@ -66,16 +66,39 @@
             <td>
                 <!--  -->
                 <?PHP 
-                    $epwc_ls_vlem01_sw = $CL_Q("$SL LemburID,KaryNomor,LemburBiasa,LemburTanggal,LemburUraian,LemburAlasan FROM Citarum.dbo.TKaryLemburHari WHERE KaryNomor='$IDKRY' AND YEAR(LemburTanggal)=' $epwc_bulan_jdw02' AND MONTH(LemburTanggal)='$epwc_bulan_jdw' AND DAY(LemburTanggal)='$sp_day' ");
+                    $epwc_ls_vlem01_sw = $CL_Q("$SL LemburID,KaryNomor,LemburBiasa,LemburTanggal,LemburUraian,LemburAlasan,LemburApp FROM Citarum.dbo.TKaryLemburHari WHERE KaryNomor='$IDKRY' AND YEAR(LemburTanggal)=' $epwc_bulan_jdw02' AND MONTH(LemburTanggal)='$epwc_bulan_jdw' AND DAY(LemburTanggal)='$sp_day' ");
                         while($epwc_ls_vlem01_sww = $CL_FAS($epwc_ls_vlem01_sw)){
-                            echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$IDKRY&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPLMBR01=UPLMBR01'>";
-                            echo"
-                                <div class='alert alert-dismissible alert-primary'>
-                                <b>Total Jam</b> : $epwc_ls_vlem01_sww[LemburBiasa]<br>
-                                <b>Uraian : </b> $epwc_ls_vlem01_sww[LemburUraian]<br>
-                                <b>Alasan : </b> $epwc_ls_vlem01_sww[LemburAlasan]
-                                </div>";
-                            echo"</a>";
+                            if(@$epwc_ls_vlem01_sww['LemburApp']=="3"){
+                                echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$IDKRY&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPLMBR01=UPLMBR01'>";
+                                echo"
+                                    <div class='alert alert-dismissible alert-dark'>
+                                    <b>Total Jam</b> : $epwc_ls_vlem01_sww[LemburBiasa]<br>
+                                    <b>Uraian : </b> $epwc_ls_vlem01_sww[LemburUraian]<br>
+                                    <b>Alasan : </b> $epwc_ls_vlem01_sww[LemburAlasan]
+                                    </div>";
+                                echo"</a>";
+                            
+                            }elseif(@$epwc_ls_vlem01_sww['LemburApp']=="4"){
+                                echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$IDKRY&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPLMBR01=UPLMBR01'>";
+                                echo"
+                                    <div class='alert alert-dismissible alert-success'>
+                                    <b>Total Jam</b> : $epwc_ls_vlem01_sww[LemburBiasa]<br>
+                                    <b>Uraian : </b> $epwc_ls_vlem01_sww[LemburUraian]<br>
+                                    <b>Alasan : </b> $epwc_ls_vlem01_sww[LemburAlasan]
+                                    </div>";
+                                echo"</a>";
+
+                            }else{
+                                echo"<a href='?NAVI=EPWC_ELEMBUR_01&PG_SA=EPWC_ELEMBUR_01_IN02&IDKRY=$IDKRY&IDLBR01=$epwc_ls_vlem01_sww[LemburID]&UPLMBR01=UPLMBR01'>";
+                                echo"
+                                    <div class='alert alert-dismissible alert-primary'>
+                                    <b>Total Jam</b> : $epwc_ls_vlem01_sww[LemburBiasa]<br>
+                                    <b>Uraian : </b> $epwc_ls_vlem01_sww[LemburUraian]<br>
+                                    <b>Alasan : </b> $epwc_ls_vlem01_sww[LemburAlasan]
+                                    </div>";
+                                echo"</a>";
+                            }
+                           
                         }
                 ?>  
                 <!--  -->

@@ -43,10 +43,7 @@
 
 				#DATA QUOTE
 				$epwc_ls_vkuote01_sw = $CL_Q("$CL_SL Citarum.dbo.tb_kuote_01 order by NEWID()");
-				$epwc_ls_vkuote01_sww = $CL_FAS($epwc_ls_vkuote01_sw);
-
-			
-		
+				$epwc_ls_vkuote01_sww = $CL_FAS($epwc_ls_vkuote01_sw);	
 ?>
 <style>
 	body{ }

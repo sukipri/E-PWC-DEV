@@ -154,26 +154,40 @@
     <tr>
        <td width="50%">
         <?PHP 
-            #DATA CEKING VERIFIKATOR Direktur UnVerif
+            #DATA CEKING VERIFIKATOR Direktur UnVerif dr kris
             $pl_nr_dir01_vlem01_sw = $ms_q("$sl KaryNomor,KaryDir FROM Citarum.dbo.TKaryLemburhari WHERE KaryDir='04000671' AND  (LemburApp='2') AND LemburBulan='$IDLBULAN01'");
             $pl_nr_dir01_vlem01_sww = $ms_nr($pl_nr_dir01_vlem01_sw);
-             #DATA CEKING VERIFIKATOR Direktur Pending atau Reject
+             #DATA CEKING VERIFIKATOR Direktur Pending atau Reject dr kris
              $pl_nr_dirpen01_vlem01_sw = $ms_q("$sl KaryNomor,KaryDir FROM Citarum.dbo.TKaryLemburhari WHERE KaryDir='04000671' AND  (LemburApp='3' OR LemburApp='31') AND LemburBulan='$IDLBULAN01'");
              $pl_nr_dirpen01_vlem01_sww = $ms_nr($pl_nr_dirpen01_vlem01_sw);
 
-            #DATA CEKING VERIFIKATOR Direktur
+            #DATA CEKING VERIFIKATOR Direktur dr tiur
             $pl_nr_dir02_vlem01_sw = $ms_q("$sl KaryNomor,KaryDir FROM Citarum.dbo.TKaryLemburhari WHERE KaryDir='04130956' AND  (LemburApp='2' OR LemburApp='31') AND LemburBulan='$IDLBULAN01'");
             $pl_nr_dir02_vlem01_sww = $ms_nr($pl_nr_dir02_vlem01_sw);
-            #DATA CEKING VERIFIKATOR Direktur Pending atau Reject
+            #DATA CEKING VERIFIKATOR Direktur Pending atau Reject dr tiur
             $pl_nr_dirpen02_vlem01_sw = $ms_q("$sl KaryNomor,KaryDir FROM Citarum.dbo.TKaryLemburhari WHERE KaryDir='04130956' AND  (LemburApp='3' OR LemburApp='31') AND LemburBulan='$IDLBULAN01'");
             $pl_nr_dirpen02_vlem01_sww = $ms_nr($pl_nr_dirpen02_vlem01_sw);
 
-            #DATA CEKING VERIFIKATOR Direktur
+            #DATA CEKING VERIFIKATOR Direktur dr santi
             $pl_nr_dir03_vlem01_sw = $ms_q("$sl KaryNomor,KaryDir FROM Citarum.dbo.TKaryLemburhari WHERE KaryDir='04100869' AND  (LemburApp='2' OR LemburApp='31') AND LemburBulan='$IDLBULAN01'");
             $pl_nr_dir03_vlem01_sww = $ms_nr($pl_nr_dir03_vlem01_sw);
-            #DATA CEKING VERIFIKATOR Direktur Pending atau Reject
+            #DATA CEKING VERIFIKATOR Direktur Pending atau Reject dr santi
             $pl_nr_dirpen03_vlem01_sw = $ms_q("$sl KaryNomor,KaryDir FROM Citarum.dbo.TKaryLemburhari WHERE KaryDir='04100869' AND  (LemburApp='3' OR LemburApp='31') AND LemburBulan='$IDLBULAN01'");
             $pl_nr_dirpen03_vlem01_sww = $ms_nr($pl_nr_dirpen03_vlem01_sw);
+
+            #DATA CEKING VERIFIKATOR Direktur dr innek
+            $pl_nr_dir04_vlem01_sw = $ms_q("$sl KaryNomor,KaryDir FROM Citarum.dbo.TKaryLemburhari WHERE KaryDir='04161065' AND  (LemburApp='2' OR LemburApp='31') AND LemburBulan='$IDLBULAN01'");
+            $pl_nr_dir04_vlem01_sww = $ms_nr($pl_nr_dir04_vlem01_sw);
+            #DATA CEKING VERIFIKATOR Direktur Pending atau Reject dr santi
+            $pl_nr_dirpen04_vlem01_sw = $ms_q("$sl KaryNomor,KaryDir FROM Citarum.dbo.TKaryLemburhari WHERE KaryDir='04161065' AND  (LemburApp='3' OR LemburApp='31') AND LemburBulan='$IDLBULAN01'");
+            $pl_nr_dirpen04_vlem01_sww = $ms_nr($pl_nr_dirpen04_vlem01_sw);
+
+            #DATA CEKING VERIFIKATOR Direktur dr hesty
+            $pl_nr_dir05_vlem01_sw = $ms_q("$sl KaryNomor,KaryDir FROM Citarum.dbo.TKaryLemburhari WHERE KaryDir='04080837' AND  (LemburApp='2' OR LemburApp='31') AND LemburBulan='$IDLBULAN01'");
+            $pl_nr_dir05_vlem01_sww = $ms_nr($pl_nr_dir05_vlem01_sw);
+            #DATA CEKING VERIFIKATOR Direktur Pending atau Reject dr santi
+            $pl_nr_dirpen05_vlem01_sw = $ms_q("$sl KaryNomor,KaryDir FROM Citarum.dbo.TKaryLemburhari WHERE KaryDir='04080837' AND  (LemburApp='3' OR LemburApp='31') AND LemburBulan='$IDLBULAN01'");
+            $pl_nr_dirpen05_vlem01_sww = $ms_nr($pl_nr_dirpen05_vlem01_sw);
 
             // #DATA Samples
             // $pl_nrt_dir01_vlem01_sw = $ms_q("$sl KaryNomor,KaryDir,Uploader FROM Citarum.dbo.TKaryLemburhari WHERE KaryDir='04000671' AND  (LemburApp='2' OR LemburApp='31') AND LemburBulan='$IDLBULAN01'");
@@ -189,12 +203,28 @@
                 <strong>drg. Kriswidiati, M.Kes</strong> <?PHP echo "Menolak <span class='badge bg-dark'>".$pl_nr_dirpen01_vlem01_sww."</span> Form"; ?>
         </div>
 
-        <div class="alert alert-dismissible alert-info">
+        <!-- <div class="alert alert-dismissible alert-info">
                <i class="fas fa-info"></i>
-                <strong>dr. Tiurlan Pardamean BR. Sibarani</strong> <?PHP echo "<span class='badge bg-dark'>".$pl_nr_dir02_vlem01_sww."</span> Belum diverifikasi"; ?>
+                <strong>dr. Tiurlan Pardamean BR. Sibarani</strong> <?PHP #echo "<span class='badge bg-dark'>".$pl_nr_dir02_vlem01_sww."</span> Belum diverifikasi"; ?>
                 <br>
                 <i class="fas fa-info"></i>
-                <strong>dr. Tiurlan Pardamean BR. Sibarani</strong> <?PHP echo "Menolak <span class='badge bg-dark'>".$pl_nr_dirpen02_vlem01_sww."</span> Form"; ?>
+                <strong>dr. Tiurlan Pardamean BR. Sibarani</strong> <?PHP #echo "Menolak <span class='badge bg-dark'>".$pl_nr_dirpen02_vlem01_sww."</span> Form"; ?>
+        </div> -->
+
+        <div class="alert alert-dismissible alert-info">
+               <i class="fas fa-info"></i>
+                <strong>dr. Inneke Elysia Lavender </strong> <?PHP echo "<span class='badge bg-dark'>".$pl_nr_dir04_vlem01_sww."</span> Belum diverifikasi"; ?>
+                <br>
+                <i class="fas fa-info"></i>
+                <strong>dr. Inneke Elysia Lavender </strong> <?PHP echo "Menolak <span class='badge bg-dark'>".$pl_nr_dirpen04_vlem01_sww."</span> Form"; ?>
+        </div>
+
+        <div class="alert alert-dismissible alert-info">
+               <i class="fas fa-info"></i>
+                <strong>dr. Hestyani Kelananingrum, Sp.N,MKM</strong> <?PHP echo "<span class='badge bg-dark'>".$pl_nr_dir05_vlem01_sww."</span> Belum diverifikasi"; ?>
+                <br>
+                <i class="fas fa-info"></i>
+                <strong>dr. Hestyani Kelananingrum, Sp.N,MKM</strong> <?PHP echo "Menolak <span class='badge bg-dark'>".$pl_nr_dirpen05_vlem01_sww."</span> Form"; ?>
         </div>
 
         <div class="alert alert-dismissible alert-info">

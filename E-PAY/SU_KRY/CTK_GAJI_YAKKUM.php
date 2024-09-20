@@ -30,7 +30,7 @@
         ?>				
 				<table class="table">
 				<tr>
-					<td><img src="https://www.pantiwilasa-citarum.co.id/WEB-PWC/OPT-03/IMG/LOGO/logo_new.png" width="87" height="87"></td>
+					<<td><img src="logo_new.png" width="87" height="87"></td>
 					<td width="71%">
 					 <b>SLIP GAJI </b> <br> <?PHP #echo $vkryy['KaryNama']; ?>
 					 <hr>
@@ -156,14 +156,12 @@
 						<li>Bonus Bagian</li>
 						<li>Rapelan</li>
 						<li>MOD</li>
-						<li>Tunjangan Kerj.Minimal</li>
 						<?PHP if($vkryy['KaryNoUrut']=="0001"){ ?>
 						<li>Home Care</li>
 						<li>MCU</li>
 						<li>Dokter Jaga</li>
-						<?PHP }elseif($vkryy['KaryNoUrut']=="0007"){ ?>
-						<li>Home Care</li>
 						<?PHP }elseif($vkryy['KaryNoUrut']=="0002" OR $vkryy['KaryNoUrut']=="0003" OR $vkryy['KaryNoUrut']=="0039" OR $vkryy['KaryNoUrut']=="0007"){ ?>
+						<li>Home Care</li>
 						<li>Resep</li>
 						<li>Tunj.Kerja Minimal</li>
 						<?PHP }elseif($vkryy['KaryNoUrut']=="0011"){ ?>
@@ -176,14 +174,13 @@
 								echo"<li>Rp.".$nf($epwc_vgajiy01_sww['GajiBonusBagian'])."</li>";
 								echo"<li>Rp.".$nf($epwc_vgajiy01_sww['GajiRapelan'])."</li>";
 								echo"<li>Rp.".$nf($epwc_vgajiy01_sww['GajiMODPWC'])."</li>";
-								echo"<li>Rp.".$nf($epwc_vgajiy01_sww['GajiTunjKinerjaMin'])."</li>";
+								#echo"<li>Rp.".$nf($epwc_vgajiy01_sww['GajiTunjKinerjaMin'])."</li>";
 							if($vkryy['KaryNoUrut']=="0001"){
 								echo"<li>Rp.".$nf($epwc_vgajiy01_sww['GajiHomeCare'])."</li>";
 								echo"<li>Rp.".$nf($epwc_vgajiy01_sww['GajiMCUDokter'])."</li>";
 								echo"<li>Rp.".$nf($epwc_vgajiy01_sww['GajiJagaDokter'])."</li>";
-							}elseif($vkryy['KaryNoUrut']=="0007"){
-								echo"<li>Rp.".$nf($epwc_vgajiy01_sww['GajiHomeCare'])."</li>";
 							}elseif($vkryy['KaryNoUrut']=="0002" OR $vkryy['KaryNoUrut']=="0003" OR $vkryy['KaryNoUrut']=="0039" OR $vkryy['KaryNoUrut']=="0007"){
+								echo"<li>Rp.".$nf($epwc_vgajiy01_sww['GajiHomeCare'])."</li>";
 								echo"<li>Rp.".$nf($epwc_vgajiy01_sww['GajiBonusResep'])."</li>";
 								echo"<li>Rp.".$nf($epwc_vgajiy01_sww['GajiTunjKinerjaMin'])."</li>";
 							}elseif($vkryy['KaryNoUrut']=="0011"){

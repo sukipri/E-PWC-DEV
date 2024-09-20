@@ -112,9 +112,7 @@
 
         #HIT Total Persentasi form
                  $cpf_hit_per_vformh01_swcount =  $cpf_sum_vform01_sww['tot_persen'] / 10;
-                 $cpf_hit_per_vformh01_sw = ceil($cpf_hit_per_vformh01_swcount);
-
-                    
+                 $cpf_hit_per_vformh01_sw = ceil($cpf_hit_per_vformh01_swcount);            
 ?>
 <tr>
     <td width="7%">-</td>
@@ -178,8 +176,12 @@
     <?PHP 
         if(isset($_GET['DELADM01'])){
             $IDDELADM01 = @$SQL_SL($_GET['IDDELADM01']);
-            
-            
+            echo $IDDELADM01;
+            $del_cp03_form = @$CL_Q("$DL FROM Citarum.dbo.tb_cpf01_form03_01 WHERE idmain_inap_01='$IDDELADM01' ");
+            $del_cp03_form_head = @$CL_Q("$DL FROM Citarum.dbo.tb_cpf01_form03_01_head WHERE idmain_inap_01='$IDDELADM01' ");
+            $del_cp03_form_head_persen = @$CL_Q("$DL FROM Citarum.dbo.tb_cpf01_form03_01_head_persen WHERE idmain_inap_01='$IDDELADM01' ");
+
+            header("LOCATION:?PG_SA=CPF01_CP03_01_FORM&IDADM01=$IDADM01&IDRM01=$IDRM01&IDKEG03=$IDKEG03");
         }
     ?>
 <div id="proses"></id>

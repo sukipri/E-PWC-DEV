@@ -28,7 +28,7 @@
                
 				<table class="table">
 				<tr>
-					<td><img src="https://www.pantiwilasa-citarum.co.id/WEB-PWC/OPT-03/IMG/LOGO/logo_new.png" width="87" height="87"></td>
+					<td><img src="logo_new.png" width="87" height="87"></td>
 					<td width="71%">
 					 <b>SLIP GAJI KECIL </b> <br> <?PHP #echo $vkryy['KaryNama']; ?>
 					 <hr>
