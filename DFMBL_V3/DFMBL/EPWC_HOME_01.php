@@ -105,6 +105,9 @@
 							case'EPWC_ELEMBUR_01':
 								include"EPWC_ELEMBUR_01.php";
 							break;
+							case'EPWC_INCOME_01':
+								include"EPWC_INCOME_01.php";
+							break;
 
 						}
 				

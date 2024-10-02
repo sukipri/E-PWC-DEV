@@ -77,8 +77,12 @@
                  case'EPWC_LAYANPOLI_01':
                     include"DFMBL/EPWC_LAYANPOLI_01.php";
                 break;      
+                 #----------INCOME---------------#       
+                 case'EPWC_INCOME_01_TUKIN':
+                    include"DFMBL/EPWC_INCOME_01_TUKIN.php";
+                break;
                  #----------LEMBUR---------------#       
-                 case'EPWC_ELEMBUR_01_IN':
+                case'EPWC_ELEMBUR_01_IN':
                     include"DFMBL/EPWC_ELEMBUR_01_IN.php";
                 break;
                 case'EPWC_ELEMBUR_01_IN02':

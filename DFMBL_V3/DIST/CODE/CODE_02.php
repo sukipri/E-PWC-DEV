@@ -42,6 +42,7 @@
               $IDHARI = @$SQL_SL($_GET['IDHARI']); #PARAMER HARI
               $IDBULAN = @$SQL_SL($_GET['IDBULAN']); #PARAMER BUlan
               $IDTAHUN = @$SQL_SL($_GET['IDTAHUN']); #PARAMER TAHNUN
+              $IDBTUKIN = @$SQL_SL($_GET['IDBTUKIN']); #PARAMER TAHNUN
         //--GET DML--//
                 //-Question-//
                 /**/

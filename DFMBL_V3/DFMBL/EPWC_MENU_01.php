@@ -23,6 +23,9 @@
            <a href="http://103.164.114.138/E-PWC/E-PAY/SU_KRY/HOME.php" class="mx-2 h5" style="color:#FFF;"><i class="fas fa-money-bill"></i>&nbsp;E-PAY</a>
         </li>
         <li  class="nav-link">
+           <a href="?NAVI=EPWC_INCOME_01" class="mx-2 h5" style="color:#FFF;"><i class="fas fa-money-bill"></i>&nbsp;InCome</a>
+        </li>
+        <li  class="nav-link">
            <a href="#" class="mx-2 h5" style="color:#FFF;"><i class="fas fa-file-alt"></i>&nbsp;Surat Tugas</a>
         </li>
         <li  class="nav-link">
