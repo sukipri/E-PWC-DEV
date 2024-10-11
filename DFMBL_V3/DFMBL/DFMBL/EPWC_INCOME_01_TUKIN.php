@@ -38,7 +38,6 @@
                 <td>Rp.$nom_vnomtukin</td>
             </tr>
         </table>";
-
             }
 
         ?>
