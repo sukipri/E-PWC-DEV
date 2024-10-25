@@ -39,7 +39,7 @@
                         $vplk01_sww = $ms_fas($vplk01_sw);
                     $vspes01_sw = $ms_q("$sl SpesKode,SpesNama FROM Citarum.dbo.TSpesialis WHERE SpesKode='$vplk01_sww[SpesKode]' ");
                         $vspes01_sww = $ms_fas($vspes01_sw);
-                      $vunit01_sw = $ms_q("$call_sel Citarum.dbo.TUnit WHERE UnitKode='$vplk01_sww[UnitKode]'");
+						$vunit01_sw = $ms_q("$call_sel Citarum.dbo.TUnit WHERE UnitKode='$vplk01_sww[UnitKode]'");
                         $vunit01_sww = $ms_fas($vunit01_sw);
                         #KONVERSI
                         $int_jdwsts01 = (int) $vbjadwal01_sww['JadwalStatus'] ;

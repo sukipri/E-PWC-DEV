@@ -30,7 +30,7 @@
         ?>				
 				<table class="table">
 				<tr>
-					<<td><img src="logo_new.png" width="87" height="87"></td>
+					<td><img src="logo_new.png" width="87" height="87"></td>
 					<td width="71%">
 					 <b>SLIP GAJI </b> <br> <?PHP #echo $vkryy['KaryNama']; ?>
 					 <hr>
